@@ -1,81 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet library="css" name="bootstrap.css" />
-    </h:head>
-    <h:body>
-
-        <div class="container">
-            <div class ="row">
-                <div class="col-md-6">
-                    <h:dataTable class="table table-striped table-active" value="#{telefonController.telefon_list}" var="telefon">
-                        <h:column>
-                            <f:facet name="header">telefon adi</f:facet> 
-                                #{telefon.telefon_ad}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">ekran teknolojisi</f:facet> 
-                                #{telefon.ekran.ekran_teknolojisi}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">batarya</f:facet> 
-                                #{telefon.batarya.batarya_teknolojisi}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">islemci</f:facet> 
-                                #{telefon.islemci.ana_islemci}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Ram</f:facet> 
-                                #{telefon.telefon_ram}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">kameralar</f:facet> 
-                            <ul>
-                                <ui:repeat value="#{telefon.kamera}" var="kamera">
-                                    <li>#{kamera.kamera_on_arka}</li>
-                                </ui:repeat>
- 
-                            </ul>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">kamera cozunurlugu</f:facet> 
-                            <ul>
-                                <ui:repeat value="#{telefon.kamera}" var="kamera">
-                                    <li>#{kamera.kamera_cozunurlugu}</li>
-                                </ui:repeat>
-
-                            </ul>
-                        </h:column>
-                        
-                        <h:column>
-                            <f:facet name="header">diyafram acikligi</f:facet> 
-                            <ul>
-                                <ui:repeat value="#{telefon.kamera}" var="kamera">
-                                    <li>#{kamera.diafram_acikligi}</li>
-                                </ui:repeat>
-
-                            </ul>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">optik goruntu sabileme</f:facet> 
-                            <ul>
-                                <ui:repeat value="#{telefon.kamera}" var="kamera">
-                                    <li>#{kamera.optik_goruntu_sabitleyici}</li>
-                                </ui:repeat>
-
-                            </ul>
-                        </h:column>
-                    </h:dataTable>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template/template.xhtml">
+    <ui:define name="content">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b> Bilgi - </b> Şu anda Anasayfamız Yapım Aşamasındadır Daha Sonra Tekrardan Sitemize Uğrayınız</span>
                 </div>
             </div>
-            <h:body>
-            </h:body>
         </div>
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>
+

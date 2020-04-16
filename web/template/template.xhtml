@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>
+            Compare Tech | Listeleme
+        </title>
+
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+        <!--     Fonts and icons     -->
+        <h:outputStylesheet library="css" name="robotofonts.css" />
+        <h:outputStylesheet library="css" name="fontawesome.css" />
+        <!-- CSS dosyaları -->
+        <h:outputStylesheet library="css" name="material-dashboard.css" />
+    </h:head>
+
+    <h:body>
+        <div class="wrapper ">
+            <div class="sidebar" data-color="purple" data-background-color="white" data-image="img/sidebar-1.jpg">
+                <!--
+                  Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+          
+                  Tip 2: you can also add an image using data-image tag
+                -->
+                <div class="logo"><a href="#" class="simple-text logo-normal">
+                        Compare Tech
+                    </a></div>
+                <div class="sidebar-wrapper">
+                    <h:form>
+                        <ul class="nav">
+
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('telefon')}">
+
+                                    <i class="material-icons">phone_iphone</i>
+                                    <p>Telefonlar</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('telefon')}">
+
+                                    <i class="material-icons">phone_iphone</i>
+                                    <p>Telefonlar</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('telefon')}">
+
+                                    <i class="material-icons">phone_iphone</i>
+                                    <p>Telefonlar</p>
+                                </h:commandLink>
+                            </li>
+                            
+
+                        </ul>
+                    </h:form>
+                </div>
+            </div>
+            <div class="main-panel">
+                <ui:insert name="header">
+                    <ui:include src="/template/include/header.xhtml"/>
+                </ui:insert>
+                <ui:insert name="content">
+                    defaulth content
+                </ui:insert>
+                <ui:insert name="footer">
+                    <ui:include src="/template/include/footer.xhtml"/>
+                </ui:insert>
+            </div>
+        </div>
+        <!--   Core JS Files   -->
+        <h:outputStylesheet library="js/core" name="jquery.min.js" />
+        <h:outputStylesheet library="js/core" name="popper.min.js" />
+        <h:outputStylesheet library="js/core" name="bootstrap-material-design.min.js" />
+        <h:outputStylesheet library="js/plugins" name="perfect-scrollbar.jquery.min.js" />
+
+        <!-- Plugin for the momentJs  -->
+
+        <h:outputStylesheet library="js/plugins" name="moment.min.js" />
+        <!--  Plugin for Sweet Alert -->
+
+        <h:outputStylesheet library="js/plugins" name="sweetalert2.js" />
+        <!-- Forms Validations Plugin -->
+
+        <h:outputStylesheet library="js/plugins" name="jquery.validate.min.js" />
+        <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+
+        <h:outputStylesheet library="js/plugins" name="jquery.bootstrap-wizard.js" />
+        <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+
+        <h:outputStylesheet library="js/plugins" name="bootstrap-selectpicker.js" />
+        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+
+        <h:outputStylesheet library="js/plugins" name="bootstrap-datetimepicker.min.js" />
+        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+
+        <h:outputStylesheet library="js/plugins" name="jquery.dataTables.min.js" />
+        <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+
+        <h:outputStylesheet library="js/plugins" name="bootstrap-tagsinput.js" />
+        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+
+        <h:outputStylesheet library="js/plugins" name="jasny-bootstrap.min.js" />
+        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+
+        <h:outputStylesheet library="js/plugins" name="fullcalendar.min.js" />
+        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+
+        <h:outputStylesheet library="js/plugins" name="jquery-jvectormap.js" />
+        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+
+        <h:outputStylesheet library="js/plugins" name="nouislider.min.js" />
+        <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        <!-- Library for adding dinamically elements -->
+
+        <h:outputStylesheet library="js/plugins" name="arrive.min.js" />
+        <!--  Google Maps Plugin    -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <!-- Chartist JS -->
+
+        <h:outputStylesheet library="js/plugins" name="chartist.min.js" />
+        <!--  Notifications Plugin    -->
+
+        <h:outputStylesheet library="js/plugins" name="bootstrap-notify.js" />
+        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+
+        <h:outputStylesheet library="js" name="material-dashboard.js" />
+
+
+    </h:body>
+
+</html>
+
