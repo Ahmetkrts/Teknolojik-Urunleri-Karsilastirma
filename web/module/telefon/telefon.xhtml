@@ -9,21 +9,10 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Telefonlar Tablosu</h4>
-                                <p class="card-category"> Burası Telefonların Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
-                            </div>
-                            <ui:include src="/module/telefon/table.xhtml">
-                                
-                            </ui:include>
-                        </div>
-                    </div>
-
+                    <ui:include src="/module/telefon/table.xhtml" />
+                    <ui:include src="/module/telefon/form.xhtml" />
                 </div>
             </div>
         </div>
-
     </ui:define>
 </ui:composition>

@@ -22,9 +22,8 @@ public class Connector {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             c = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/compare-tech?user=root&password=1234");
-        } catch (SQLException e) {
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            System.out.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            System.out.println(e.getMessage());
         }
         return c;
     }

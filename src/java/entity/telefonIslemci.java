@@ -15,9 +15,9 @@ public class telefonIslemci {
     private String ana_islemci;
     private Double  cpu_frekansi;
     private int cpu_cekirdegi;
-    private int islmeci_mimarisi;
+    private int islemci_mimarisi;
     private String  birinci_yardimci_islemci;
-    private String  grafik_islmecisi_gpu;
+    private String  grafik_islemcisi_gpu;
     private int gpu_frekansi;
     private int cpu_uretim_teknolojisi;
 
@@ -61,12 +61,12 @@ public class telefonIslemci {
         this.cpu_cekirdegi = cpu_cekirdegi;
     }
 
-    public int getIslmeci_mimarisi() {
-        return islmeci_mimarisi;
+    public int getIslemci_mimarisi() {
+        return islemci_mimarisi;
     }
 
-    public void setIslmeci_mimarisi(int islmeci_mimarisi) {
-        this.islmeci_mimarisi = islmeci_mimarisi;
+    public void setIslemci_mimarisi(int islemci_mimarisi) {
+        this.islemci_mimarisi = islemci_mimarisi;
     }
 
     public String getBirinci_yardimci_islemci() {
@@ -77,12 +77,12 @@ public class telefonIslemci {
         this.birinci_yardimci_islemci = birinci_yardimci_islemci;
     }
 
-    public String getGrafik_islmecisi_gpu() {
-        return grafik_islmecisi_gpu;
+    public String getGrafik_islemcisi_gpu() {
+        return grafik_islemcisi_gpu;
     }
 
-    public void setGrafik_islmecisi_gpu(String grafik_islmecisi_gpu) {
-        this.grafik_islmecisi_gpu = grafik_islmecisi_gpu;
+    public void setGrafik_islemcisi_gpu(String grafik_islemcisi_gpu) {
+        this.grafik_islemcisi_gpu = grafik_islemcisi_gpu;
     }
 
     public int getGpu_frekansi() {

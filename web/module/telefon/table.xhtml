@@ -5,109 +5,139 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:dataTable class="table" value="#{telefonController.telefon_list}" var="telefon">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">                                
+                <h:form>        
 
-        <h:column>
-            <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                #{telefon.telefon_id}
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
-                #{telefon.telefon_marka}
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Model</b></f:facet> 
-                #{telefon.telefon_model}
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Ekran</b></f:facet> 
-                #{telefon.ekran.ekran_teknolojisi} Ekran
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">İşlemci</b></f:facet> 
+                    <h:commandLink styleClass="text-white d-flex flex-row-reverse " value="Özellik Ekle" action="#{navigationBean.subPage('telefon','ozellik' )}">
+                        <i class="material-icons">add_box</i> 
+                    </h:commandLink>
+                </h:form>
+                <h4 class="card-title d#{$infix}-inline-flex ">Telefonlar Tablosu</h4>
+                <p class="card-category"> Burası Telefonların Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
+            </div>
+            <h:dataTable class="table" value="#{telefonController.telefon_list}" var="telefon">
+
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                        #{telefon.telefon_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
+                        #{telefon.telefon_marka}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Model</b></f:facet> 
+                        #{telefon.telefon_model}
+                </h:column>
+               
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">İşlemci</b></f:facet> 
+                        #{telefon.islemci.ana_islemci}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Batarya</b></f:facet> 
+                    #{telefon.batarya.batarya_kapasitesi} mAh
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Ram</b></f:facet> 
+                    #{telefon.telefon_ram} GB
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Depolama</b></f:facet> 
+                    #{telefon.telefon_dahili_depolama} GB
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Renkler</b></f:facet> 
+
+                    <ui:repeat value="#{telefon.renk}" var="renk">
+                        #{renk.renk_adi}-
+                    </ui:repeat>
+
+
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">İşletim Sistemi</b></f:facet> 
+                        #{telefon.isletimSistemi.isletim_sistemi_versiyon} 
+                </h:column>
+                <h:column>
+                    <h:form>
+                        <h:commandLink>
+                            <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                        </h:commandLink>
+                    </h:form>
+                </h:column>
+                <h:column>
+                    <h:form>
+                        <h:commandLink>
+                            <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                        </h:commandLink>
+                    </h:form>
+                </h:column>
+
+
+
+                <!--<h:column>
+                    <f:facet class="text-primary"  name="header">Ad</f:facet> 
+                #{telefon.telefon_ad}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Ekran Teknolojisi</f:facet> 
+                #{telefon.ekran.ekran_teknolojisi}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Batarya Teknolojisi</f:facet> 
+                #{telefon.batarya.batarya_teknolojisi}
+            </h:column>
+            <h:column>
+            <f:facet name="header">İşlemci</f:facet> 
                 #{telefon.islemci.ana_islemci}
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Batarya</b></f:facet> 
-                #{telefon.batarya.batarya_kapasitesi} mAh
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Ram</b></f:facet> 
-            #{telefon.telefon_ram} GB
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Depolama</b></f:facet> 
-            #{telefon.telefon_dahili_depolama} GB
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">Kamera Sayısı</b></f:facet> 
-            #{telefon.kamera.size()} Adet
-        </h:column>
-        <h:column>
-            <f:facet name="header"><b class="text-primary">İşletim Sistemi</b></f:facet> 
-                #{telefon.isletimSistemi.isletim_sistemi_versiyon} 
-        </h:column>
+            </h:column>
+            <h:column>
+            <f:facet name="header">Ram</f:facet> 
+                #{telefon.telefon_ram} GB
+            </h:column>
+            <h:column>
+                <f:facet name="header">Kamera Sayısı</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.kamera_on_arka}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Kamera Çözünürlüğü</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.kamera_cozunurlugu}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Diyafram Açıklığı</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.diafram_acikligi}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>
+            <h:column>
+                <f:facet name="header">optik goruntu sabileme</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.optik_goruntu_sabitleyici}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>-->
 
+            </h:dataTable>
 
-        <!--<h:column>
-            <f:facet class="text-primary"  name="header">Ad</f:facet> 
-        #{telefon.telefon_ad}
-</h:column>
-<h:column>
-    <f:facet name="header">Ekran Teknolojisi</f:facet> 
-        #{telefon.ekran.ekran_teknolojisi}
-</h:column>
-<h:column>
-    <f:facet name="header">Batarya Teknolojisi</f:facet> 
-        #{telefon.batarya.batarya_teknolojisi}
-</h:column>
-<h:column>
-    <f:facet name="header">İşlemci</f:facet> 
-        #{telefon.islemci.ana_islemci}
-</h:column>
-<h:column>
-    <f:facet name="header">Ram</f:facet> 
-        #{telefon.telefon_ram} GB
-    </h:column>
-    <h:column>
-        <f:facet name="header">Kamera Sayısı</f:facet> 
-        <ul>
-            <ui:repeat value="#{telefon.kamera}" var="kamera">
-                <li>#{kamera.kamera_on_arka}</li>
-            </ui:repeat>
-
-        </ul>
-    </h:column>
-    <h:column>
-        <f:facet name="header">Kamera Çözünürlüğü</f:facet> 
-        <ul>
-            <ui:repeat value="#{telefon.kamera}" var="kamera">
-                <li>#{kamera.kamera_cozunurlugu}</li>
-            </ui:repeat>
-
-        </ul>
-    </h:column>
-
-    <h:column>
-        <f:facet name="header">Diyafram Açıklığı</f:facet> 
-        <ul>
-            <ui:repeat value="#{telefon.kamera}" var="kamera">
-                <li>#{kamera.diafram_acikligi}</li>
-            </ui:repeat>
-
-        </ul>
-    </h:column>
-    <h:column>
-        <f:facet name="header">optik goruntu sabileme</f:facet> 
-        <ul>
-            <ui:repeat value="#{telefon.kamera}" var="kamera">
-                <li>#{kamera.optik_goruntu_sabitleyici}</li>
-            </ui:repeat>
-
-        </ul>
-    </h:column>-->
-
-    </h:dataTable>
-
-
+        </div>
+    </div>
 </ui:composition>

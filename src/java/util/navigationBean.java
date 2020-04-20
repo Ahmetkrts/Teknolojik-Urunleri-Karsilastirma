@@ -22,4 +22,9 @@ public class navigationBean implements Serializable{
        return "/module/"+p+"/"+p+"?faces-redirct=true";
     
     }
+    public String subPage(String page,String sub)
+    {
+       return "/module/"+page+"/"+sub+"/"+sub+".xhtml?faces-redirct=true";
+    
+    }
 }

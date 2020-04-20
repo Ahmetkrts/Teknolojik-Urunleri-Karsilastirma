@@ -13,7 +13,7 @@ public class telefonEkran {
     private Long ekran_id;
     private Double ekran_boyutu;
     private String ekran_teknolojisi;
-    private String ekran_cozunurkugu;
+    private String ekran_cozunurlugu;
     private int piksel_yogunlugu; 
     private String ekran_dayanikliligi;
 
@@ -41,12 +41,12 @@ public class telefonEkran {
         this.ekran_teknolojisi = ekran_teknolojisi;
     }
 
-    public String getEkran_cozunurkugu() {
-        return ekran_cozunurkugu;
+    public String getEkran_cozunurlugu() {
+        return ekran_cozunurlugu;
     }
 
-    public void setEkran_cozunurkugu(String ekran_cozunurkugu) {
-        this.ekran_cozunurkugu = ekran_cozunurkugu;
+    public void setEkran_cozunurlugu(String ekran_cozunurlugu) {
+        this.ekran_cozunurlugu = ekran_cozunurlugu;
     }
 
     public int getPiksel_yogunlugu() {

@@ -21,19 +21,13 @@
 
     <h:body>
         <div class="wrapper ">
-            <div class="sidebar" data-color="purple" data-background-color="white" data-image="img/sidebar-1.jpg">
-                <!--
-                  Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-          
-                  Tip 2: you can also add an image using data-image tag
-                -->
+            <div class="sidebar" data-color="purple" data-background-color="white" library="img" data-image="img/sidebar-1.jpg">
                 <div class="logo"><a href="#" class="simple-text logo-normal">
                         Compare Tech
                     </a></div>
                 <div class="sidebar-wrapper">
                     <h:form>
-                        <ul class="nav">
-
+                        <ul class="nav"> 
                             <li class="nav-item active ">
                                 <h:commandLink styleClass="nav-link" action="#{navigationBean.page('telefon')}">
 
@@ -41,22 +35,6 @@
                                     <p>Telefonlar</p>
                                 </h:commandLink>
                             </li>
-                            <li class="nav-item active ">
-                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('telefon')}">
-
-                                    <i class="material-icons">phone_iphone</i>
-                                    <p>Telefonlar</p>
-                                </h:commandLink>
-                            </li>
-                            <li class="nav-item active ">
-                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('telefon')}">
-
-                                    <i class="material-icons">phone_iphone</i>
-                                    <p>Telefonlar</p>
-                                </h:commandLink>
-                            </li>
-                            
-
                         </ul>
                     </h:form>
                 </div>
@@ -79,7 +57,7 @@
         <h:outputStylesheet library="js/core" name="bootstrap-material-design.min.js" />
         <h:outputStylesheet library="js/plugins" name="perfect-scrollbar.jquery.min.js" />
 
-        <!-- Plugin for the momentJs  -->
+       
 
         <h:outputStylesheet library="js/plugins" name="moment.min.js" />
         <!--  Plugin for Sweet Alert -->
@@ -100,7 +78,7 @@
         <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
 
         <h:outputStylesheet library="js/plugins" name="jquery.dataTables.min.js" />
-        <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+        
 
         <h:outputStylesheet library="js/plugins" name="bootstrap-tagsinput.js" />
         <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
@@ -115,13 +93,11 @@
         <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 
         <h:outputStylesheet library="js/plugins" name="nouislider.min.js" />
-        <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        
         <!-- Library for adding dinamically elements -->
 
         <h:outputStylesheet library="js/plugins" name="arrive.min.js" />
-        <!--  Google Maps Plugin    -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+       
         <!-- Chartist JS -->
 
         <h:outputStylesheet library="js/plugins" name="chartist.min.js" />

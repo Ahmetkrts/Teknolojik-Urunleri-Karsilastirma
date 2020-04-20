@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-success">
+                <h4 class="card-title">İşlemci Ekle</h4>
+                <p class="card-category">İşlemcilere Ekleme veya Güncellme</p>
+            </div>
+            <div class="card-body">
+                <h:form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Yonga Seti</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.yonga_seti}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Ana İşlemci</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.ana_islemci}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">CPU Frekansı</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_frekansi}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">CPU Çekirdegi</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_cekirdegi}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">İşlemci Mimarisi</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.islemci_mimarisi}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Birinci Yardımcı İşlemci</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.birinci_yardimci_islemci}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Grafik İşlemcisi (GPU)</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.grafik_islemcisi_gpu}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">GPU Frekansı</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.gpu_frekansi}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">CPU Üretim Teknolojisi</label>
+                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_uretim_teknolojisi}" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+
+
+                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
+                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
+                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{telefonIslemciController.create()}" />
+
+                    <div class="clearfix"></div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+
+
+</ui:composition>

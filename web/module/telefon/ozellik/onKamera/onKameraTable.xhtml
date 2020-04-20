@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-success">
+                <h4 class="card-title d#{$infix}-inline-flex ">Ön Kameralar Tablosu</h4>
+                <p class="card-category"> Burası Telefonların Ön Kamera Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
+            </div>
+            <h:dataTable class="table" value="#{telefonOnKameraController.onKameraList}" var="kamera">
+
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                        #{kamera.kamera_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Telefon Modeli</b></f:facet> 
+                        #{kamera.telefon_model}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Cözünürlük</b></f:facet> 
+                    #{kamera.kamera_cozunurlugu} MP
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Diafram Açıklığı</b></f:facet> 
+                    #{kamera.diafram_acikligi} F
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Video Kayıt Çözünürlügü</b></f:facet> 
+                        #{kamera.video_cozunurlugu}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Video FPS Degeri</b></f:facet> 
+                    #{kamera.video_fps_degeri} FPS
+                </h:column>
+
+
+                <h:column>
+                    <h:form>
+                        <h:commandLink>
+                            <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                        </h:commandLink>
+                    </h:form>
+                </h:column>
+                <h:column>
+                    <h:form>
+                        <h:commandLink>
+                            <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                        </h:commandLink>
+                    </h:form>
+                </h:column>
+
+
+
+
+            </h:dataTable>
+
+        </div>
+    </div>
+</ui:composition>
