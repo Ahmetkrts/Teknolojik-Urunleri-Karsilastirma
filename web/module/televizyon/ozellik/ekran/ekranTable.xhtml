@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title d#{$infix}-inline-flex ">Ekranlar Tablosu</h4>
+                <p class="card-category"> Burası Televizyonlarin Ekran Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
+            </div>
+            <h:dataTable class="table">
+
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Ekran Çözünürlüğü</b></f:facet> 
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Erkan Tipi</b></f:facet> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">HDR</b></f:facet> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><b class="text-primary">Ekran Dayanıklığı</b></f:facet> 
+                </h:column>
+
+
+                <h:column>
+                    <h:form>
+                        <h:commandLink >
+                            <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                        </h:commandLink>
+                    </h:form>
+                </h:column>
+
+
+
+
+            </h:dataTable>
+
+        </div>
+    </div>
+</ui:composition>
