@@ -25,6 +25,18 @@ public class laptopDepolamaBellekController implements Serializable {
     private laptopDepolamaBellekDAO laptopDepolamaBellekdao;
     private laptopDepolamaBellek laptopDepolamaBellek;
 
+   
+
+    public String update() {
+        this.laptopDepolamaBellekdao.update(this.laptopDepolamaBellek);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
+    public String updateForm(laptopDepolamaBellek depolama) {
+        this.laptopDepolamaBellek=depolama;
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
     public String create() {
         this.laptopDepolamaBellekdao.insert(this.laptopDepolamaBellek);
         return "/module/laptop/ozellik/ozellik.xhtml";

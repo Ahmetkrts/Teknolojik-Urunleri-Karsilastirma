@@ -24,6 +24,18 @@ public class laptopEkranController implements Serializable {
     private laptopEkranDAO laptopEkrandao;
     private laptopEkran laptopEkran;
 
+   
+
+    public String update() {
+        this.laptopEkrandao.update(this.laptopEkran);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
+    public String updateForm(laptopEkran ekran) {
+        this.laptopEkran = ekran;
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
     public String create() {
         this.laptopEkrandao.insert(this.laptopEkran);
         return "/module/laptop/ozellik/ozellik.xhtml";

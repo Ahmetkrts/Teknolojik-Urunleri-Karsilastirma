@@ -12,6 +12,7 @@
             </div>
             <div class="card-body">
                 <h:form>
+                    <h:inputHidden value="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id}"/>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -61,9 +62,9 @@
                     </div>
 
 
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" />
+                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}"  value="Temizle"/>
+                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopBaglantiController.update()}" />
+                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id==null}" class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>

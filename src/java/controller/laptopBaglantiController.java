@@ -23,11 +23,21 @@ public class laptopBaglantiController implements Serializable {
     private List<laptopBaglanti> laptopBaglantiList;
     private laptopBaglantiDAO laptopBaglantidao;
     private laptopBaglanti laptopBaglanti;
-    
-    public String create()
-    {
+
+   
+
+    public void update() {
+        this.laptopBaglantidao.update(this.laptopBaglanti);
+    }
+
+    public void updateForm(laptopBaglanti baglanti) {
+        this.laptopBaglanti = baglanti;
+
+    }
+
+    public String create() {
         this.laptopBaglantidao.insert(this.laptopBaglanti);
-         return "/module/laptop/ozellik/ozellik.xhtml";
+        return "/module/laptop/ozellik/ozellik.xhtml";
     }
 
     public List<laptopBaglanti> getlaptopBaglantiList() {

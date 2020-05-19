@@ -23,11 +23,24 @@ public class laptopPilDAO {
     private Connector connector;
     private Connection connection;
 
+    
+
+    public void update(laptopPil laptopPil) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("UPDATE laptop_pil SET pil_gucu=" + laptopPil.getPil_gucu() + ", pil_hucre_sayisi=" + laptopPil.getPil_hucre_sayisi() + ", pil_ozellikleri='" + laptopPil.getPil_ozellikleri() + "' WHERE pil_id=" + laptopPil.getPil_id());
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void insert(laptopPil laptopPil) {
         try {
             Statement st = this.getConnection().createStatement();
-           st.executeUpdate("INSERT INTO laptop_pil (pil_gucu, pil_hucre_sayisi, pil_ozellikleri) VALUES "
-                   + "( "+laptopPil.getPil_gucu()+", "+laptopPil.getPil_hucre_sayisi()+", '"+laptopPil.getPil_ozellikleri()+"')");
+            st.executeUpdate("INSERT INTO laptop_pil (pil_gucu, pil_hucre_sayisi, pil_ozellikleri) VALUES "
+                    + "( " + laptopPil.getPil_gucu() + ", " + laptopPil.getPil_hucre_sayisi() + ", '" + laptopPil.getPil_ozellikleri() + "')");
             st.close();
 
         } catch (SQLException e) {
@@ -69,4 +82,4 @@ public class laptopPilDAO {
         return connection;
     }
 
-}
+    }

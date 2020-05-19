@@ -22,16 +22,16 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Serisi</b></f:facet> 
-                    #{islemci.islemci_serisi} 
+                        #{islemci.islemci_serisi} 
                 </h:column>
 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Modeli</b></f:facet> 
-                    #{islemci.islemci_modeli} 
+                        #{islemci.islemci_modeli} 
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Temel Frekansı</b></f:facet> 
-                        #{islemci.islemci_temel_frekansi} GHz
+                    #{islemci.islemci_temel_frekansi} GHz
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Çekirdek Sayısı</b></f:facet> 
@@ -57,7 +57,7 @@
 
                 <h:column>
                     <h:form>
-                        <h:commandLink>
+                        <h:commandLink action="#{laptopIslemciController.updateForm(islemci)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
                         </h:commandLink>
                     </h:form>

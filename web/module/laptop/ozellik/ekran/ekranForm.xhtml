@@ -13,6 +13,7 @@
             </div>
             <div class="card-body">
                 <h:form>
+                    <h:inputHidden value="#{laptopEkranController.getlaptopEkran().ekran_id}"/>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -33,14 +34,15 @@
 
                             </div>
                         </div>
-                                                         
+
                     </div>
-                    
 
 
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranController.create()}" />
+
+
+                    <h:commandButton rendered="#{laptopEkranController.getlaptopEkran().ekran_id!=null}"  styleClass="btn btn-danger pull-left" value="Temizle"/>
+                    <h:commandButton rendered="#{laptopEkranController.getlaptopEkran().ekran_id!=null}"  styleClass="btn btn-info pull-right" value="Güncelle"  action="#{laptopEkranController.update()}"/>
+                    <h:commandButton rendered="#{laptopEkranController.getlaptopEkran().ekran_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>

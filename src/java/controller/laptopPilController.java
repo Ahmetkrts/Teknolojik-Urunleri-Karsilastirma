@@ -24,6 +24,18 @@ public class laptopPilController implements Serializable {
     private laptopPilDAO laptopPildao;
     private laptopPil laptopPil;
 
+   
+
+    public String update() {
+        this.laptopPildao.update(this.laptopPil);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
+    public String updateForm(laptopPil pil) {
+        this.laptopPil = pil;
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
     public String create() {
         this.laptopPildao.insert(this.laptopPil);
         return "/module/laptop/ozellik/ozellik.xhtml";

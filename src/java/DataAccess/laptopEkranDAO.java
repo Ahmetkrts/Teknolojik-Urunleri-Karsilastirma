@@ -23,11 +23,25 @@ public class laptopEkranDAO {
     private Connector connector;
     private Connection connection;
 
-    public void insert(laptopEkran laptopEkran) {
-         try {
+    
+
+    public void update(laptopEkran laptopEkran) {
+        try {
             Statement st = this.getConnection().createStatement();
-           st.executeUpdate("INSERT INTO laptop_ekran (ekran_boyutu, ekran_cozunurlugu, ekran_yenileme) VALUES"
-                   + " ( "+laptopEkran.getEkran_boyutu()+", '"+laptopEkran.getEkran_cozunurlugu()+"', "+laptopEkran.getEkran_yenileme()+")");
+            st.executeUpdate("UPDATE laptop_ekran SET ekran_boyutu=" + laptopEkran.getEkran_boyutu() + ", ekran_cozunurlugu='" + laptopEkran.getEkran_cozunurlugu() + "', ekran_yenileme=" + laptopEkran.getEkran_yenileme() + " WHERE ekran_id=" + laptopEkran.getEkran_id());
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "EkranDAo1");
+        }
+    }
+
+    public void insert(laptopEkran laptopEkran) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("INSERT INTO laptop_ekran (ekran_boyutu, ekran_cozunurlugu, ekran_yenileme) VALUES"
+                    + " ( " + laptopEkran.getEkran_boyutu() + ", '" + laptopEkran.getEkran_cozunurlugu() + "', " + laptopEkran.getEkran_yenileme() + ")");
 
             st.close();
 

@@ -12,6 +12,7 @@
             </div>
             <div class="card-body">
                 <h:form>
+                    <h:inputHidden value="#{laptopController.laptop.laptop_id}"/>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -51,7 +52,7 @@
                                 <h:inputText styleClass="form-control"  value="#{laptopController.laptop.isletim_sistemi}" />
                             </div>
                         </div>
-                        
+
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectEkran" class="bmd-label-floating">Ekran Secimi </label>
@@ -67,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="row">                       
+                    <div class="row">                       
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Derinlik</label>
@@ -95,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -131,11 +132,11 @@
                         </div>
                     </div>
 
-                   
-                    
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton class="btn btn-success pull-right" value="Kayit Ekle" action="#{laptopController.create()}" />
+
+
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" styleClass="btn btn-danger pull-left"  value="Temizle"/>
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopController.update()}" />
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id ==null}" class="btn btn-success pull-right"   value="Kayit Ekle" action="#{laptopController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>

@@ -23,6 +23,19 @@ public class laptopDepolamaBellekDAO {
     private Connector connector;
     private Connection connection;
 
+    
+    public void update(laptopDepolamaBellek laptopDepolamaBellek) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("Update laptop_depolama_bellek SET bellek_boyutu=" + laptopDepolamaBellek.getBellek_boyutu() + ", bellek_frekansi=" + laptopDepolamaBellek.getBellek_frekansi() + ", sabit_disk_boyutu=" + laptopDepolamaBellek.getSabit_disk_boyutu() + ", sabit_disk_yazma_hizi=" + laptopDepolamaBellek.getSabit_disk_yazma_hizi() + ", ssd_boyutu=" + laptopDepolamaBellek.getSsd_boyutu() + ", ssd_tipi='" + laptopDepolamaBellek.getSsd_tipi() + "' WHERE depolama_bellek_id=" + laptopDepolamaBellek.getDepolama_bellek_id());
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "DepolamaDAO1");
+        }
+    }
+
     public void insert(laptopDepolamaBellek laptopDepolamaBellek) {
         try {
             Statement st = this.getConnection().createStatement();

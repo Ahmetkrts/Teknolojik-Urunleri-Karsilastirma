@@ -23,6 +23,19 @@ public class laptopEkranKartiDAO {
     private Connector connector;
     private Connection connection;
 
+    
+
+    public void update(laptopEkranKarti laptopEkranKarti) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("UPDATE laptop_ekran_karti SET ekran_karti_marka='" + laptopEkranKarti.getEkran_karti_marka() + "', ekran_karti_serisi='" + laptopEkranKarti.getEkran_karti_serisi() + "', ekran_karti_modeli='" + laptopEkranKarti.getEkran_karti_modeli() + "', ekran_karti_cekirdek_hizi=" + laptopEkranKarti.getEkran_karti_cekirdek_hizi() + ", "
+                    + "ekran_karti_bellek_boyutu=" + laptopEkranKarti.getEkran_karti_bellek_boyutu() + ", ekran_karti_bellek_turu='" + laptopEkranKarti.getEkran_karti_bellek_turu() + "', ekran_karti_bellek_arayuzu=" + laptopEkranKarti.getEkran_karti_bellek_arayuzu() + " WHERE ekran_karti_id=" + laptopEkranKarti.getEkran_karti_id());
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "EkranKarti DAO");
+        }
+    }
+
     public void insert(laptopEkranKarti laptopEkranKarti) {
         try {
             Statement st = this.getConnection().createStatement();

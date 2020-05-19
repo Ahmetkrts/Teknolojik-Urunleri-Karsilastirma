@@ -16,17 +16,31 @@ import javax.inject.Named;
  *
  * @author Casper
  */
- @Named
- @SessionScoped
-public class laptopIslemciController implements Serializable{
+@Named
+@SessionScoped
+public class laptopIslemciController implements Serializable {
+
     private List<laptopIslemci> laptopIslemciList;
     private laptopIslemciDAO laptopIslemcidao;
     private laptopIslemci laptopIslemci;
+
+    
+
+    public String update() {
+        this.laptopIslemcidao.update(this.laptopIslemci);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
+    public String updateForm(laptopIslemci islemci) {
+        this.laptopIslemci = islemci;
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
 
     public String create() {
         this.laptopIslemcidao.insert(this.laptopIslemci);
         return "/module/laptop/ozellik/ozellik.xhtml";
     }
+
     public List<laptopIslemci> getlaptopIslemciList() {
         this.laptopIslemciList = this.getlaptopIslemcidao().findAll();
         return laptopIslemciList;

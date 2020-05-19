@@ -30,11 +30,11 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Çekirdek Hızı</b></f:facet> 
-                        #{ekranKarti.ekran_karti_cekirdek_hizi} mHz
+                    #{ekranKarti.ekran_karti_cekirdek_hizi} mHz
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Bellek Boyutu</b></f:facet> 
-                        #{ekranKarti.ekran_karti_bellek_boyutu} GB
+                    #{ekranKarti.ekran_karti_bellek_boyutu} GB
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Bellek Türü</b></f:facet> 
@@ -42,12 +42,12 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Bellek Arayüzü</b></f:facet> 
-                        #{ekranKarti.ekran_karti_bellek_arayuzu}-Bit
+                    #{ekranKarti.ekran_karti_bellek_arayuzu}-Bit
                 </h:column>
-                
+
                 <h:column>
                     <h:form>
-                        <h:commandLink>
+                        <h:commandLink action="#{laptopEkranKartiController.updateForm(ekranKarti)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
                         </h:commandLink>
                     </h:form>

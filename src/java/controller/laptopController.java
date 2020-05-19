@@ -24,17 +24,29 @@ public class laptopController implements Serializable {
     private laptopDAO laptopdao;
     private laptop laptop;
     private Long selectEkran;
-    private Long selectDepolamaBellek;   
+    private Long selectDepolamaBellek;
     private Long selectIslemci;
     private Long selectEkranKarti;
     private Long selectPil;
     private Long selectBaglanti;
 
-    public void create()
-    {
-        this.laptopdao.insert(this.laptop,this.selectEkran,this.selectDepolamaBellek,this.selectIslemci,this.selectEkranKarti,this.selectPil,this.selectBaglanti);
-        
+   
+
+    public void update() {
+        this.getLaptopdao().update(this.laptop, this.selectEkran, this.selectDepolamaBellek, this.selectIslemci, this.selectEkranKarti, this.selectPil, this.selectBaglanti);
+
     }
+
+    public void updateForm(laptop lp) {
+        this.laptop = lp;
+
+    }
+
+    public void create() {
+        this.getLaptopdao().insert(this.laptop, this.selectEkran, this.selectDepolamaBellek, this.selectIslemci, this.selectEkranKarti, this.selectPil, this.selectBaglanti);
+
+    }
+
     public Long getSelectEkran() {
         return selectEkran;
     }
