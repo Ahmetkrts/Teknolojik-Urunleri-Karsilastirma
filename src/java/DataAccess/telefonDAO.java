@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.telefon;
 import java.sql.Connection;
@@ -19,19 +19,19 @@ import util.Connector;
  *
  * @author techn
  */
-public class telefonDao {
+public class telefonDAO {
 
     private Connector connector;
     private Connection connection;
-    private telefonBataryaDao batarya;
-    private telefonIslemciDao islemci;
-    private telefonIsletimSistemiDao isletimsistemi;
-    private telefonEkranDao ekran;
-    private telefonArkaKameraDao arkaKameraDAO;
-    private telefonOnKameraDao onKameraDAO;
+    private telefonBataryaDAO batarya;
+    private telefonIslemciDAO islemci;
+    private telefonIsletimSistemiDAO isletimsistemi;
+    private telefonEkranDAO ekran;
+    private telefonArkaKameraDAO arkaKameraDAO;
+    private telefonOnKameraDAO onKameraDAO;
 
    
-    private telefonRenkDao renk;
+    private telefonRenkDAO renk;
 
     public List<telefon> findAll() {
         List<telefon> telefon_list = new ArrayList<>();
@@ -138,45 +138,60 @@ public class telefonDao {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void remove(telefon telefon) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_renk where telefon_id=?");
+            pst.setLong(1, telefon.getTelefon_id());
+            pst.executeUpdate();
+            
+            pst = this.getConnection().prepareStatement("delete from telefon where telefon_id=?");
+            pst.setLong(1, telefon.getTelefon_id());
+            pst.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-    public telefonIsletimSistemiDao getIsletimsistemi() {
+    public telefonIsletimSistemiDAO getIsletimsistemi() {
         if (this.isletimsistemi == null) {
-            this.isletimsistemi = new telefonIsletimSistemiDao();
+            this.isletimsistemi = new telefonIsletimSistemiDAO();
         }
         return isletimsistemi;
     }
 
-    public telefonIslemciDao getIslemci() {
+    public telefonIslemciDAO getIslemci() {
         if (this.islemci == null) {
-            this.islemci = new telefonIslemciDao();
+            this.islemci = new telefonIslemciDAO();
         }
         return islemci;
     }
 
-    public telefonEkranDao getEkran() {
+    public telefonEkranDAO getEkran() {
         if (this.ekran == null) {
-            this.ekran = new telefonEkranDao();
+            this.ekran = new telefonEkranDAO();
         }
         return ekran;
     } 
 
-    public telefonOnKameraDao getOnKameraDAO() {
+    public telefonOnKameraDAO getOnKameraDAO() {
         if(this.onKameraDAO == null){
-            this.onKameraDAO = new telefonOnKameraDao();
+            this.onKameraDAO = new telefonOnKameraDAO();
         }
         return onKameraDAO;
     }
 
-    public telefonBataryaDao getBatarya() {
+    public telefonBataryaDAO getBatarya() {
         if (this.batarya == null) {
-            this.batarya = new telefonBataryaDao();
+            this.batarya = new telefonBataryaDAO();
         }
         return batarya;
     }
 
-    public telefonArkaKameraDao getArkaKameraDAO() {
+    public telefonArkaKameraDAO getArkaKameraDAO() {
         if(this.arkaKameraDAO == null){
-            this.arkaKameraDAO = new telefonArkaKameraDao();
+            this.arkaKameraDAO = new telefonArkaKameraDAO();
         }
         return arkaKameraDAO;
     }
@@ -193,9 +208,9 @@ public class telefonDao {
         return connection;
     }
 
-    public telefonRenkDao getRenk() {
+    public telefonRenkDAO getRenk() {
         if (this.renk == null) {
-            this.renk = new telefonRenkDao();
+            this.renk = new telefonRenkDAO();
         }
         return renk;
     }

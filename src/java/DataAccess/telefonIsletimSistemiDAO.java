@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.telefonIsletimSistemi;
 import java.sql.Connection;
@@ -19,7 +19,7 @@ import util.Connector;
  *
  * @author techn
  */
-public class telefonIsletimSistemiDao {
+public class telefonIsletimSistemiDAO {
 
     private Connector connector;
     private Connection connection;
@@ -75,6 +75,15 @@ public class telefonIsletimSistemiDao {
         }
     }
 
+    public void remove(telefonIsletimSistemi isletimSistemi) {
+       try {
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_isletimsistemi where isletim_sistemi_id=?");
+            pst.setLong(1, isletimSistemi.getIsletim_sistemi_id());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public Connector getConnector() {
         if (this.connector == null) {

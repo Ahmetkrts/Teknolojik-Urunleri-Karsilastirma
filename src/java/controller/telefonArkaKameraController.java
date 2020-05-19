@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonArkaKameraDao;
+import DataAccess.telefonArkaKameraDAO;
 import entity.telefonArkaKamera;
 import java.io.Serializable;
 import java.util.List;
@@ -20,12 +20,17 @@ import javax.inject.Named;
 @SessionScoped
 public class telefonArkaKameraController implements Serializable{
     private List<telefonArkaKamera> arkaKameraList;
-    private telefonArkaKameraDao arkaKameradao;
+    private telefonArkaKameraDAO arkaKameradao;
     private telefonArkaKamera arkaKamera;
 
     public String update(){
         this.getArkaKameradao().edit(this.arkaKamera);
         return "/module/telefon/ozellik/ozellik.xhtml";
+    }
+    
+    public void delete(){
+        this.arkaKameradao.remove(this.arkaKamera);
+        this.arkaKamera = null;
     }
     public String temizle(){
         this.arkaKamera = null;
@@ -48,14 +53,14 @@ public class telefonArkaKameraController implements Serializable{
         this.arkaKameraList = arkaKameraList;
     }
 
-    public telefonArkaKameraDao getArkaKameradao() {
+    public telefonArkaKameraDAO getArkaKameradao() {
         if (this.arkaKameradao==null) {
-            this.arkaKameradao=new telefonArkaKameraDao();
+            this.arkaKameradao=new telefonArkaKameraDAO();
         }
         return arkaKameradao;
     }
 
-    public void setArkaKameradao(telefonArkaKameraDao arkaKameradao) {
+    public void setArkaKameradao(telefonArkaKameraDAO arkaKameradao) {
         this.arkaKameradao = arkaKameradao;
     }
 

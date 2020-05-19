@@ -52,7 +52,7 @@
                     <div class="btn-group">
                         <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonEkranController.temizle()}"/>
                         <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{telefonEkranController.update}" />
-                        <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id  != null}" styleClass="btn btn-info pull-right" value="Sil" />
+                        <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id  != null}" styleClass="btn btn-info pull-right" value="Sil" action="#{telefonEkranController.delete}" />
                         <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id  == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonEkranController.create()}" />
                     </div>
                     <div class="clearfix"></div>

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonDao;
+import DataAccess.telefonDAO;
 import entity.telefon;
 import entity.telefonRenk;
 import java.io.Serializable;
@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class telefonController implements Serializable {
 
     private List<telefon> telefon_list;
-    private telefonDao telefondao;
+    private telefonDAO telefondao;
     private telefon telefon;
     private Long selectEkran;
     private Long selectBatarya;
@@ -43,6 +43,17 @@ public class telefonController implements Serializable {
         this.selectBatarya = null;
         this.selectRenkList = null;
         return "telefon";
+    }
+    public void delete(){
+        this.telefondao.remove(this.telefon);
+        this.telefon = null;
+        this.selectEkran = null;
+        this.selectArkaKamera = null;
+        this.selectIslemci = null;
+        this.selectIsletimSistemi = null;
+        this.selectOnKamera = null;
+        this.selectBatarya = null;
+        this.selectRenkList = null;
     }
     
     public void updateForm(telefon tel){
@@ -76,14 +87,14 @@ public class telefonController implements Serializable {
         this.telefon_list = telefon_list;
     }
 
-    public telefonDao getTelefondao() {
+    public telefonDAO getTelefondao() {
         if (this.telefondao == null) {
-            this.telefondao = new telefonDao();
+            this.telefondao = new telefonDAO();
         }
         return telefondao;
     }
 
-    public void setTelefondao(telefonDao telefondao) {
+    public void setTelefondao(telefonDAO telefondao) {
         this.telefondao = telefondao;
     }
 

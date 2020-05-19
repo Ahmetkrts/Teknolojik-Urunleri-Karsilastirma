@@ -36,7 +36,7 @@
                     <div class="btn-group">
                         <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonBataryaController.temizle()}"/>
                         <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{telefonBataryaController.update}" />
-                        <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id  != null}" styleClass="btn btn-info pull-right" value="Sil" />
+                        <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id  != null}" styleClass="btn btn-info pull-right" value="Sil" action="#{telefonBataryaController.delete}" />
                         <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id  == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonBataryaController.create()}" />
                     </div>
                     <div class="clearfix"></div>

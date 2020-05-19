@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonEkranDao;
+import DataAccess.telefonEkranDAO;
 import entity.telefonEkran;
 import java.io.Serializable;
 import java.util.List;
@@ -21,7 +21,7 @@ import javax.inject.Named;
 public class telefonEkranController implements Serializable {
 
     private List<telefonEkran> ekranList;
-    private telefonEkranDao ekrandao;
+    private telefonEkranDAO ekrandao;
     private telefonEkran ekran;
 
     public String update(){
@@ -29,6 +29,10 @@ public class telefonEkranController implements Serializable {
         return "/module/telefon/ozellik/ozellik.xhtml";
     }
     
+    public void delete(){
+        this.ekrandao.remove(this.ekran);
+        this.ekran = null;
+    }
     public String temizle(){
         this.ekran = null;
         return "ekranForm";
@@ -52,14 +56,14 @@ public class telefonEkranController implements Serializable {
         this.ekranList = ekranList;
     }
 
-    public telefonEkranDao getEkrandao() {
+    public telefonEkranDAO getEkrandao() {
         if (this.ekrandao == null) {
-            this.ekrandao = new telefonEkranDao();
+            this.ekrandao = new telefonEkranDAO();
         }
         return ekrandao;
     }
 
-    public void setEkrandao(telefonEkranDao ekrandao) {
+    public void setEkrandao(telefonEkranDAO ekrandao) {
         this.ekrandao = ekrandao;
     }
 

@@ -126,7 +126,7 @@
                     <div class="btn-group">
                         <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonArkaKameraController.temizle()}"/>
                         <h:commandButton rendered="#{telefonArkaKameraController.arkaKamera.kamera_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{telefonArkaKameraController.update}" />
-                        <h:commandButton rendered="#{telefonArkaKameraController.arkaKamera.kamera_id != null}" styleClass="btn btn-info pull-right" value="Sil" />
+                        <h:commandButton rendered="#{telefonArkaKameraController.arkaKamera.kamera_id != null}" styleClass="btn btn-info pull-right" value="Sil" action="#{telefonArkaKameraController.delete}" />
                         <h:commandButton rendered="#{telefonArkaKameraController.arkaKamera.kamera_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonArkaKameraController.create()}" />
                     </div>
                     <div class="clearfix"></div>
