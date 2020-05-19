@@ -10,23 +10,23 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Ekranlar Tablosu</h4>
                 <p class="card-category"> Burası Laptopların Ekran Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="" var="">
+            <h:dataTable class="table" value="#{laptopEkranController.getlaptopEkranList()}" var="ekran">
 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        
+                        #{ekran.ekran_id}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
-                   
+                    #{ekran.ekran_boyutu}  Inç
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Erkan Çözünürlüğü</b></f:facet> 
-                        
+                        #{ekran.ekran_cozunurlugu} 
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Ekran Yenileme Hızı</b></f:facet> 
-                    
+                    #{ekran.ekran_yenileme} Hz
                 </h:column>
                 <h:column>
                     <h:form>

@@ -10,36 +10,36 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Depolama ve Bellek Tablosu</h4>
                 <p class="card-category"> Burası Laptopların Depolama ve Bellek Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="" var="">
+            <h:dataTable class="table" value="#{laptopDepolamaBellekController.getlaptopDepolamaBellekList()}" var="depolama">
 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                       
+                        #{depolama.depolama_bellek_id}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Bellek Boyutu </b></f:facet> 
-                       
+                        #{depolama.bellek_boyutu} GB
                 </h:column> 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Bellek Frekansı</b></f:facet> 
-                       
+                        #{depolama.bellek_frekansi} mHz
                 </h:column>
 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Sabit Disk Boyutu</b></f:facet> 
-                       
+                        #{depolama.sabit_disk_boyutu} GB
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Sabit Disk Yazma Hızı</b></f:facet> 
-                        
+                        #{depolama.sabit_disk_yazma_hizi} Rpm
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">SSD Boyutu</b></f:facet> 
-                        
+                        #{depolama.ssd_boyutu} GB
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">SSd Tipi</b></f:facet> 
-                       
+                        #{depolama.ssd_tipi} 
                 </h:column>
                 <h:column>
                     <h:form>

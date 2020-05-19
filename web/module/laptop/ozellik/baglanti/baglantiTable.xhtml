@@ -10,35 +10,35 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Baglantılar Tablosu</h4>
                 <p class="card-category"> Burası Laptopların Baglantı Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="" var="">
+            <h:dataTable class="table" value="#{laptopBaglantiController.getlaptopBaglantiList()}" var="baglanti">
 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                       
+                        #{baglanti.baglanti_id}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">USB 3x Girişi Adeti</b></f:facet> 
-                        
+                        #{baglanti.usb3x_adeti}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">USB Type C Girişi Adeti</b></f:facet> 
-                        
+                        #{baglanti.usbtypec_adeti}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">HDMI Özellikleri</b></f:facet> 
-                       
+                        #{baglanti.hdmi_ozellikleri} 
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Bluetooth Özellikleri</b></f:facet> 
-                       
+                        #{baglanti.bluetooth_ozellikleri}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Ethernet Özellikleri</b></f:facet> 
-                        
+                        #{baglanti.ethernet_ozellikleri}
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Wifi(Kablosuz) Özellikleri</b></f:facet> 
-                        
+                        #{baglanti.wifi_ozellikleri} 
                 </h:column>
 
 
