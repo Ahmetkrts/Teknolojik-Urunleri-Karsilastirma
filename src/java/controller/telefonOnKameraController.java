@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonOnKameraDAO;
+import dao.telefonOnKameraDao;
 import entity.telefonOnKamera;
 import java.io.Serializable;
 import java.util.List;
@@ -21,9 +21,13 @@ import javax.inject.Named;
 public class telefonOnKameraController implements Serializable {
 
     private List<telefonOnKamera> onKameraList;
-    private telefonOnKameraDAO onKameradao;
+    private telefonOnKameraDao onKameradao;
     private telefonOnKamera onKamera;
 
+    public String update(){
+        this.onKameradao.edit(this.onKamera);
+        return "/module/telefon/ozellik/ozellik.xhtml";
+    }
     
     public String temizle(){
         this.onKamera = null;
@@ -48,14 +52,14 @@ public class telefonOnKameraController implements Serializable {
         this.onKameraList = onKameraList;
     }
 
-    public telefonOnKameraDAO getOnKameradao() {
+    public telefonOnKameraDao getOnKameradao() {
         if (this.onKameradao == null) {
-            this.onKameradao = new telefonOnKameraDAO();
+            this.onKameradao = new telefonOnKameraDao();
         }
         return onKameradao;
     }
 
-    public void setOnKameradao(telefonOnKameraDAO onKameradao) {
+    public void setOnKameradao(telefonOnKameraDao onKameradao) {
         this.onKameradao = onKameradao;
     }
 

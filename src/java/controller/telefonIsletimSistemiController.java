@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonIsletimSistemiDAO;
+import dao.telefonIsletimSistemiDao;
 import entity.telefonIsletimSistemi;
 import java.io.Serializable;
 import java.util.List;
@@ -20,8 +20,13 @@ import javax.inject.Named;
 @SessionScoped
 public class telefonIsletimSistemiController implements Serializable {
     private List<telefonIsletimSistemi> islemtimSistemiList;
-    private telefonIsletimSistemiDAO isletimSistemiDAO;
+    private telefonIsletimSistemiDao isletimSistemiDAO;
     private telefonIsletimSistemi isletimSistemi;
+    
+    public String update(){
+        this.isletimSistemiDAO.edit(this.isletimSistemi);
+        return "/module/telefon/ozellik/ozellik.xhtml";
+    }
     
     public String temizle(){
         this.isletimSistemi = null;
@@ -46,14 +51,14 @@ public class telefonIsletimSistemiController implements Serializable {
         this.islemtimSistemiList = islemtimSistemiList;
     }
 
-    public telefonIsletimSistemiDAO getIsletimSistemiDAO() {
+    public telefonIsletimSistemiDao getIsletimSistemiDAO() {
         if (this.isletimSistemiDAO==null) {
-            this.isletimSistemiDAO=new telefonIsletimSistemiDAO();
+            this.isletimSistemiDAO=new telefonIsletimSistemiDao();
         }
         return isletimSistemiDAO;
     }
 
-    public void setIsletimSistemiDAO(telefonIsletimSistemiDAO isletimSistemiDAO) {
+    public void setIsletimSistemiDAO(telefonIsletimSistemiDao isletimSistemiDAO) {
         this.isletimSistemiDAO = isletimSistemiDAO;
     }
 

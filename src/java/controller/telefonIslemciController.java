@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonIslemciDAO;
+import dao.telefonIslemciDao;
 import entity.telefonIslemci;
 import java.io.Serializable;
 import java.util.List;
@@ -21,9 +21,14 @@ import javax.inject.Named;
 public class telefonIslemciController implements Serializable{
     
     private  List<telefonIslemci> islemciList;
-    private telefonIslemciDAO islemciDao;
+    private telefonIslemciDao islemciDao;
     private telefonIslemci islemci;
 
+    public String update(){
+        this.islemciDao.edit(this.islemci);
+        return "/module/telefon/ozellik/ozellik.xhtml";
+    }
+    
     public String temizle(){
         this.islemci = null;
         return "islemciForm";
@@ -48,14 +53,14 @@ public class telefonIslemciController implements Serializable{
         this.islemciList = islemciList;
     }
 
-    public telefonIslemciDAO getIslemciDao() {
+    public telefonIslemciDao getIslemciDao() {
         if (this.islemciDao==null) {
-            this.islemciDao=new telefonIslemciDAO();
+            this.islemciDao=new telefonIslemciDao();
         }
         return islemciDao;
     }
 
-    public void setIslemciDao(telefonIslemciDAO islemciDao) {
+    public void setIslemciDao(telefonIslemciDao islemciDao) {
         this.islemciDao = islemciDao;
     }
 

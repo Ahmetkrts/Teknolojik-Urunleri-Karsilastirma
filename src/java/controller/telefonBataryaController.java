@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonBataryaDAO;
+import dao.telefonBataryaDao;
 import entity.telefonBatarya;
 import java.io.Serializable;
 import java.util.List;
@@ -21,8 +21,13 @@ import javax.inject.Named;
 public class telefonBataryaController implements Serializable{
     
     private List<telefonBatarya> bataryaList;
-    private telefonBataryaDAO bataryaDao;
+    private telefonBataryaDao bataryaDao;
     private telefonBatarya batarya;
+    
+    public String update(){
+        this.bataryaDao.edit(this.batarya);
+        return "/module/telefon/ozellik/ozellik.xhtml";
+    }
     
     public String temizle(){
         this.batarya = null;
@@ -48,14 +53,14 @@ public class telefonBataryaController implements Serializable{
         this.bataryaList = bataryaList;
     }
 
-    public telefonBataryaDAO getBataryaDao() {
+    public telefonBataryaDao getBataryaDao() {
         if (this.bataryaDao==null) {
-            this.bataryaDao=new telefonBataryaDAO();
+            this.bataryaDao=new telefonBataryaDao();
         }
         return bataryaDao;
     }
 
-    public void setBataryaDao(telefonBataryaDAO bataryaDao) {
+    public void setBataryaDao(telefonBataryaDao bataryaDao) {
         this.bataryaDao = bataryaDao;
     }
 

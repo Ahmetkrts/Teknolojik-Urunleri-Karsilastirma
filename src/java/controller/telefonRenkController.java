@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonRenkDAO;
+import dao.telefonRenkDao;
 import entity.telefonRenk;
 import java.io.Serializable;
 import java.util.List;
@@ -20,8 +20,13 @@ import javax.inject.Named;
 @SessionScoped
 public class telefonRenkController implements Serializable{
     private  List<telefonRenk> renkList;
-    private telefonRenkDAO renkDAO;
+    private telefonRenkDao renkDAO;
     private telefonRenk renk;
+
+    public String update(){
+        this.renkDAO.edit(this.renk);
+        return "/module/telefon/ozellik/ozellik.xhtml";
+    }
     
     public String temizle(){
         this.renk = null;
@@ -49,14 +54,14 @@ public class telefonRenkController implements Serializable{
         this.renkList = renkList;
     }
 
-    public telefonRenkDAO getRenkDAO() {
+    public telefonRenkDao getRenkDAO() {
         if (this.renkDAO==null) {
-            this.renkDAO=new telefonRenkDAO();
+            this.renkDAO=new telefonRenkDao();
         }
         return renkDAO;
     }
 
-    public void setRenkDAO(telefonRenkDAO renkDAO) {
+    public void setRenkDAO(telefonRenkDao renkDAO) {
         this.renkDAO = renkDAO;
     }
 

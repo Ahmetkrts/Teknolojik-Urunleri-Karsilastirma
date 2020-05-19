@@ -30,7 +30,7 @@
                     </div>
                     <div class="btn-group">
                         <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonIsletimSistemiController.temizle()}"/>
-                        <h:commandButton rendered="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" />
+                        <h:commandButton rendered="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{telefonIsletimSistemiController.update}" />
                         <h:commandButton rendered="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi_id != null}" styleClass="btn btn-info pull-right" value="Sil"/>
                         <h:commandButton rendered="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonIsletimSistemiController.create()}" />
                     </div>

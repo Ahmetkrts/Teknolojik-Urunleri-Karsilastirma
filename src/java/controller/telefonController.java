@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.telefonDAO;
+import dao.telefonDao;
 import entity.telefon;
 import entity.telefonRenk;
 import java.io.Serializable;
@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class telefonController implements Serializable {
 
     private List<telefon> telefon_list;
-    private telefonDAO telefondao;
+    private telefonDao telefondao;
     private telefon telefon;
     private Long selectEkran;
     private Long selectBatarya;
@@ -58,6 +58,10 @@ public class telefonController implements Serializable {
             this.selectRenkList.add(renk.getRenk_id());
         }
     }
+    public String update(){
+        this.getTelefondao().edit(this.telefon, this.selectEkran,this.selectBatarya,this.selectIslemci,this.selectArkaKamera,this.selectOnKamera,this.selectIsletimSistemi,this.selectRenkList);
+        return "telefon";
+    }
     public void create()  {
         this.getTelefondao().insert(this.telefon, this.selectEkran,this.selectBatarya,this.selectIslemci,this.selectArkaKamera,this.selectOnKamera,this.selectIsletimSistemi,this.selectRenkList);
         
@@ -72,14 +76,14 @@ public class telefonController implements Serializable {
         this.telefon_list = telefon_list;
     }
 
-    public telefonDAO getTelefondao() {
+    public telefonDao getTelefondao() {
         if (this.telefondao == null) {
-            this.telefondao = new telefonDAO();
+            this.telefondao = new telefonDao();
         }
         return telefondao;
     }
 
-    public void setTelefondao(telefonDAO telefondao) {
+    public void setTelefondao(telefonDao telefondao) {
         this.telefondao = telefondao;
     }
 
