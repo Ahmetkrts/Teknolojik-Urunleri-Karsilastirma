@@ -18,14 +18,19 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class laptopEkranController implements Serializable{
-     private List<laptopEkran> laptopEkranList;
+public class laptopEkranController implements Serializable {
+
+    private List<laptopEkran> laptopEkranList;
     private laptopEkranDAO laptopEkrandao;
     private laptopEkran laptopEkran;
 
-    
+    public String create() {
+        this.laptopEkrandao.insert(this.laptopEkran);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
     public List<laptopEkran> getlaptopEkranList() {
-        this.laptopEkranList=this.getlaptopEkrandao().findAll();
+        this.laptopEkranList = this.getlaptopEkrandao().findAll();
         return laptopEkranList;
     }
 
@@ -34,8 +39,8 @@ public class laptopEkranController implements Serializable{
     }
 
     public laptopEkranDAO getlaptopEkrandao() {
-        if (this.laptopEkrandao==null) {
-            this.laptopEkrandao=new laptopEkranDAO();
+        if (this.laptopEkrandao == null) {
+            this.laptopEkrandao = new laptopEkranDAO();
         }
         return laptopEkrandao;
     }
@@ -45,8 +50,8 @@ public class laptopEkranController implements Serializable{
     }
 
     public laptopEkran getlaptopEkran() {
-        if (this.laptopEkran==null) {
-            this.laptopEkran=new laptopEkran();
+        if (this.laptopEkran == null) {
+            this.laptopEkran = new laptopEkran();
         }
         return laptopEkran;
     }

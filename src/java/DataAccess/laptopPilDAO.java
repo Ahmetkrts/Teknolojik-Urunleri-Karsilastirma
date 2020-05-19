@@ -23,6 +23,18 @@ public class laptopPilDAO {
     private Connector connector;
     private Connection connection;
 
+    public void insert(laptopPil laptopPil) {
+        try {
+            Statement st = this.getConnection().createStatement();
+           st.executeUpdate("INSERT INTO laptop_pil (pil_gucu, pil_hucre_sayisi, pil_ozellikleri) VALUES "
+                   + "( "+laptopPil.getPil_gucu()+", "+laptopPil.getPil_hucre_sayisi()+", '"+laptopPil.getPil_ozellikleri()+"')");
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public List<laptopPil> findAll() {
         List<laptopPil> pil_liste = new ArrayList<>();
         try {
@@ -56,4 +68,5 @@ public class laptopPilDAO {
         this.connection = this.getConnector().Connect();
         return connection;
     }
+
 }

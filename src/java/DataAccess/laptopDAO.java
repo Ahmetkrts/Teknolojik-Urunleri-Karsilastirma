@@ -30,7 +30,18 @@ public class laptopDAO {
     private laptopDepolamaBellekDAO depolamaBellek;
     private laptopIslemciDAO islemci;
     private laptopEkranKartiDAO ekranKarti;
-
+    
+    public void insert(laptop laptop, Long selectEkran, Long selectDepolamaBellek, Long selectIslemci, Long selectEkranKarti, Long selectPil, Long selectBaglanti) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("INSERT INTO laptop ( urun_adi, urun_tipi, urun_amaci, urun_ailesi, urun_serisi, isletim_sistemi, ekran_id, genislik, derinlik, kalinlik,"
+                    + " agirlik, depolama_bellek_id, islemci_id, ekran_karti_id, pil_id, baglanti_id) VALUES ( '"+laptop.getUrun_adi()+"', '"+laptop.getUrun_tipi()+"', '"+laptop.getUrun_amaci()+"', '"+laptop.getUrun_ailesi()+"'"
+                    + ", '"+laptop.getUrun_serisi()+"', '"+laptop.getIsletim_sistemi()+"', "+selectEkran+", "+laptop.getGenislik()+", "+laptop.getDerinlik()+", "+laptop.getKalinlik()+", "+laptop.getAgirlik()+", "+selectDepolamaBellek+", "+selectIslemci+", "+selectEkranKarti+", "+selectPil+", "+selectBaglanti+")");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "LaptopDAO");
+        }
+    }
     public List<laptop> findAll() {
         List<laptop> laptoplist = new ArrayList<>();
         try {
@@ -107,5 +118,7 @@ public class laptopDAO {
         }
         return ekranKarti;
     }
+
+    
 
 }

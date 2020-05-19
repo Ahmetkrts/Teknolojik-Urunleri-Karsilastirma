@@ -23,6 +23,19 @@ public class laptopEkranDAO {
     private Connector connector;
     private Connection connection;
 
+    public void insert(laptopEkran laptopEkran) {
+         try {
+            Statement st = this.getConnection().createStatement();
+           st.executeUpdate("INSERT INTO laptop_ekran (ekran_boyutu, ekran_cozunurlugu, ekran_yenileme) VALUES"
+                   + " ( "+laptopEkran.getEkran_boyutu()+", '"+laptopEkran.getEkran_cozunurlugu()+"', "+laptopEkran.getEkran_yenileme()+")");
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "EkranDAo1");
+        }
+    }
+
     public List<laptopEkran> findAll() {
         List<laptopEkran> ekran_liste = new ArrayList<>();
         try {
@@ -40,7 +53,7 @@ public class laptopEkranDAO {
             st.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "EkranDAo");
+            System.out.println(e.getMessage() + "EkranDAo2");
         }
         return ekran_liste;
     }

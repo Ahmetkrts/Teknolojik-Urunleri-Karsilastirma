@@ -17,19 +17,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Boyutu </label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.bellek_boyutu}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Frekansı</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.bellek_frekansi}" />
                             </div>
                         </div>  
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Sabit Disk Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.sabit_disk_boyutu}" />
                             </div>
                         </div> 
                     </div>
@@ -37,19 +37,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Sabit Disk Yazma Hızı </label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.sabit_disk_yazma_hizi}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">SSD Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.ssd_boyutu}" />
                             </div>
                         </div>  
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">SSD Tipi</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.ssd_tipi}" />
                             </div>
                         </div> 
                     </div>
@@ -58,7 +58,7 @@
 
                     <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
                     <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle"  />
+                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{laptopDepolamaBellekController.create()}"/>
 
                     <div class="clearfix"></div>
                 </h:form>

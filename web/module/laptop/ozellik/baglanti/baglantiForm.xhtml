@@ -16,27 +16,27 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Usb 3x Adeti</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.usb3x_adeti}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Usb Type C Adeti</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.usbtypec_adeti}" />
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">HDMI Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.hdmi_ozellikleri}" />
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bluetooth Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.bluetooth_ozellikleri}" />
 
                             </div>
                         </div>
@@ -46,13 +46,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ethernet Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.ethernet_ozellikleri}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Wifi(Kablosuz) Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.wifi_ozellikleri}" />
 
                             </div>
                         </div>
@@ -63,7 +63,7 @@
 
                     <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
                     <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton class="btn btn-success pull-right " value="Kayıt Ekle"  />
+                    <h:commandButton class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>

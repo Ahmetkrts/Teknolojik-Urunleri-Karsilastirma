@@ -23,6 +23,10 @@ public class laptopIslemciController implements Serializable{
     private laptopIslemciDAO laptopIslemcidao;
     private laptopIslemci laptopIslemci;
 
+    public String create() {
+        this.laptopIslemcidao.insert(this.laptopIslemci);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
     public List<laptopIslemci> getlaptopIslemciList() {
         this.laptopIslemciList = this.getlaptopIslemcidao().findAll();
         return laptopIslemciList;

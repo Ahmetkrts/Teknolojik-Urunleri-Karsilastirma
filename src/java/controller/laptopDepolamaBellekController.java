@@ -24,9 +24,12 @@ public class laptopDepolamaBellekController implements Serializable {
     private List<laptopDepolamaBellek> laptopDepolamaBellekList;
     private laptopDepolamaBellekDAO laptopDepolamaBellekdao;
     private laptopDepolamaBellek laptopDepolamaBellek;
-    
-    
-    
+
+    public String create() {
+        this.laptopDepolamaBellekdao.insert(this.laptopDepolamaBellek);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
     public List<laptopDepolamaBellek> getlaptopDepolamaBellekList() {
         this.laptopDepolamaBellekList = this.getlaptopDepolamaBellekdao().findAll();
         return laptopDepolamaBellekList;

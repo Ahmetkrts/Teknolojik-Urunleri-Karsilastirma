@@ -23,6 +23,20 @@ public class laptopDepolamaBellekDAO {
     private Connector connector;
     private Connection connection;
 
+    public void insert(laptopDepolamaBellek laptopDepolamaBellek) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("INSERT INTO laptop_depolama_bellek (bellek_boyutu, bellek_frekansi, sabit_disk_boyutu, sabit_disk_yazma_hizi, ssd_boyutu, ssd_tipi) VALUES"
+                    + "(" + laptopDepolamaBellek.getBellek_boyutu() + " ," + laptopDepolamaBellek.getBellek_frekansi() + " ," + laptopDepolamaBellek.getSabit_disk_boyutu() + " ,"
+                    + "" + laptopDepolamaBellek.getSabit_disk_yazma_hizi() + " ," + laptopDepolamaBellek.getSsd_boyutu() + " ,'" + laptopDepolamaBellek.getSsd_tipi() + "' )");
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "DepolamaDAO1");
+        }
+    }
+
     public List<laptopDepolamaBellek> findAll() {
         List<laptopDepolamaBellek> depolamaBellek_liste = new ArrayList<>();
         try {
@@ -43,7 +57,7 @@ public class laptopDepolamaBellekDAO {
             st.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "DepolamaDAO");
+            System.out.println(e.getMessage() + "DepolamaDAO2");
         }
 
         return depolamaBellek_liste;
@@ -66,7 +80,7 @@ public class laptopDepolamaBellekDAO {
             st.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "DepolamaDAO");
+            System.out.println(e.getMessage() + "DepolamaDAO3");
         }
 
         return depolamBellek;
@@ -87,7 +101,5 @@ public class laptopDepolamaBellekDAO {
         }
         return connection;
     }
-
-
 
 }

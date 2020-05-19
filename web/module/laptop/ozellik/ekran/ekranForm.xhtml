@@ -17,19 +17,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_boyutu}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Çözünürlüğü</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_cozunurlugu}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Yenileme Hızı</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_yenileme}" />
 
                             </div>
                         </div>
@@ -40,7 +40,7 @@
 
                     <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
                     <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" />
+                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>

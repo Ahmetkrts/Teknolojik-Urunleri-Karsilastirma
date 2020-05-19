@@ -17,19 +17,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Pil Gücü</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_gucu}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Pil Hücre Sayısı</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_hucre_sayisi}" />
                             </div>
                         </div>   
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Pil Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_ozellikleri}" />
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
 
                     <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
                     <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle"  />
+                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopPilController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>

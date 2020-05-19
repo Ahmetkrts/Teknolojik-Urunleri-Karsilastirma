@@ -23,6 +23,21 @@ public class laptopIslemciDAO {
     private Connector connector;
     private Connection connection;
 
+    public void insert(laptopIslemci laptopIslemci) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("INSERT INTO laptop_islemci ( islemci_marka, islemci_serisi, islemci_modeli, islemci_temel_frekansi, cekirdek_sayisi,"
+                    + " sanal_cekirdek_sayisi, on_bellek, uretim_teknolojisi, tdp_degeri) VALUES"
+                    + " ( '"+laptopIslemci.getIslemci_marka()+"', '"+laptopIslemci.getIslemci_serisi()+"', '"+laptopIslemci.getIslemci_modeli()+"', "+laptopIslemci.getIslemci_temel_frekansi()+""
+                            + ", "+laptopIslemci.getCekirdek_sayisi()+", "+laptopIslemci.getSanal_cekirdek_sayisi()+", "+laptopIslemci.getOn_bellek()+", "+laptopIslemci.getUretim_teknolojisi()+","
+                                    + laptopIslemci.getTdp_degeri()+");");
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "İslemciDAO");
+        }
+    }
+
     public List<laptopIslemci> findAll() {
         List<laptopIslemci> islemci_liste = new ArrayList<>();
         try {

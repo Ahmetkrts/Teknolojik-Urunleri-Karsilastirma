@@ -18,10 +18,16 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class laptopPilController implements Serializable{
+public class laptopPilController implements Serializable {
+
     private List<laptopPil> laptopPilList;
     private laptopPilDAO laptopPildao;
     private laptopPil laptopPil;
+
+    public String create() {
+        this.laptopPildao.insert(this.laptopPil);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
 
     public List<laptopPil> getlaptopPilList() {
         this.laptopPilList = this.getlaptopPildao().findAll();

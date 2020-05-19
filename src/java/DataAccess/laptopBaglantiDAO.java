@@ -23,6 +23,18 @@ public class laptopBaglantiDAO {
     private Connector connector;
     private Connection connection;
 
+    public void insert(laptopBaglanti laptopBaglanti) {
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("INSERT INTO laptop_baglanti (usb3x_adeti, usbtypec_adeti, hdmi_ozellikleri, bluetooth_ozellikleri, ethernet_ozellikleri, wifi_ozellikleri) VALUES"
+                    + "	(" + laptopBaglanti.getUsb3x_adeti() + ", " + laptopBaglanti.getUsbtypec_adeti() + ",' " + laptopBaglanti.getHdmi_ozellikleri() + "', '" + laptopBaglanti.getBluetooth_ozellikleri() + "',"
+                    + " '" + laptopBaglanti.getEthernet_ozellikleri() + "', '" + laptopBaglanti.getWifi_ozellikleri() + "')");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "baglantiDAO 2");
+        }
+    }
 
     public List<laptopBaglanti> findAll() {
         List<laptopBaglanti> baglanti_liste = new ArrayList<>();

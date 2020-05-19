@@ -24,6 +24,11 @@ public class laptopEkranKartiController implements Serializable {
     private laptopEkranKartiDAO laptopEkranKartidao;
     private laptopEkranKarti laptopEkranKarti;
 
+    public String create() {
+        this.laptopEkranKartidao.insert(this.laptopEkranKarti);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
+
     public List<laptopEkranKarti> getlaptopEkranKartiList() {
         this.laptopEkranKartiList = this.getlaptopEkranKartidao().findAll();
         return laptopEkranKartiList;

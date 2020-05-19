@@ -17,19 +17,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Marka</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.islemci_marka}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Serisi</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.islemci_serisi}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Modeli</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.islemci_modeli}" />
                             </div>
                         </div>
                     </div>
@@ -37,19 +37,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Temel Frekansı</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.islemci_temel_frekansi}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Çekirdek Sayısı</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.cekirdek_sayisi}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Sanal Çekirdek Sayısı</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.sanal_cekirdek_sayisi}" />
                             </div>
                         </div>
                     </div>
@@ -57,19 +57,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ön Bellek</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.on_bellek}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Üretim Teknolojisi</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.uretim_teknolojisi}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">TDP Değeri</label>
-                                <h:inputText styleClass="form-control"  value="" />
+                                <h:inputText styleClass="form-control"  value="#{laptopIslemciController.laptopIslemci.tdp_degeri}" />
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
 
                     <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
                     <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle"  />
+                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopIslemciController.create()}" />
 
                     <div class="clearfix"></div>
                 </h:form>
