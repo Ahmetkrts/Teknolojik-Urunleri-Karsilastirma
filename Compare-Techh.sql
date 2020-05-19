@@ -52,9 +52,9 @@ CREATE TABLE IF NOT EXISTS `telefon` (
 -- Dumping data for table compare-tech.telefon: ~3 rows (approximately)
 /*!40000 ALTER TABLE `telefon` DISABLE KEYS */;
 INSERT INTO `telefon` (`telefon_id`, `telefon_ad`, `telefon_marka`, `telefon_model`, `telefon_ekran_id`, `telefon_batarya_id`, `telefon_islemci_id`, `arka_kamera_id`, `on_kamera_id`, `telefon_ram`, `telefon_ram_frekansi`, `telefon_dahili_depolama`, `telefon_boy`, `telefon_en`, `telefon_agirlik`, `isletim_sistemi_id`) VALUES
-	(11, 'Xiaomi Redmi Note 8', 'Xiaomi', 'Redmi Note 8', 1, 1, 1, 1, 1, 6, 2133, 64, 161, 76.4, 199, 1),
-	(12, 'Apple iPhone X', 'Apple', 'iPhone X', 2, 2, 2, 6, 2, 3, 0, 64, 144, 70.9, 174, 2),
-	(32, 'Deneme Xiamoi Redmi Note 8', 'Xiaomi', 'Redmi Note 8', 1, 1, 1, 1, 1, 6, 800, 64, 158, 195, 199, 1);
+	(11, 'Xiaomi Redmi Note 8', 'Xiaomii', 'Redmi Note 8', 1, 1, 1, 1, 1, 6, 2133, 64, 161, 76.4, 199, 1),
+	(34, 'Apple ', 'Apple', 'Iphone 7 Plus', 1, 1, 2, 6, 2, 3, 2400, 32, 123, 321, 1233, 2),
+	(37, 'iPhone 11', 'Apple', 'iPhone 11', 4, 5, 1, 12, 4, 4, 0, 128, 150, 75.7, 194, 4);
 /*!40000 ALTER TABLE `telefon` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_arka_kamera
@@ -78,13 +78,12 @@ CREATE TABLE IF NOT EXISTS `telefon_arka_kamera` (
   PRIMARY KEY (`kamera_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table compare-tech.telefon_arka_kamera: ~4 rows (approximately)
+-- Dumping data for table compare-tech.telefon_arka_kamera: ~3 rows (approximately)
 /*!40000 ALTER TABLE `telefon_arka_kamera` DISABLE KEYS */;
 INSERT INTO `telefon_arka_kamera` (`kamera_id`, `telefon_model`, `kamera_cozunurlugu`, `optik_goruntu_sabitleyici`, `flas`, `diafram_acikligi`, `video_kayit_cozunurlugu`, `video_fps_degeri`, `iki_kamera_cozunurlugu`, `iki_diafram_acikligi`, `uc_kamera_cozunurlugu`, `uc_diafram_acikligi`, `dort_kamera_cozunurlugu`, `dort_diafram_acikligi`, `bes_kamera_cozunurlugu`, `bes_diafram_acikligi`) VALUES
 	(1, 'Redmi Note 8', 64, 'Yok', 'Dual-LED-Tek Tonlu Flaş', 1.89, '2160p (Ultra HD) 4K', 30, 8, 2.2, 2, 2.4, 2, 2.4, 0, NULL),
-	(6, 'iPhone X', 12, 'Var', 'Quad-LED-Çift Tonlu', 1.8, '2160p (Ultra HD) 4K', 60, 12, 2.4, 0, NULL, 0, NULL, 0, NULL),
-	(9, 'Redmi Note 8sdsd', 642, 'Yok', 'Dual2LED-Tek Tonlu Flaş', 1.8119, '2160psadas (Ultra HD) 4K', 3022, 81, 21.2, 12, 21.4, 21, 21.4, 10, NULL),
-	(11, 'deneme', 108, 'var', 'var tabi', 2.2, '1080p', 36, 1, 0.2, 0, 0, 0, 0, 0, 0);
+	(6, 'iPhone X', 12, 'Var', 'Quad-LED-Çift Tonlu', 1.8, '2160p (Ultra HD) 4K', 60, 12, 2.4, 0, 0, 0, 1.8, 0, 0),
+	(12, 'Apple iPhone 11', 12, 'Var', 'Çift Tonlu', 1.8, '2160p (Ultra HD) 4K', 60, 12, 2.4, 0, 0, 0, 1.8, 0, 0);
 /*!40000 ALTER TABLE `telefon_arka_kamera` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_batarya
@@ -96,13 +95,12 @@ CREATE TABLE IF NOT EXISTS `telefon_batarya` (
   PRIMARY KEY (`batarya_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table compare-tech.telefon_batarya: ~4 rows (approximately)
+-- Dumping data for table compare-tech.telefon_batarya: ~3 rows (approximately)
 /*!40000 ALTER TABLE `telefon_batarya` DISABLE KEYS */;
 INSERT INTO `telefon_batarya` (`batarya_id`, `batarya_kapasitesi`, `batarya_teknolojisi`, `hizli_sarj_ozelligi`) VALUES
 	(1, 4500, 'Lithium Polymer (Li-Po)', 'Var'),
 	(2, 2716, 'Lithium Ion (Li-Ion)', 'Var'),
-	(3, 0, '', ''),
-	(4, 5000, 'li', 'var');
+	(5, 3110, 'Lithium Ion (Li-Ion)', 'Var');
 /*!40000 ALTER TABLE `telefon_batarya` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_ekran
@@ -116,12 +114,11 @@ CREATE TABLE IF NOT EXISTS `telefon_ekran` (
   PRIMARY KEY (`ekran_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table compare-tech.telefon_ekran: ~3 rows (approximately)
+-- Dumping data for table compare-tech.telefon_ekran: ~2 rows (approximately)
 /*!40000 ALTER TABLE `telefon_ekran` DISABLE KEYS */;
 INSERT INTO `telefon_ekran` (`ekran_id`, `ekran_boyutu`, `ekran_teknolojisi`, `ekran_cozunurlugu`, `piksel_yogunlugu`, `ekran_dayanikligi`) VALUES
 	(1, 6.3, 'IPS LCD', '1080x2340 (FHD+) Piksel', 395, 'Corning Gorilla Glass 5'),
-	(2, 5.8, 'OlED', '1125x2436 (FHD+) Piksel', 458, 'Oleophobic Coating'),
-	(3, 5.2, '?ps', '1080', 452, 'gorilla glass 5');
+	(4, 6.1, 'IPS LCD', '828x1792 (HD+) Piksel', 326, '');
 /*!40000 ALTER TABLE `telefon_ekran` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_islemcileri
@@ -143,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `telefon_islemcileri` (
 /*!40000 ALTER TABLE `telefon_islemcileri` DISABLE KEYS */;
 INSERT INTO `telefon_islemcileri` (`islemci_id`, `yonga_seti`, `ana_islemci`, `cpu_frekansi`, `cpu_cekirdegi`, `islemci_mimarisi`, `birinci_yardimci_islemci`, `grafik_islemcisi_gpu`, `gpu_frekansi`, `cpu_uretim_teknolojisi`) VALUES
 	(1, 'MediaTek Helio G90T', '	\r\nDual-core 2.05 GHz ARM Cortex-A76', 2.05, 8, 64, 'Hexa-core 2.0 GHz ARM Cortex-A55', '	\r\nMali-G76 MC4', 800, 12),
-	(2, 'Apple A11 Bionic ', 'Dual-core', 2.1, 6, 64, 'Quad-core', 'Three-Core', 0, 10),
-	(3, '', '', 2.5, 0, 0, '', '', 0, 0);
+	(2, 'Apple A11 Bionicc', 'Dual-coree', 2.1, 6, 644, 'Quad-core', 'Three-Core', 0, 10),
+	(4, 'Apple A13 Bionic', 'Dual-Core 2.65 GHz Lightning', 2.65, 6, 64, 'Quad-Core 1.73 GHz Thunder', 'Apple Quad-Core', 0, 7);
 /*!40000 ALTER TABLE `telefon_islemcileri` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_isletimsistemi
@@ -155,12 +152,12 @@ CREATE TABLE IF NOT EXISTS `telefon_isletimsistemi` (
   PRIMARY KEY (`isletim_sistemi_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table compare-tech.telefon_isletimsistemi: ~3 rows (approximately)
+-- Dumping data for table compare-tech.telefon_isletimsistemi: ~4 rows (approximately)
 /*!40000 ALTER TABLE `telefon_isletimsistemi` DISABLE KEYS */;
 INSERT INTO `telefon_isletimsistemi` (`isletim_sistemi_id`, `isletim_sistemi_versiyon`, `isletim_sistemi`) VALUES
 	(1, 'Android 9.0 (Pie)', 'Android'),
-	(2, 'iOS 11', 'iOS'),
-	(3, '', '');
+	(2, 'iOS 12', 'iOS'),
+	(4, 'iOS 13', 'iOS');
 /*!40000 ALTER TABLE `telefon_isletimsistemi` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_on_kamera
@@ -179,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `telefon_on_kamera` (
 INSERT INTO `telefon_on_kamera` (`kamera_id`, `telefon_model`, `kamera_cozunurlugu`, `video_cozunurlugu`, `video_fps_degeri`, `diafram_acikligi`) VALUES
 	(1, 'Redmi Note 8', 20, '1080p', 30, 2),
 	(2, 'iPhone X', 7, '1080p', 30, 2.2),
-	(3, '', 0, '', 0, 0);
+	(4, 'iPhone 11', 12, '2160p', 60, 2.2);
 /*!40000 ALTER TABLE `telefon_on_kamera` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_renk
@@ -192,20 +189,14 @@ CREATE TABLE IF NOT EXISTS `telefon_renk` (
   CONSTRAINT `Telefon_RenkFK` FOREIGN KEY (`telefon_id`) REFERENCES `telefon` (`telefon_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table compare-tech.telefon_renk: ~11 rows (approximately)
+-- Dumping data for table compare-tech.telefon_renk: ~5 rows (approximately)
 /*!40000 ALTER TABLE `telefon_renk` DISABLE KEYS */;
 INSERT INTO `telefon_renk` (`telefon_id`, `renk_id`) VALUES
 	(11, 1),
-	(11, 2),
-	(11, 3),
-	(11, 4),
-	(12, 1),
-	(12, 5),
-	(12, 6),
-	(32, 1),
-	(32, 2),
-	(32, 3),
-	(32, 4);
+	(34, 1),
+	(37, 5),
+	(37, 6),
+	(37, 7);
 /*!40000 ALTER TABLE `telefon_renk` ENABLE KEYS */;
 
 -- Dumping structure for table compare-tech.telefon_renkleri
@@ -215,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `telefon_renkleri` (
   PRIMARY KEY (`renk_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table compare-tech.telefon_renkleri: ~8 rows (approximately)
+-- Dumping data for table compare-tech.telefon_renkleri: ~7 rows (approximately)
 /*!40000 ALTER TABLE `telefon_renkleri` DISABLE KEYS */;
 INSERT INTO `telefon_renkleri` (`renk_id`, `renk_adi`) VALUES
 	(1, 'Siyah'),
@@ -224,9 +215,65 @@ INSERT INTO `telefon_renkleri` (`renk_id`, `renk_adi`) VALUES
 	(4, 'Yeşil'),
 	(5, 'Gümüş'),
 	(6, 'Kırmızı'),
-	(7, 'Kahverengi'),
-	(9, 'pembe');
+	(7, 'Kahverengi');
 /*!40000 ALTER TABLE `telefon_renkleri` ENABLE KEYS */;
+
+-- Dumping structure for table compare-tech.televizyon
+CREATE TABLE IF NOT EXISTS `televizyon` (
+  `televizyon_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `televizyon_ad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `televizyon_marka` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `televizyon_model` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `televizyon_ekran_id` int(11) unsigned NOT NULL DEFAULT 0,
+  `televizyon_enerji` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `televizyon_ses_cikis_gucu` int(11) NOT NULL DEFAULT 0,
+  `televizyon_hoparlor_sistemi` int(11) NOT NULL DEFAULT 0,
+  `televizyon_dahili_wifi` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `televizyon_usb_20` int(11) NOT NULL DEFAULT 0,
+  `televizyon_usb_30` int(11) NOT NULL DEFAULT 0,
+  `televizyon_genisligi` int(11) NOT NULL DEFAULT 0,
+  `televizyon_yuksekligi` int(11) NOT NULL DEFAULT 0,
+  `televizyon_isletim_sistemi` int(11) NOT NULL DEFAULT 0,
+  `televizyon_yenileme_hizi` int(11) NOT NULL DEFAULT 0,
+  `televizyon_hd_uydu_alici` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`televizyon_id`),
+  KEY `televizyon_ekran_id` (`televizyon_ekran_id`),
+  KEY `televizyon_isletim_sistemi` (`televizyon_isletim_sistemi`),
+  CONSTRAINT `TelevizyonEkranFK` FOREIGN KEY (`televizyon_ekran_id`) REFERENCES `televizyon_ekran` (`ekran_id`),
+  CONSTRAINT `TelevizyonIsletimSistemiFK` FOREIGN KEY (`televizyon_isletim_sistemi`) REFERENCES `televizyon_isletim_sistemi` (`isletim_sistemi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table compare-tech.televizyon: ~1 rows (approximately)
+/*!40000 ALTER TABLE `televizyon` DISABLE KEYS */;
+/*!40000 ALTER TABLE `televizyon` ENABLE KEYS */;
+
+-- Dumping structure for table compare-tech.televizyon_ekran
+CREATE TABLE IF NOT EXISTS `televizyon_ekran` (
+  `ekran_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ekran_turu` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ekran_tipi` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ekran_boyutu` int(11) NOT NULL DEFAULT 0,
+  `ekran_cozunurlugu` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `HDR` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ekran_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table compare-tech.televizyon_ekran: ~0 rows (approximately)
+/*!40000 ALTER TABLE `televizyon_ekran` DISABLE KEYS */;
+/*!40000 ALTER TABLE `televizyon_ekran` ENABLE KEYS */;
+
+-- Dumping structure for table compare-tech.televizyon_isletim_sistemi
+CREATE TABLE IF NOT EXISTS `televizyon_isletim_sistemi` (
+  `isletim_sistemi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `isletim_sistemi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`isletim_sistemi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table compare-tech.televizyon_isletim_sistemi: ~0 rows (approximately)
+/*!40000 ALTER TABLE `televizyon_isletim_sistemi` DISABLE KEYS */;
+INSERT INTO `televizyon_isletim_sistemi` (`isletim_sistemi_id`, `isletim_sistemi`) VALUES
+	(1, 'and');
+/*!40000 ALTER TABLE `televizyon_isletim_sistemi` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

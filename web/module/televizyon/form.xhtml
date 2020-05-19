@@ -16,19 +16,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Adı</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_ad}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Marka</label>
-                                <h:inputText styleClass="form-control" />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_marka}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Model</label>
-                                <h:inputText styleClass="form-control"  />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_model}" />
                             </div>
                         </div>
                     </div>
@@ -36,23 +36,23 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectEkran" class="bmd-label-floating">Televizyon Ekran Secimi</label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" >
-                                    <f:selectItems/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{televizyonController.selectEkran}">
+                                    <f:selectItems value="#{televizyonEkranController.ekranList}" var="ekran" itemValue="#{ekran.ekran_id}" itemLabel="#{ekran.ekran_cozunurlugu} - #{ekran.ekran_boyutu} - #{ekran.ekran_turu}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectBatarya" class="bmd-label-floating">Televizyon Isletim Sistemi Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBatarya" >
-                                    <f:selectItems />
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBatarya" value="#{televizyonController.selectIsletimSistemi}">
+                                    <f:selectItems value="#{televizyonIslettimSistemiController.islemtimSistemiList}" var="isletimsistemi" itemValue="#{isletimsistemi.isletim_sistemi_id}" itemLabel="#{isletimsistemi.isletim_sistemi}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Enerji Tuketim Secimi</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_enerji}" />
                             </div>
                         </div>
                     </div>
@@ -60,19 +60,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Ses Cikis Gucu</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_ses_cikis_gucu}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Hoparlor Sistemi</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hoparlor_sistemi}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Dahili WIFI</label>
-                                <h:inputText styleClass="form-control"  />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_dahili_wifi}" />
                             </div>
                         </div>
                     </div>
@@ -80,25 +80,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon USB 2.0 Sayisi</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_usb_20}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon USB 3.0 Sayisi</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_usb_30}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Genisligi</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_genisligi}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Yuksekligi</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_yuksekligi}" />
                             </div>
                         </div>
                     </div>
@@ -106,22 +106,22 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Ekran Yenileme</label>
-                                <h:inputText styleClass="form-control"   />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_yenileme_hizi}" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon HD Uydu Alicisi</label>
-                                <h:inputText styleClass="form-control"  />
+                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hd_uydu_alici}" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="btn-group">
-                            <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle"/>
-                            <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                            <h:commandButton styleClass="btn btn-info pull-right" value="Sil"/>
-                            <h:commandButton class="btn btn-success pull-right" value="Kayit Ekle"/>
+                            <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{televizyonController.temizle()}"/>
+                            <h:commandButton rendered="#{televizyonController.televizyon.televizyon_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" />
+                            <h:commandButton rendered="#{televizyonController.televizyon.televizyon_id != null}" styleClass="btn btn-info pull-right" value="Sil"/>
+                            <h:commandButton rendered="#{televizyonController.televizyon.televizyon_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" />
                         </div>
                     </div>
                     <div class="clearfix"></div>
