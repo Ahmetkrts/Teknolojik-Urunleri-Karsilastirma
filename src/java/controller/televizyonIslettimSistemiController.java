@@ -34,6 +34,11 @@ public class televizyonIslettimSistemiController implements Serializable {
         this.isletimSistemi = isletimSistemi;
     }
 
+    public String create() {
+        this.getIsletimSistemiDAO().insert(this.isletimSistemi);
+        return "/module/televizyon/ozellik/ozellik.xhtml";
+    }
+
     public List<televizyonIslettimSistemi> getIslemtimSistemiList() {
         this.islemtimSistemiList = this.getIsletimSistemiDAO().findAll();
         return islemtimSistemiList;

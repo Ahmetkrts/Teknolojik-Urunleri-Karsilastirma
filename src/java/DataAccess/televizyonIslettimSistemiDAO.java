@@ -69,5 +69,16 @@ public class televizyonIslettimSistemiDAO {
         this.connection = this.getConnector().Connect();
         return connection;
     }
+
+    public void insert(televizyonIslettimSistemi isletimSistemi) {
+        try {
+            Statement st = getConnection().createStatement();
+            st.executeUpdate("insert into televizyon_isletim_sistemi (isletim_sistemi) values ('" + isletimSistemi.getIsletim_sistemi() + "')");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     
 }

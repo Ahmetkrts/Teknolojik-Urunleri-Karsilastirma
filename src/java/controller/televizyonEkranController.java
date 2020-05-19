@@ -34,6 +34,11 @@ public class televizyonEkranController implements Serializable {
         this.ekran = ekran;
     }
     
+    public String create() {
+        this.getEkrandao().insert(this.ekran);
+        return "/module/televizyon/ozellik/ozellik.xhtml";
+    }
+
     public List<televizyonEkran> getEkranList() {
         this.ekranList = this.getEkrandao().findAll();
         return ekranList;

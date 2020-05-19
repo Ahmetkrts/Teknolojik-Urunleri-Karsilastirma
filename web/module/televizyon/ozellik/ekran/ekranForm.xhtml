@@ -53,7 +53,7 @@
                         <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{televizyonEkranController.temizle()}"/>
                         <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Güncelle"/>
                         <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Sil" />
-                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" />
+                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{televizyonEkranController.create()}" />
                     </div>
                     <div class="clearfix"></div>
                 </h:form>
