@@ -24,7 +24,15 @@ public class laptopBaglantiController implements Serializable {
     private laptopBaglantiDAO laptopBaglantidao;
     private laptopBaglanti laptopBaglanti;
 
-   
+    public String temizle() {
+        this.laptopBaglanti=new  laptopBaglanti();
+        return "/module/laptop/ozellik/ozellik.xhtml";
+
+    }
+    public void delete(laptopBaglanti baglanti) {
+        this.laptopBaglantidao.delete(baglanti);
+
+    }
 
     public void update() {
         this.laptopBaglantidao.update(this.laptopBaglanti);

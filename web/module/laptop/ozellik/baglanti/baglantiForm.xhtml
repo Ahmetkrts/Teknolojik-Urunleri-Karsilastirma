@@ -62,7 +62,7 @@
                     </div>
 
 
-                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}"  value="Temizle"/>
+                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}"  value="Temizle" action="#{laptopBaglantiController.temizle()}" />
                     <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopBaglantiController.update()}" />
                     <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id==null}" class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" />
 

@@ -31,7 +31,15 @@ public class laptopDAO {
     private laptopIslemciDAO islemci;
     private laptopEkranKartiDAO ekranKarti;
 
-   
+    public void delete(laptop laptop) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("DELETE From laptop WHERE laptop_id=" + laptop.getLaptop_id());
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "----------------------LaptopDAO");
+        }
+    }
 
     public void update(laptop laptop, Long selectEkran, Long selectDepolamaBellek, Long selectIslemci, Long selectEkranKarti, Long selectPil, Long selectBaglanti) {
         try {

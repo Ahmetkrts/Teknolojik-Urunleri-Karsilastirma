@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle"/>
+                    <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle"  action="#{laptopIslemciController.temizle()}"/>
                     <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle"  action="#{laptopIslemciController.update()}"/>
                     <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopIslemciController.create()}" />
 

@@ -58,7 +58,7 @@
 
 
                   
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle"/>
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopDepolamaBellekController.temizle()}" />
                     <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopDepolamaBellekController.update()}" />
                     <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{laptopDepolamaBellekController.create()}"/>
 

@@ -23,7 +23,18 @@ public class laptopDepolamaBellekDAO {
     private Connector connector;
     private Connection connection;
 
-    
+    public void delete(laptopDepolamaBellek depolama) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("DELETE FROM laptop_depolama_bellek  WHERE depolama_bellek_id=" + depolama.getDepolama_bellek_id());
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "DepolamaDAO1");
+        }
+    }
+
     public void update(laptopDepolamaBellek laptopDepolamaBellek) {
         try {
             Statement st = this.getConnection().createStatement();

@@ -72,7 +72,7 @@
                 </h:column>
                 <h:column>
                     <h:form>
-                        <h:commandLink>
+                        <h:commandLink action="#{laptopController.delete(laptop)}">
                             <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
                         </h:commandLink>
                     </h:form>
@@ -80,7 +80,63 @@
 
 
 
-               
+                <!--<h:column>
+                    <f:facet class="text-primary"  name="header">Ad</f:facet> 
+                #{telefon.telefon_ad}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Ekran Teknolojisi</f:facet> 
+                #{telefon.ekran.ekran_teknolojisi}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Batarya Teknolojisi</f:facet> 
+                #{telefon.batarya.batarya_teknolojisi}
+            </h:column>
+            <h:column>
+            <f:facet name="header">İşlemci</f:facet> 
+                #{telefon.islemci.ana_islemci}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Ram</f:facet> 
+                #{telefon.telefon_ram} GB
+            </h:column>
+            <h:column>
+                <f:facet name="header">Kamera Sayısı</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.kamera_on_arka}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Kamera Çözünürlüğü</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.kamera_cozunurlugu}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Diyafram Açıklığı</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.diafram_acikligi}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>
+            <h:column>
+                <f:facet name="header">optik goruntu sabileme</f:facet> 
+                <ul>
+                    <ui:repeat value="#{telefon.kamera}" var="kamera">
+                        <li>#{kamera.optik_goruntu_sabitleyici}</li>
+                    </ui:repeat>
+            
+                </ul>
+            </h:column>-->
 
             </h:dataTable>
 

@@ -24,7 +24,16 @@ public class laptopIslemciController implements Serializable {
     private laptopIslemciDAO laptopIslemcidao;
     private laptopIslemci laptopIslemci;
 
-    
+    public String temizle() {
+        this.laptopIslemci = new laptopIslemci();
+        return "/module/laptop/ozellik/ozellik.xhtml";
+
+    }
+
+    public String delete(laptopIslemci islemci) {
+        this.laptopIslemcidao.delete(islemci);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
 
     public String update() {
         this.laptopIslemcidao.update(this.laptopIslemci);

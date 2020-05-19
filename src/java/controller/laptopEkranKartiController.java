@@ -24,7 +24,16 @@ public class laptopEkranKartiController implements Serializable {
     private laptopEkranKartiDAO laptopEkranKartidao;
     private laptopEkranKarti laptopEkranKarti;
 
-    
+    public String temizle() {
+        this.laptopEkranKarti = new laptopEkranKarti();
+        return "/module/laptop/ozellik/ozellik.xhtml";
+
+    }
+
+    public String delete(laptopEkranKarti ekranKarti) {
+        this.laptopEkranKartidao.delete(ekranKarti);
+        return "/module/laptop/ozellik/ozellik.xhtml";
+    }
 
     public String update() {
         this.laptopEkranKartidao.update(this.laptopEkranKarti);

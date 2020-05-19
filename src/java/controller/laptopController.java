@@ -30,7 +30,15 @@ public class laptopController implements Serializable {
     private Long selectPil;
     private Long selectBaglanti;
 
-   
+    public String temizle()
+    {
+        this.laptop=new laptop();
+        return "module/laptop/laptop.xhtml";
+    }
+    public void delete(laptop laptop) {
+        this.getLaptopdao().delete(laptop);
+
+    }
 
     public void update() {
         this.getLaptopdao().update(this.laptop, this.selectEkran, this.selectDepolamaBellek, this.selectIslemci, this.selectEkranKarti, this.selectPil, this.selectBaglanti);

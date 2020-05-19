@@ -22,7 +22,16 @@ public class laptopBaglantiDAO {
 
     private Connector connector;
     private Connection connection;
-   
+    public void delete(laptopBaglanti laptopBaglanti) {
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("DELETE FROM laptop_baglanti WHERE baglanti_id="+laptopBaglanti.getBaglanti_id());
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "baglantiDAO 2");
+        }
+    }
     public void update(laptopBaglanti laptopBaglanti) {
         try {
 
@@ -85,4 +94,4 @@ public class laptopBaglantiDAO {
         return connection;
     }
 
-   }
+}

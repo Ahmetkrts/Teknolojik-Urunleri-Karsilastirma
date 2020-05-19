@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle"/>
+                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopPilController.temizle()}"  />
                     <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopPilController.update()}"  />
                     <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopPilController.create()}" />
 

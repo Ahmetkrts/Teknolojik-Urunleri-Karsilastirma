@@ -23,7 +23,16 @@ public class laptopPilDAO {
     private Connector connector;
     private Connection connection;
 
-    
+    public void delete(laptopPil pil) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("DELETE FROM laptop_pil  WHERE pil_id=" + pil.getPil_id());
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void update(laptopPil laptopPil) {
         try {
@@ -82,4 +91,4 @@ public class laptopPilDAO {
         return connection;
     }
 
-    }
+}

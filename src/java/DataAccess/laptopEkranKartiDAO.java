@@ -23,7 +23,15 @@ public class laptopEkranKartiDAO {
     private Connector connector;
     private Connection connection;
 
-    
+    public void delete(laptopEkranKarti ekranKarti) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("DELETE  FROM  laptop_ekran_karti WHERE ekran_karti_id=" + ekranKarti.getEkran_karti_id());
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "EkranKarti DAO");
+        }
+    }
 
     public void update(laptopEkranKarti laptopEkranKarti) {
         try {
