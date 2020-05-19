@@ -69,6 +69,16 @@ public class televizyonIslettimSistemiDAO {
         }
     }
 
+    public void remove(televizyonIslettimSistemi isletimSistemi) {
+       try {
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_isletim_sistemi where isletim_sistemi_id=?");
+            pst.setLong(1, isletimSistemi.getIsletim_sistemi_id());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public Connector getConnector() {
         if (this.connector == null) {
             this.connector = new Connector();

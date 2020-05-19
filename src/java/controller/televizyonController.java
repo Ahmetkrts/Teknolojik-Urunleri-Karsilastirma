@@ -30,6 +30,13 @@ public class televizyonController implements Serializable {
         this.selectEkran = null;
         this.selectIsletimSistemi = null;
     }
+    public void delete(){
+        this.televizyondao.remove(this.televizyon);
+        this.televizyon = null;
+        this.selectEkran = null;
+        this.selectIsletimSistemi = null;
+    }
+    
     public void updateForm(televizyon tel){
         this.televizyon = tel;
         this.selectEkran = this.televizyon.getEkran().getEkran_id();

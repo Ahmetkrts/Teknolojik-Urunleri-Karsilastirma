@@ -111,6 +111,16 @@ public class televizyonDAO {
             System.out.println(e.getMessage());
         }
     }
+    public void remove(televizyon televizyon) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon where televizyon_id=?");
+            pst.setLong(1, televizyon.getTelevizyon_id());
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public televizyonEkranDAO getEkranDAO() {
         if (this.ekranDAO == null) {

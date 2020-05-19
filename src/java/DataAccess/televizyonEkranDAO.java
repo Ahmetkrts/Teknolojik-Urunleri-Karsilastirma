@@ -83,6 +83,16 @@ public class televizyonEkranDAO {
         }
     }
 
+    public void remove(televizyonEkran ekran) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_ekran where ekran_id=?");
+            pst.setLong(1, ekran.getEkran_id());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void insert(televizyonEkran ekran) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("insert into televizyon_ekran (ekran_turu,ekran_tipi,ekran_boyutu,ekran_cozunurlugu,HDR) values (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);

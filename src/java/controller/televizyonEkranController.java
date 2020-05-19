@@ -29,6 +29,11 @@ public class televizyonEkranController implements Serializable {
         return "/module/televizyon/ozellik/ozellik.xhtml";
     }
     
+    public String delete(){
+        this.ekrandao.remove(this.ekran);
+        this.ekran = null;
+        return "/module/televizyon/ozellik/ozellik.xhtml";
+    }
     public String temizle(){
         this.ekran = null;
         return "/module/televizyon/ozellik/ozellik.xhtml";
