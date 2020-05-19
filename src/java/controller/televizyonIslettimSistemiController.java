@@ -25,6 +25,10 @@ public class televizyonIslettimSistemiController implements Serializable {
     private televizyonIslettimSistemi isletimSistemi;
     
     
+    public String update() {
+        this.isletimSistemiDAO.edit(this.isletimSistemi);
+        return "/module/televizyon/ozellik/ozellik.xhtml";
+    }
     public String temizle() {
         this.isletimSistemi = null;
         return "/module/televizyon/ozellik/ozellik.xhtml";

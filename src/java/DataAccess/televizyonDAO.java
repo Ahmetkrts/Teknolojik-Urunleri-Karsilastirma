@@ -85,6 +85,33 @@ public class televizyonDAO {
         }
     }
 
+    public void edit(televizyon televizyon, Long selectEkran, Long selectIslettimSistemi) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("update televizyon set televizyon_ad=?,televizyon_marka=?,televizyon_model=?,televizyon_ekran_id=?,televizyon_enerji=?,televizyon_ses_cikis_gucu=?,televizyon_hoparlor_sistemi=?,televizyon_dahili_wifi=?,televizyon_usb_20=?,televizyon_usb_30=?,televizyon_genisligi=?,televizyon_yuksekligi=?,televizyon_isletim_sistemi=?,televizyon_yenileme_hizi=?,televizyon_hd_uydu_alici=? where televizyon_id=?");
+            pst.setString(1, televizyon.getTelevizyon_ad());
+            pst.setString(2, televizyon.getTelevizyon_marka());
+            pst.setString(3, televizyon.getTelevizyon_model());
+            pst.setLong(4, selectEkran);
+            pst.setString(5, televizyon.getTelevizyon_enerji());
+            pst.setInt(6, televizyon.getTelevizyon_ses_cikis_gucu());
+            pst.setInt(7, televizyon.getTelevizyon_hoparlor_sistemi());
+            pst.setString(8, televizyon.getTelevizyon_dahili_wifi());
+            pst.setInt(9, televizyon.getTelevizyon_usb_20());
+            pst.setInt(10, televizyon.getTelevizyon_usb_30());
+            pst.setInt(11, televizyon.getTelevizyon_genisligi());
+            pst.setInt(12, televizyon.getTelevizyon_yuksekligi());
+            pst.setLong(13, selectIslettimSistemi);
+            pst.setInt(14, televizyon.getTelevizyon_yenileme_hizi());
+            pst.setString(15, televizyon.getTelevizyon_hd_uydu_alici());
+            pst.setLong(16, televizyon.getTelevizyon_id());
+            pst.executeUpdate();
+            getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public televizyonEkranDAO getEkranDAO() {
         if (this.ekranDAO == null) {
             this.ekranDAO = new televizyonEkranDAO();

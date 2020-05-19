@@ -57,6 +57,17 @@ public class televizyonIslettimSistemiDAO {
         }
         return isletimsistemi_liste;
     }
+    public void edit(televizyonIslettimSistemi isletimSistemi) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("update televizyon_isletim_sistemi set isletim_sistemi=? where isletim_sistemi_id=?");
+            pst.setString(1, isletimSistemi.getIsletim_sistemi());
+            pst.setLong(2,isletimSistemi.getIsletim_sistemi_id());
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public Connector getConnector() {
         if (this.connector == null) {

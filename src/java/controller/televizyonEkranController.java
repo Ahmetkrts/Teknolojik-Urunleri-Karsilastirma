@@ -24,6 +24,10 @@ public class televizyonEkranController implements Serializable {
     private televizyonEkranDAO ekrandao;
     private televizyonEkran ekran;
 
+    public String update(){
+        this.ekrandao.edit(this.ekran);
+        return "/module/televizyon/ozellik/ozellik.xhtml";
+    }
     
     public String temizle(){
         this.ekran = null;

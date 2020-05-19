@@ -66,6 +66,23 @@ public class televizyonEkranDAO {
         return ekran_liste;
     }
 
+    public void edit(televizyonEkran ekran) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("update televizyon_ekran set ekran_turu=?,ekran_tipi=?,ekran_boyutu=?,ekran_cozunurlugu=?,HDR=? where ekran_id=?");
+            pst.setString(1, ekran.getEkran_turu());
+            pst.setString(2, ekran.getEkran_tipi());
+            pst.setInt(3, ekran.getEkran_boyutu());
+            pst.setString(4, ekran.getEkran_cozunurlugu());
+            pst.setString(5, ekran.getHDR());
+            pst.setLong(6, ekran.getEkran_id());
+            pst.executeUpdate();
+            getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void insert(televizyonEkran ekran) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("insert into televizyon_ekran (ekran_turu,ekran_tipi,ekran_boyutu,ekran_cozunurlugu,HDR) values (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
