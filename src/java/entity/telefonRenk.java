@@ -10,14 +10,14 @@ package entity;
  * @author Casper
  */
 public class telefonRenk {
-    private long renk_id;
+    private Long renk_id;
     private String renk_adi;
 
-    public long getRenk_id() {
+    public Long getRenk_id() {
         return renk_id;
     }
 
-    public void setRenk_id(long renk_id) {
+    public void setRenk_id(Long renk_id) {
         this.renk_id = renk_id;
     }
 

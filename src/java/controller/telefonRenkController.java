@@ -22,7 +22,16 @@ public class telefonRenkController implements Serializable{
     private  List<telefonRenk> renkList;
     private telefonRenkDAO renkDAO;
     private telefonRenk renk;
-
+    
+    public String temizle(){
+        this.renk = null;
+        return "onKameraForm";
+    }
+    
+    public void updateForm(telefonRenk renk){
+        this.renk = renk;
+    }
+    
     public String create()
     {
        

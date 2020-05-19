@@ -22,9 +22,12 @@
                         </div>
 
                     </div>
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonRenkController.create}" />
+                    <div class="btn-group">
+                        <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonRenkController.temizle()}"/>
+                        <h:commandButton rendered="#{telefonRenkController.renk.renk_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{telefonRenkController.update}" />
+                        <h:commandButton rendered="#{telefonRenkController.renk.renk_id != null}" styleClass="btn btn-info pull-right" value="Sil" action="#{telefonRenkController.delete}" />
+                        <h:commandButton rendered="#{telefonRenkController.renk.renk_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonRenkController.create}" />
+                    </div>
 
                     <div class="clearfix"></div>
                 </h:form>

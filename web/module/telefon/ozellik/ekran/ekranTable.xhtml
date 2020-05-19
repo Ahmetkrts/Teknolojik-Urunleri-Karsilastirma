@@ -22,12 +22,12 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Ekran Teknolojisi</b></f:facet> 
-                    #{ekran.ekran_teknolojisi} 
+                        #{ekran.ekran_teknolojisi} 
                 </h:column>
 
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Erkan Çözünürlüğü</b></f:facet> 
-                    #{ekran.ekran_cozunurlugu} 
+                        #{ekran.ekran_cozunurlugu} 
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Piksel Yoğunlugu</b></f:facet> 
@@ -35,21 +35,14 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Ekran Dayanıklığı</b></f:facet> 
-                    #{ekran.ekran_dayanikliligi} 
+                        #{ekran.ekran_dayanikliligi} 
                 </h:column>
 
 
                 <h:column>
                     <h:form>
-                        <h:commandLink>
+                        <h:commandLink action="#{telefonEkranController.updateForm(ekran)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
-                        </h:commandLink>
-                    </h:form>
-                </h:column>
-                <h:column>
-                    <h:form>
-                        <h:commandLink>
-                            <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
                         </h:commandLink>
                     </h:form>
                 </h:column>

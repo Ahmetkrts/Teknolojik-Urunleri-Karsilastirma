@@ -31,15 +31,14 @@
                                 <label class="bmd-label-floating">Hızlı Şarj Özelliği</label>
                                 <h:inputText styleClass="form-control"  value="#{telefonBataryaController.batarya.hizli_sarj_ozelligi}" />
                             </div>
-                        </div> 
+                        </div>
                     </div>
-
-
-
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{telefonBataryaController.create()}"/>
-
+                    <div class="btn-group">
+                        <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonBataryaController.temizle()}"/>
+                        <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" />
+                        <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id  != null}" styleClass="btn btn-info pull-right" value="Sil" />
+                        <h:commandButton rendered="#{telefonBataryaController.batarya.batarya_id  == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonBataryaController.create()}" />
+                    </div>
                     <div class="clearfix"></div>
                 </h:form>
             </div>

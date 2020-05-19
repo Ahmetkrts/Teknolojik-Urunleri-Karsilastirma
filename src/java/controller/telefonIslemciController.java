@@ -24,6 +24,15 @@ public class telefonIslemciController implements Serializable{
     private telefonIslemciDAO islemciDao;
     private telefonIslemci islemci;
 
+    public String temizle(){
+        this.islemci = null;
+        return "islemciForm";
+    }
+    
+    public void updateForm(telefonIslemci ekran){
+        this.islemci = ekran;
+    }
+    
     public String create()
     {
         this.getIslemciDao().insert(this.islemci);

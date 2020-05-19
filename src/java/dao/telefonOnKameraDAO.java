@@ -7,6 +7,7 @@ package dao;
 
 import entity.telefonOnKamera;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,7 +70,8 @@ public class telefonOnKameraDAO {
         }
         return kamera_list;
     }
-
+    
+    
     public Connector getConnector() {
         if (this.connector == null) {
             this.connector = new Connector();
@@ -92,4 +94,6 @@ public class telefonOnKameraDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    
 }

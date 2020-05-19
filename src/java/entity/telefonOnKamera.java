@@ -11,18 +11,18 @@ package entity;
  */
 public class telefonOnKamera {
     
-    private long kamera_id;
+    private Long kamera_id;
     private String telefon_model;
     private int kamera_cozunurlugu;
     private String video_cozunurlugu;
     private int video_fps_degeri;
     private double diafram_acikligi;
 
-    public long getKamera_id() {
+    public Long getKamera_id() {
         return kamera_id;
     }
 
-    public void setKamera_id(long kamera_id) {
+    public void setKamera_id(Long kamera_id) {
         this.kamera_id = kamera_id;
     }
 

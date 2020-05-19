@@ -23,6 +23,13 @@ public class telefonArkaKameraController implements Serializable{
     private telefonArkaKameraDAO arkaKameradao;
     private telefonArkaKamera arkaKamera;
 
+    public String temizle(){
+        this.arkaKamera = null;
+        return "arkaKameraForm";
+    }
+    public void updateForm(telefonArkaKamera kamera){
+        this.arkaKamera = kamera;
+    }
     public String create()
     {
         this.getArkaKameradao().insert(this.arkaKamera);

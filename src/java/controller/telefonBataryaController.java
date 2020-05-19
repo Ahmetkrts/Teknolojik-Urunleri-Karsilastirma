@@ -23,7 +23,17 @@ public class telefonBataryaController implements Serializable{
     private List<telefonBatarya> bataryaList;
     private telefonBataryaDAO bataryaDao;
     private telefonBatarya batarya;
-
+    
+    public String temizle(){
+        this.batarya = null;
+        return "bataryaForm";
+    }
+    
+    public void updateForm(telefonBatarya batarya){
+        this.batarya = batarya;
+    }
+    
+    
     public String create()
     {
         this.getBataryaDao().insert(this.batarya);

@@ -48,14 +48,13 @@
 
                             </div>
                         </div>
-
                     </div>
-
-
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{telefonEkranController.create()}" />
-
+                    <div class="btn-group">
+                        <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonEkranController.temizle()}"/>
+                        <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" />
+                        <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id  != null}" styleClass="btn btn-info pull-right" value="Sil" />
+                        <h:commandButton rendered="#{telefonEkranController.ekran.ekran_id  == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonEkranController.create()}" />
+                    </div>
                     <div class="clearfix"></div>
                 </h:form>
             </div>

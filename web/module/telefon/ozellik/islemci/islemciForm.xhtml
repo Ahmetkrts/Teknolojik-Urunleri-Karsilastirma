@@ -72,14 +72,18 @@
                                 <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_uretim_teknolojisi}" />
                             </div>
                         </div>
+                    
                     </div>
                     
                    
 
 
-                    <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" />
-                    <h:commandButton styleClass="btn btn-info pull-right" value="Güncelle" />
-                    <h:commandButton styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{telefonIslemciController.create()}" />
+                     <div class="btn-group">
+                        <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{telefonIslemciController.temizle()}"/>
+                        <h:commandButton rendered="#{telefonIslemciController.islemci.islemci_id != null}" styleClass="btn btn-info pull-right" value="Güncelle"  />
+                        <h:commandButton rendered="#{telefonIslemciController.islemci.islemci_id != null}" styleClass="btn btn-info pull-right" value="Sil" />
+                        <h:commandButton rendered="#{telefonIslemciController.islemci.islemci_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{telefonIslemciController.create()}" />
+                    </div>
 
                     <div class="clearfix"></div>
                 </h:form>

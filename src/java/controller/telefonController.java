@@ -7,8 +7,9 @@ package controller;
 
 import dao.telefonDAO;
 import entity.telefon;
+import entity.telefonRenk;
 import java.io.Serializable;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -32,8 +33,31 @@ public class telefonController implements Serializable {
     private Long selectIsletimSistemi;
     private List<Long> selectRenkList;
 
-   
-
+    public String temizle(){
+        this.telefon = null;
+        this.selectEkran = null;
+        this.selectArkaKamera = null;
+        this.selectIslemci = null;
+        this.selectIsletimSistemi = null;
+        this.selectOnKamera = null;
+        this.selectBatarya = null;
+        this.selectRenkList = null;
+        return "telefon";
+    }
+    
+    public void updateForm(telefon tel){
+        this.telefon = tel;
+        this.selectEkran = this.telefon.getEkran().getEkran_id();
+        this.selectArkaKamera = this.telefon.getArkaKamera().getKamera_id();
+        this.selectIslemci = this.telefon.getIslemci().getIslemci_id();
+        this.selectIsletimSistemi = this.telefon.getIsletimSistemi().getIsletim_sistemi_id();
+        this.selectOnKamera = this.telefon.getOnKamera().getKamera_id();
+        this.selectBatarya = this.telefon.getBatarya().getBatarya_id();
+        this.selectRenkList = new ArrayList<>();
+        for (telefonRenk renk : this.telefon.getRenk()){
+            this.selectRenkList.add(renk.getRenk_id());
+        }
+    }
     public void create()  {
         this.getTelefondao().insert(this.telefon, this.selectEkran,this.selectBatarya,this.selectIslemci,this.selectArkaKamera,this.selectOnKamera,this.selectIsletimSistemi,this.selectRenkList);
         

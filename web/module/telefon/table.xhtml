@@ -46,7 +46,7 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Depolama</b></f:facet> 
-                    #{telefon.telefon_dahili_depolama} GB
+                    #{telefon.arkaKamera.telefon_model} 
                 </h:column>
                 <h:column>
                     <f:facet name="header"><b class="text-primary">Renkler</b></f:facet> 
@@ -63,15 +63,8 @@
                 </h:column>
                 <h:column>
                     <h:form>
-                        <h:commandLink>
+                        <h:commandLink action="#{telefonController.updateForm(telefon)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
-                        </h:commandLink>
-                    </h:form>
-                </h:column>
-                <h:column>
-                    <h:form>
-                        <h:commandLink>
-                            <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
                         </h:commandLink>
                     </h:form>
                 </h:column>

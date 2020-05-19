@@ -24,6 +24,15 @@ public class telefonEkranController implements Serializable {
     private telefonEkranDAO ekrandao;
     private telefonEkran ekran;
 
+    public String temizle(){
+        this.ekran = null;
+        return "ekranForm";
+    }
+    
+    public void updateForm(telefonEkran ekran){
+        this.ekran = ekran;
+    }
+    
     public String create() {
         this.getEkrandao().insert(this.ekran);
         return "/module/telefon/ozellik/ozellik.xhtml";

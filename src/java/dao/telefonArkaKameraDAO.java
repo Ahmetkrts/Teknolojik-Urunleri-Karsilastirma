@@ -7,6 +7,7 @@ package dao;
 
 import entity.telefonArkaKamera;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,8 +22,8 @@ import util.Connector;
 public class telefonArkaKameraDAO {
 
     private Connector connector;
-    private Connection connection;
-
+    private Connection connection; 
+    
     public telefonArkaKamera find(Long id) {
         telefonArkaKamera arkaKamera = null;
         try {
@@ -83,6 +84,7 @@ public class telefonArkaKameraDAO {
 
             }
             this.getConnection().close();
+            
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -90,7 +92,6 @@ public class telefonArkaKameraDAO {
 
         return arka_kamera;
     }
-
     public void insert(telefonArkaKamera arkaKamera) {
         try {
 
@@ -100,12 +101,11 @@ public class telefonArkaKameraDAO {
                     + "'" + arkaKamera.getFlas() + "'," + arkaKamera.getDiafram_acikligi() + ",'" + arkaKamera.getVideo_kayit_cozunurlugu() + "'," + arkaKamera.getVideo_fps_degeri() + ""
                     + "," + arkaKamera.getIki_kamera_cozunurlugu() + "," + arkaKamera.getIki_diafram_acikligi() + "," + arkaKamera.getUc_kamera_cozunurlugu() + "," + arkaKamera.getUc_diafram_acikligi() + ""
                     + "," + arkaKamera.getDort_kamera_cozunurlugu() + "," + arkaKamera.getDort_diafram_acikligi() + "," + arkaKamera.getBes_kamera_cozunurlugu() + "," + arkaKamera.getBes_diafram_acikligi() + ")");
-           
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
     public Connector getConnector() {
         if (this.connector == null) {
             this.connector = new Connector();

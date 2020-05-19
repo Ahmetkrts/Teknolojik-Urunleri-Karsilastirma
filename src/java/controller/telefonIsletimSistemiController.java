@@ -23,6 +23,15 @@ public class telefonIsletimSistemiController implements Serializable {
     private telefonIsletimSistemiDAO isletimSistemiDAO;
     private telefonIsletimSistemi isletimSistemi;
     
+    public String temizle(){
+        this.isletimSistemi = null;
+        return "isletimSistemiForm";
+    }
+    
+    public void updateForm(telefonIsletimSistemi isletimSistemi){
+        this.isletimSistemi = isletimSistemi;
+    }
+    
     public String create()
     {
         this.getIsletimSistemiDAO().insert(this.isletimSistemi);

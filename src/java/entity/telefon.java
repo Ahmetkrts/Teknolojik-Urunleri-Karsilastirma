@@ -25,12 +25,38 @@ public class telefon {
     private int telefon_agirlik;
     private List<telefonRenk> renk;
     private telefonBatarya batarya;
-   
     private telefonIslemci islemci;
     private telefonIsletimSistemi isletimSistemi;
+    private telefonArkaKamera arkaKamera;
+    private telefonOnKamera onKamera;
+    private telefonEkran ekran;
     
-
+    
     public telefon() {
+    }
+
+    public telefonArkaKamera getArkaKamera() {
+        return arkaKamera;
+    }
+
+    public void setArkaKamera(telefonArkaKamera arkaKamera) {
+        this.arkaKamera = arkaKamera;
+    }
+
+    public telefonOnKamera getOnKamera() {
+        return onKamera;
+    }
+
+    public void setOnKamera(telefonOnKamera onKamera) {
+        this.onKamera = onKamera;
+    }
+
+    public telefonEkran getEkran() {
+        return ekran;
+    }
+
+    public void setEkran(telefonEkran ekran) {
+        this.ekran = ekran;
     }
 
    
