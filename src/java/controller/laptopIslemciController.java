@@ -24,30 +24,29 @@ public class laptopIslemciController implements Serializable {
     private laptopIslemciDAO laptopIslemcidao;
     private laptopIslemci laptopIslemci;
 
-    public String temizle() {
+    public void temizle() {
         this.laptopIslemci = new laptopIslemci();
-        return "/module/laptop/ozellik/ozellik.xhtml";
 
     }
 
-    public String delete(laptopIslemci islemci) {
+    public void delete(laptopIslemci islemci) {
         this.laptopIslemcidao.delete(islemci);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String update() {
+    public void update() {
         this.laptopIslemcidao.update(this.laptopIslemci);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String updateForm(laptopIslemci islemci) {
+    public void updateForm(laptopIslemci islemci) {
         this.laptopIslemci = islemci;
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String create() {
+    public void create() {
         this.laptopIslemcidao.insert(this.laptopIslemci);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<laptopIslemci> getlaptopIslemciList() {

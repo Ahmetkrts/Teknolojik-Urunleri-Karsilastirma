@@ -11,7 +11,7 @@
                 <p class="card-category">Laptop Ekleme veya Güncellme</p>
             </div>
             <div class="card-body">
-                <h:form>
+                <h:form id="laptop-form">
                     <h:inputHidden value="#{laptopController.laptop.laptop_id}"/>
                     <div class="row">
                         <div class="col-md-3">
@@ -134,9 +134,15 @@
 
 
 
-                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" styleClass="btn btn-danger pull-left"  value="Temizle" action="#{laptopController.temizle()}"/>
-                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopController.update()}" />
-                    <h:commandButton rendered="#{laptopController.laptop.laptop_id ==null}" class="btn btn-success pull-right"   value="Kayit Ekle" action="#{laptopController.create()}" />
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" styleClass="btn btn-danger pull-left"  value="Temizle" action="#{laptopController.temizle()}">
+                                <f:ajax execute="laptop-form" render="laptop-form laptop-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopController.update()}" >
+                                <f:ajax execute="laptop-form" render="laptop-form laptop-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id ==null}" class="btn btn-success pull-right"   value="Kayit Ekle" action="#{laptopController.create()}" >
+                                <f:ajax execute="laptop-form" render="laptop-form laptop-table"/>
+                            </h:commandButton>
 
                     <div class="clearfix"></div>
                 </h:form>

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DataAccess.laptopDepolamaBellekDAO;
+import dao.laptopDepolamaBellekDAO;
 import entity.laptopDepolamaBellek;
 import java.io.Serializable;
 import java.util.List;
@@ -25,29 +25,29 @@ public class laptopDepolamaBellekController implements Serializable {
     private laptopDepolamaBellekDAO laptopDepolamaBellekdao;
     private laptopDepolamaBellek laptopDepolamaBellek;
 
-    public String temizle() {
-        this.laptopDepolamaBellek=new laptopDepolamaBellek();
-        return "/module/laptop/ozellik/ozellik.xhtml";
+    public void temizle() {
+        this.laptopDepolamaBellek = new laptopDepolamaBellek();
 
     }
-    public String delete(laptopDepolamaBellek depolama) {
+
+    public void delete(laptopDepolamaBellek depolama) {
         this.laptopDepolamaBellekdao.delete(depolama);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String update() {
+    public void update() {
         this.laptopDepolamaBellekdao.update(this.laptopDepolamaBellek);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String updateForm(laptopDepolamaBellek depolama) {
-        this.laptopDepolamaBellek=depolama;
-        return "/module/laptop/ozellik/ozellik.xhtml";
+    public void updateForm(laptopDepolamaBellek depolama) {
+        this.laptopDepolamaBellek = depolama;
+
     }
 
-    public String create() {
+    public void create() {
         this.laptopDepolamaBellekdao.insert(this.laptopDepolamaBellek);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<laptopDepolamaBellek> getlaptopDepolamaBellekList() {

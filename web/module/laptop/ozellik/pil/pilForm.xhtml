@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <div class="col-md-12">
@@ -12,7 +13,7 @@
                 <p class="card-category">Pillere Ekleme veya Güncellme</p>
             </div>
             <div class="card-body">
-                <h:form>
+                <h:form id="pil-form">
                     <h:inputHidden value="#{laptopPilController.getlaptopPil().pil_id}"/>
                     <div class="row">
                         <div class="col-md-3">
@@ -34,9 +35,15 @@
                             </div>
                         </div>
                     </div>
-                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopPilController.temizle()}"  />
-                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopPilController.update()}"  />
-                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopPilController.create()}" />
+                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopPilController.temizle()}"  >
+                                <f:ajax execute="pil-form" render="pil-form pil-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopPilController.update()}"  >
+                                <f:ajax execute="pil-form" render="pil-form pil-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopPilController.getlaptopPil().pil_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopPilController.create()}" >
+                                <f:ajax execute="pil-form" render="pil-form pil-table"/>
+                            </h:commandButton>
 
                     <div class="clearfix"></div>
                 </h:form>

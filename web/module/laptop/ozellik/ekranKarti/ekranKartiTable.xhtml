@@ -10,61 +10,64 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Ekran Kartı Tablosu</h4>
                 <p class="card-category"> Burası Laptopların Ekran Kartı Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{laptopEkranKartiController.getlaptopEkranKartiList()}" var="ekranKarti">
+            <h:form id="ekrankarti-table">
+                <h:dataTable class="table" value="#{laptopEkranKartiController.getlaptopEkranKartiList()}" var="ekranKarti">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{ekranKarti.ekran_karti_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
-                        #{ekranKarti.ekran_karti_marka}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Serisi</b></f:facet> 
-                        #{ekranKarti.ekran_karti_serisi}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Model</b></f:facet> 
-                        #{ekranKarti.ekran_karti_modeli}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Çekirdek Hızı</b></f:facet> 
-                    #{ekranKarti.ekran_karti_cekirdek_hizi} mHz
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Bellek Boyutu</b></f:facet> 
-                    #{ekranKarti.ekran_karti_bellek_boyutu} GB
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Bellek Türü</b></f:facet> 
-                        #{ekranKarti.ekran_karti_bellek_turu}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Bellek Arayüzü</b></f:facet> 
-                    #{ekranKarti.ekran_karti_bellek_arayuzu}-Bit
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{ekranKarti.ekran_karti_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
+                            #{ekranKarti.ekran_karti_marka}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Serisi</b></f:facet> 
+                            #{ekranKarti.ekran_karti_serisi}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Model</b></f:facet> 
+                            #{ekranKarti.ekran_karti_modeli}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Çekirdek Hızı</b></f:facet> 
+                        #{ekranKarti.ekran_karti_cekirdek_hizi} mHz
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Bellek Boyutu</b></f:facet> 
+                        #{ekranKarti.ekran_karti_bellek_boyutu} GB
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Bellek Türü</b></f:facet> 
+                            #{ekranKarti.ekran_karti_bellek_turu}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Bellek Arayüzü</b></f:facet> 
+                        #{ekranKarti.ekran_karti_bellek_arayuzu}-Bit
+                    </h:column>
 
-                <h:column>
-                    <h:form>
+                    <h:column>
+
                         <h:commandLink action="#{laptopEkranKartiController.updateForm(ekranKarti)}">
-                            <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <h:outputText value="" /> <i class="material-icons text-success">edit</i>
+                            <f:ajax execute="@this" render="ekrankarti-form"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
-                <h:column>
-                    <h:form>
+
+                    </h:column>
+                    <h:column>
+
                         <h:commandLink action="#{laptopEkranKartiController.delete(ekranKarti)}">
                             <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                            <f:ajax execute="@this" render="ekrankarti-form ekrankarti-table"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
+
+                    </h:column>
 
 
 
 
-            </h:dataTable>
-
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

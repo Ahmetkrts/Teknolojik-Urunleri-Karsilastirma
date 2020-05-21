@@ -9,72 +9,75 @@
             <div class="card-header card-header-success">
                 <h4 class="card-title d#{$infix}-inline-flex ">İşlemcler Tablosu</h4>
                 <p class="card-category"> Burası Laptopların İşlemci Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
-            </div>
-            <h:dataTable class="table" value="#{laptopIslemciController.getlaptopIslemciList()}" var="islemci">
+            </div> 
+            <h:form id="islemci-table">
+                <h:dataTable class="table" value="#{laptopIslemciController.getlaptopIslemciList()}" var="islemci">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{islemci.islemci_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
-                        #{islemci.islemci_marka}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Serisi</b></f:facet> 
-                        #{islemci.islemci_serisi} 
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{islemci.islemci_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
+                            #{islemci.islemci_marka}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Serisi</b></f:facet> 
+                            #{islemci.islemci_serisi} 
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Modeli</b></f:facet> 
-                        #{islemci.islemci_modeli} 
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Temel Frekansı</b></f:facet> 
-                    #{islemci.islemci_temel_frekansi} GHz
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Çekirdek Sayısı</b></f:facet> 
-                    #{islemci.cekirdek_sayisi} Çekirdek
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Sanal Çekirdek Sayısı</b></f:facet> 
-                    #{islemci.sanal_cekirdek_sayisi} Çekirdek
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ön Bellek</b></f:facet> 
-                    #{islemci.on_bellek} MB
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Üretim Teknolojisi</b></f:facet> 
-                    #{islemci.uretim_teknolojisi} nm
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">TDP Değeri</b></f:facet> 
-                    #{islemci.tdp_degeri} W
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Modeli</b></f:facet> 
+                            #{islemci.islemci_modeli} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Temel Frekansı</b></f:facet> 
+                        #{islemci.islemci_temel_frekansi} GHz
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Çekirdek Sayısı</b></f:facet> 
+                        #{islemci.cekirdek_sayisi} Çekirdek
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Sanal Çekirdek Sayısı</b></f:facet> 
+                        #{islemci.sanal_cekirdek_sayisi} Çekirdek
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ön Bellek</b></f:facet> 
+                        #{islemci.on_bellek} MB
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Üretim Teknolojisi</b></f:facet> 
+                        #{islemci.uretim_teknolojisi} nm
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">TDP Değeri</b></f:facet> 
+                        #{islemci.tdp_degeri} W
+                    </h:column>
 
 
-                <h:column>
-                    <h:form>
+                    <h:column>
+
                         <h:commandLink action="#{laptopIslemciController.updateForm(islemci)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="islemci-form " />
                         </h:commandLink>
-                    </h:form>
-                </h:column>
-                <h:column>
-                    <h:form>
+
+                    </h:column>
+                    <h:column>
+
                         <h:commandLink action="#{laptopIslemciController.delete(islemci)}">
                             <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                            <f:ajax execute="@this" render="islemci-form islemci-table" />
                         </h:commandLink>
-                    </h:form>
-                </h:column>
+
+                    </h:column>
 
 
 
 
-            </h:dataTable>
-
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

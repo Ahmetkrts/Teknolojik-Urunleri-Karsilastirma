@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DataAccess.laptopEkranDAO;
+import dao.laptopEkranDAO;
 import entity.laptopEkran;
 import java.io.Serializable;
 import java.util.List;
@@ -24,30 +24,29 @@ public class laptopEkranController implements Serializable {
     private laptopEkranDAO laptopEkrandao;
     private laptopEkran laptopEkran;
 
-    public String temizle() {
+    public void temizle() {
         this.laptopEkran = new laptopEkran();
-        return "/module/laptop/ozellik/ozellik.xhtml";
 
     }
 
-    public String delete(laptopEkran ekran) {
+    public void delete(laptopEkran ekran) {
         this.laptopEkrandao.delete(ekran);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String update() {
+    public void update() {
         this.laptopEkrandao.update(this.laptopEkran);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String updateForm(laptopEkran ekran) {
+    public void updateForm(laptopEkran ekran) {
         this.laptopEkran = ekran;
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String create() {
+    public void create() {
         this.laptopEkrandao.insert(this.laptopEkran);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<laptopEkran> getlaptopEkranList() {

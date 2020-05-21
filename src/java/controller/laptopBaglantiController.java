@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DataAccess.laptopBaglantiDAO;
+import dao.laptopBaglantiDAO;
 import entity.laptopBaglanti;
 import java.io.Serializable;
 import java.util.List;
@@ -24,9 +24,9 @@ public class laptopBaglantiController implements Serializable {
     private laptopBaglantiDAO laptopBaglantidao;
     private laptopBaglanti laptopBaglanti;
 
-    public String temizle() {
+    public void temizle() {
         this.laptopBaglanti=new  laptopBaglanti();
-        return "/module/laptop/ozellik/ozellik.xhtml";
+        
 
     }
     public void delete(laptopBaglanti baglanti) {
@@ -43,9 +43,9 @@ public class laptopBaglantiController implements Serializable {
 
     }
 
-    public String create() {
+    public void create() {
         this.laptopBaglantidao.insert(this.laptopBaglanti);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+       temizle();
     }
 
     public List<laptopBaglanti> getlaptopBaglantiList() {

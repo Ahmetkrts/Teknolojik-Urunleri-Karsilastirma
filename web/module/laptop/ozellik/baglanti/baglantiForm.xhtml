@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <div class="col-md-12">
 
         <div class="card">
@@ -11,7 +12,7 @@
                 <p class="card-category">Baglantılara Ekleme veya Güncellme</p>
             </div>
             <div class="card-body">
-                <h:form>
+                <h:form id="baglanti-form">
                     <h:inputHidden value="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id}"/>
                     <div class="row">
                         <div class="col-md-3">
@@ -62,9 +63,15 @@
                     </div>
 
 
-                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}"  value="Temizle" action="#{laptopBaglantiController.temizle()}" />
-                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopBaglantiController.update()}" />
-                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id==null}" class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" />
+                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}"  value="Temizle" action="#{laptopBaglantiController.temizle()}" >
+                                <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopBaglantiController.update()}" >
+                                <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id==null}" class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" >
+                                <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
+                            </h:commandButton>
 
                     <div class="clearfix"></div>
                 </h:form>

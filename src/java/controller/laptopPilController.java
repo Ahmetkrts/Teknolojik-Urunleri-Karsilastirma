@@ -5,7 +5,7 @@
  */
 package controller;
 
-import DataAccess.laptopPilDAO;
+import dao.laptopPilDAO;
 import entity.laptopPil;
 import java.io.Serializable;
 import java.util.List;
@@ -24,30 +24,29 @@ public class laptopPilController implements Serializable {
     private laptopPilDAO laptopPildao;
     private laptopPil laptopPil;
 
-    public String temizle() {
+    public void temizle() {
         this.laptopPil = new laptopPil();
-        return "/module/laptop/ozellik/ozellik.xhtml";
 
     }
 
-    public String delete(laptopPil pil) {
+    public void delete(laptopPil pil) {
         this.laptopPildao.delete(pil);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String update() {
+    public void update() {
         this.laptopPildao.update(this.laptopPil);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String updateForm(laptopPil pil) {
+    public void updateForm(laptopPil pil) {
         this.laptopPil = pil;
-        return "/module/laptop/ozellik/ozellik.xhtml";
+
     }
 
-    public String create() {
+    public void create() {
         this.laptopPildao.insert(this.laptopPil);
-        return "/module/laptop/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<laptopPil> getlaptopPilList() {

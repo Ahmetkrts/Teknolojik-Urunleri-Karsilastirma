@@ -10,45 +10,48 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Pil Tablosu</h4>
                 <p class="card-category"> Burası Laptopların Pil Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{laptopPilController.getlaptopPilList()}" var="pil">
+            <h:form id="pil-table">
+                <h:dataTable class="table" value="#{laptopPilController.getlaptopPilList()}" var="pil">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{pil.pil_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Pil Gücü</b></f:facet> 
-                    #{pil.pil_gucu} Wh
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Pil Hücresi</b></f:facet> 
-                    #{pil.pil_hucre_sayisi} Hücreli
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{pil.pil_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Pil Gücü</b></f:facet> 
+                        #{pil.pil_gucu} Wh
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Pil Hücresi</b></f:facet> 
+                        #{pil.pil_hucre_sayisi} Hücreli
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Pil Özellikleri</b></f:facet> 
-                        #{pil.pil_ozellikleri} 
-                </h:column>
-                <h:column>
-                    <h:form>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Pil Özellikleri</b></f:facet> 
+                            #{pil.pil_ozellikleri} 
+                    </h:column>
+                    <h:column>
+
                         <h:commandLink action="#{laptopPilController.updateForm(pil)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="pil-form pil-table"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
-                <h:column>
-                    <h:form>
+
+                    </h:column>
+                    <h:column>
+
                         <h:commandLink action="#{laptopPilController.delete(pil)}">
                             <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                            <f:ajax execute="@this" render="pil-form pil-table"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
+
+                    </h:column>
 
 
 
 
-            </h:dataTable>
-
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

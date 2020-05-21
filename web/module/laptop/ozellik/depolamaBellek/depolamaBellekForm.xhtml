@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <div class="col-md-12">
@@ -12,7 +13,7 @@
                 <p class="card-category">Depolama ve Belleklere Ekleme veya Güncellme</p>
             </div>
             <div class="card-body">
-                <h:form>
+                <h:form id="depolamabellek-form">
                     <h:inputHidden value="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id}"/>
                     <div class="row">
                         <div class="col-md-3">
@@ -58,9 +59,15 @@
 
 
                   
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopDepolamaBellekController.temizle()}" />
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopDepolamaBellekController.update()}" />
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{laptopDepolamaBellekController.create()}"/>
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopDepolamaBellekController.temizle()}" >
+                                <f:ajax execute="depolamabellek-form" render="depolamabellek-form depolamabellek-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopDepolamaBellekController.update()}" >
+                                <f:ajax execute="depolamabellek-form" render="depolamabellek-form depolamabellek-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{laptopDepolamaBellekController.create()}">
+                                <f:ajax execute="depolamabellek-form" render="depolamabellek-form depolamabellek-table"/>
+                            </h:commandButton>
 
                     <div class="clearfix"></div>
                 </h:form>

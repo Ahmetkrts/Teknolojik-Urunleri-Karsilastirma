@@ -30,10 +30,10 @@ public class laptopController implements Serializable {
     private Long selectPil;
     private Long selectBaglanti;
 
-    public String temizle()
+    public void temizle()
     {
         this.laptop=new laptop();
-        return "module/laptop/laptop.xhtml";
+        
     }
     public void delete(laptop laptop) {
         this.getLaptopdao().delete(laptop);
@@ -52,7 +52,7 @@ public class laptopController implements Serializable {
 
     public void create() {
         this.getLaptopdao().insert(this.laptop, this.selectEkran, this.selectDepolamaBellek, this.selectIslemci, this.selectEkranKarti, this.selectPil, this.selectBaglanti);
-
+        temizle();
     }
 
     public Long getSelectEkran() {

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <div class="col-md-12">
@@ -12,7 +13,7 @@
                 <p class="card-category">Ekran Kartlarına Ekleme veya Güncellme</p>
             </div>
             <div class="card-body">
-                <h:form>
+                <h:form id="ekrankarti-form">
                     <h:inputHidden value="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id}"/>
                     <div class="row">
                         <div class="col-md-4">
@@ -61,9 +62,15 @@
                         </div> 
                     </div>
 
-                    <h:commandButton rendered="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopEkranKartiController.temizle()}" />
-                    <h:commandButton rendered="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopEkranKartiController.update()}" />
-                    <h:commandButton rendered="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranKartiController.create()}" />
+                    <h:commandButton rendered="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopEkranKartiController.temizle()}" >
+                                <f:ajax execute="ekrankarti-form" render="ekrankarti-form ekrankarti-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopEkranKartiController.update()}" >
+                                <f:ajax execute="ekrankarti-form" render="ekrankarti-form ekrankarti-table"/>
+                            </h:commandButton>
+                    <h:commandButton rendered="#{laptopEkranKartiController.getlaptopEkranKarti().ekran_karti_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranKartiController.create()}" >
+                                <f:ajax execute="ekrankarti-form" render="ekrankarti-form ekrankarti-table"/>
+                            </h:commandButton>
 
                     <div class="clearfix"></div>
                 </h:form>
