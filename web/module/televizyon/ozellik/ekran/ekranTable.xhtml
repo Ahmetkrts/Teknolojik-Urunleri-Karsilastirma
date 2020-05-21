@@ -10,48 +10,50 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Ekranlar Tablosu</h4>
                 <p class="card-category"> Burası Televizyonlarin Ekran Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{televizyonEkranController.ekranList}" var="ekran">
+            <h:form id="ekran-table">
+                <h:dataTable class="table" value="#{televizyonEkranController.ekranList}" var="ekran">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{ekran.ekran_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
-                        #{ekran.ekran_boyutu}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Çözünürlüğü</b></f:facet> 
-                        #{ekran.ekran_cozunurlugu}
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{ekran.ekran_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
+                            #{ekran.ekran_boyutu}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Çözünürlüğü</b></f:facet> 
+                            #{ekran.ekran_cozunurlugu}
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Erkan Tipi</b></f:facet> 
-                        #{ekran.ekran_tipi}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">HDR</b></f:facet> 
-                        #{ekran.HDR}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Dayanıklığı</b></f:facet> 
-                        #{ekran.ekran_turu}
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Erkan Tipi</b></f:facet> 
+                            #{ekran.ekran_tipi}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">HDR</b></f:facet> 
+                            #{ekran.HDR}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Dayanıklığı</b></f:facet> 
+                            #{ekran.ekran_turu}
+                    </h:column>
 
 
-                <h:column>
-                    <h:form>
+                    <h:column>
+
                         <h:commandLink action="#{televizyonEkranController.updateForm(ekran)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="ekran-form"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
+
+                    </h:column>
 
 
 
 
-            </h:dataTable>
-
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

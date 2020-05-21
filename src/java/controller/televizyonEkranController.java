@@ -24,28 +24,29 @@ public class televizyonEkranController implements Serializable {
     private televizyonEkranDAO ekrandao;
     private televizyonEkran ekran;
 
-    public String update(){
+    public void update() {
         this.ekrandao.edit(this.ekran);
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+
     }
-    
-    public String delete(){
+
+    public void delete() {
         this.ekrandao.remove(this.ekran);
         this.ekran = null;
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+
     }
-    public String temizle(){
+
+    public void temizle() {
         this.ekran = null;
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void updateForm(televizyonEkran ekran){
+
+    public void updateForm(televizyonEkran ekran) {
         this.ekran = ekran;
     }
-    
-    public String create() {
+
+    public void create() {
         this.getEkrandao().insert(this.ekran);
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<televizyonEkran> getEkranList() {

@@ -23,31 +23,30 @@ public class televizyonIslettimSistemiController implements Serializable {
     private List<televizyonIslettimSistemi> islemtimSistemiList;
     private televizyonIslettimSistemiDAO isletimSistemiDAO;
     private televizyonIslettimSistemi isletimSistemi;
-    
-    
-    public String update() {
+
+    public void update() {
         this.isletimSistemiDAO.edit(this.isletimSistemi);
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+
     }
 
-    public String delete() {
+    public void delete() {
         this.isletimSistemiDAO.remove(this.isletimSistemi);
         this.isletimSistemi = null;
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+
     }
 
-    public String temizle() {
+    public void temizle() {
         this.isletimSistemi = null;
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+
     }
 
     public void updateForm(televizyonIslettimSistemi isletimSistemi) {
         this.isletimSistemi = isletimSistemi;
     }
 
-    public String create() {
+    public void create() {
         this.getIsletimSistemiDAO().insert(this.isletimSistemi);
-        return "/module/televizyon/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<televizyonIslettimSistemi> getIslemtimSistemiList() {

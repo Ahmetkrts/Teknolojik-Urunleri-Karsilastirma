@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <div class="col-md-12">
@@ -12,7 +13,7 @@
                 <p class="card-category">Ekranlara Ekleme veya Güncelleme</p>
             </div>
             <div class="card-body">
-                <h:form>
+                <h:form id="ekran-form">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -50,10 +51,18 @@
                         </div>
                     </div>
                     <div class="btn-group">
-                        <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{televizyonEkranController.temizle()}"/>
-                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{televizyonEkranController.update}" />
-                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Sil" action="#{televizyonEkranController.delete}" />
-                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{televizyonEkranController.create()}" />
+                        <h:commandButton styleClass="btn btn-danger pull-left" value="Temizle" action="#{televizyonEkranController.temizle()}">
+                                <f:ajax execute="@this" render="ekran-form "/>
+                            </h:commandButton>
+                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{televizyonEkranController.update}" >
+                                <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
+                            </h:commandButton>
+                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id != null}" styleClass="btn btn-info pull-right" value="Sil" action="#{televizyonEkranController.delete}" >
+                                <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
+                            </h:commandButton>
+                        <h:commandButton rendered="#{televizyonEkranController.ekran.ekran_id == null}" class="btn btn-success pull-right" value="Kayit Ekle" action="#{televizyonEkranController.create()}" >
+                                <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
+                            </h:commandButton>
                     </div>
                     <div class="clearfix"></div>
                 </h:form>

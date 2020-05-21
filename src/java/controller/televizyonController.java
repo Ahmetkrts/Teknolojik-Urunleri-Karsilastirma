@@ -42,12 +42,13 @@ public class televizyonController implements Serializable {
         this.selectEkran = this.televizyon.getEkran().getEkran_id();
         this.selectIsletimSistemi = this.televizyon.getIsletimsistemi().getIsletim_sistemi_id();
     }
-    public String update(){
+    public void update(){
         this.getTelevizyondao().edit(this.televizyon, this.selectEkran,this.selectIsletimSistemi);
-        return "televizyon";
+        
     }
     public void create()  {
         this.getTelevizyondao().insert(this.televizyon, this.selectEkran,this.selectIsletimSistemi);
+        temizle();
     }
 
     public List<televizyon> getTelevizyon_list() {
