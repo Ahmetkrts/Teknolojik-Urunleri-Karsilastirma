@@ -18,38 +18,39 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class telefonIslemciController implements Serializable{
-    
-    private  List<telefonIslemci> islemciList;
+public class telefonIslemciController implements Serializable {
+
+    private List<telefonIslemci> islemciList;
     private telefonIslemciDAO islemciDao;
     private telefonIslemci islemci;
 
-    public String update(){
+    public void update() {
         this.islemciDao.edit(this.islemci);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void delete(){
+
+    public void delete() {
         this.islemciDao.remove(this.islemci);
         this.islemci = null;
     }
-    public String temizle(){
+
+    public void temizle() {
         this.islemci = null;
-        return "islemciForm";
+
     }
-    
-    public void updateForm(telefonIslemci ekran){
+
+    public void updateForm(telefonIslemci ekran) {
         this.islemci = ekran;
     }
-    
-    public String create()
-    {
+
+    public void create() {
         this.getIslemciDao().insert(this.islemci);
-        
-        return "/module/telefon/ozellik/ozellik.xhtml";
+        temizle();
+
     }
+
     public List<telefonIslemci> getIslemciList() {
-        this.islemciList=this.getIslemciDao().findAll();
+        this.islemciList = this.getIslemciDao().findAll();
         return islemciList;
     }
 
@@ -58,8 +59,8 @@ public class telefonIslemciController implements Serializable{
     }
 
     public telefonIslemciDAO getIslemciDao() {
-        if (this.islemciDao==null) {
-            this.islemciDao=new telefonIslemciDAO();
+        if (this.islemciDao == null) {
+            this.islemciDao = new telefonIslemciDAO();
         }
         return islemciDao;
     }
@@ -69,8 +70,8 @@ public class telefonIslemciController implements Serializable{
     }
 
     public telefonIslemci getIslemci() {
-        if (this.islemci==null) {
-            this.islemci=new telefonIslemci();
+        if (this.islemci == null) {
+            this.islemci = new telefonIslemci();
         }
         return islemci;
     }
@@ -78,5 +79,5 @@ public class telefonIslemciController implements Serializable{
     public void setIslemci(telefonIslemci islemci) {
         this.islemci = islemci;
     }
-    
+
 }

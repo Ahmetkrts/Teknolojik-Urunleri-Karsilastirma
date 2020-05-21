@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.laptopDepolamaBellekDAO;
+import DataAccess.laptopDepolamaBellekDAO;
 import entity.laptopDepolamaBellek;
 import java.io.Serializable;
 import java.util.List;

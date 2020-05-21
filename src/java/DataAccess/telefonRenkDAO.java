@@ -35,6 +35,8 @@ public class telefonRenkDAO {
 
             }
             getConnection().close();
+            st.close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -51,6 +53,8 @@ public class telefonRenkDAO {
             renk.setRenk_id(rs.getLong("renk_id"));
             renk.setRenk_adi(rs.getString("renk_adi"));
             getConnection().close();
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -72,6 +76,8 @@ public class telefonRenkDAO {
 
             }
             getConnection().close();
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -85,7 +91,7 @@ public class telefonRenkDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         this.connection = this.getConnector().Connect();
         return connection;
     }
@@ -94,7 +100,7 @@ public class telefonRenkDAO {
         try {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("insert into telefon_renkleri (renk_adi) values ('" + renk.getRenk_adi() + "')");
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -107,7 +113,7 @@ public class telefonRenkDAO {
             pst.setLong(2, renk.getRenk_id());
             pst.executeUpdate();
             getConnection().close();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -118,6 +124,7 @@ public class telefonRenkDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_renkleri where renk_id=?");
             pst.setLong(1, renk.getRenk_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

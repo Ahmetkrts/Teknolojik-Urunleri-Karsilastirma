@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.televizyonEkran;
 import java.sql.Connection;
@@ -38,6 +38,8 @@ public class televizyonEkranDAO {
             ekran.setEkran_cozunurlugu(rs.getString("ekran_cozunurlugu"));
             ekran.setHDR(rs.getString("HDR"));
             getConnection().close();
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -60,6 +62,8 @@ public class televizyonEkranDAO {
                 ekran_liste.add(tmp);
             }
             getConnection().close();
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -77,7 +81,7 @@ public class televizyonEkranDAO {
             pst.setLong(6, ekran.getEkran_id());
             pst.executeUpdate();
             getConnection().close();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -88,6 +92,7 @@ public class televizyonEkranDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_ekran where ekran_id=?");
             pst.setLong(1, ekran.getEkran_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -101,9 +106,8 @@ public class televizyonEkranDAO {
             pst.setInt(3, ekran.getEkran_boyutu());
             pst.setString(4, ekran.getEkran_cozunurlugu());
             pst.setString(5, ekran.getHDR());
-            
             pst.executeUpdate();
-            
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -116,7 +120,7 @@ public class televizyonEkranDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         this.connection = this.getConnector().Connect();
         return connection;
     }

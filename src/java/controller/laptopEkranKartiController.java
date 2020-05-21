@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.laptopEkranKartiDAO;
+import DataAccess.laptopEkranKartiDAO;
 import entity.laptopEkranKarti;
 import java.io.Serializable;
 import java.util.List;

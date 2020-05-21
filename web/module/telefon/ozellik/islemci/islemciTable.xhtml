@@ -10,65 +10,62 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">İşlemcler Tablosu</h4>
                 <p class="card-category"> Burası Telefonların İşlemci Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{telefonIslemciController.islemciList}" var="islemci">
+            <h:form id="islemci-table">
+                <h:dataTable class="table" value="#{telefonIslemciController.islemciList}" var="islemci">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{islemci.islemci_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Yonga Seti</b></f:facet> 
-                        #{islemci.yonga_seti}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ana İşlemci</b></f:facet> 
-                    #{islemci.ana_islemci} 
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{islemci.islemci_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Yonga Seti</b></f:facet> 
+                            #{islemci.yonga_seti}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ana İşlemci</b></f:facet> 
+                            #{islemci.ana_islemci} 
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">CPU Frekansı</b></f:facet> 
-                    #{islemci.cpu_frekansi} GHz
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">CPU Çekirdeği</b></f:facet> 
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">CPU Frekansı</b></f:facet> 
+                        #{islemci.cpu_frekansi} GHz
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">CPU Çekirdeği</b></f:facet> 
                         #{islemci.cpu_cekirdegi} Çekirdek
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">İşlemci Mimarisi</b></f:facet> 
-                    #{islemci.islemci_mimarisi}-bit
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Birinci Yardımcı İşlemci</b></f:facet> 
-                    #{islemci.birinci_yardimci_islemci} 
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Grafik İşlemcisi(GPU)</b></f:facet> 
-                    #{islemci.grafik_islemcisi_gpu} 
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">GPU Frekansı</b></f:facet> 
-                    #{islemci.gpu_frekansi} MHz
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">CPU Üretim Teknolojisi</b></f:facet> 
-                    #{islemci.cpu_uretim_teknolojisi} nm
-                </h:column>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">İşlemci Mimarisi</b></f:facet> 
+                        #{islemci.islemci_mimarisi}-bit
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Birinci Yardımcı İşlemci</b></f:facet> 
+                            #{islemci.birinci_yardimci_islemci} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Grafik İşlemcisi(GPU)</b></f:facet> 
+                            #{islemci.grafik_islemcisi_gpu} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">GPU Frekansı</b></f:facet> 
+                        #{islemci.gpu_frekansi} MHz
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">CPU Üretim Teknolojisi</b></f:facet> 
+                        #{islemci.cpu_uretim_teknolojisi} nm
+                    </h:column>
 
 
-                <h:column>
-                    <h:form>
+                    <h:column>
+
                         <h:commandLink action="#{telefonIslemciController.updateForm(islemci)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="islemci-form"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
-                
 
-
-
-
-            </h:dataTable>
-
+                    </h:column>           
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

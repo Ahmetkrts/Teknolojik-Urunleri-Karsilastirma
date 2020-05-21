@@ -24,27 +24,28 @@ public class telefonOnKameraController implements Serializable {
     private telefonOnKameraDAO onKameradao;
     private telefonOnKamera onKamera;
 
-    public String update(){
+    public void update() {
         this.onKameradao.edit(this.onKamera);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void delete(){
+
+    public void delete() {
         this.onKameradao.remove(this.onKamera);
         this.onKamera = null;
     }
-    public String temizle(){
+
+    public void temizle() {
         this.onKamera = null;
-        return "onKameraForm";
+
     }
-    
-    public void updateForm(telefonOnKamera onKamera){
+
+    public void updateForm(telefonOnKamera onKamera) {
         this.onKamera = onKamera;
     }
-    
-    public String create() {
+
+    public void create() {
         this.getOnKameradao().insert(this.onKamera);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<telefonOnKamera> getOnKameraList() {

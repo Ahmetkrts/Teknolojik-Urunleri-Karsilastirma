@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
-import dao.televizyonDAO;
+
+import DataAccess.televizyonDAO;
 import entity.televizyon;
 import java.io.Serializable;
 import java.util.List;
@@ -25,29 +26,32 @@ public class televizyonController implements Serializable {
     private Long selectEkran;
     private Long selectIsletimSistemi;
 
-    public void temizle(){
+    public void temizle() {
         this.televizyon = null;
         this.selectEkran = null;
         this.selectIsletimSistemi = null;
     }
-    public void delete(){
+
+    public void delete() {
         this.televizyondao.remove(this.televizyon);
         this.televizyon = null;
         this.selectEkran = null;
         this.selectIsletimSistemi = null;
     }
-    
-    public void updateForm(televizyon tel){
+
+    public void updateForm(televizyon tel) {
         this.televizyon = tel;
         this.selectEkran = this.televizyon.getEkran().getEkran_id();
         this.selectIsletimSistemi = this.televizyon.getIsletimsistemi().getIsletim_sistemi_id();
     }
-    public void update(){
-        this.getTelevizyondao().edit(this.televizyon, this.selectEkran,this.selectIsletimSistemi);
-        
+
+    public void update() {
+        this.getTelevizyondao().edit(this.televizyon, this.selectEkran, this.selectIsletimSistemi);
+
     }
-    public void create()  {
-        this.getTelevizyondao().insert(this.televizyon, this.selectEkran,this.selectIsletimSistemi);
+
+    public void create() {
+        this.getTelevizyondao().insert(this.televizyon, this.selectEkran, this.selectIsletimSistemi);
         temizle();
     }
 
@@ -61,7 +65,7 @@ public class televizyonController implements Serializable {
     }
 
     public televizyonDAO getTelevizyondao() {
-        if(this.televizyondao == null){
+        if (this.televizyondao == null) {
             this.televizyondao = new televizyonDAO();
         }
         return televizyondao;
@@ -72,7 +76,7 @@ public class televizyonController implements Serializable {
     }
 
     public televizyon getTelevizyon() {
-        if(this.televizyon == null){
+        if (this.televizyon == null) {
             this.televizyon = new televizyon();
         }
         return televizyon;
@@ -97,7 +101,5 @@ public class televizyonController implements Serializable {
     public void setSelectIsletimSistemi(Long selectIsletimSistemi) {
         this.selectIsletimSistemi = selectIsletimSistemi;
     }
-
-    
 
 }

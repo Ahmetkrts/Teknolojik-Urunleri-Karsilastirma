@@ -10,58 +10,60 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Arka Kameralar Tablosu</h4>
                 <p class="card-category"> Burası Telefonların Arka Kamera Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{telefonArkaKameraController.arkaKameraList}" var="kamera">
+            <h:form id="arkakamera-table">
+                <h:dataTable class="table" value="#{telefonArkaKameraController.arkaKameraList}" var="kamera">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{kamera.kamera_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Telefon Modeli</b></f:facet> 
-                        #{kamera.telefon_model}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Cözünürlük</b></f:facet> 
-                    #{kamera.kamera_cozunurlugu} MP
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Optik Görüntü Sabitleyici</b></f:facet> 
-                        #{kamera.optik_goruntu_sabitleyici}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Flash</b></f:facet> 
-                        #{kamera.flas}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Diafram Açıklığı</b></f:facet> 
-                    #{kamera.diafram_acikligi} F
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Video Kayıt Çözünürlügü</b></f:facet> 
-                        #{kamera.video_kayit_cozunurlugu}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Video FPS Degeri</b></f:facet> 
-                    #{kamera.video_fps_degeri} FPS
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">İkinci Kamera Çözünürlüğü</b></f:facet> 
-                    #{kamera.iki_kamera_cozunurlugu} MP
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">İkinci kamera Diafram Açıklığı</b></f:facet> 
-                    #{kamera.iki_diafram_acikligi} F
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{kamera.kamera_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Telefon Modeli</b></f:facet> 
+                            #{kamera.telefon_model}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Cözünürlük</b></f:facet> 
+                        #{kamera.kamera_cozunurlugu} MP
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Optik Görüntü Sabitleyici</b></f:facet> 
+                            #{kamera.optik_goruntu_sabitleyici}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Flash</b></f:facet> 
+                            #{kamera.flas}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Diafram Açıklığı</b></f:facet> 
+                        #{kamera.diafram_acikligi} F
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Video Kayıt Çözünürlügü</b></f:facet> 
+                            #{kamera.video_kayit_cozunurlugu}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Video FPS Degeri</b></f:facet> 
+                        #{kamera.video_fps_degeri} FPS
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">İkinci Kamera Çözünürlüğü</b></f:facet> 
+                        #{kamera.iki_kamera_cozunurlugu} MP
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">İkinci kamera Diafram Açıklığı</b></f:facet> 
+                        #{kamera.iki_diafram_acikligi} F
+                    </h:column>
 
-                <h:column>
-                    <h:form>
-                         <h:commandLink action="#{telefonArkaKameraController.updateForm(kamera)}">
+                    <h:column>
+
+                        <h:commandLink action="#{telefonArkaKameraController.updateForm(kamera)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="arkakamera-form"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
-            </h:dataTable>
 
+                    </h:column>
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

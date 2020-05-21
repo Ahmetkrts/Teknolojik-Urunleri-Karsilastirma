@@ -19,35 +19,37 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class telefonIsletimSistemiController implements Serializable {
+
     private List<telefonIsletimSistemi> islemtimSistemiList;
     private telefonIsletimSistemiDAO isletimSistemiDAO;
     private telefonIsletimSistemi isletimSistemi;
-    
-    public String update(){
+
+    public void update() {
         this.isletimSistemiDAO.edit(this.isletimSistemi);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void delete(){
+
+    public void delete() {
         this.isletimSistemiDAO.remove(this.isletimSistemi);
         this.isletimSistemi = null;
     }
-    public String temizle(){
+
+    public void temizle() {
         this.isletimSistemi = null;
-        return "isletimSistemiForm";
+
     }
-    
-    public void updateForm(telefonIsletimSistemi isletimSistemi){
+
+    public void updateForm(telefonIsletimSistemi isletimSistemi) {
         this.isletimSistemi = isletimSistemi;
     }
-    
-    public String create()
-    {
+
+    public void create() {
         this.getIsletimSistemiDAO().insert(this.isletimSistemi);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+        temizle();
     }
+
     public List<telefonIsletimSistemi> getIslemtimSistemiList() {
-        this.islemtimSistemiList=this.getIsletimSistemiDAO().findAll();
+        this.islemtimSistemiList = this.getIsletimSistemiDAO().findAll();
         return islemtimSistemiList;
     }
 
@@ -56,8 +58,8 @@ public class telefonIsletimSistemiController implements Serializable {
     }
 
     public telefonIsletimSistemiDAO getIsletimSistemiDAO() {
-        if (this.isletimSistemiDAO==null) {
-            this.isletimSistemiDAO=new telefonIsletimSistemiDAO();
+        if (this.isletimSistemiDAO == null) {
+            this.isletimSistemiDAO = new telefonIsletimSistemiDAO();
         }
         return isletimSistemiDAO;
     }
@@ -67,8 +69,8 @@ public class telefonIsletimSistemiController implements Serializable {
     }
 
     public telefonIsletimSistemi getIsletimSistemi() {
-        if (this.isletimSistemi==null) {
-            this.isletimSistemi=new telefonIsletimSistemi();
+        if (this.isletimSistemi == null) {
+            this.isletimSistemi = new telefonIsletimSistemi();
         }
         return isletimSistemi;
     }
@@ -76,6 +78,5 @@ public class telefonIsletimSistemiController implements Serializable {
     public void setIsletimSistemi(telefonIsletimSistemi isletimSistemi) {
         this.isletimSistemi = isletimSistemi;
     }
-    
-    
+
 }

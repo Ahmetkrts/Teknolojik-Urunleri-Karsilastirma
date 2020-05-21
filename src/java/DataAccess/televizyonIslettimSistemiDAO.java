@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.televizyonIslettimSistemi;
 import java.sql.Connection;
@@ -33,6 +33,8 @@ public class televizyonIslettimSistemiDAO {
             isletimsistemi.setIsletim_sistemi_id(rs.getLong("isletim_sistemi_id"));
             isletimsistemi.setIsletim_sistemi(rs.getString("isletim_sistemi"));
             getConnection().close();
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -51,7 +53,8 @@ public class televizyonIslettimSistemiDAO {
                 isletimsistemi_liste.add(tmp);
             }
             getConnection().close();
-
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -63,7 +66,7 @@ public class televizyonIslettimSistemiDAO {
             pst.setString(1, isletimSistemi.getIsletim_sistemi());
             pst.setLong(2,isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -74,6 +77,7 @@ public class televizyonIslettimSistemiDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_isletim_sistemi where isletim_sistemi_id=?");
             pst.setLong(1, isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -86,7 +90,7 @@ public class televizyonIslettimSistemiDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         this.connection = this.getConnector().Connect();
         return connection;
     }
@@ -95,7 +99,7 @@ public class televizyonIslettimSistemiDAO {
         try {
             Statement st = getConnection().createStatement();
             st.executeUpdate("insert into televizyon_isletim_sistemi (isletim_sistemi) values ('" + isletimSistemi.getIsletim_sistemi() + "')");
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

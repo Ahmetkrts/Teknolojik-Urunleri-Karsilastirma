@@ -124,7 +124,7 @@ public class laptopIslemciDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         if (this.connection == null) {
             this.connection = this.getConnector().Connect();
         }

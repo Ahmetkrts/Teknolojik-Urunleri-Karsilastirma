@@ -33,7 +33,7 @@ public class telefonController implements Serializable {
     private Long selectIsletimSistemi;
     private List<Long> selectRenkList;
 
-    public String temizle(){
+    public void temizle() {
         this.telefon = null;
         this.selectEkran = null;
         this.selectArkaKamera = null;
@@ -42,9 +42,10 @@ public class telefonController implements Serializable {
         this.selectOnKamera = null;
         this.selectBatarya = null;
         this.selectRenkList = null;
-        return "telefon";
+
     }
-    public void delete(){
+
+    public void delete() {
         this.telefondao.remove(this.telefon);
         this.telefon = null;
         this.selectEkran = null;
@@ -55,8 +56,8 @@ public class telefonController implements Serializable {
         this.selectBatarya = null;
         this.selectRenkList = null;
     }
-    
-    public void updateForm(telefon tel){
+
+    public void updateForm(telefon tel) {
         this.telefon = tel;
         this.selectEkran = this.telefon.getEkran().getEkran_id();
         this.selectArkaKamera = this.telefon.getArkaKamera().getKamera_id();
@@ -65,17 +66,19 @@ public class telefonController implements Serializable {
         this.selectOnKamera = this.telefon.getOnKamera().getKamera_id();
         this.selectBatarya = this.telefon.getBatarya().getBatarya_id();
         this.selectRenkList = new ArrayList<>();
-        for (telefonRenk renk : this.telefon.getRenk()){
+        for (telefonRenk renk : this.telefon.getRenk()) {
             this.selectRenkList.add(renk.getRenk_id());
         }
     }
-    public String update(){
-        this.getTelefondao().edit(this.telefon, this.selectEkran,this.selectBatarya,this.selectIslemci,this.selectArkaKamera,this.selectOnKamera,this.selectIsletimSistemi,this.selectRenkList);
-        return "telefon";
+
+    public void update() {
+        this.getTelefondao().edit(this.telefon, this.selectEkran, this.selectBatarya, this.selectIslemci, this.selectArkaKamera, this.selectOnKamera, this.selectIsletimSistemi, this.selectRenkList);
+
     }
-    public void create()  {
-        this.getTelefondao().insert(this.telefon, this.selectEkran,this.selectBatarya,this.selectIslemci,this.selectArkaKamera,this.selectOnKamera,this.selectIsletimSistemi,this.selectRenkList);
-        
+
+    public void create() {
+        this.getTelefondao().insert(this.telefon, this.selectEkran, this.selectBatarya, this.selectIslemci, this.selectArkaKamera, this.selectOnKamera, this.selectIsletimSistemi, this.selectRenkList);
+        temizle();
     }
 
     public List<telefon> getTelefon_list() {
@@ -156,7 +159,8 @@ public class telefonController implements Serializable {
     public void setSelectIsletimSistemi(Long selectIsletimSistemi) {
         this.selectIsletimSistemi = selectIsletimSistemi;
     }
-     public List<Long> getSelectRenkList() {
+
+    public List<Long> getSelectRenkList() {
         return selectRenkList;
     }
 

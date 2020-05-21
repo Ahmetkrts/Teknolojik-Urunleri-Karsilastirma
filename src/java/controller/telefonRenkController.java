@@ -18,39 +18,41 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class telefonRenkController implements Serializable{
-    private  List<telefonRenk> renkList;
+public class telefonRenkController implements Serializable {
+
+    private List<telefonRenk> renkList;
     private telefonRenkDAO renkDAO;
     private telefonRenk renk;
 
-    public String update(){
+    public void update() {
         this.renkDAO.edit(this.renk);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void delete(){
+
+    public void delete() {
         this.renkDAO.remove(this.renk);
         this.renk = null;
     }
-    public String temizle(){
+
+    public void temizle() {
         this.renk = null;
-        return "onKameraForm";
+
     }
-    
-    public void updateForm(telefonRenk renk){
+
+    public void updateForm(telefonRenk renk) {
         this.renk = renk;
     }
-    
-    public String create()
-    {
-       
+
+    public void create() {
+
         this.getRenkDAO().insert(this.renk);
-        
-        return "/module/telefon/ozellik/ozellik.xhtml";
+        temizle();
+
     }
+
     public List<telefonRenk> getRenkList() {
-        this.renkList=this.getRenkDAO().findAll();
-               
+        this.renkList = this.getRenkDAO().findAll();
+
         return renkList;
     }
 
@@ -59,8 +61,8 @@ public class telefonRenkController implements Serializable{
     }
 
     public telefonRenkDAO getRenkDAO() {
-        if (this.renkDAO==null) {
-            this.renkDAO=new telefonRenkDAO();
+        if (this.renkDAO == null) {
+            this.renkDAO = new telefonRenkDAO();
         }
         return renkDAO;
     }
@@ -70,8 +72,8 @@ public class telefonRenkController implements Serializable{
     }
 
     public telefonRenk getRenk() {
-        if (this.renk==null) {
-            this.renk=new telefonRenk();
+        if (this.renk == null) {
+            this.renk = new telefonRenk();
         }
         return renk;
     }
@@ -79,5 +81,5 @@ public class telefonRenkController implements Serializable{
     public void setRenk(telefonRenk renk) {
         this.renk = renk;
     }
-    
+
 }

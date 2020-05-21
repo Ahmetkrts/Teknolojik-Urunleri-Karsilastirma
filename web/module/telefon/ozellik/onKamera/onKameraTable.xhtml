@@ -10,49 +10,51 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Ön Kameralar Tablosu</h4>
                 <p class="card-category"> Burası Telefonların Ön Kamera Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{telefonOnKameraController.onKameraList}" var="kamera">
+            <h:form id="onkamera-table">
+                <h:dataTable class="table" value="#{telefonOnKameraController.onKameraList}" var="kamera">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{kamera.kamera_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Telefon Modeli</b></f:facet> 
-                        #{kamera.telefon_model}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Cözünürlük</b></f:facet> 
-                    #{kamera.kamera_cozunurlugu} MP
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{kamera.kamera_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Telefon Modeli</b></f:facet> 
+                            #{kamera.telefon_model}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Cözünürlük</b></f:facet> 
+                        #{kamera.kamera_cozunurlugu} MP
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Diafram Açıklığı</b></f:facet> 
-                    #{kamera.diafram_acikligi} F
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Video Kayıt Çözünürlügü</b></f:facet> 
-                        #{kamera.video_cozunurlugu}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Video FPS Degeri</b></f:facet> 
-                    #{kamera.video_fps_degeri} FPS
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Diafram Açıklığı</b></f:facet> 
+                        #{kamera.diafram_acikligi} F
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Video Kayıt Çözünürlügü</b></f:facet> 
+                            #{kamera.video_cozunurlugu}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Video FPS Degeri</b></f:facet> 
+                        #{kamera.video_fps_degeri} FPS
+                    </h:column>
 
 
-                <h:column>
-                    <h:form>
+                    <h:column>
+
                         <h:commandLink action="#{telefonOnKameraController.updateForm(kamera)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="onkamera-form"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
+
+                    </h:column>
 
 
 
 
 
-            </h:dataTable>
-
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

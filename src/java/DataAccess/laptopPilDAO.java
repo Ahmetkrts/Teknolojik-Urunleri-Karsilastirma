@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.laptopPil;
 import java.sql.Connection;
@@ -86,7 +86,7 @@ public class laptopPilDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         this.connection = this.getConnector().Connect();
         return connection;
     }

@@ -10,34 +10,36 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">İşletim Sistemi Tablosu</h4>
                 <p class="card-category"> Burası Telefonların İşleim sistemi Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{telefonIsletimSistemiController.islemtimSistemiList}" var="isletimSistemi">
+            <h:form id="isletimsistemi-table">
+                <h:dataTable class="table" value="#{telefonIsletimSistemiController.islemtimSistemiList}" var="isletimSistemi">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{isletimSistemi.isletim_sistemi_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">İşletim Sistemi Versiyonu </b></f:facet> 
-                        #{isletimSistemi.isletim_sistemi_versiyon}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">İşletim Sistemi</b></f:facet> 
-                        #{isletimSistemi.isletim_sistemi} 
-                </h:column>
-                <h:column>
-                    <h:form>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{isletimSistemi.isletim_sistemi_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">İşletim Sistemi Versiyonu </b></f:facet> 
+                            #{isletimSistemi.isletim_sistemi_versiyon}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">İşletim Sistemi</b></f:facet> 
+                            #{isletimSistemi.isletim_sistemi} 
+                    </h:column>
+                    <h:column>
+
                         <h:commandLink action="#{telefonIsletimSistemiController.updateForm(isletimSistemi)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                            <f:ajax execute="@this" render="isletimsistemi-form"/>
                         </h:commandLink>
-                    </h:form>
-                </h:column>
-                
+
+                    </h:column>
 
 
 
 
-            </h:dataTable>
 
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

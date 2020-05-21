@@ -5,11 +5,10 @@
  */
 package dao;
 
+import DataAccess.laptopDepolamaBellekDAO;
+import DataAccess.laptopEkranDAO;
+import DataAccess.laptopEkranKartiDAO;
 import entity.laptop;
-import entity.laptopDepolamaBellek;
-import entity.laptopEkran;
-import entity.laptopEkranKarti;
-import entity.laptopIslemci;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -107,7 +106,7 @@ public class laptopDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         if (this.connection == null) {
             this.connection = this.getConnector().Connect();
         }

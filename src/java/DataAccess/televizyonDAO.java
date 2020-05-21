@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.televizyon;
 import java.sql.Connection;
@@ -50,6 +50,8 @@ public class televizyonDAO {
                 tmp.setTelevizyon_yenileme_hizi(rs.getInt("televizyon_yenileme_hizi"));
                 tmp.setTelevizyon_hd_uydu_alici(rs.getString("televizyon_hd_uydu_alici"));
                 televizyon_list.add(tmp);
+                st.close();
+                rs.close();
             }
             getConnection().close();
 
@@ -79,7 +81,7 @@ public class televizyonDAO {
             pst.setString(15, televizyon.getTelevizyon_hd_uydu_alici());
             pst.executeUpdate();
             getConnection().close();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -106,7 +108,7 @@ public class televizyonDAO {
             pst.setLong(16, televizyon.getTelevizyon_id());
             pst.executeUpdate();
             getConnection().close();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -116,7 +118,7 @@ public class televizyonDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon where televizyon_id=?");
             pst.setLong(1, televizyon.getTelevizyon_id());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -143,7 +145,7 @@ public class televizyonDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         this.connection = this.getConnector().Connect();
         return connection;
     }

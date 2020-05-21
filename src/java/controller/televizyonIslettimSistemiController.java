@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.televizyonIslettimSistemiDAO;
+import DataAccess.televizyonIslettimSistemiDAO;
 import entity.televizyonIslettimSistemi;
 import java.io.Serializable;
 import java.util.List;

@@ -18,38 +18,38 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class telefonBataryaController implements Serializable{
-    
+public class telefonBataryaController implements Serializable {
+
     private List<telefonBatarya> bataryaList;
     private telefonBataryaDAO bataryaDao;
     private telefonBatarya batarya;
-    
-    public String update(){
+
+    public void update() {
         this.bataryaDao.edit(this.batarya);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void delete(){
+
+    public void delete() {
         this.bataryaDao.remove(this.batarya);
         this.batarya = null;
     }
-    public String temizle(){
+
+    public void temizle() {
         this.batarya = null;
-        return "bataryaForm";
+
     }
-    
-    public void updateForm(telefonBatarya batarya){
+
+    public void updateForm(telefonBatarya batarya) {
         this.batarya = batarya;
     }
-    
-    
-    public String create()
-    {
+
+    public void create() {
         this.getBataryaDao().insert(this.batarya);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+        temizle();
     }
+
     public List<telefonBatarya> getBataryaList() {
-        this.bataryaList=this.getBataryaDao().findAll();
+        this.bataryaList = this.getBataryaDao().findAll();
         return bataryaList;
     }
 
@@ -58,8 +58,8 @@ public class telefonBataryaController implements Serializable{
     }
 
     public telefonBataryaDAO getBataryaDao() {
-        if (this.bataryaDao==null) {
-            this.bataryaDao=new telefonBataryaDAO();
+        if (this.bataryaDao == null) {
+            this.bataryaDao = new telefonBataryaDAO();
         }
         return bataryaDao;
     }
@@ -69,8 +69,8 @@ public class telefonBataryaController implements Serializable{
     }
 
     public telefonBatarya getBatarya() {
-        if (this.batarya==null) {
-            this.batarya=new telefonBatarya();
+        if (this.batarya == null) {
+            this.batarya = new telefonBatarya();
         }
         return batarya;
     }
@@ -78,6 +78,5 @@ public class telefonBataryaController implements Serializable{
     public void setBatarya(telefonBatarya batarya) {
         this.batarya = batarya;
     }
-    
-    
+
 }

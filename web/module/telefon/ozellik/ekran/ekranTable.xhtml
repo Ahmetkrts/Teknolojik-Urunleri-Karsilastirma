@@ -10,48 +10,46 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Ekranlar Tablosu</h4>
                 <p class="card-category"> Burası Telefonların Ekran Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{telefonEkranController.ekranList}" var="ekran">
+            <h:form id="ekran-table">
+                <h:dataTable class="table" value="#{telefonEkranController.ekranList}" var="ekran">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{ekran.ekran_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
-                        #{ekran.ekran_boyutu}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Teknolojisi</b></f:facet> 
-                        #{ekran.ekran_teknolojisi} 
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{ekran.ekran_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
+                            #{ekran.ekran_boyutu}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Teknolojisi</b></f:facet> 
+                            #{ekran.ekran_teknolojisi} 
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Erkan Çözünürlüğü</b></f:facet> 
-                        #{ekran.ekran_cozunurlugu} 
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Piksel Yoğunlugu</b></f:facet> 
-                        #{ekran.piksel_yogunlugu}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Dayanıklığı</b></f:facet> 
-                        #{ekran.ekran_dayanikliligi} 
-                </h:column>
-
-
-                <h:column>
-                    <h:form>
-                        <h:commandLink action="#{telefonEkranController.updateForm(ekran)}">
-                            <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
-                        </h:commandLink>
-                    </h:form>
-                </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Erkan Çözünürlüğü</b></f:facet> 
+                            #{ekran.ekran_cozunurlugu} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Piksel Yoğunlugu</b></f:facet> 
+                            #{ekran.piksel_yogunlugu}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Dayanıklığı</b></f:facet> 
+                            #{ekran.ekran_dayanikliligi} 
+                    </h:column>
 
 
+                    <h:column>
+                        
+                            <h:commandLink action="#{telefonEkranController.updateForm(ekran)}">
+                                <h:outputText value="" /> <i class="material-icons text-success">edit</i>
+                                <f:ajax execute="@this" render="ekran-form"/>
+                            </h:commandLink>
 
-
-            </h:dataTable>
-
+                    </h:column>
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

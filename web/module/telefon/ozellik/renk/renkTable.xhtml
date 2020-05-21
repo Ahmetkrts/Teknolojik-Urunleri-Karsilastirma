@@ -10,30 +10,32 @@
                 <h4 class="card-title d#{$infix}-inline-flex ">Renk Tablosu</h4>
                 <p class="card-category"> Burası Telefonların Renk Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
-            <h:dataTable class="table" value="#{telefonRenkController.renkList}" var="renk">
+            <h:form id="renk-table">
+                <h:dataTable class="table" value="#{telefonRenkController.renkList}" var="renk">
 
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{renk.renk_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Renk Adı</b></f:facet> 
-                        #{renk.renk_adi}
-                </h:column>
-                
-                <h:column>
-                    <h:form>
-                        <h:commandLink action="#{telefonRenkController.updateForm(renk)}">
-                            <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
-                        </h:commandLink>
-                    </h:form>
-                </h:column>
-              
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{renk.renk_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Renk Adı</b></f:facet> 
+                            #{renk.renk_adi}
+                    </h:column>
+
+                    <h:column>
+                     
+                            <h:commandLink action="#{telefonRenkController.updateForm(renk)}">
+                                <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
+                                <f:ajax execute="@this" render="renk-form"/>
+                            </h:commandLink>
+
+                    </h:column>
 
 
 
-            </h:dataTable>
 
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

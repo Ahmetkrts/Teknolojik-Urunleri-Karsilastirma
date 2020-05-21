@@ -24,27 +24,28 @@ public class telefonEkranController implements Serializable {
     private telefonEkranDAO ekrandao;
     private telefonEkran ekran;
 
-    public String update(){
+    public void update() {
         this.ekrandao.edit(this.ekran);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+
     }
-    
-    public void delete(){
+
+    public void delete() {
         this.ekrandao.remove(this.ekran);
         this.ekran = null;
     }
-    public String temizle(){
+
+    public void temizle() {
         this.ekran = null;
-        return "ekranForm";
+
     }
-    
-    public void updateForm(telefonEkran ekran){
+
+    public void updateForm(telefonEkran ekran) {
         this.ekran = ekran;
     }
-    
-    public String create() {
+
+    public void create() {
         this.getEkrandao().insert(this.ekran);
-        return "/module/telefon/ozellik/ozellik.xhtml";
+        temizle();
     }
 
     public List<telefonEkran> getEkranList() {

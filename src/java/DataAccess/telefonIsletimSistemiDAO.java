@@ -35,6 +35,8 @@ public class telefonIsletimSistemiDAO {
             isletimsistemi.setIsletim_sistemi_versiyon(rs.getString("isletim_sistemi_versiyon"));
             isletimsistemi.setIsletim_sistemi(rs.getString("isletim_sistemi"));
             getConnection().close();
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -55,7 +57,8 @@ public class telefonIsletimSistemiDAO {
                 isletimsistemi_liste.add(tmp);
             }
             getConnection().close();
-
+            rs.close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -69,6 +72,7 @@ public class telefonIsletimSistemiDAO {
             pst.setLong(3,isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
             getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -80,6 +84,7 @@ public class telefonIsletimSistemiDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_isletimsistemi where isletim_sistemi_id=?");
             pst.setLong(1, isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -92,7 +97,7 @@ public class telefonIsletimSistemiDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         this.connection = this.getConnector().Connect();
         return connection;
     }
@@ -102,7 +107,7 @@ public class telefonIsletimSistemiDAO {
             Statement st = getConnection().createStatement();
             st.executeUpdate("insert into telefon_isletimsistemi (isletim_sistemi_versiyon,isletim_sistemi) values ('" + isletimSistemi.getIsletim_sistemi_versiyon() + "',"
                     + "'" + isletimSistemi.getIsletim_sistemi() + "')");
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DataAccess;
 
 import entity.laptopEkran;
 import java.sql.Connection;
@@ -111,7 +111,7 @@ public class laptopEkranDAO {
         return connector;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
         if (this.connection == null) {
             this.connection = this.getConnector().Connect();
         }

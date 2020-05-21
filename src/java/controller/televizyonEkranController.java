@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.televizyonEkranDAO;
+import DataAccess.televizyonEkranDAO;
 import entity.televizyonEkran;
 import java.io.Serializable;
 import java.util.List;
@@ -47,6 +47,7 @@ public class televizyonEkranController implements Serializable {
     public void create() {
         this.getEkrandao().insert(this.ekran);
         temizle();
+
     }
 
     public List<televizyonEkran> getEkranList() {
