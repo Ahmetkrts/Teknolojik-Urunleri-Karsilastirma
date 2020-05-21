@@ -1,6 +1,6 @@
 <h1>GRUP ÜYELERİ</h1>
 
-<li>AHMET KARATAŞ	02180201099(Casper ahmettkrtss)</li> 
+<li>AHMET KARATAŞ	02180201099(Casper Ahmetkrts)</li> 
 <li>BEYAZIT BESTAMİ SARIKAYA	02180201028 (techn BBestamiS)</li>
 <li>ENES ÇOPOĞLU	02180201097</li><br>
 <h4>TEKNOLOJİK ÜRÜNLERİ İNCELEME SİTESİ</h4>
