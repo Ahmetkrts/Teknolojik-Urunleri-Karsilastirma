@@ -7,6 +7,7 @@ package DataAccess;
 
 import entity.laptopBaglanti;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,39 +23,26 @@ public class laptopBaglantiDAO {
 
     private Connector connector;
     private Connection connection;
-    public void delete(laptopBaglanti laptopBaglanti) {
+
+    public laptopBaglanti find(Long id) {
+        laptopBaglanti baglanti = null;
         try {
-
             Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE FROM laptop_baglanti WHERE baglanti_id="+laptopBaglanti.getBaglanti_id());
-            st.close();
+            ResultSet rs = st.executeQuery("select * from laptop_baglanti where baglanti_id=" + id);
+            rs.next();
+            baglanti = new laptopBaglanti();
+            baglanti.setBaglanti_id(rs.getLong("baglanti_id"));
+            baglanti.setUsb3x_adeti(rs.getInt("usb3x_adeti"));
+            baglanti.setUsbtypec_adeti(rs.getInt("usbtypec_adeti"));
+            baglanti.setHdmi_ozellikleri(rs.getString("hdmi_ozellikleri"));
+            baglanti.setBluetooth_ozellikleri(rs.getString("bluetooth_ozellikleri"));
+            baglanti.setEthernet_ozellikleri(rs.getString("ethernet_ozellikleri"));
+            baglanti.setWifi_ozellikleri(rs.getString("wifi_ozellikleri"));
+            getConnection().close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "baglantiDAO 2");
+            System.out.println(e.getMessage());
         }
-    }
-    public void update(laptopBaglanti laptopBaglanti) {
-        try {
-
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("Update laptop_baglanti SET usb3x_adeti=" + laptopBaglanti.getUsb3x_adeti() + ", usbtypec_adeti=" + laptopBaglanti.getUsbtypec_adeti() + ", hdmi_ozellikleri='" + laptopBaglanti.getHdmi_ozellikleri() + "'"
-                    + ", bluetooth_ozellikleri='" + laptopBaglanti.getBluetooth_ozellikleri() + "', ethernet_ozellikleri='" + laptopBaglanti.getEthernet_ozellikleri() + "', wifi_ozellikleri='" + laptopBaglanti.getWifi_ozellikleri() + "' WHERE baglanti_id="+laptopBaglanti.getBaglanti_id());
-            st.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage() + "baglantiDAO 2");
-        }
-    }
-
-    public void insert(laptopBaglanti laptopBaglanti) {
-        try {
-
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("INSERT INTO laptop_baglanti (usb3x_adeti, usbtypec_adeti, hdmi_ozellikleri, bluetooth_ozellikleri, ethernet_ozellikleri, wifi_ozellikleri) VALUES"
-                    + "	(" + laptopBaglanti.getUsb3x_adeti() + ", " + laptopBaglanti.getUsbtypec_adeti() + ",' " + laptopBaglanti.getHdmi_ozellikleri() + "', '" + laptopBaglanti.getBluetooth_ozellikleri() + "',"
-                    + " '" + laptopBaglanti.getEthernet_ozellikleri() + "', '" + laptopBaglanti.getWifi_ozellikleri() + "')");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage() + "baglantiDAO 2");
-        }
+        return baglanti;
     }
 
     public List<laptopBaglanti> findAll() {
@@ -74,12 +62,52 @@ public class laptopBaglantiDAO {
                 baglanti_liste.add(tmp);
 
             }
-            st.close();
-
+            getConnection().close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "baglantiDAO ");
         }
         return baglanti_liste;
+    }
+
+    public void remove(laptopBaglanti laptopBaglanti) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_baglanti where baglanti_id=?");
+            pst.setLong(1, laptopBaglanti.getBaglanti_id());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void edit(laptopBaglanti laptopBaglanti) {
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop_baglanti set usb3x_adeti=?,usbtypec_adeti=?,hdmi_ozellikleri=?,bluetooth_ozellikleri=?,ethernet_ozellikleri=?,wifi_ozellikleri=? where baglanti_id=?");
+            pst.setInt(1, laptopBaglanti.getUsb3x_adeti());
+            pst.setInt(2, laptopBaglanti.getUsbtypec_adeti());
+            pst.setString(3, laptopBaglanti.getHdmi_ozellikleri());
+            pst.setString(4, laptopBaglanti.getBluetooth_ozellikleri());
+            pst.setString(5, laptopBaglanti.getEthernet_ozellikleri());
+            pst.setString(6, laptopBaglanti.getWifi_ozellikleri());
+            pst.setLong(7, laptopBaglanti.getBaglanti_id());
+            pst.executeUpdate();
+            getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insert(laptopBaglanti laptopBaglanti) {
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("insert into laptop_baglanti (usb3x_adeti, usbtypec_adeti, hdmi_ozellikleri, bluetooth_ozellikleri, ethernet_ozellikleri, wifi_ozellikleri) values"
+                    + "	(" + laptopBaglanti.getUsb3x_adeti() + ", " + laptopBaglanti.getUsbtypec_adeti() + ",' " + laptopBaglanti.getHdmi_ozellikleri() + "', '" + laptopBaglanti.getBluetooth_ozellikleri() + "',"
+                    + " '" + laptopBaglanti.getEthernet_ozellikleri() + "', '" + laptopBaglanti.getWifi_ozellikleri() + "')");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "baglantiDAO 2");
+        }
     }
 
     public Connector getConnector() {
@@ -93,5 +121,7 @@ public class laptopBaglantiDAO {
         this.connection = this.getConnector().Connect();
         return connection;
     }
+
+    
 
 }

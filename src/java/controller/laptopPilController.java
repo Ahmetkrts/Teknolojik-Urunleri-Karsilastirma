@@ -5,7 +5,9 @@
  */
 package controller;
 
+import DataAccess.laptopEkranKartiDAO;
 import DataAccess.laptopPilDAO;
+import entity.laptopEkranKarti;
 import entity.laptopPil;
 import java.io.Serializable;
 import java.util.List;
@@ -21,62 +23,61 @@ import javax.inject.Named;
 public class laptopPilController implements Serializable {
 
     private List<laptopPil> laptopPilList;
-    private laptopPilDAO laptopPildao;
+    private laptopPilDAO laptopPilDAO;
     private laptopPil laptopPil;
 
-    public void temizle() {
-        this.laptopPil = new laptopPil();
-
-    }
-
-    public void delete(laptopPil pil) {
-        this.laptopPildao.delete(pil);
-
-    }
-
     public void update() {
-        this.laptopPildao.update(this.laptopPil);
-
+        this.laptopPilDAO.edit(this.laptopPil);
     }
 
-    public void updateForm(laptopPil pil) {
-        this.laptopPil = pil;
+    public void delete(laptopPil laptopPil) {
+        this.laptopPilDAO.remove(laptopPil);
+        this.laptopPil = null;
+    }
 
+    public void temizle() {
+        this.laptopPil = null;
+    }
+
+    public void updateForm(laptopPil bag) {
+        this.laptopPil = bag;
     }
 
     public void create() {
-        this.laptopPildao.insert(this.laptopPil);
+        this.laptopPilDAO.insert(this.laptopPil);
         temizle();
     }
 
-    public List<laptopPil> getlaptopPilList() {
-        this.laptopPilList = this.getlaptopPildao().findAll();
+    public List<laptopPil> getLaptopPilList() {
+        this.laptopPilList = this.getLaptopPilDAO().findAll();
         return laptopPilList;
     }
 
-    public void setlaptopPilList(List<laptopPil> laptopPilList) {
+    public void setLaptopPilList(List<laptopPil> laptopPilList) {
         this.laptopPilList = laptopPilList;
     }
 
-    public laptopPilDAO getlaptopPildao() {
-        if (this.laptopPildao == null) {
-            this.laptopPildao = new laptopPilDAO();
+    public laptopPilDAO getLaptopPilDAO() {
+        if(this.laptopPilDAO == null){
+            this.laptopPilDAO = new laptopPilDAO();
         }
-        return laptopPildao;
+        return laptopPilDAO;
     }
 
-    public void setlaptopPildao(laptopPilDAO laptopPildao) {
-        this.laptopPildao = laptopPildao;
+    public void setLaptopPilDAO(laptopPilDAO laptopPilDAO) {
+        this.laptopPilDAO = laptopPilDAO;
     }
 
-    public laptopPil getlaptopPil() {
-        if (this.laptopPil == null) {
+    public laptopPil getLaptopPil() {
+        if(this.laptopPil == null){
             this.laptopPil = new laptopPil();
         }
         return laptopPil;
     }
 
-    public void setlaptopPil(laptopPil laptopPil) {
+    public void setLaptopPil(laptopPil laptopPil) {
         this.laptopPil = laptopPil;
     }
+
+
 }

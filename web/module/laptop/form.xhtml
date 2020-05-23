@@ -12,7 +12,6 @@
             </div>
             <div class="card-body">
                 <h:form id="laptop-form">
-                    <h:inputHidden value="#{laptopController.laptop.laptop_id}"/>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -56,8 +55,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectEkran" class="bmd-label-floating">Ekran Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{laptopController.selectEkran}">
-                                    <f:selectItems value="#{laptopEkranController.getlaptopEkranList()}" var="ekran" itemValue="#{ekran.ekran_id}" itemLabel="#{ekran.ekran_boyutu} Inç  - #{ekran.ekran_cozunurlugu}" />
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{laptopController.laptop.ekran}" converter="lapEkranConverter">
+                                    <f:selectItems value="#{laptopEkranController.laptopEkranList}" var="ekran" itemValue="#{ekran}" itemLabel="#{ekran.ekran_boyutu} Inç  - #{ekran.ekran_cozunurlugu}" />
                                 </h:selectOneMenu>
                             </div>
                         </div>
@@ -90,8 +89,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectDepolamaBellek" class="bmd-label-floating">Depolama ve Bellek Seçimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectDepolamaBellek" value="#{laptopController.selectDepolamaBellek}">
-                                    <f:selectItems value="#{laptopDepolamaBellekController.getlaptopDepolamaBellekList()}" var="depolamaBellek" itemValue="#{depolamaBellek.depolama_bellek_id}" itemLabel="#{depolamaBellek.bellek_boyutu} GB Ram - #{depolamaBellek.sabit_disk_boyutu} GB HDD - #{depolamaBellek.ssd_boyutu} GB SSD"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectDepolamaBellek" value="#{laptopController.laptop.depolama_bellek}" converter="lapDepolamaBellekConverter">
+                                    <f:selectItems value="#{laptopDepolamaBellekController.laptopDepolamaBellekList}" var="depolamaBellek" itemValue="#{depolamaBellek}" itemLabel="#{depolamaBellek.bellek_boyutu} GB Ram - #{depolamaBellek.sabit_disk_boyutu} GB HDD - #{depolamaBellek.ssd_boyutu} GB SSD"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
@@ -101,46 +100,43 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectIslemci" class="bmd-label-floating">İşlemci Seçimi</label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectIslemci" value="#{laptopController.selectIslemci}">
-                                    <f:selectItems value="#{laptopIslemciController.getlaptopIslemciList()}" var="islemci" itemValue="#{islemci.islemci_id}" itemLabel="#{islemci.islemci_modeli} - #{islemci.islemci_temel_frekansi} Ghz"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectIslemci" value="#{laptopController.laptop.islemci}" converter="lapIslemciConverter">
+                                    <f:selectItems value="#{laptopIslemciController.laptopIslemciList}" var="islemci" itemValue="#{islemci}" itemLabel="#{islemci.islemci_modeli} - #{islemci.islemci_temel_frekansi} Ghz"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectEkranKarti" class="bmd-label-floating">Ekran Kartı Seçimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkranKarti" value="#{laptopController.selectEkranKarti}">
-                                    <f:selectItems value="#{laptopEkranKartiController.getlaptopEkranKartiList()}" var="ekranKarti" itemValue="#{ekranKarti.ekran_karti_id}" itemLabel="#{ekranKarti.ekran_karti_modeli} - #{ekranKarti.ekran_karti_bellek_boyutu} GB VRam"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkranKarti" value="#{laptopController.laptop.ekran_karti}" converter="lapEkranKartiConverter">
+                                    <f:selectItems value="#{laptopEkranKartiController.laptopEkranKartiList}" var="ekranKarti" itemValue="#{ekranKarti}" itemLabel="#{ekranKarti.ekran_karti_modeli} - #{ekranKarti.ekran_karti_bellek_boyutu} GB VRam"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectPil" class="bmd-label-floating">Pil Seçimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectPil" value="#{laptopController.selectPil}">
-                                    <f:selectItems value="#{laptopPilController.getlaptopPilList()}" var="pil" itemValue="#{pil.pil_id}" itemLabel="#{pil.pil_gucu} Wh - #{pil.pil_ozellikleri}"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectPil" value="#{laptopController.laptop.pil}" converter="lapPilConverter">
+                                    <f:selectItems value="#{laptopPilController.laptopPilList}" var="pil" itemValue="#{pil}" itemLabel="#{pil.pil_gucu} Wh - #{pil.pil_ozellikleri}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="selectBaglanti" class="bmd-label-floating">Baglantı Seçimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBaglanti" value="#{laptopController.selectBaglanti}">
-                                    <f:selectItems value="#{laptopBaglantiController.getlaptopBaglantiList()}" var="baglanti" itemValue="#{baglanti.baglanti_id}" itemLabel="Usb 3X:#{baglanti.usb3x_adeti} Adet - Usb Type C:#{baglanti.usbtypec_adeti} Adet - #{baglanti.wifi_ozellikleri}"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBaglanti" value="#{laptopController.laptop.baglanti}" converter="lapBaglantiConverter">
+                                    <f:selectItems value="#{laptopBaglantiController.baglantiList}" var="baglanti" itemValue="#{baglanti}" itemLabel="Usb 3X:#{baglanti.usb3x_adeti} Adet - Usb Type C:#{baglanti.usbtypec_adeti} Adet - #{baglanti.wifi_ozellikleri}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                     </div>
-
-
-
-                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" styleClass="btn btn-danger pull-left"  value="Temizle" action="#{laptopController.temizle()}">
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id != null}" styleClass="btn btn-danger pull-left"  value="Temizle" action="#{laptopController.temizle()}">
                                 <f:ajax execute="laptop-form" render="laptop-form laptop-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopController.laptop.laptop_id !=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopController.update()}" >
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id != null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopController.update()}" >
                                 <f:ajax execute="laptop-form" render="laptop-form laptop-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopController.laptop.laptop_id ==null}" class="btn btn-success pull-right"   value="Kayit Ekle" action="#{laptopController.create()}" >
+                    <h:commandButton rendered="#{laptopController.laptop.laptop_id == null}" class="btn btn-success pull-right"   value="Kayit Ekle" action="#{laptopController.create()}" >
                                 <f:ajax execute="laptop-form" render="laptop-form laptop-table"/>
                             </h:commandButton>
 

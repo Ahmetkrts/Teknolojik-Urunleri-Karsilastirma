@@ -5,9 +5,9 @@
  */
 package DataAccess;
 
-import DataAccess.laptopIslemciDAO;
 import entity.laptop;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,35 +27,53 @@ public class laptopDAO {
     private laptopDepolamaBellekDAO depolamaBellek;
     private laptopIslemciDAO islemci;
     private laptopEkranKartiDAO ekranKarti;
+    private laptopBaglantiDAO baglanti;
+    private laptopPilDAO pil;
 
-    public void delete(laptop laptop) {
+    public void remove(laptop laptop) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE From laptop WHERE laptop_id=" + laptop.getLaptop_id());
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop where laptop_id=?");
+            pst.setLong(1, laptop.getLaptop_id());
+            pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "----------------------LaptopDAO");
+            System.out.println(e.getMessage());
         }
     }
 
-    public void update(laptop laptop, Long selectEkran, Long selectDepolamaBellek, Long selectIslemci, Long selectEkranKarti, Long selectPil, Long selectBaglanti) {
+
+    public void edit(laptop laptop) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("UPDATE laptop SET urun_adi='" + laptop.getUrun_adi() + "', urun_tipi='" + laptop.getUrun_tipi() + "', urun_amaci='" + laptop.getUrun_amaci() + "', urun_ailesi='" + laptop.getUrun_ailesi() + "', urun_serisi='" + laptop.getUrun_serisi() + "', isletim_sistemi='" + laptop.getIsletim_sistemi() + "',"
-                    + " ekran_id=" + selectEkran + ", genislik=" + laptop.getGenislik() + ", derinlik=" + laptop.getDerinlik() + ", kalinlik=" + laptop.getKalinlik() + ", agirlik=" + laptop.getAgirlik() + ", depolama_bellek_id=" + selectDepolamaBellek + ", islemci_id=" + selectIslemci + ", "
-                    + "ekran_karti_id=" + selectEkranKarti + ", pil_id=" + selectPil + ", baglanti_id=" + selectBaglanti + " where laptop_id=" + laptop.getLaptop_id() + "");
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop set urun_adi=?,urun_tipi=?,urun_amaci=?,urun_ailesi=?,urun_serisi=?,isletim_sistemi=?,ekran_id=?,genislik=?,derinlik=?,kalinlik=?,agirlik=?,depolama_bellek_id=?,islemci_id=?,ekran_karti_id=?,pil_id=?,baglanti_id=? where laptop_id=?");
+            pst.setString(1, laptop.getUrun_adi());
+            pst.setString(2, laptop.getUrun_tipi());
+            pst.setString(3, laptop.getUrun_amaci());
+            pst.setString(4, laptop.getUrun_ailesi());
+            pst.setString(5, laptop.getUrun_serisi());
+            pst.setString(6, laptop.getIsletim_sistemi());
+            pst.setLong(7, laptop.getEkran().getEkran_id());
+            pst.setDouble(8, laptop.getGenislik());
+            pst.setDouble(9, laptop.getDerinlik());
+            pst.setDouble(10, laptop.getKalinlik());
+            pst.setDouble(11, laptop.getAgirlik());
+            pst.setLong(12, laptop.getDepolama_bellek().getDepolama_bellek_id());
+            pst.setLong(13, laptop.getIslemci().getIslemci_id());
+            pst.setLong(14, laptop.getEkran_karti().getEkran_karti_id());
+            pst.setLong(15, laptop.getPil().getPil_id());
+            pst.setLong(16, laptop.getBaglanti().getBaglanti_id());
+            pst.setLong(17, laptop.getLaptop_id());
+            pst.executeUpdate();
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "----------------------LaptopDAO");
+            System.out.println(e.getMessage());
         }
     }
 
-    public void insert(laptop laptop, Long selectEkran, Long selectDepolamaBellek, Long selectIslemci, Long selectEkranKarti, Long selectPil, Long selectBaglanti) {
+    public void insert(laptop laptop) {
         try {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("INSERT INTO laptop ( urun_adi, urun_tipi, urun_amaci, urun_ailesi, urun_serisi, isletim_sistemi, ekran_id, genislik, derinlik, kalinlik,"
                     + " agirlik, depolama_bellek_id, islemci_id, ekran_karti_id, pil_id, baglanti_id) VALUES ( '" + laptop.getUrun_adi() + "', '" + laptop.getUrun_tipi() + "', '" + laptop.getUrun_amaci() + "', '" + laptop.getUrun_ailesi() + "'"
-                    + ", '" + laptop.getUrun_serisi() + "', '" + laptop.getIsletim_sistemi() + "', " + selectEkran + ", " + laptop.getGenislik() + ", " + laptop.getDerinlik() + ", " + laptop.getKalinlik() + ", " + laptop.getAgirlik() + ", " + selectDepolamaBellek + ", " + selectIslemci + ", " + selectEkranKarti + ", " + selectPil + ", " + selectBaglanti + ")");
+                    + ", '" + laptop.getUrun_serisi() + "', '" + laptop.getIsletim_sistemi() + "', " + laptop.getEkran().getEkran_id() + ", " + laptop.getGenislik() + ", " + laptop.getDerinlik() + ", " + laptop.getKalinlik() + ", " + laptop.getAgirlik() + ", " + laptop.getDepolama_bellek().getDepolama_bellek_id() + ", " + laptop.getIslemci().getIslemci_id() + ", " + laptop.getEkran_karti().getEkran_karti_id() + ", " + laptop.getPil().getPil_id() + ", " + laptop.getBaglanti().getBaglanti_id() + ")");
             st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "LaptopDAO");
@@ -84,6 +102,9 @@ public class laptopDAO {
                 tmp.setDepolama_bellek(this.getDepolamaBellek().find(rs.getLong("depolama_bellek_id")));
                 tmp.setIslemci(this.getIslemci().find(rs.getLong("islemci_id")));
                 tmp.setEkran_karti(this.getEkranKarti().find(rs.getLong("ekran_karti_id")));
+                tmp.setBaglanti(this.getBaglanti().find(rs.getLong("baglanti_id")));
+                tmp.setEkran(this.getEkran().find(rs.getLong("ekran_id")));
+                tmp.setPil(this.getPil().find(rs.getLong("pil_id")));
                 laptoplist.add(tmp);
 
             }
@@ -137,6 +158,20 @@ public class laptopDAO {
             this.ekranKarti = new laptopEkranKartiDAO();
         }
         return ekranKarti;
+    }
+
+    public laptopBaglantiDAO getBaglanti() {
+        if (this.baglanti == null) {
+            this.baglanti = new laptopBaglantiDAO();
+        }
+        return baglanti;
+    }
+
+    public laptopPilDAO getPil() {
+        if (this.pil == null) {
+            this.pil = new laptopPilDAO();
+        }
+        return pil;
     }
 
 }

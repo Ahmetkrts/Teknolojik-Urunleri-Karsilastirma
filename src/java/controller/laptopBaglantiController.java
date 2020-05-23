@@ -20,63 +20,62 @@ import javax.inject.Named;
 @SessionScoped
 public class laptopBaglantiController implements Serializable {
 
-    private List<laptopBaglanti> laptopBaglantiList;
-    private laptopBaglantiDAO laptopBaglantidao;
-    private laptopBaglanti laptopBaglanti;
-
-    public void temizle() {
-        this.laptopBaglanti=new  laptopBaglanti();
-        
-
-    }
-    public void delete(laptopBaglanti baglanti) {
-        this.laptopBaglantidao.delete(baglanti);
-
-    }
+    private List<laptopBaglanti> baglantiList;
+    private laptopBaglantiDAO baglantiDAO;
+    private laptopBaglanti baglanti;
 
     public void update() {
-        this.laptopBaglantidao.update(this.laptopBaglanti);
+        this.baglantiDAO.edit(this.baglanti);
     }
 
-    public void updateForm(laptopBaglanti baglanti) {
-        this.laptopBaglanti = baglanti;
+    public void delete(laptopBaglanti baglanti) {
+        this.baglantiDAO.remove(baglanti);
+        this.baglanti = null;
+    }
 
+    public void temizle() {
+        this.baglanti = null;
+
+    }
+
+    public void updateForm(laptopBaglanti bag) {
+        this.baglanti = bag;
     }
 
     public void create() {
-        this.laptopBaglantidao.insert(this.laptopBaglanti);
-       temizle();
+        this.getBaglantiDAO().insert(this.baglanti);
+        temizle();
     }
 
-    public List<laptopBaglanti> getlaptopBaglantiList() {
-        this.laptopBaglantiList = this.getlaptopBaglantidao().findAll();
-        return laptopBaglantiList;
+    public List<laptopBaglanti> getBaglantiList() {
+        this.baglantiList = this.getBaglantiDAO().findAll();
+        return baglantiList;
     }
 
-    public void setlaptopBaglantiList(List<laptopBaglanti> laptopBaglantiList) {
-        this.laptopBaglantiList = laptopBaglantiList;
+    public void setBaglantiList(List<laptopBaglanti> baglantiList) {
+        this.baglantiList = baglantiList;
     }
 
-    public laptopBaglantiDAO getlaptopBaglantidao() {
-        if (this.laptopBaglantidao == null) {
-            this.laptopBaglantidao = new laptopBaglantiDAO();
+    public laptopBaglantiDAO getBaglantiDAO() {
+        if (this.baglantiDAO == null) {
+            this.baglantiDAO = new laptopBaglantiDAO();
         }
-        return laptopBaglantidao;
+        return baglantiDAO;
     }
 
-    public void setlaptopBaglantidao(laptopBaglantiDAO laptopBaglantidao) {
-        this.laptopBaglantidao = laptopBaglantidao;
+    public void setBaglantiDAO(laptopBaglantiDAO baglantiDAO) {
+        this.baglantiDAO = baglantiDAO;
     }
 
-    public laptopBaglanti getlaptopBaglanti() {
-        if (this.laptopBaglanti == null) {
-            this.laptopBaglanti = new laptopBaglanti();
+    public laptopBaglanti getBaglanti() {
+        if (this.baglanti == null) {
+            this.baglanti = new laptopBaglanti();
         }
-        return laptopBaglanti;
+        return baglanti;
     }
 
-    public void setlaptopBaglanti(laptopBaglanti laptopBaglanti) {
-        this.laptopBaglanti = laptopBaglanti;
+    public void setBaglanti(laptopBaglanti baglanti) {
+        this.baglanti = baglanti;
     }
 
 }

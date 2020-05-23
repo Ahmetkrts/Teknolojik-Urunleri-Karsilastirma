@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -74,4 +76,31 @@ public class laptopDepolamaBellek {
     public void setSsd_tipi(String ssd_tipi) {
         this.ssd_tipi = ssd_tipi;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.depolama_bellek_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final laptopDepolamaBellek other = (laptopDepolamaBellek) obj;
+        if (!Objects.equals(this.depolama_bellek_id, other.depolama_bellek_id)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

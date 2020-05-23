@@ -14,7 +14,6 @@
             </div>
             <div class="card-body">
                 <h:form id="depolamabellek-form">
-                    <h:inputHidden value="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id}"/>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -56,16 +55,13 @@
                         </div> 
                     </div>
 
-
-
-                  
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopDepolamaBellekController.temizle()}" >
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.laptopDepolamaBellek.depolama_bellek_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle" action="#{laptopDepolamaBellekController.temizle()}" >
                                 <f:ajax execute="depolamabellek-form" render="depolamabellek-form depolamabellek-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopDepolamaBellekController.update()}" >
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.laptopDepolamaBellek.depolama_bellek_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle" action="#{laptopDepolamaBellekController.update()}" >
                                 <f:ajax execute="depolamabellek-form" render="depolamabellek-form depolamabellek-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopDepolamaBellekController.getlaptopDepolamaBellek().depolama_bellek_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{laptopDepolamaBellekController.create()}">
+                    <h:commandButton rendered="#{laptopDepolamaBellekController.laptopDepolamaBellek.depolama_bellek_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle"  action="#{laptopDepolamaBellekController.create()}">
                                 <f:ajax execute="depolamabellek-form" render="depolamabellek-form depolamabellek-table"/>
                             </h:commandButton>
 

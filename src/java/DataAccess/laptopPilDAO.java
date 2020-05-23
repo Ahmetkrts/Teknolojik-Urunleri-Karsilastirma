@@ -5,8 +5,10 @@
  */
 package DataAccess;
 
+import entity.laptopDepolamaBellek;
 import entity.laptopPil;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,22 +25,25 @@ public class laptopPilDAO {
     private Connector connector;
     private Connection connection;
 
-    public void delete(laptopPil pil) {
+    public void remove(laptopPil pil) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE FROM laptop_pil  WHERE pil_id=" + pil.getPil_id());
-            st.close();
-
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_pil where pil_id=?");
+            pst.setLong(1, pil.getPil_id());
+            pst.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void update(laptopPil laptopPil) {
+    public void edit(laptopPil laptopPil) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("UPDATE laptop_pil SET pil_gucu=" + laptopPil.getPil_gucu() + ", pil_hucre_sayisi=" + laptopPil.getPil_hucre_sayisi() + ", pil_ozellikleri='" + laptopPil.getPil_ozellikleri() + "' WHERE pil_id=" + laptopPil.getPil_id());
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop_pil set pil_gucu=?,pil_hucre_sayisi=?,pil_ozellikleri=? where pil_id=?");
+            pst.setInt(1, laptopPil.getPil_gucu());
+            pst.setInt(2, laptopPil.getPil_hucre_sayisi());
+            pst.setString(3, laptopPil.getPil_ozellikleri());
+            pst.setLong(4, laptopPil.getPil_id());
+            pst.executeUpdate();
+            getConnection().close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -55,6 +60,24 @@ public class laptopPilDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public laptopPil find(Long id) {
+        laptopPil pil = null;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from laptop_pil where pil_id=" + id);
+            rs.next();
+            pil = new laptopPil();
+            pil.setPil_id(rs.getLong("pil_id"));
+            pil.setPil_gucu(rs.getInt("pil_gucu"));
+            pil.setPil_hucre_sayisi(rs.getInt("pil_hucre_sayisi"));
+            pil.setPil_ozellikleri(rs.getString("pil_ozellikleri"));
+            getConnection().close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return pil;
     }
 
     public List<laptopPil> findAll() {

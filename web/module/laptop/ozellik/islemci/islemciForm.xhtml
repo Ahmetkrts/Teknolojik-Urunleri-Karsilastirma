@@ -14,7 +14,7 @@
             </div>
             <div class="card-body">
                 <h:form id="islemci-form">
-                    <h:inputHidden value="#{laptopIslemciController.getlaptopIslemci().islemci_id}"/>
+                    <h:inputHidden value="#{laptopIslemciController.laptopIslemci.islemci_id}"/>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -75,13 +75,13 @@
                             </div>
                         </div>
                     </div>
-                    <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle"  action="#{laptopIslemciController.temizle()}">
+                    <h:commandButton rendered="#{laptopIslemciController.laptopIslemci.islemci_id!=null}" styleClass="btn btn-danger pull-left" value="Temizle"  action="#{laptopIslemciController.temizle()}">
                                 <f:ajax execute="islemci-form" render="islemci-form islemci-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle"  action="#{laptopIslemciController.update()}">
+                    <h:commandButton rendered="#{laptopIslemciController.laptopIslemci.islemci_id!=null}" styleClass="btn btn-info pull-right" value="Güncelle"  action="#{laptopIslemciController.update()}">
                                 <f:ajax execute="islemci-form" render="islemci-form islemci-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopIslemciController.getlaptopIslemci().islemci_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopIslemciController.create()}" >
+                    <h:commandButton rendered="#{laptopIslemciController.laptopIslemci.islemci_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopIslemciController.create()}" >
                                 <f:ajax execute="islemci-form" render="islemci-form islemci-table"/>
                             </h:commandButton>
 

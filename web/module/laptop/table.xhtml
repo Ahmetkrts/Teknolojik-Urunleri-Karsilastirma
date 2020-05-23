@@ -19,74 +19,61 @@
                 <p class="card-category"> Burası Laptopların Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="laptop-table">
-            <h:dataTable class="table" value="#{laptopController.laptopList}" var="laptop">
-
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                        #{laptop.laptop_id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
-                        #{laptop.urun_ailesi}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Model</b></f:facet> 
-                        #{laptop.urun_serisi}
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Amacı</b></f:facet> 
-                        #{laptop.urun_amaci}
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
-                    #{laptop.ekran.ekran_boyutu} Inç
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Ram</b></f:facet> 
-                    #{laptop.depolama_bellek.bellek_boyutu} GB
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">Sabit Disk</b></f:facet> 
-                    #{laptop.depolama_bellek.sabit_disk_boyutu} GB
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">SSd Disk Boyutu</b></f:facet> 
-                    #{laptop.depolama_bellek.ssd_boyutu} GB                    
-                    
-                </h:column>
-                <h:column>
-                    <f:facet name="header"><b class="text-primary">İşlemci </b></f:facet> 
-                        #{laptop.islemci.islemci_modeli} 
-                </h:column>
-                 <h:column>
-                    <f:facet name="header"><b class="text-primary">Ekran kartı </b></f:facet> 
-                        #{laptop.ekran_karti.ekran_karti_modeli} 
-                </h:column>
-                
-                <h:column>
-                
+                <h:dataTable class="table" value="#{laptopController.laptop_list}" var="laptop">
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{laptop.laptop_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Marka</b></f:facet> 
+                            #{laptop.urun_ailesi}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Model</b></f:facet> 
+                            #{laptop.urun_serisi}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Amacı</b></f:facet> 
+                            #{laptop.urun_amaci}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran Boyutu</b></f:facet> 
+                        #{laptop.ekran.ekran_boyutu} Inç
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ram</b></f:facet> 
+                        #{laptop.depolama_bellek.bellek_boyutu} GB
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Sabit Disk</b></f:facet> 
+                        #{laptop.depolama_bellek.sabit_disk_boyutu} GB
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">SSd Disk Boyutu</b></f:facet> 
+                        #{laptop.depolama_bellek.ssd_boyutu} GB                    
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">İşlemci </b></f:facet> 
+                            #{laptop.islemci.islemci_modeli} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Ekran kartı </b></f:facet> 
+                            #{laptop.ekran_karti.ekran_karti_modeli} 
+                    </h:column>
+                    <h:column>
                         <h:commandLink action="#{laptopController.updateForm(laptop)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
                             <f:ajax execute="@this" render="laptop-form"/>
                         </h:commandLink>
-                   
-                </h:column>
-                <h:column>
-                  
+                    </h:column>
+                    <h:column>
                         <h:commandLink action="#{laptopController.delete(laptop)}">
                             <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
-                             <f:ajax execute="@this" render="laptop-form laptop-table"/>
+                            <f:ajax execute="@this" render="laptop-form laptop-table"/>
                         </h:commandLink>
-             
-                </h:column>
-
-
-
-            
-
-            </h:dataTable>
-                </h:form>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
         </div>
     </div>
 </ui:composition>

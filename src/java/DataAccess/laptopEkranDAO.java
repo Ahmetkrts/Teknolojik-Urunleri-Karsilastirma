@@ -7,6 +7,7 @@ package DataAccess;
 
 import entity.laptopEkran;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,27 +24,28 @@ public class laptopEkranDAO {
     private Connector connector;
     private Connection connection;
 
-    public void delete(laptopEkran ekran) {
+    public void remove(laptopEkran ekran) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE FROM laptop_ekran WHERE ekran_id=" + ekran.getEkran_id());
-
-            st.close();
-
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_ekran where ekran_id=?");
+            pst.setLong(1, ekran.getEkran_id());
+            pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "EkranDAo1");
+            System.out.println(e.getMessage());
         }
     }
 
-    public void update(laptopEkran laptopEkran) {
+    public void edit(laptopEkran laptopEkran) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("UPDATE laptop_ekran SET ekran_boyutu=" + laptopEkran.getEkran_boyutu() + ", ekran_cozunurlugu='" + laptopEkran.getEkran_cozunurlugu() + "', ekran_yenileme=" + laptopEkran.getEkran_yenileme() + " WHERE ekran_id=" + laptopEkran.getEkran_id());
-
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop_ekran set ekran_boyutu=?,ekran_cozunurlugu=?,ekran_yenileme=? where ekran_id=?");
+            pst.setDouble(4, laptopEkran.getEkran_boyutu());
+            pst.setString(5, laptopEkran.getEkran_cozunurlugu());
+            pst.setInt(5, laptopEkran.getEkran_yenileme());
+            pst.setLong(6, laptopEkran.getEkran_id());
+            pst.executeUpdate();
+            getConnection().close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "EkranDAo1");
+            System.out.println(e.getMessage());
         }
     }
 

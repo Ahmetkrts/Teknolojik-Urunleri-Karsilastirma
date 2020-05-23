@@ -21,63 +21,60 @@ import javax.inject.Named;
 public class laptopEkranKartiController implements Serializable {
 
     private List<laptopEkranKarti> laptopEkranKartiList;
-    private laptopEkranKartiDAO laptopEkranKartidao;
+    private laptopEkranKartiDAO laptopEkranKartiDAO;
     private laptopEkranKarti laptopEkranKarti;
 
-    public void temizle() {
-        this.laptopEkranKarti = new laptopEkranKarti();
-        
-
-    }
-
-    public void delete(laptopEkranKarti ekranKarti) {
-        this.laptopEkranKartidao.delete(ekranKarti);
-        
-    }
-
     public void update() {
-        this.laptopEkranKartidao.update(this.laptopEkranKarti);
-        
+        this.laptopEkranKartiDAO.edit(this.laptopEkranKarti);
     }
 
-    public void updateForm(laptopEkranKarti ekranKarti) {
-        this.laptopEkranKarti = ekranKarti;
-        
+    public void delete(laptopEkranKarti laptopEkranKarti) {
+        this.laptopEkranKartiDAO.remove(laptopEkranKarti);
+        this.laptopEkranKarti = null;
+    }
+
+    public void temizle() {
+        this.laptopEkranKarti = null;
+    }
+
+    public void updateForm(laptopEkranKarti bag) {
+        this.laptopEkranKarti = bag;
     }
 
     public void create() {
-        this.laptopEkranKartidao.insert(this.laptopEkranKarti);
+        this.laptopEkranKartiDAO.insert(this.laptopEkranKarti);
         temizle();
     }
 
-    public List<laptopEkranKarti> getlaptopEkranKartiList() {
-        this.laptopEkranKartiList = this.getlaptopEkranKartidao().findAll();
+    public List<laptopEkranKarti> getLaptopEkranKartiList() {
+        this.laptopEkranKartiList = this.getLaptopEkranKartiDAO().findAll();
         return laptopEkranKartiList;
     }
 
-    public void setlaptopEkranKartiList(List<laptopEkranKarti> laptopEkranKartiList) {
+    public void setLaptopEkranKartiList(List<laptopEkranKarti> laptopEkranKartiList) {
         this.laptopEkranKartiList = laptopEkranKartiList;
     }
 
-    public laptopEkranKartiDAO getlaptopEkranKartidao() {
-        if (this.laptopEkranKartidao == null) {
-            this.laptopEkranKartidao = new laptopEkranKartiDAO();
+    public laptopEkranKartiDAO getLaptopEkranKartiDAO() {
+        if (this.laptopEkranKartiDAO == null) {
+            this.laptopEkranKartiDAO = new laptopEkranKartiDAO();
         }
-        return laptopEkranKartidao;
+        return laptopEkranKartiDAO;
     }
 
-    public void setlaptopEkranKartidao(laptopEkranKartiDAO laptopEkranKartidao) {
-        this.laptopEkranKartidao = laptopEkranKartidao;
+    public void setLaptopEkranKartiDAO(laptopEkranKartiDAO laptopEkranKartiDAO) {
+        this.laptopEkranKartiDAO = laptopEkranKartiDAO;
     }
 
-    public laptopEkranKarti getlaptopEkranKarti() {
+    public laptopEkranKarti getLaptopEkranKarti() {
         if (this.laptopEkranKarti == null) {
             this.laptopEkranKarti = new laptopEkranKarti();
         }
         return laptopEkranKarti;
     }
 
-    public void setlaptopEkranKarti(laptopEkranKarti laptopEkranKarti) {
+    public void setLaptopEkranKarti(laptopEkranKarti laptopEkranKarti) {
         this.laptopEkranKarti = laptopEkranKarti;
     }
+
 }

@@ -21,62 +21,63 @@ import javax.inject.Named;
 public class laptopEkranController implements Serializable {
 
     private List<laptopEkran> laptopEkranList;
-    private laptopEkranDAO laptopEkrandao;
+    private laptopEkranDAO laptopEkranDAO;
     private laptopEkran laptopEkran;
 
-    public void temizle() {
-        this.laptopEkran = new laptopEkran();
-
-    }
-
-    public void delete(laptopEkran ekran) {
-        this.laptopEkrandao.delete(ekran);
-
-    }
-
     public void update() {
-        this.laptopEkrandao.update(this.laptopEkran);
-
+        this.laptopEkranDAO.edit(this.laptopEkran);
     }
 
-    public void updateForm(laptopEkran ekran) {
-        this.laptopEkran = ekran;
+    public void delete(laptopEkran laptopEkran) {
+        this.laptopEkranDAO.remove(laptopEkran);
+        this.laptopEkran = null;
+    }
 
+    public void temizle() {
+        this.laptopEkran = null;
+    }
+
+    public void updateForm(laptopEkran bag) {
+        this.laptopEkran = bag;
     }
 
     public void create() {
-        this.laptopEkrandao.insert(this.laptopEkran);
+        this.laptopEkranDAO.insert(this.laptopEkran);
         temizle();
     }
 
-    public List<laptopEkran> getlaptopEkranList() {
-        this.laptopEkranList = this.getlaptopEkrandao().findAll();
+    public List<laptopEkran> getLaptopEkranList() {
+        this.laptopEkranList = this.getLaptopEkranDAO().findAll();
         return laptopEkranList;
     }
 
-    public void setlaptopEkranList(List<laptopEkran> laptopEkranList) {
+    public void setLaptopEkranList(List<laptopEkran> laptopEkranList) {
         this.laptopEkranList = laptopEkranList;
     }
 
-    public laptopEkranDAO getlaptopEkrandao() {
-        if (this.laptopEkrandao == null) {
-            this.laptopEkrandao = new laptopEkranDAO();
+    public laptopEkranDAO getLaptopEkranDAO() {
+        if(this.laptopEkranDAO == null){
+            this.laptopEkranDAO = new laptopEkranDAO();
         }
-        return laptopEkrandao;
+        return laptopEkranDAO;
     }
 
-    public void setlaptopEkrandao(laptopEkranDAO laptopEkrandao) {
-        this.laptopEkrandao = laptopEkrandao;
+    public void setLaptopEkranDAO(laptopEkranDAO laptopEkranDAO) {
+        this.laptopEkranDAO = laptopEkranDAO;
     }
 
-    public laptopEkran getlaptopEkran() {
-        if (this.laptopEkran == null) {
+    public laptopEkran getLaptopEkran() {
+        if(this.laptopEkran == null){
             this.laptopEkran = new laptopEkran();
         }
         return laptopEkran;
     }
 
-    public void setlaptopEkran(laptopEkran laptopEkran) {
+    public void setLaptopEkran(laptopEkran laptopEkran) {
         this.laptopEkran = laptopEkran;
     }
+    
+
+    
+
 }

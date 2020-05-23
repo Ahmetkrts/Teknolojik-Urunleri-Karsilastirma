@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -73,4 +75,31 @@ public class laptopBaglanti {
     public void setWifi_ozellikleri(String wifi_ozellikleri) {
         this.wifi_ozellikleri = wifi_ozellikleri;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.baglanti_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final laptopBaglanti other = (laptopBaglanti) obj;
+        if (!Objects.equals(this.baglanti_id, other.baglanti_id)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

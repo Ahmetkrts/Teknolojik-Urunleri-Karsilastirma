@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -46,4 +48,30 @@ public class laptopPil {
     public void setPil_ozellikleri(String pil_ozellikleri) {
         this.pil_ozellikleri = pil_ozellikleri;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.pil_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final laptopPil other = (laptopPil) obj;
+        if (!Objects.equals(this.pil_id, other.pil_id)) {
+            return false;
+        }
+        return true;
+    }
+
 }

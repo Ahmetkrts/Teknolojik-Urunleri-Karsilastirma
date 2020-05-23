@@ -21,62 +21,63 @@ import javax.inject.Named;
 public class laptopDepolamaBellekController implements Serializable {
 
     private List<laptopDepolamaBellek> laptopDepolamaBellekList;
-    private laptopDepolamaBellekDAO laptopDepolamaBellekdao;
+    private laptopDepolamaBellekDAO laptopDepolamaBellekDAO;
     private laptopDepolamaBellek laptopDepolamaBellek;
 
-    public void temizle() {
-        this.laptopDepolamaBellek = new laptopDepolamaBellek();
-
-    }
-
-    public void delete(laptopDepolamaBellek depolama) {
-        this.laptopDepolamaBellekdao.delete(depolama);
-
-    }
-
     public void update() {
-        this.laptopDepolamaBellekdao.update(this.laptopDepolamaBellek);
+        this.getLaptopDepolamaBellekDAO().edit(this.laptopDepolamaBellek);
+    }
+
+    public void delete(laptopDepolamaBellek laptopDepolamaBellek) {
+        this.getLaptopDepolamaBellekDAO().remove(laptopDepolamaBellek);
+        this.laptopDepolamaBellek = null;
+    }
+
+    public void temizle() {
+        this.laptopDepolamaBellek = null;
 
     }
 
-    public void updateForm(laptopDepolamaBellek depolama) {
-        this.laptopDepolamaBellek = depolama;
-
+    public void updateForm(laptopDepolamaBellek bag) {
+        this.laptopDepolamaBellek = bag;
     }
 
     public void create() {
-        this.laptopDepolamaBellekdao.insert(this.laptopDepolamaBellek);
+        this.getLaptopDepolamaBellekDAO().insert(this.laptopDepolamaBellek);
         temizle();
     }
 
-    public List<laptopDepolamaBellek> getlaptopDepolamaBellekList() {
-        this.laptopDepolamaBellekList = this.getlaptopDepolamaBellekdao().findAll();
+    public List<laptopDepolamaBellek> getLaptopDepolamaBellekList() {
+        this.laptopDepolamaBellekList = this.getLaptopDepolamaBellekDAO().findAll();
         return laptopDepolamaBellekList;
     }
 
-    public void setlaptopDepolamaBellekList(List<laptopDepolamaBellek> laptopDepolamaBellekList) {
+    public void setLaptopDepolamaBellekList(List<laptopDepolamaBellek> laptopDepolamaBellekList) {
         this.laptopDepolamaBellekList = laptopDepolamaBellekList;
     }
 
-    public laptopDepolamaBellekDAO getlaptopDepolamaBellekdao() {
-        if (this.laptopDepolamaBellekdao == null) {
-            this.laptopDepolamaBellekdao = new laptopDepolamaBellekDAO();
+    public laptopDepolamaBellekDAO getLaptopDepolamaBellekDAO() {
+        if(this.laptopDepolamaBellekDAO == null){
+            this.laptopDepolamaBellekDAO = new laptopDepolamaBellekDAO();
         }
-        return laptopDepolamaBellekdao;
+        return laptopDepolamaBellekDAO;
     }
 
-    public void setlaptopDepolamaBellekdao(laptopDepolamaBellekDAO laptopDepolamaBellekdao) {
-        this.laptopDepolamaBellekdao = laptopDepolamaBellekdao;
+    public void setLaptopDepolamaBellekDAO(laptopDepolamaBellekDAO laptopDepolamaBellekDAO) {
+        this.laptopDepolamaBellekDAO = laptopDepolamaBellekDAO;
     }
 
-    public laptopDepolamaBellek getlaptopDepolamaBellek() {
-        if (this.laptopDepolamaBellek == null) {
+    public laptopDepolamaBellek getLaptopDepolamaBellek() {
+        if(this.laptopDepolamaBellek == null){
             this.laptopDepolamaBellek = new laptopDepolamaBellek();
         }
         return laptopDepolamaBellek;
     }
 
-    public void setlaptopDepolamaBellek(laptopDepolamaBellek laptopDepolamaBellek) {
+    public void setLaptopDepolamaBellek(laptopDepolamaBellek laptopDepolamaBellek) {
         this.laptopDepolamaBellek = laptopDepolamaBellek;
     }
+
+    
+
 }

@@ -7,6 +7,7 @@ package DataAccess;
 
 import entity.laptopDepolamaBellek;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,27 +24,31 @@ public class laptopDepolamaBellekDAO {
     private Connector connector;
     private Connection connection;
 
-    public void delete(laptopDepolamaBellek depolama) {
+    public void remove(laptopDepolamaBellek depolama) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE FROM laptop_depolama_bellek  WHERE depolama_bellek_id=" + depolama.getDepolama_bellek_id());
-
-            st.close();
-
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_depolama_bellek where depolama_bellek_id=?");
+            pst.setLong(1, depolama.getDepolama_bellek_id());
+            pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "DepolamaDAO1");
+            System.out.println(e.getMessage());
         }
     }
 
-    public void update(laptopDepolamaBellek laptopDepolamaBellek) {
+    public void edit(laptopDepolamaBellek laptopDepolamaBellek) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("Update laptop_depolama_bellek SET bellek_boyutu=" + laptopDepolamaBellek.getBellek_boyutu() + ", bellek_frekansi=" + laptopDepolamaBellek.getBellek_frekansi() + ", sabit_disk_boyutu=" + laptopDepolamaBellek.getSabit_disk_boyutu() + ", sabit_disk_yazma_hizi=" + laptopDepolamaBellek.getSabit_disk_yazma_hizi() + ", ssd_boyutu=" + laptopDepolamaBellek.getSsd_boyutu() + ", ssd_tipi='" + laptopDepolamaBellek.getSsd_tipi() + "' WHERE depolama_bellek_id=" + laptopDepolamaBellek.getDepolama_bellek_id());
-
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop_depolama_bellek set bellek_boyutu=?,bellek_frekansi=?,sabit_disk_boyutu=?,sabit_disk_yazma_hizi=?,ssd_boyutu=?,ssd_tipi=? where depolama_bellek_id=?");
+            pst.setInt(1, laptopDepolamaBellek.getBellek_boyutu());
+            pst.setInt(2, laptopDepolamaBellek.getBellek_frekansi());
+            pst.setInt(3, laptopDepolamaBellek.getSabit_disk_boyutu());
+            pst.setInt(4, laptopDepolamaBellek.getSabit_disk_yazma_hizi());
+            pst.setInt(5, laptopDepolamaBellek.getSsd_boyutu());
+            pst.setString(5, laptopDepolamaBellek.getSsd_tipi());
+            pst.setLong(6, laptopDepolamaBellek.getDepolama_bellek_id());
+            pst.executeUpdate();
+            getConnection().close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "DepolamaDAO1");
+            System.out.println(e.getMessage());
         }
     }
 

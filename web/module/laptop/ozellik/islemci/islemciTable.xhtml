@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Laptopların İşlemci Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div> 
             <h:form id="islemci-table">
-                <h:dataTable class="table" value="#{laptopIslemciController.getlaptopIslemciList()}" var="islemci">
+                <h:dataTable class="table" value="#{laptopIslemciController.laptopIslemciList}" var="islemci">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 

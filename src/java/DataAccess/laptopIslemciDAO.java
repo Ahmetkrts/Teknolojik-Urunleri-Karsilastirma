@@ -5,8 +5,10 @@
  */
 package DataAccess;
 
+import entity.laptopDepolamaBellek;
 import entity.laptopIslemci;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,26 +25,34 @@ public class laptopIslemciDAO {
     private Connector connector;
     private Connection connection;
 
-    public void delete(laptopIslemci islemci) {
+    public void remove(laptopIslemci islemci) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE FROM laptop_islemci  WHERE islemci_id=" + islemci.getIslemci_id());
-            st.close();
-
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_islemci where islemci_id=?");
+            pst.setLong(1, islemci.getIslemci_id());
+            pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "İslemciDAO");
+            System.out.println(e.getMessage());
         }
     }
 
-    public void update(laptopIslemci laptopIslemci) {
+    public void edit(laptopIslemci laptopIslemci) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("UPDATE laptop_islemci SET islemci_marka='" + laptopIslemci.getIslemci_marka() + "', islemci_serisi='" + laptopIslemci.getIslemci_serisi() + "', islemci_modeli='" + laptopIslemci.getIslemci_modeli() + "', islemci_temel_frekansi=" + laptopIslemci.getIslemci_temel_frekansi() + ", cekirdek_sayisi=" + laptopIslemci.getCekirdek_sayisi() + ","
-                    + " sanal_cekirdek_sayisi=" + laptopIslemci.getSanal_cekirdek_sayisi() + ", on_bellek=" + laptopIslemci.getOn_bellek() + ", uretim_teknolojisi=" + laptopIslemci.getUretim_teknolojisi() + ", tdp_degeri=" + laptopIslemci.getTdp_degeri() + " WHERE islemci_id=" + laptopIslemci.getIslemci_id());
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop_islemci set islemci_marka=?,islemci_serisi=?,islemci_modeli=?,islemci_temel_frekansi=?,cekirdek_sayisi=?,sanal_cekirdek_sayisi=?,on_bellek=?,uretim_teknolojisi=?,tdp_degeri=? where islemci_id=?");
+            pst.setString(1, laptopIslemci.getIslemci_marka());
+            pst.setString(2, laptopIslemci.getIslemci_serisi());
+            pst.setString(3, laptopIslemci.getIslemci_modeli());
+            pst.setDouble(4, laptopIslemci.getIslemci_temel_frekansi());
+            pst.setInt(6, laptopIslemci.getCekirdek_sayisi());
+            pst.setInt(7, laptopIslemci.getSanal_cekirdek_sayisi());
+            pst.setInt(8, laptopIslemci.getOn_bellek());
+            pst.setInt(9, laptopIslemci.getUretim_teknolojisi());
+            pst.setInt(5, laptopIslemci.getTdp_degeri());
+            pst.setLong(10, laptopIslemci.getIslemci_id());
+            pst.executeUpdate();
+            getConnection().close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "İslemciDAO");
+            System.out.println(e.getMessage());
         }
     }
 

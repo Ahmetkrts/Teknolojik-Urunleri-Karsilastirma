@@ -14,112 +14,70 @@ import javax.inject.Named;
 
 /**
  *
- * @author Casper
+ * @author techn
  */
 @Named
 @SessionScoped
 public class laptopController implements Serializable {
 
-    private List<laptop> laptopList;
+    private List<laptop> laptop_list;
     private laptopDAO laptopdao;
     private laptop laptop;
-    private Long selectEkran;
-    private Long selectDepolamaBellek;
-    private Long selectIslemci;
-    private Long selectEkranKarti;
-    private Long selectPil;
-    private Long selectBaglanti;
 
-    public void temizle()
-    {
-        this.laptop=new laptop();
-        
+    public void temizle() {
+        this.laptop = null;
     }
+
     public void delete(laptop laptop) {
-        this.getLaptopdao().delete(laptop);
-
-    }
-
-    public void update() {
-        this.getLaptopdao().update(this.laptop, this.selectEkran, this.selectDepolamaBellek, this.selectIslemci, this.selectEkranKarti, this.selectPil, this.selectBaglanti);
-
-    }
-
-    public void updateForm(laptop lp) {
-        this.laptop = lp;
-
-    }
-
-    public void create() {
-        this.getLaptopdao().insert(this.laptop, this.selectEkran, this.selectDepolamaBellek, this.selectIslemci, this.selectEkranKarti, this.selectPil, this.selectBaglanti);
+        this.laptopdao.remove(laptop);
         temizle();
     }
 
-    public Long getSelectEkran() {
-        return selectEkran;
+    public void updateForm(laptop laptop) {
+        this.laptop = laptop;
     }
 
-    public void setSelectEkran(Long selectEkran) {
-        this.selectEkran = selectEkran;
+    public void update() {
+        this.getLaptopdao().edit(this.laptop);
+        temizle();
     }
 
-    public Long getSelectDepolamaBellek() {
-        return selectDepolamaBellek;
+    public void create() {
+        this.getLaptopdao().insert(this.laptop);
+        temizle();
     }
 
-    public void setSelectDepolamaBellek(Long selectDepolamaBellek) {
-        this.selectDepolamaBellek = selectDepolamaBellek;
+    public List<laptop> getLaptop_list() {
+        this.laptop_list = this.getLaptopdao().findAll();
+        return laptop_list;
     }
 
-    public Long getSelectIslemci() {
-        return selectIslemci;
+    public void setLaptop_list(List<laptop> laptop_list) {
+        this.laptop_list = laptop_list;
     }
 
-    public void setSelectIslemci(Long selectIslemci) {
-        this.selectIslemci = selectIslemci;
+    public laptopDAO getLaptopdao() {
+        if(this.laptopdao == null){
+            this.laptopdao = new laptopDAO();
+        }
+        return laptopdao;
     }
 
-    public Long getSelectEkranKarti() {
-        return selectEkranKarti;
-    }
-
-    public void setSelectEkranKarti(Long selectEkranKarti) {
-        this.selectEkranKarti = selectEkranKarti;
-    }
-
-    public Long getSelectPil() {
-        return selectPil;
-    }
-
-    public void setSelectPil(Long selectPil) {
-        this.selectPil = selectPil;
-    }
-
-    public Long getSelectBaglanti() {
-        return selectBaglanti;
-    }
-
-    public void setSelectBaglanti(Long selectBaglanti) {
-        this.selectBaglanti = selectBaglanti;
+    public void setLaptopdao(laptopDAO laptopdao) {
+        this.laptopdao = laptopdao;
     }
 
     public laptop getLaptop() {
-        if (this.laptop == null) {
+        if(this.laptop == null){
             this.laptop = new laptop();
         }
         return laptop;
     }
 
-    public List<laptop> getLaptopList() {
-        this.laptopList = getLaptopdao().findAll();
-        return laptopList;
+    public void setLaptop(laptop laptop) {
+        this.laptop = laptop;
     }
 
-    public laptopDAO getLaptopdao() {
-        if (this.laptopdao == null) {
-            this.laptopdao = new laptopDAO();
-        }
-        return laptopdao;
-    }
+    
 
 }

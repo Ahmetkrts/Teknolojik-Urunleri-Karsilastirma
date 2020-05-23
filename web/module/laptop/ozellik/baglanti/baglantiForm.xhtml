@@ -4,8 +4,9 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <div class="col-md-12">
 
+
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-info">
                 <h4 class="card-title">Baglantı Ekle</h4>
@@ -13,33 +14,31 @@
             </div>
             <div class="card-body">
                 <h:form id="baglanti-form">
-                    <h:inputHidden value="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id}"/>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Usb 3x Adeti</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.usb3x_adeti}" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.usb3x_adeti}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Usb Type C Adeti</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.usbtypec_adeti}" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.usbtypec_adeti}" />
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">HDMI Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.hdmi_ozellikleri}" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.hdmi_ozellikleri}" />
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bluetooth Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.bluetooth_ozellikleri}" />
-
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.bluetooth_ozellikleri}" />
                             </div>
                         </div>
                     </div>
@@ -48,37 +47,30 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ethernet Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.ethernet_ozellikleri}" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.ethernet_ozellikleri}" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Wifi(Kablosuz) Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.laptopBaglanti.wifi_ozellikleri}" />
+                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.wifi_ozellikleri}" />
 
                             </div>
                         </div>
-
-
                     </div>
-
-
-                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}"  value="Temizle" action="#{laptopBaglantiController.temizle()}" >
-                                <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
-                            </h:commandButton>
-                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id!=null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopBaglantiController.update()}" >
-                                <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
-                            </h:commandButton>
-                    <h:commandButton rendered="#{laptopBaglantiController.getlaptopBaglanti().baglanti_id==null}" class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" >
-                                <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
-                            </h:commandButton>
+                    <h:commandButton styleClass="btn btn-danger pull-left" rendered="#{laptopBaglantiController.baglanti.baglanti_id != null}"  value="Temizle" action="#{laptopBaglantiController.temizle()}" >
+                        <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{laptopBaglantiController.baglanti.baglanti_id != null}" class="btn btn-info pull-right"  value="Güncelle" action="#{laptopBaglantiController.update()}" >
+                        <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{laptopBaglantiController.baglanti.baglanti_id == null}" class="btn btn-success pull-right " value="Kayıt Ekle" action="#{laptopBaglantiController.create()}" >
+                        <f:ajax execute="baglanti-form" render="baglanti-form baglanti-table"/>
+                    </h:commandButton>
 
                     <div class="clearfix"></div>
                 </h:form>
             </div>
         </div>
     </div>
-
-
-
 </ui:composition>

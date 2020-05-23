@@ -14,7 +14,7 @@
             </div>
             <div class="card-body">
                 <h:form id="ekran-form">
-                    <h:inputHidden value="#{laptopEkranController.getlaptopEkran().ekran_id}"/>
+                    <h:inputHidden value="#{laptopEkranController.laptopEkran.ekran_id}"/>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -41,13 +41,13 @@
 
 
 
-                    <h:commandButton rendered="#{laptopEkranController.getlaptopEkran().ekran_id!=null}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{laptopEkranController.temizle()}">
+                    <h:commandButton rendered="#{laptopEkranController.laptopEkran.ekran_id!=null}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{laptopEkranController.temizle()}">
                                 <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopEkranController.getlaptopEkran().ekran_id!=null}"  styleClass="btn btn-info pull-right" value="Güncelle"  action="#{laptopEkranController.update()}">
+                    <h:commandButton rendered="#{laptopEkranController.laptopEkran.ekran_id!=null}"  styleClass="btn btn-info pull-right" value="Güncelle"  action="#{laptopEkranController.update()}">
                                 <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
                             </h:commandButton>
-                    <h:commandButton rendered="#{laptopEkranController.getlaptopEkran().ekran_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranController.create()}" >
+                    <h:commandButton rendered="#{laptopEkranController.laptopEkran.ekran_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{laptopEkranController.create()}" >
                                 <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
                             </h:commandButton>
 

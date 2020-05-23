@@ -5,8 +5,10 @@
  */
 package DataAccess;
 
+import entity.laptopDepolamaBellek;
 import entity.laptopEkranKarti;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,24 +25,32 @@ public class laptopEkranKartiDAO {
     private Connector connector;
     private Connection connection;
 
-    public void delete(laptopEkranKarti ekranKarti) {
+    public void remove(laptopEkranKarti ekranKarti) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("DELETE  FROM  laptop_ekran_karti WHERE ekran_karti_id=" + ekranKarti.getEkran_karti_id());
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_ekran_karti where ekran_karti_id=?");
+            pst.setLong(1, ekranKarti.getEkran_karti_id());
+            pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "EkranKarti DAO");
+            System.out.println(e.getMessage());
         }
     }
 
-    public void update(laptopEkranKarti laptopEkranKarti) {
+    public void edit(laptopEkranKarti laptopEkranKarti) {
         try {
-            Statement st = this.getConnection().createStatement();
-            st.executeUpdate("UPDATE laptop_ekran_karti SET ekran_karti_marka='" + laptopEkranKarti.getEkran_karti_marka() + "', ekran_karti_serisi='" + laptopEkranKarti.getEkran_karti_serisi() + "', ekran_karti_modeli='" + laptopEkranKarti.getEkran_karti_modeli() + "', ekran_karti_cekirdek_hizi=" + laptopEkranKarti.getEkran_karti_cekirdek_hizi() + ", "
-                    + "ekran_karti_bellek_boyutu=" + laptopEkranKarti.getEkran_karti_bellek_boyutu() + ", ekran_karti_bellek_turu='" + laptopEkranKarti.getEkran_karti_bellek_turu() + "', ekran_karti_bellek_arayuzu=" + laptopEkranKarti.getEkran_karti_bellek_arayuzu() + " WHERE ekran_karti_id=" + laptopEkranKarti.getEkran_karti_id());
-            st.close();
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop_ekran_karti set ekran_karti_marka=?,ekran_karti_serisi=?,ekran_karti_modeli=?,ekran_karti_cekirdek_hizi=?,ekran_karti_bellek_boyutu=?,ekran_karti_bellek_turu=?,ekran_karti_bellek_arayuzu=? where ekran_karti_id=?");
+            pst.setString(1, laptopEkranKarti.getEkran_karti_marka());
+            pst.setString(2, laptopEkranKarti.getEkran_karti_serisi());
+            pst.setString(3, laptopEkranKarti.getEkran_karti_modeli());
+            pst.setDouble(4, laptopEkranKarti.getEkran_karti_cekirdek_hizi());
+            pst.setInt(5, laptopEkranKarti.getEkran_karti_bellek_boyutu());
+            pst.setString(6, laptopEkranKarti.getEkran_karti_bellek_turu());
+            pst.setInt(7, laptopEkranKarti.getEkran_karti_bellek_arayuzu());
+            pst.setLong(8, laptopEkranKarti.getEkran_karti_id());
+            pst.executeUpdate();
+            getConnection().close();
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "EkranKarti DAO");
+            System.out.println(e.getMessage());
         }
     }
 

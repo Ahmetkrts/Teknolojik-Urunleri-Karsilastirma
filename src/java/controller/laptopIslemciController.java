@@ -5,7 +5,9 @@
  */
 package controller;
 
+import DataAccess.laptopEkranKartiDAO;
 import DataAccess.laptopIslemciDAO;
+import entity.laptopEkranKarti;
 import entity.laptopIslemci;
 import java.io.Serializable;
 import java.util.List;
@@ -21,62 +23,60 @@ import javax.inject.Named;
 public class laptopIslemciController implements Serializable {
 
     private List<laptopIslemci> laptopIslemciList;
-    private laptopIslemciDAO laptopIslemcidao;
+    private laptopIslemciDAO laptopIslemciDAO;
     private laptopIslemci laptopIslemci;
 
-    public void temizle() {
-        this.laptopIslemci = new laptopIslemci();
-
-    }
-
-    public void delete(laptopIslemci islemci) {
-        this.laptopIslemcidao.delete(islemci);
-
-    }
-
     public void update() {
-        this.laptopIslemcidao.update(this.laptopIslemci);
-
+        this.laptopIslemciDAO.edit(this.laptopIslemci);
     }
 
-    public void updateForm(laptopIslemci islemci) {
-        this.laptopIslemci = islemci;
+    public void delete(laptopIslemci laptopIslemci) {
+        this.laptopIslemciDAO.remove(laptopIslemci);
+        this.laptopIslemci = null;
+    }
 
+    public void temizle() {
+        this.laptopIslemci = null;
+    }
+
+    public void updateForm(laptopIslemci bag) {
+        this.laptopIslemci = bag;
     }
 
     public void create() {
-        this.laptopIslemcidao.insert(this.laptopIslemci);
+        this.laptopIslemciDAO.insert(this.laptopIslemci);
         temizle();
     }
 
-    public List<laptopIslemci> getlaptopIslemciList() {
-        this.laptopIslemciList = this.getlaptopIslemcidao().findAll();
+    public List<laptopIslemci> getLaptopIslemciList() {
+        this.laptopIslemciList = this.getLaptopIslemciDAO().findAll();
         return laptopIslemciList;
     }
 
-    public void setlaptopIslemciList(List<laptopIslemci> laptopIslemciList) {
+    public void setLaptopIslemciList(List<laptopIslemci> laptopIslemciList) {
         this.laptopIslemciList = laptopIslemciList;
     }
 
-    public laptopIslemciDAO getlaptopIslemcidao() {
-        if (this.laptopIslemcidao == null) {
-            this.laptopIslemcidao = new laptopIslemciDAO();
+    public laptopIslemciDAO getLaptopIslemciDAO() {
+        if(this.laptopIslemciDAO == null){
+            this.laptopIslemciDAO = new laptopIslemciDAO();
         }
-        return laptopIslemcidao;
+        return laptopIslemciDAO;
     }
 
-    public void setlaptopIslemcidao(laptopIslemciDAO laptopIslemcidao) {
-        this.laptopIslemcidao = laptopIslemcidao;
+    public void setLaptopIslemciDAO(laptopIslemciDAO laptopIslemciDAO) {
+        this.laptopIslemciDAO = laptopIslemciDAO;
     }
 
-    public laptopIslemci getlaptopIslemci() {
-        if (this.laptopIslemci == null) {
+    public laptopIslemci getLaptopIslemci() {
+        if(this.laptopIslemci == null){
             this.laptopIslemci = new laptopIslemci();
         }
         return laptopIslemci;
     }
 
-    public void setlaptopIslemci(laptopIslemci laptopIslemci) {
+    public void setLaptopIslemci(laptopIslemci laptopIslemci) {
         this.laptopIslemci = laptopIslemci;
     }
+
 }

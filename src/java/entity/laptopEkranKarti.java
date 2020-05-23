@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -82,6 +84,31 @@ public class laptopEkranKarti {
 
     public void setEkran_karti_bellek_arayuzu(int ekran_karti_bellek_arayuzu) {
         this.ekran_karti_bellek_arayuzu = ekran_karti_bellek_arayuzu;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.ekran_karti_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final laptopEkranKarti other = (laptopEkranKarti) obj;
+        if (!Objects.equals(this.ekran_karti_id, other.ekran_karti_id)) {
+            return false;
+        }
+        return true;
     }
 
 }

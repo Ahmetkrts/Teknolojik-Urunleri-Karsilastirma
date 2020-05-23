@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -99,6 +101,31 @@ public class laptopIslemci {
 
     public void setTdp_degeri(int tdp_degeri) {
         this.tdp_degeri = tdp_degeri;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.islemci_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final laptopIslemci other = (laptopIslemci) obj;
+        if (!Objects.equals(this.islemci_id, other.islemci_id)) {
+            return false;
+        }
+        return true;
     }
             
             

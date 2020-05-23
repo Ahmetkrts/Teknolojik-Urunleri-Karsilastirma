@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Laptopların Pil Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="pil-table">
-                <h:dataTable class="table" value="#{laptopPilController.getlaptopPilList()}" var="pil">
+                <h:dataTable class="table" value="#{laptopPilController.laptopPilList}" var="pil">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
