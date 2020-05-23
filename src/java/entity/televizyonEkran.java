@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author techn
@@ -63,6 +65,31 @@ public class televizyonEkran {
 
     public void setHDR(String HDR) {
         this.HDR = HDR;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.ekran_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final televizyonEkran other = (televizyonEkran) obj;
+        if (!Objects.equals(this.ekran_id, other.ekran_id)) {
+            return false;
+        }
+        return true;
     }
     
     

@@ -36,16 +36,16 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectEkran" class="bmd-label-floating">Televizyon Ekran Secimi</label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{televizyonController.selectEkran}">
-                                    <f:selectItems value="#{televizyonEkranController.ekranList}" var="ekran" itemValue="#{ekran.ekran_id}" itemLabel="#{ekran.ekran_cozunurlugu} - #{ekran.ekran_boyutu} - #{ekran.ekran_turu}"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{televizyonController.televizyon.ekran}" converter="teleEkranConverter">
+                                    <f:selectItems value="#{televizyonEkranController.ekranList}" var="ekran" itemValue="#{ekran}" itemLabel="#{ekran.ekran_cozunurlugu} - #{ekran.ekran_boyutu} - #{ekran.ekran_turu}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectBatarya" class="bmd-label-floating">Televizyon Isletim Sistemi Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBatarya" value="#{televizyonController.selectIsletimSistemi}">
-                                    <f:selectItems value="#{televizyonIslettimSistemiController.islemtimSistemiList}" var="isletimsistemi" itemValue="#{isletimsistemi.isletim_sistemi_id}" itemLabel="#{isletimsistemi.isletim_sistemi}"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBatarya" value="#{televizyonController.televizyon.isletimsistemi}" converter="teleIsletimSistemiConverter">
+                                    <f:selectItems value="#{televizyonIslettimSistemiController.islemtimSistemiList}" var="isletimsistemi" itemValue="#{isletimsistemi}" itemLabel="#{isletimsistemi.isletim_sistemi}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
