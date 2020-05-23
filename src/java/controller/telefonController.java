@@ -7,9 +7,7 @@ package controller;
 
 import DataAccess.telefonDAO;
 import entity.telefon;
-import entity.telefonRenk;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -25,59 +23,28 @@ public class telefonController implements Serializable {
     private List<telefon> telefon_list;
     private telefonDAO telefondao;
     private telefon telefon;
-    private Long selectEkran;
-    private Long selectBatarya;
-    private Long selectIslemci;
-    private Long selectArkaKamera;
-    private Long selectOnKamera;
-    private Long selectIsletimSistemi;
-    private List<Long> selectRenkList;
 
     public void temizle() {
         this.telefon = null;
-        this.selectEkran = null;
-        this.selectArkaKamera = null;
-        this.selectIslemci = null;
-        this.selectIsletimSistemi = null;
-        this.selectOnKamera = null;
-        this.selectBatarya = null;
-        this.selectRenkList = null;
-
     }
 
     public void delete() {
         this.telefondao.remove(this.telefon);
         this.telefon = null;
-        this.selectEkran = null;
-        this.selectArkaKamera = null;
-        this.selectIslemci = null;
-        this.selectIsletimSistemi = null;
-        this.selectOnKamera = null;
-        this.selectBatarya = null;
-        this.selectRenkList = null;
+        temizle();
     }
 
     public void updateForm(telefon tel) {
         this.telefon = tel;
-        this.selectEkran = this.telefon.getEkran().getEkran_id();
-        this.selectArkaKamera = this.telefon.getArkaKamera().getKamera_id();
-        this.selectIslemci = this.telefon.getIslemci().getIslemci_id();
-        this.selectIsletimSistemi = this.telefon.getIsletimSistemi().getIsletim_sistemi_id();
-        this.selectOnKamera = this.telefon.getOnKamera().getKamera_id();
-        this.selectBatarya = this.telefon.getBatarya().getBatarya_id();
-        this.selectRenkList = new ArrayList<>();
-        for (telefonRenk renk : this.telefon.getRenk()) {
-            this.selectRenkList.add(renk.getRenk_id());
-        }
     }
 
     public void update() {
-        this.getTelefondao().edit(this.telefon, this.selectEkran, this.selectBatarya, this.selectIslemci, this.selectArkaKamera, this.selectOnKamera, this.selectIsletimSistemi, this.selectRenkList);
-
+        this.getTelefondao().edit(this.telefon);
+        temizle();
     }
 
     public void create() {
-        this.getTelefondao().insert(this.telefon, this.selectEkran, this.selectBatarya, this.selectIslemci, this.selectArkaKamera, this.selectOnKamera, this.selectIsletimSistemi, this.selectRenkList);
+        this.getTelefondao().insert(this.telefon);
         temizle();
     }
 
@@ -110,62 +77,6 @@ public class telefonController implements Serializable {
 
     public void setTelefon(telefon telefon) {
         this.telefon = telefon;
-    }
-
-    public Long getSelectEkran() {
-        return selectEkran;
-    }
-
-    public void setSelectEkran(Long selectEkran) {
-        this.selectEkran = selectEkran;
-    }
-
-    public Long getSelectBatarya() {
-        return selectBatarya;
-    }
-
-    public void setSelectBatarya(Long selectBatarya) {
-        this.selectBatarya = selectBatarya;
-    }
-
-    public Long getSelectIslemci() {
-        return selectIslemci;
-    }
-
-    public void setSelectIslemci(Long selectIslemci) {
-        this.selectIslemci = selectIslemci;
-    }
-
-    public Long getSelectArkaKamera() {
-        return selectArkaKamera;
-    }
-
-    public void setSelectArkaKamera(Long selectArkaKamera) {
-        this.selectArkaKamera = selectArkaKamera;
-    }
-
-    public Long getSelectOnKamera() {
-        return selectOnKamera;
-    }
-
-    public void setSelectOnKamera(Long selectOnKamera) {
-        this.selectOnKamera = selectOnKamera;
-    }
-
-    public Long getSelectIsletimSistemi() {
-        return selectIsletimSistemi;
-    }
-
-    public void setSelectIsletimSistemi(Long selectIsletimSistemi) {
-        this.selectIsletimSistemi = selectIsletimSistemi;
-    }
-
-    public List<Long> getSelectRenkList() {
-        return selectRenkList;
-    }
-
-    public void setSelectRenkList(List<Long> selectRenkList) {
-        this.selectRenkList = selectRenkList;
     }
 
 }

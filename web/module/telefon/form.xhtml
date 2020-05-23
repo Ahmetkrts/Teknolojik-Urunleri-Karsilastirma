@@ -36,24 +36,24 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectEkran" class="bmd-label-floating">Telefon Ekran Secimi</label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{telefonController.selectEkran}">
-                                    <f:selectItems value="#{telefonEkranController.ekranList}" var="ekran" itemValue="#{ekran.ekran_id}" itemLabel="#{ekran.ekran_boyutu} - #{ekran.ekran_teknolojisi} - #{ekran.ekran_cozunurlugu}"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectEkran" value="#{telefonController.telefon.ekran}" converter="telEkranConverter">
+                                    <f:selectItems value="#{telefonEkranController.ekranList}" var="ekran" itemValue="#{ekran}" itemLabel="#{ekran.ekran_boyutu} - #{ekran.ekran_teknolojisi} - #{ekran.ekran_cozunurlugu}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectBatarya" class="bmd-label-floating">Telefon Bataraya Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBatarya" value="#{telefonController.selectBatarya}">
-                                    <f:selectItems value="#{telefonBataryaController.bataryaList}" var="batarya" itemValue="#{batarya.batarya_id}" itemLabel="#{batarya.batarya_kapasitesi} - #{batarya.batarya_teknolojisi}"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectBatarya" value="#{telefonController.telefon.batarya}" converter="telBataryaConverter">
+                                    <f:selectItems value="#{telefonBataryaController.bataryaList}" var="batarya" itemValue="#{batarya}" itemLabel="#{batarya.batarya_kapasitesi} - #{batarya.batarya_teknolojisi}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectIslemci" class="bmd-label-floating">Telefon işlemci Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectIslemci" value="#{telefonController.selectIslemci}">
-                                    <f:selectItems value="#{telefonIslemciController.islemciList}" var="islemci" itemValue="#{islemci.islemci_id}" itemLabel="#{islemci.yonga_seti} - #{islemci.cpu_cekirdegi} Çekirdek "/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectIslemci" value="#{telefonController.telefon.islemci}" converter="telIslemciConverter">
+                                    <f:selectItems value="#{telefonIslemciController.islemciList}" var="islemci" itemValue="#{islemci}" itemLabel="#{islemci.yonga_seti} - #{islemci.cpu_cekirdegi} Çekirdek "/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
@@ -62,16 +62,16 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectArkaKamera" class="bmd-label-floating">Telefon Arka Kamera Secimi</label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectArkaKamera" value="#{telefonController.selectArkaKamera}">
-                                    <f:selectItems value="#{telefonArkaKameraController.arkaKameraList}" var="arkakamera" itemValue="#{arkakamera.kamera_id}" itemLabel="#{arkakamera.telefon_model} - #{arkakamera.kamera_cozunurlugu} MP - #{arkakamera.diafram_acikligi} F"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectArkaKamera" value="#{telefonController.telefon.arkaKamera}" converter="telArkaKameraConverter">
+                                    <f:selectItems value="#{telefonArkaKameraController.arkaKameraList}" var="arkakamera" itemValue="#{arkakamera}" itemLabel="#{arkakamera.telefon_model} - #{arkakamera.kamera_cozunurlugu} MP - #{arkakamera.diafram_acikligi} F"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectOnKamera" class="bmd-label-floating">Telefon Ön Kamera Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectOnKamera" value="#{telefonController.selectOnKamera}">
-                                    <f:selectItems value="#{telefonOnKameraController.onKameraList}" var="onkamera" itemValue="#{onkamera.kamera_id}" itemLabel="#{onkamera.telefon_model} - #{onkamera.kamera_cozunurlugu} MP - #{onkamera.diafram_acikligi} F"/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectOnKamera" value="#{telefonController.telefon.onKamera}" converter="telOnKameraConverter">
+                                    <f:selectItems value="#{telefonOnKameraController.onKameraList}" var="onkamera" itemValue="#{onkamera}" itemLabel="#{onkamera.telefon_model} - #{onkamera.kamera_cozunurlugu} MP - #{onkamera.diafram_acikligi} F"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
@@ -119,16 +119,16 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectIsletimSistemi" class="bmd-label-floating">Telefon İşletim Sistemi Secimi </label>
-                                <h:selectOneMenu styleClass="custom-select form-control" id="selectIsletimSistemi" value="#{telefonController.selectIsletimSistemi}">
-                                    <f:selectItems value="#{telefonIsletimSistemiController.islemtimSistemiList}" var="isletimsistemi" itemValue="#{isletimsistemi.isletim_sistemi_id}" itemLabel="#{isletimsistemi.isletim_sistemi_versiyon} "/>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectIsletimSistemi" value="#{telefonController.telefon.isletimSistemi}" converter="telIsletimSistemiConverter">
+                                    <f:selectItems value="#{telefonIsletimSistemiController.islemtimSistemiList}" var="isletimsistemi" itemValue="#{isletimsistemi}" itemLabel="#{isletimsistemi.isletim_sistemi_versiyon} "/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectRenk" class="bmd-label-floating">Telefon Renk Secimi </label>
-                                <h:selectManyMenu styleClass="custom-select form-control " style="height: 60px;" id="selectRenk" value="#{telefonController.selectRenkList}">
-                                    <f:selectItems value="#{telefonRenkController.renkList}" var="renk" itemValue="#{renk.renk_id}" itemLabel="#{renk.renk_adi} "/>
+                                <h:selectManyMenu styleClass="custom-select form-control " style="height: 60px;" id="selectRenk" value="#{telefonController.telefon.renk}" converter="telRenkConverter">
+                                    <f:selectItems value="#{telefonRenkController.renkList}" var="renk" itemValue="#{renk}" itemLabel="#{renk.renk_adi} "/>
                                 </h:selectManyMenu>                                
                             </div>
                         </div>

@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -65,4 +67,30 @@ public class telefonOnKamera {
     public void setDiafram_acikligi(double diafram_acikligi) {
         this.diafram_acikligi = diafram_acikligi;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 11 * hash + Objects.hashCode(this.kamera_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final telefonOnKamera other = (telefonOnKamera) obj;
+        if (!Objects.equals(this.kamera_id, other.kamera_id)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author techn
@@ -99,6 +101,31 @@ public class telefonIslemci {
 
     public void setCpu_uretim_teknolojisi(int cpu_uretim_teknolojisi) {
         this.cpu_uretim_teknolojisi = cpu_uretim_teknolojisi;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.islemci_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final telefonIslemci other = (telefonIslemci) obj;
+        if (!Objects.equals(this.islemci_id, other.islemci_id)) {
+            return false;
+        }
+        return true;
     }
     
     

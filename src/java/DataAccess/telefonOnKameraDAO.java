@@ -39,8 +39,6 @@ public class telefonOnKameraDAO {
             onKamera.setVideo_fps_degeri(rs.getInt("video_fps_degeri"));
             onKamera.setDiafram_acikligi(rs.getDouble("diafram_acikligi"));
             getConnection().close();
-            st.close();
-            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -66,8 +64,7 @@ public class telefonOnKameraDAO {
                 kamera_list.add(tmp);
             }
             getConnection().close();
-            st.close();
-            rs.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -85,7 +82,7 @@ public class telefonOnKameraDAO {
             pst.setLong(6,onKamera.getKamera_id());
             pst.executeUpdate();
             getConnection().close();
-            pst.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -96,7 +93,6 @@ public class telefonOnKameraDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_on_kamera where kamera_id=?");
             pst.setLong(1, onKamera.getKamera_id());
             pst.executeUpdate();
-            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -120,7 +116,6 @@ public class telefonOnKameraDAO {
             st.executeUpdate("insert into telefon_on_kamera (telefon_model,kamera_cozunurlugu,video_cozunurlugu,video_fps_degeri,diafram_acikligi) values ("
                     + "'" + onKamera.getTelefon_model() + "'," + onKamera.getKamera_cozunurlugu() + ",'" + onKamera.getVideo_cozunurlugu() + "',"
                     + "" + onKamera.getVideo_fps_degeri() + "," + onKamera.getDiafram_acikligi() + ")");
-            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

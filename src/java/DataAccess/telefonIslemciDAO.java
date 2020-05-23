@@ -42,8 +42,6 @@ public class telefonIslemciDAO {
             islemci.setGpu_frekansi(rs.getInt("gpu_frekansi"));
             islemci.setCpu_uretim_teknolojisi(rs.getInt("cpu_uretim_teknolojisi"));
             getConnection().close();
-            rs.close();
-            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -69,8 +67,6 @@ public class telefonIslemciDAO {
                 tmp.setCpu_uretim_teknolojisi(rs.getInt("cpu_uretim_teknolojisi"));
                 islemci_liste.add(tmp);
                 getConnection().close();
-                rs.close();
-                st.close();
             }
 
         } catch (SQLException e) {
@@ -94,7 +90,6 @@ public class telefonIslemciDAO {
             pst.setLong(10, islemci.getIslemci_id());
             pst.executeUpdate();
             getConnection().close();
-            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -106,7 +101,6 @@ public class telefonIslemciDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_islemcileri where islemci_id=?");
             pst.setLong(1, islemci.getIslemci_id());
             pst.executeUpdate();
-            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -131,7 +125,6 @@ public class telefonIslemciDAO {
                     + ",gpu_frekansi,cpu_uretim_teknolojisi) values ('" + islemci.getYonga_seti() + "','" + islemci.getAna_islemci() + "'," + islemci.getCpu_frekansi() + ""
                     + "," + islemci.getCpu_cekirdegi() + "," + islemci.getIslemci_mimarisi() + ",'" + islemci.getBirinci_yardimci_islemci() + "','" + islemci.getGrafik_islemcisi_gpu() + "',"
                     + ""+islemci.getGpu_frekansi()+","+islemci.getCpu_uretim_teknolojisi()+")");
-            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

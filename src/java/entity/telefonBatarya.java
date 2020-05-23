@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  *
@@ -51,4 +53,30 @@ public class telefonBatarya {
     public void setHizli_sarj_ozelligi(String hizli_sarj_ozelligi) {
         this.hizli_sarj_ozelligi = hizli_sarj_ozelligi;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.batarya_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final telefonBatarya other = (telefonBatarya) obj;
+        if (!Objects.equals(this.batarya_id, other.batarya_id)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

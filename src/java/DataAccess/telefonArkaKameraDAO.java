@@ -48,8 +48,7 @@ public class telefonArkaKameraDAO {
             arkaKamera.setDort_diafram_acikligi(rs.getDouble("dort_diafram_acikligi"));
             arkaKamera.setBes_kamera_cozunurlugu(rs.getInt("bes_kamera_cozunurlugu"));
             arkaKamera.setBes_diafram_acikligi(rs.getDouble("bes_diafram_acikligi"));
-            rs.close();
-            st.close();
+
             this.getConnection().close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -85,8 +84,8 @@ public class telefonArkaKameraDAO {
 
             }
             this.getConnection().close();
-            rs.close();
-            st.close();
+            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -103,7 +102,7 @@ public class telefonArkaKameraDAO {
                     + "'" + arkaKamera.getFlas() + "'," + arkaKamera.getDiafram_acikligi() + ",'" + arkaKamera.getVideo_kayit_cozunurlugu() + "'," + arkaKamera.getVideo_fps_degeri() + ""
                     + "," + arkaKamera.getIki_kamera_cozunurlugu() + "," + arkaKamera.getIki_diafram_acikligi() + "," + arkaKamera.getUc_kamera_cozunurlugu() + "," + arkaKamera.getUc_diafram_acikligi() + ""
                     + "," + arkaKamera.getDort_kamera_cozunurlugu() + "," + arkaKamera.getDort_diafram_acikligi() + "," + arkaKamera.getBes_kamera_cozunurlugu() + "," + arkaKamera.getBes_diafram_acikligi() + ")");
-            st.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -140,7 +139,7 @@ public class telefonArkaKameraDAO {
             pst.setLong(16, arkaKamera.getKamera_id());
             pst.executeUpdate();
             getConnection().close();
-            pst.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -5,13 +5,12 @@
  */
 package controller;
 
-import dao.laptopDepolamaBellekDAO;
+import DataAccess.laptopDepolamaBellekDAO;
 import entity.laptopDepolamaBellek;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.resource.spi.SecurityPermission;
 
 /**
  *

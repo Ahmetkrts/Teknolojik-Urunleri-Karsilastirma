@@ -38,8 +38,6 @@ public class telefonEkranDAO {
             ekran.setPiksel_yogunlugu(rs.getInt("piksel_yogunlugu"));
             ekran.setEkran_dayanikliligi(rs.getString("ekran_dayanikligi"));
             getConnection().close();
-            st.close();
-            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -62,14 +60,11 @@ public class telefonEkranDAO {
                 ekran_liste.add(tmp);
             }
             getConnection().close();
-            st.close();
-            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return ekran_liste;
     }
-
     public void edit(telefonEkran ekran) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("update telefon_ekran set ekran_boyutu=?,ekran_teknolojisi=?,ekran_cozunurlugu=?,piksel_yogunlugu=?,ekran_dayanikligi=? where ekran_id=?");
@@ -81,7 +76,7 @@ public class telefonEkranDAO {
             pst.setLong(6, ekran.getEkran_id());
             pst.executeUpdate();
             getConnection().close();
-            pst.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -92,7 +87,6 @@ public class telefonEkranDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_ekran where ekran_id=?");
             pst.setLong(1, ekran.getEkran_id());
             pst.executeUpdate();
-            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -116,11 +110,11 @@ public class telefonEkranDAO {
             st.executeUpdate("insert into telefon_ekran (ekran_boyutu,ekran_teknolojisi,ekran_cozunurlugu,piksel_yogunlugu,ekran_dayanikligi)values("
                     + "" + ekran.getEkran_boyutu() + ",'" + ekran.getEkran_teknolojisi() + "','" + ekran.getEkran_cozunurlugu() + "'," + ekran.getPiksel_yogunlugu() + ""
                     + ",'" + ekran.getEkran_dayanikliligi() + "')");
-            st.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    
 }

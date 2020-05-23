@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.laptopIslemciDAO;
+import DataAccess.laptopIslemciDAO;
 import entity.laptopIslemci;
 import java.io.Serializable;
 import java.util.List;

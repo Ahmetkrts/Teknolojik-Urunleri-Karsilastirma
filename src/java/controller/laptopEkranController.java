@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.laptopEkranDAO;
+import DataAccess.laptopEkranDAO;
 import entity.laptopEkran;
 import java.io.Serializable;
 import java.util.List;

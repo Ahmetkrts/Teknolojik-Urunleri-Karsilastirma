@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casper
@@ -27,6 +29,31 @@ public class telefonRenk {
 
     public void setRenk_adi(String renk_adi) {
         this.renk_adi = renk_adi;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.renk_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final telefonRenk other = (telefonRenk) obj;
+        if (!Objects.equals(this.renk_id, other.renk_id)) {
+            return false;
+        }
+        return true;
     }
     
 }

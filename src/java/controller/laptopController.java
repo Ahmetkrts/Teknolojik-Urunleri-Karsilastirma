@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.laptopDAO;
+import DataAccess.laptopDAO;
 import entity.laptop;
 import java.io.Serializable;
 import java.util.List;

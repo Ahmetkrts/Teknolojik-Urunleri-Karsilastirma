@@ -41,8 +41,7 @@ public class telefonBataryaDAO {
                 batarya_liste.add(tmp);
             }
             getConnection().close();
-            st.close();
-            rs.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -61,8 +60,6 @@ public class telefonBataryaDAO {
             batarya.setBatarya_teknolojisi(rs.getString("batarya_teknolojisi"));
             batarya.setHizli_sarj_ozelligi(rs.getString("hizli_sarj_ozelligi"));
             getConnection().close();
-            st.close();
-            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -74,7 +71,7 @@ public class telefonBataryaDAO {
             Statement st=getConnection().createStatement();
             st.executeUpdate("insert into telefon_batarya (batarya_kapasitesi,batarya_teknolojisi,hizli_sarj_ozelligi) values ("
                     + ""+batarya.getBatarya_kapasitesi()+",'"+batarya.getBatarya_teknolojisi()+"','"+batarya.getHizli_sarj_ozelligi()+"')");
-            st.close();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -89,7 +86,7 @@ public class telefonBataryaDAO {
             pst.setLong(4, batarya.getBatarya_id());
             pst.executeUpdate();
             getConnection().close();
-            pst.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -100,7 +97,6 @@ public class telefonBataryaDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_batarya where batarya_id=?");
             pst.setLong(1, batarya.getBatarya_id());
             pst.executeUpdate();
-            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
