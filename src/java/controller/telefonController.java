@@ -23,7 +23,8 @@ public class telefonController implements Serializable {
     private List<telefon> telefon_list;
     private telefonDAO telefondao;
     private telefon telefon;
-
+    
+    
     public void temizle() {
         this.telefon = null;
     }
@@ -78,5 +79,4 @@ public class telefonController implements Serializable {
     public void setTelefon(telefon telefon) {
         this.telefon = telefon;
     }
-
 }

@@ -26,6 +26,7 @@ public class televizyon {
     private String televizyon_hd_uydu_alici;
     private televizyonEkran ekran;
     private televizyonIslettimSistemi isletimsistemi;
+    private Dosya resim;
     
 
     public Long getTelevizyon_id() {
@@ -156,6 +157,14 @@ public class televizyon {
 
     public void setIsletimsistemi(televizyonIslettimSistemi isletimsistemi) {
         this.isletimsistemi = isletimsistemi;
+    }
+
+    public Dosya getResim() {
+        return resim;
+    }
+
+    public void setResim(Dosya resim) {
+        this.resim = resim;
     }
     
     

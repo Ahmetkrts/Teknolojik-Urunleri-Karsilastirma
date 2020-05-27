@@ -30,6 +30,7 @@ public class telefonDAO {
     private telefonEkranDAO ekran;
     private telefonArkaKameraDAO arkaKameraDAO;
     private telefonOnKameraDAO onKameraDAO;
+    private DosyaDAO dosyaDAO;
 
    
     private telefonRenkDAO renk;
@@ -58,6 +59,7 @@ public class telefonDAO {
                 tmp.setIslemci(this.getIslemci().find(rs.getLong("telefon_islemci_id")));
                 tmp.setIsletimSistemi(this.getIsletimsistemi().find(rs.getLong("isletim_sistemi_id")));
                 tmp.setRenk(this.getRenk().getRenk(tmp.getTelefon_id()));
+                tmp.setResim(this.getDosyaDAO().telefonFind(rs.getLong("dosya")));
                 telefon_list.add(tmp);
             }
             getConnection().close();
@@ -71,10 +73,10 @@ public class telefonDAO {
    public void insert(telefon telefon)  {
         try {
             Statement st = this.getConnection().createStatement();
-            st.executeUpdate("insert into telefon (telefon_ad,telefon_marka,telefon_model,telefon_ekran_id,telefon_batarya_id,telefon_islemci_id,arka_kamera_id,on_kamera_id,telefon_ram,telefon_ram_frekansi,telefon_dahili_depolama,telefon_boy,telefon_en,telefon_agirlik,isletim_sistemi_id) values ("
+            st.executeUpdate("insert into telefon (telefon_ad,telefon_marka,telefon_model,telefon_ekran_id,telefon_batarya_id,telefon_islemci_id,arka_kamera_id,on_kamera_id,telefon_ram,telefon_ram_frekansi,telefon_dahili_depolama,telefon_boy,telefon_en,telefon_agirlik,isletim_sistemi_id,dosya) values ("
                     + "'" + telefon.getTelefon_ad() + "','" + telefon.getTelefon_marka() + "','" + telefon.getTelefon_model() + "'," + telefon.getEkran().getEkran_id() + "," + telefon.getBatarya().getBatarya_id() + "," + telefon.getIslemci().getIslemci_id() + ", "
                     + "" + telefon.getArkaKamera().getKamera_id() + "," + telefon.getOnKamera().getKamera_id() + "," + telefon.getTelefon_ram() + "," + telefon.getTelefon_ram_frekansi() + "," + telefon.getTelefon_dahili_depolama() + "," + telefon.getTelefon_boy() + ","
-                    + "" + telefon.getTelefon_en() + "," + telefon.getTelefon_agirlik() + "," + telefon.getIsletimSistemi().getIsletim_sistemi_id() + ")",Statement.RETURN_GENERATED_KEYS);
+                    + "" + telefon.getTelefon_en() + "," + telefon.getTelefon_agirlik() + "," + telefon.getIsletimSistemi().getIsletim_sistemi_id() + "," + telefon.getResim().getDosya_id() +")",Statement.RETURN_GENERATED_KEYS);
 
             Long telefon_id=null;                               
             ResultSet gk = st.getGeneratedKeys();
@@ -100,7 +102,7 @@ public class telefonDAO {
 
     public void edit(telefon telefon) {
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("update telefon set telefon_ad=?,telefon_marka=?,telefon_model=?,telefon_ekran_id=?,telefon_batarya_id=?,telefon_islemci_id=?,arka_kamera_id=?,on_kamera_id=?,telefon_ram=?,telefon_ram_frekansi=?,telefon_dahili_depolama=?,telefon_boy=?,telefon_en=?,telefon_agirlik=?,isletim_sistemi_id=? where telefon_id=?");
+            PreparedStatement pst = this.getConnection().prepareStatement("update telefon set telefon_ad=?,telefon_marka=?,telefon_model=?,telefon_ekran_id=?,telefon_batarya_id=?,telefon_islemci_id=?,arka_kamera_id=?,on_kamera_id=?,telefon_ram=?,telefon_ram_frekansi=?,telefon_dahili_depolama=?,telefon_boy=?,telefon_en=?,telefon_agirlik=?,isletim_sistemi_id=?,dosya=? where telefon_id=?");
             pst.setString(1, telefon.getTelefon_ad());
             pst.setString(2, telefon.getTelefon_marka());
             pst.setString(3, telefon.getTelefon_model());
@@ -116,7 +118,8 @@ public class telefonDAO {
             pst.setDouble(13, telefon.getTelefon_en());
             pst.setInt(14, telefon.getTelefon_agirlik());
             pst.setLong(15, telefon.getIsletimSistemi().getIsletim_sistemi_id());
-            pst.setLong(16, telefon.getTelefon_id());
+            pst.setLong(16, telefon.getResim().getDosya_id());
+            pst.setLong(17, telefon.getTelefon_id());
             pst.executeUpdate();
             
             pst = this.getConnection().prepareStatement("delete from telefon_renk where telefon_id=?");
@@ -156,6 +159,14 @@ public class telefonDAO {
         }
     }
 
+    public DosyaDAO getDosyaDAO() {
+        if(this.dosyaDAO == null){
+            this.dosyaDAO = new DosyaDAO();
+        }
+        return dosyaDAO;
+    }
+
+    
     public telefonIsletimSistemiDAO getIsletimsistemi() {
         if (this.isletimsistemi == null) {
             this.isletimsistemi = new telefonIsletimSistemiDAO();

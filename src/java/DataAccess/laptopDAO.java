@@ -29,6 +29,7 @@ public class laptopDAO {
     private laptopEkranKartiDAO ekranKarti;
     private laptopBaglantiDAO baglanti;
     private laptopPilDAO pil;
+    private DosyaDAO dosyaDAO;
 
     public void remove(laptop laptop) {
         try {
@@ -43,7 +44,7 @@ public class laptopDAO {
 
     public void edit(laptop laptop) {
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("update laptop set urun_adi=?,urun_tipi=?,urun_amaci=?,urun_ailesi=?,urun_serisi=?,isletim_sistemi=?,ekran_id=?,genislik=?,derinlik=?,kalinlik=?,agirlik=?,depolama_bellek_id=?,islemci_id=?,ekran_karti_id=?,pil_id=?,baglanti_id=? where laptop_id=?");
+            PreparedStatement pst = this.getConnection().prepareStatement("update laptop set urun_adi=?,urun_tipi=?,urun_amaci=?,urun_ailesi=?,urun_serisi=?,isletim_sistemi=?,ekran_id=?,genislik=?,derinlik=?,kalinlik=?,agirlik=?,depolama_bellek_id=?,islemci_id=?,ekran_karti_id=?,pil_id=?,baglanti_id=?,dosya=? where laptop_id=?");
             pst.setString(1, laptop.getUrun_adi());
             pst.setString(2, laptop.getUrun_tipi());
             pst.setString(3, laptop.getUrun_amaci());
@@ -60,7 +61,8 @@ public class laptopDAO {
             pst.setLong(14, laptop.getEkran_karti().getEkran_karti_id());
             pst.setLong(15, laptop.getPil().getPil_id());
             pst.setLong(16, laptop.getBaglanti().getBaglanti_id());
-            pst.setLong(17, laptop.getLaptop_id());
+            pst.setLong(17, laptop.getResim().getDosya_id());
+            pst.setLong(18, laptop.getLaptop_id());
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -72,8 +74,8 @@ public class laptopDAO {
         try {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("INSERT INTO laptop ( urun_adi, urun_tipi, urun_amaci, urun_ailesi, urun_serisi, isletim_sistemi, ekran_id, genislik, derinlik, kalinlik,"
-                    + " agirlik, depolama_bellek_id, islemci_id, ekran_karti_id, pil_id, baglanti_id) VALUES ( '" + laptop.getUrun_adi() + "', '" + laptop.getUrun_tipi() + "', '" + laptop.getUrun_amaci() + "', '" + laptop.getUrun_ailesi() + "'"
-                    + ", '" + laptop.getUrun_serisi() + "', '" + laptop.getIsletim_sistemi() + "', " + laptop.getEkran().getEkran_id() + ", " + laptop.getGenislik() + ", " + laptop.getDerinlik() + ", " + laptop.getKalinlik() + ", " + laptop.getAgirlik() + ", " + laptop.getDepolama_bellek().getDepolama_bellek_id() + ", " + laptop.getIslemci().getIslemci_id() + ", " + laptop.getEkran_karti().getEkran_karti_id() + ", " + laptop.getPil().getPil_id() + ", " + laptop.getBaglanti().getBaglanti_id() + ")");
+                    + " agirlik, depolama_bellek_id, islemci_id, ekran_karti_id, pil_id, baglanti_id, dosya) VALUES ( '" + laptop.getUrun_adi() + "', '" + laptop.getUrun_tipi() + "', '" + laptop.getUrun_amaci() + "', '" + laptop.getUrun_ailesi() + "'"
+                    + ", '" + laptop.getUrun_serisi() + "', '" + laptop.getIsletim_sistemi() + "', " + laptop.getEkran().getEkran_id() + ", " + laptop.getGenislik() + ", " + laptop.getDerinlik() + ", " + laptop.getKalinlik() + ", " + laptop.getAgirlik() + ", " + laptop.getDepolama_bellek().getDepolama_bellek_id() + ", " + laptop.getIslemci().getIslemci_id() + ", " + laptop.getEkran_karti().getEkran_karti_id() + ", " + laptop.getPil().getPil_id() + ", " + laptop.getBaglanti().getBaglanti_id() +", " + laptop.getResim().getDosya_id() + ")");
             st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "LaptopDAO");
@@ -105,6 +107,7 @@ public class laptopDAO {
                 tmp.setBaglanti(this.getBaglanti().find(rs.getLong("baglanti_id")));
                 tmp.setEkran(this.getEkran().find(rs.getLong("ekran_id")));
                 tmp.setPil(this.getPil().find(rs.getLong("pil_id")));
+                tmp.setResim(this.getDosyaDAO().laptopFind(rs.getLong("dosya")));
                 laptoplist.add(tmp);
 
             }
@@ -172,6 +175,13 @@ public class laptopDAO {
             this.pil = new laptopPilDAO();
         }
         return pil;
+    }
+
+    public DosyaDAO getDosyaDAO() {
+        if(this.dosyaDAO == null){
+            this.dosyaDAO = new DosyaDAO();
+        }
+        return dosyaDAO;
     }
 
 }

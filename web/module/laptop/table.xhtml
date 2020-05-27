@@ -21,6 +21,9 @@
             <h:form id="laptop-table">
                 <h:dataTable class="table" value="#{laptopController.laptop_list}" var="laptop">
                     <h:column>
+                        <h:graphicImage width="100" value="/file/#{laptop.resim.fileName}" />
+                    </h:column>
+                    <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
                             #{laptop.laptop_id}
                     </h:column>

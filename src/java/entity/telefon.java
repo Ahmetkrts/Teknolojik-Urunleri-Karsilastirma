@@ -30,8 +30,8 @@ public class telefon {
     private telefonArkaKamera arkaKamera;
     private telefonOnKamera onKamera;
     private telefonEkran ekran;
-    
-    
+    private Dosya resim;
+
     public telefon() {
     }
 
@@ -59,10 +59,6 @@ public class telefon {
         this.ekran = ekran;
     }
 
-   
-
-   
-
     public telefonIsletimSistemi getIsletimSistemi() {
         return isletimSistemi;
     }
@@ -78,8 +74,6 @@ public class telefon {
     public void setIslemci(telefonIslemci islemci) {
         this.islemci = islemci;
     }
-
-   
 
     public Long getTelefon_id() {
         return telefon_id;
@@ -175,6 +169,14 @@ public class telefon {
 
     public void setRenk(List<telefonRenk> renk) {
         this.renk = renk;
+    }
+
+    public Dosya getResim() {
+        return resim;
+    }
+
+    public void setResim(Dosya resim) {
+        this.resim = resim;
     }
 
 }

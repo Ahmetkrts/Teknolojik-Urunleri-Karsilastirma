@@ -28,6 +28,7 @@ public class laptop {
     private laptopEkranKarti ekran_karti;
     private laptopPil pil;
     private laptopBaglanti baglanti;
+    private Dosya resim;
 
     public Long getLaptop_id() {
         return laptop_id;
@@ -163,6 +164,14 @@ public class laptop {
 
     public void setBaglanti(laptopBaglanti baglanti) {
         this.baglanti = baglanti;
+    }
+
+    public Dosya getResim() {
+        return resim;
+    }
+
+    public void setResim(Dosya resim) {
+        this.resim = resim;
     }
     
     

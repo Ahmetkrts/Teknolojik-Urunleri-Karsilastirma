@@ -25,6 +25,7 @@ public class televizyonDAO {
     private Connection connection;
     private televizyonEkranDAO ekranDAO;
     private televizyonIslettimSistemiDAO islettimSistemiDAO;
+    private DosyaDAO dosyaDAO;
 
     public List<televizyon> findAll() {
         List<televizyon> televizyon_list = new ArrayList<>();
@@ -49,6 +50,7 @@ public class televizyonDAO {
                 tmp.setTelevizyon_yuksekligi(rs.getInt("televizyon_yuksekligi"));
                 tmp.setTelevizyon_yenileme_hizi(rs.getInt("televizyon_yenileme_hizi"));
                 tmp.setTelevizyon_hd_uydu_alici(rs.getString("televizyon_hd_uydu_alici"));
+                tmp.setResim(this.getDosyaDAO().televizyonFind(rs.getLong("dosya")));
                 televizyon_list.add(tmp);
             }
             getConnection().close();
@@ -61,7 +63,7 @@ public class televizyonDAO {
 
     public void insert(televizyon televizyon) {
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("insert into televizyon (televizyon_ad,televizyon_marka,televizyon_model,televizyon_ekran_id,televizyon_enerji,televizyon_ses_cikis_gucu,televizyon_hoparlor_sistemi,televizyon_dahili_wifi,televizyon_usb_20,televizyon_usb_30,televizyon_genisligi,televizyon_yuksekligi,televizyon_isletim_sistemi,televizyon_yenileme_hizi,televizyon_hd_uydu_alici) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pst = this.getConnection().prepareStatement("insert into televizyon (televizyon_ad,televizyon_marka,televizyon_model,televizyon_ekran_id,televizyon_enerji,televizyon_ses_cikis_gucu,televizyon_hoparlor_sistemi,televizyon_dahili_wifi,televizyon_usb_20,televizyon_usb_30,televizyon_genisligi,televizyon_yuksekligi,televizyon_isletim_sistemi,televizyon_yenileme_hizi,televizyon_hd_uydu_alici,dosya) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, televizyon.getTelevizyon_ad());
             pst.setString(2, televizyon.getTelevizyon_marka());
             pst.setString(3, televizyon.getTelevizyon_model());
@@ -77,6 +79,7 @@ public class televizyonDAO {
             pst.setLong(13, televizyon.getIsletimsistemi().getIsletim_sistemi_id());
             pst.setInt(14, televizyon.getTelevizyon_yenileme_hizi());
             pst.setString(15, televizyon.getTelevizyon_hd_uydu_alici());
+            pst.setLong(16, televizyon.getResim().getDosya_id());
             pst.executeUpdate();
             getConnection().close();
 
@@ -87,7 +90,7 @@ public class televizyonDAO {
 
     public void edit(televizyon televizyon) {
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("update televizyon set televizyon_ad=?,televizyon_marka=?,televizyon_model=?,televizyon_ekran_id=?,televizyon_enerji=?,televizyon_ses_cikis_gucu=?,televizyon_hoparlor_sistemi=?,televizyon_dahili_wifi=?,televizyon_usb_20=?,televizyon_usb_30=?,televizyon_genisligi=?,televizyon_yuksekligi=?,televizyon_isletim_sistemi=?,televizyon_yenileme_hizi=?,televizyon_hd_uydu_alici=? where televizyon_id=?");
+            PreparedStatement pst = this.getConnection().prepareStatement("update televizyon set televizyon_ad=?,televizyon_marka=?,televizyon_model=?,televizyon_ekran_id=?,televizyon_enerji=?,televizyon_ses_cikis_gucu=?,televizyon_hoparlor_sistemi=?,televizyon_dahili_wifi=?,televizyon_usb_20=?,televizyon_usb_30=?,televizyon_genisligi=?,televizyon_yuksekligi=?,televizyon_isletim_sistemi=?,televizyon_yenileme_hizi=?,televizyon_hd_uydu_alici=?,dosya=? where televizyon_id=?");
             pst.setString(1, televizyon.getTelevizyon_ad());
             pst.setString(2, televizyon.getTelevizyon_marka());
             pst.setString(3, televizyon.getTelevizyon_model());
@@ -103,7 +106,8 @@ public class televizyonDAO {
             pst.setLong(13, televizyon.getIsletimsistemi().getIsletim_sistemi_id());
             pst.setInt(14, televizyon.getTelevizyon_yenileme_hizi());
             pst.setString(15, televizyon.getTelevizyon_hd_uydu_alici());
-            pst.setLong(16, televizyon.getTelevizyon_id());
+            pst.setLong(16, televizyon.getResim().getDosya_id());
+            pst.setLong(17, televizyon.getTelevizyon_id());
             pst.executeUpdate();
             getConnection().close();
 
@@ -147,4 +151,12 @@ public class televizyonDAO {
         this.connection = this.getConnector().Connect();
         return connection;
     }
+
+    public DosyaDAO getDosyaDAO() {
+        if(this.dosyaDAO == null){
+            this.dosyaDAO = new DosyaDAO();
+        }
+        return dosyaDAO;
+    }
+    
 }

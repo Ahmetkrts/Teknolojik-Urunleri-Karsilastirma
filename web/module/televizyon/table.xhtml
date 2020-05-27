@@ -19,7 +19,9 @@
             </div>
             <h:form id="televizyon-table">
                 <h:dataTable class="table" value="#{televizyonController.televizyon_list}" var="televizyon">
-
+                    <h:column>
+                        <h:graphicImage width="100" value="/file/#{televizyon.resim.fileName}" />
+                    </h:column>
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
                             #{televizyon.televizyon_id}
@@ -56,14 +58,11 @@
                             #{televizyon.isletimsistemi.isletim_sistemi} 
                     </h:column>
                     <h:column>
-
                         <h:commandLink action="#{televizyonController.updateForm(televizyon)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i> 
                             <f:ajax execute="@this" render="televizyon-form"/>
                         </h:commandLink>
-
                     </h:column>            
-
                 </h:dataTable>
             </h:form>
         </div>

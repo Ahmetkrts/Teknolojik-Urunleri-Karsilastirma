@@ -115,6 +115,14 @@
                                 <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hd_uydu_alici}" />
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="selectIsletimSistemi" class="bmd-label-floating">Televizyon Resim Secimi </label>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectResim" value="#{televizyonController.televizyon.resim}" converter="teleResim">
+                                    <f:selectItems value="#{dosyaController.televizyonDocumentList}" var="resim" itemValue="#{resim}" itemLabel="#{resim.fileName} "/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="btn-group">

@@ -11,7 +11,7 @@
                 <p class="card-category">Telefon Ekleme veya Güncellme</p>
             </div>
             <div class="card-body">
-                <h:form id="telefon-form">
+                <h:form id="telefon-form" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -130,6 +130,14 @@
                                 <h:selectManyMenu styleClass="custom-select form-control " style="height: 60px;" id="selectRenk" value="#{telefonController.telefon.renk}" converter="telRenkConverter">
                                     <f:selectItems value="#{telefonRenkController.renkList}" var="renk" itemValue="#{renk}" itemLabel="#{renk.renk_adi} "/>
                                 </h:selectManyMenu>                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="selectIsletimSistemi" class="bmd-label-floating">Telefon Resim Secimi </label>
+                                <h:selectOneMenu styleClass="custom-select form-control" id="selectResim" value="#{telefonController.telefon.resim}" converter="telResim">
+                                    <f:selectItems value="#{dosyaController.telefonDocumentList}" var="resim" itemValue="#{resim}" itemLabel="#{resim.fileName} "/>
+                                </h:selectOneMenu>
                             </div>
                         </div>
                     </div>

@@ -19,7 +19,9 @@
             </div>
             <h:form id="telefon-table">
                 <h:dataTable class="table" value="#{telefonController.telefon_list}" var="telefon">
-
+                    <h:column>
+                        <h:graphicImage width="100" value="/file/#{telefon.resim.fileName}" />
+                    </h:column>
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
                             #{telefon.telefon_id}
