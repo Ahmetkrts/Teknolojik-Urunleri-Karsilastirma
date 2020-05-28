@@ -55,7 +55,9 @@ public class televizyonController implements Serializable {
     }
 
     public televizyon getTv() {
-        this.tv = this.getTelevizyon_list().get(0);
+        if (!this.getTelevizyon_list().isEmpty()) {
+            this.tv = this.getTelevizyon_list().get(0);
+        }
         return tv;
     }
 

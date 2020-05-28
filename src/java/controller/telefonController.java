@@ -56,7 +56,9 @@ public class telefonController implements Serializable {
     }
 
     public telefon getTl() {
-        this.tl = this.getTelefon_list().get(0);
+        if (!this.getTelefon_list().isEmpty()) {
+            this.tl = this.getTelefon_list().get(0);
+        }
         return tl;
     }
 

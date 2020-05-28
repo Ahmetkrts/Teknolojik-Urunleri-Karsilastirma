@@ -29,7 +29,6 @@ public class laptopController implements Serializable {
     private laptopDAO laptopdao;
     private laptop laptop;
     private laptop lp;
-    
 
     public String laptopOzellikleri(laptop laptop) {
         this.laptop = laptop;
@@ -37,7 +36,9 @@ public class laptopController implements Serializable {
     }
 
     public laptop getLp() {
-        this.lp = getLaptop_list().get(0);
+        if (!getLaptop_list().isEmpty()) {
+            this.lp = getLaptop_list().get(0);
+        }
         return lp;
     }
 
