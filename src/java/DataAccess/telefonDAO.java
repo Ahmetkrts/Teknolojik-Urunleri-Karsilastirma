@@ -32,14 +32,15 @@ public class telefonDAO {
     private telefonOnKameraDAO onKameraDAO;
     private DosyaDAO dosyaDAO;
 
-   
     private telefonRenkDAO renk;
 
-    public List<telefon> findAll() {
+    public List<telefon> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
         List<telefon> telefon_list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from telefon");
+            ResultSet rs = st.executeQuery("select * from telefon order by telefon_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 telefon tmp = new telefon();
                 tmp.setTelefon_id(rs.getLong("telefon_id"));
@@ -70,31 +71,44 @@ public class telefonDAO {
         return telefon_list;
     }
 
-   public void insert(telefon telefon)  {
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(telefon_id) as telefon_count from telefon");
+            rs.next();
+            count = rs.getInt("telefon_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
+    }
+
+    public void insert(telefon telefon) {
         try {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("insert into telefon (telefon_ad,telefon_marka,telefon_model,telefon_ekran_id,telefon_batarya_id,telefon_islemci_id,arka_kamera_id,on_kamera_id,telefon_ram,telefon_ram_frekansi,telefon_dahili_depolama,telefon_boy,telefon_en,telefon_agirlik,isletim_sistemi_id,dosya) values ("
                     + "'" + telefon.getTelefon_ad() + "','" + telefon.getTelefon_marka() + "','" + telefon.getTelefon_model() + "'," + telefon.getEkran().getEkran_id() + "," + telefon.getBatarya().getBatarya_id() + "," + telefon.getIslemci().getIslemci_id() + ", "
                     + "" + telefon.getArkaKamera().getKamera_id() + "," + telefon.getOnKamera().getKamera_id() + "," + telefon.getTelefon_ram() + "," + telefon.getTelefon_ram_frekansi() + "," + telefon.getTelefon_dahili_depolama() + "," + telefon.getTelefon_boy() + ","
-                    + "" + telefon.getTelefon_en() + "," + telefon.getTelefon_agirlik() + "," + telefon.getIsletimSistemi().getIsletim_sistemi_id() + "," + telefon.getResim().getDosya_id() +")",Statement.RETURN_GENERATED_KEYS);
+                    + "" + telefon.getTelefon_en() + "," + telefon.getTelefon_agirlik() + "," + telefon.getIsletimSistemi().getIsletim_sistemi_id() + "," + telefon.getResim().getDosya_id() + ")", Statement.RETURN_GENERATED_KEYS);
 
-            Long telefon_id=null;                               
+            Long telefon_id = null;
             ResultSet gk = st.getGeneratedKeys();
             if (gk.next()) {
                 telefon_id = gk.getLong(1);
             }
             for (telefonRenk r : telefon.getRenk()) {
-                 Statement st2 = this.getConnection().createStatement();
+                Statement st2 = this.getConnection().createStatement();
                 System.out.println("+++++++++++++++++++++++++++++");
-                st2.executeUpdate("insert into telefon_renk (telefon_id,renk_id) values ("+telefon_id+","+r.getRenk_id()+")");
+                st2.executeUpdate("insert into telefon_renk (telefon_id,renk_id) values (" + telefon_id + "," + r.getRenk_id() + ")");
                 System.out.println("/////////////////////////////////////");
             }
-               
-           
-             getConnection().close();
-            
-           
-            
+
+            getConnection().close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -113,7 +127,7 @@ public class telefonDAO {
             pst.setLong(8, telefon.getOnKamera().getKamera_id());
             pst.setInt(9, telefon.getTelefon_ram());
             pst.setDouble(10, telefon.getTelefon_ram_frekansi());
-            pst.setInt(11, telefon.getTelefon_dahili_depolama());            
+            pst.setInt(11, telefon.getTelefon_dahili_depolama());
             pst.setInt(12, telefon.getTelefon_boy());
             pst.setDouble(13, telefon.getTelefon_en());
             pst.setInt(14, telefon.getTelefon_agirlik());
@@ -121,52 +135,47 @@ public class telefonDAO {
             pst.setLong(16, telefon.getResim().getDosya_id());
             pst.setLong(17, telefon.getTelefon_id());
             pst.executeUpdate();
-            
+
             pst = this.getConnection().prepareStatement("delete from telefon_renk where telefon_id=?");
             pst.setLong(1, telefon.getTelefon_id());
             pst.executeUpdate();
-            
-            
+
             for (telefonRenk r : telefon.getRenk()) {
-                 Statement st2 = this.getConnection().createStatement();
+                Statement st2 = this.getConnection().createStatement();
                 System.out.println("+++++++++++++++++++++++++++++");
-                st2.executeUpdate("insert into telefon_renk (telefon_id,renk_id) values ("+telefon.getTelefon_id()+","+r.getRenk_id()+")");
+                st2.executeUpdate("insert into telefon_renk (telefon_id,renk_id) values (" + telefon.getTelefon_id() + "," + r.getRenk_id() + ")");
                 System.out.println("/////////////////////////////////////");
             }
-               
-           
-             getConnection().close();
-            
-           
-            
+
+            getConnection().close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void remove(telefon telefon) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_renk where telefon_id=?");
             pst.setLong(1, telefon.getTelefon_id());
             pst.executeUpdate();
-            
+
             pst = this.getConnection().prepareStatement("delete from telefon where telefon_id=?");
             pst.setLong(1, telefon.getTelefon_id());
             pst.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public DosyaDAO getDosyaDAO() {
-        if(this.dosyaDAO == null){
+        if (this.dosyaDAO == null) {
             this.dosyaDAO = new DosyaDAO();
         }
         return dosyaDAO;
     }
 
-    
     public telefonIsletimSistemiDAO getIsletimsistemi() {
         if (this.isletimsistemi == null) {
             this.isletimsistemi = new telefonIsletimSistemiDAO();
@@ -186,10 +195,10 @@ public class telefonDAO {
             this.ekran = new telefonEkranDAO();
         }
         return ekran;
-    } 
+    }
 
     public telefonOnKameraDAO getOnKameraDAO() {
-        if(this.onKameraDAO == null){
+        if (this.onKameraDAO == null) {
             this.onKameraDAO = new telefonOnKameraDAO();
         }
         return onKameraDAO;
@@ -203,7 +212,7 @@ public class telefonDAO {
     }
 
     public telefonArkaKameraDAO getArkaKameraDAO() {
-        if(this.arkaKameraDAO == null){
+        if (this.arkaKameraDAO == null) {
             this.arkaKameraDAO = new telefonArkaKameraDAO();
         }
         return arkaKameraDAO;

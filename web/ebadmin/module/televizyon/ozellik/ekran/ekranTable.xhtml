@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Televizyonlarin Ekran Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="ekran-table">
-                <h:dataTable class="table" value="#{televizyonEkranController.ekranList}" var="ekran">
+                <h:dataTable class="table" value="#{televizyonEkranController.tvEkranList()}" var="ekran">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -53,6 +53,20 @@
 
 
                 </h:dataTable>
+                <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-warning" action="#{televizyonEkranController.previous()}">
+                        <i class="material-icons text-warning">arrow_back</i> 
+                        <f:ajax execute="@this" render=" ekran-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-warning" value="#{televizyonEkranController.page}" >
+
+                        <f:ajax execute="@this" render=" ekran-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-warning"  action="#{televizyonEkranController.next()}">
+                        <i class="material-icons text-warning">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" ekran-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

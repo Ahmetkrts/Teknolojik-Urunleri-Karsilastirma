@@ -27,11 +27,13 @@ public class televizyonDAO {
     private televizyonIslettimSistemiDAO islettimSistemiDAO;
     private DosyaDAO dosyaDAO;
 
-    public List<televizyon> findAll() {
+    public List<televizyon> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
         List<televizyon> televizyon_list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from televizyon");
+            ResultSet rs = st.executeQuery("select * from televizyon order by televizyon_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 televizyon tmp = new televizyon();
                 tmp.setTelevizyon_id(rs.getLong("televizyon_id"));
@@ -59,6 +61,21 @@ public class televizyonDAO {
             System.out.println(e.getMessage());
         }
         return televizyon_list;
+    }
+	public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(televizyon_id) as televizyon_count from televizyon ");
+            rs.next();
+            count = rs.getInt("televizyon_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public void insert(televizyon televizyon) {

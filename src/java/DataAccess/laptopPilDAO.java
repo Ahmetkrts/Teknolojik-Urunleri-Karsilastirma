@@ -80,7 +80,33 @@ public class laptopPilDAO {
         return pil;
     }
 
+    public List<laptopPil> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
+        List<laptopPil> pil_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from laptop_pil order by pil_id " + s + " limit " + start + "," + pageSize);
+            while (rs.next()) {
+                laptopPil tmp = new laptopPil();
+                tmp.setPil_id(rs.getLong("pil_id"));
+                tmp.setPil_gucu(rs.getInt("pil_gucu"));
+                tmp.setPil_hucre_sayisi(rs.getInt("pil_hucre_sayisi"));
+                tmp.setPil_ozellikleri(rs.getString("pil_ozellikleri"));
+                pil_liste.add(tmp);
+
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return pil_liste;
+    }
+
     public List<laptopPil> findAll() {
+
         List<laptopPil> pil_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
@@ -100,6 +126,22 @@ public class laptopPilDAO {
             System.out.println(e.getMessage());
         }
         return pil_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(pil_id) as laptop_pi_count from laptop_pil ");
+            rs.next();
+            count = rs.getInt("laptop_pi_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public Connector getConnector() {

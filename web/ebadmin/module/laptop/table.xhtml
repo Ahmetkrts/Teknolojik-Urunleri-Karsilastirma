@@ -21,7 +21,8 @@
             <h:form id="laptop-table">
                 <h:dataTable class="table" value="#{laptopController.laptop_list}" var="laptop">
                     <h:column>
-                        <h:graphicImage width="100" value="/file/#{laptop.resim.fileName}" />
+                        <f:facet name="header"><b class="text-primary">Resim</b></f:facet> 
+                        <h:graphicImage width="100" height="100" value="/file/#{laptop.resim.fileName}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -76,6 +77,22 @@
                         </h:commandLink>
                     </h:column>
                 </h:dataTable>
+                <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-primary" action="#{laptopController.previous()}">
+                        <i class="material-icons text-primary">arrow_back</i> 
+                        <f:ajax execute="@this" render=" laptop-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-primary" value="#{laptopController.page}" >
+
+                        <f:ajax execute="@this" render=" laptop-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-primary"  action="#{laptopController.next()}">
+                        <i class="material-icons text-primary">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" laptop-table"/>
+                    </h:commandLink>
+                </div>
+
+
             </h:form>
         </div>
     </div>

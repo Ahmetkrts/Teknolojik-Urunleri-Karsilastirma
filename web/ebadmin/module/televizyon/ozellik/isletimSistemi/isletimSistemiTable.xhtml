@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Televizyonlarin İşletim sistemi Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="isletimsistemi-table">
-                <h:dataTable class="table" value="#{televizyonIslettimSistemiController.islemtimSistemiList}" var="isletimSistemi">
+                <h:dataTable class="table" value="#{televizyonIslettimSistemiController.tvIslemtimSistemiList()}" var="isletimSistemi">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -30,6 +30,20 @@
 
                     </h:column>
                 </h:dataTable>
+                 <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-info" action="#{televizyonIslettimSistemiController.previous()}">
+                        <i class="material-icons text-info">arrow_back</i> 
+                        <f:ajax execute="@this" render=" isletimsistemi-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-info" value="#{televizyonIslettimSistemiController.page}" >
+
+                        <f:ajax execute="@this" render=" isletimsistemi-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-info"  action="#{televizyonIslettimSistemiController.next()}">
+                        <i class="material-icons text-info">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" isletimsistemi-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

@@ -45,13 +45,16 @@ public class telefonOnKameraDAO {
         return onKamera;
     }
 
-    public List<telefonOnKamera> findAll() {
+    public List<telefonOnKamera> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
         List<telefonOnKamera> kamera_list = new ArrayList<>();
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from telefon_on_kamera");
+            ResultSet rs = st.executeQuery("select * from telefon_on_kamera order by kamera_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 telefonOnKamera tmp = new telefonOnKamera();
                 tmp.setKamera_id(rs.getLong("kamera_id"));
@@ -70,16 +73,59 @@ public class telefonOnKameraDAO {
         }
         return kamera_list;
     }
-    
+
+    public List<telefonOnKamera> findAll() {
+
+        List<telefonOnKamera> kamera_list = new ArrayList<>();
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from telefon_on_kamera ");
+            while (rs.next()) {
+                telefonOnKamera tmp = new telefonOnKamera();
+                tmp.setKamera_id(rs.getLong("kamera_id"));
+                tmp.setTelefon_model(rs.getString("telefon_model"));
+                tmp.setKamera_cozunurlugu(rs.getInt("kamera_cozunurlugu"));
+                tmp.setVideo_cozunurlugu(rs.getString("video_cozunurlugu"));
+                tmp.setVideo_fps_degeri(rs.getInt("video_fps_degeri"));
+                tmp.setDiafram_acikligi(rs.getDouble("diafram_acikligi"));
+
+                kamera_list.add(tmp);
+            }
+            getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return kamera_list;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(kamera_id) as telefon_on_kamera_count from telefon_on_kamera ");
+            rs.next();
+            count = rs.getInt("telefon_on_kamera_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
+    }
+
     public void edit(telefonOnKamera onKamera) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("update telefon_on_kamera set telefon_model=?,kamera_cozunurlugu=?,video_cozunurlugu=?,video_fps_degeri=?,diafram_acikligi=? where kamera_id=?");
             pst.setString(1, onKamera.getTelefon_model());
             pst.setInt(2, onKamera.getKamera_cozunurlugu());
-            pst.setString(3,onKamera.getVideo_cozunurlugu());
-            pst.setInt(4,onKamera.getVideo_fps_degeri());
-            pst.setDouble(5,onKamera.getDiafram_acikligi());
-            pst.setLong(6,onKamera.getKamera_id());
+            pst.setString(3, onKamera.getVideo_cozunurlugu());
+            pst.setInt(4, onKamera.getVideo_fps_degeri());
+            pst.setDouble(5, onKamera.getDiafram_acikligi());
+            pst.setLong(6, onKamera.getKamera_id());
             pst.executeUpdate();
             getConnection().close();
 
@@ -121,5 +167,4 @@ public class telefonOnKameraDAO {
         }
     }
 
-    
 }

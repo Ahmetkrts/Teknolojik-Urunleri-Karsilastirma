@@ -34,7 +34,7 @@ public class telefonRenkDAO {
                 renklist.add(this.find(rs.getLong("renk_id")));
 
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -57,11 +57,14 @@ public class telefonRenkDAO {
         return renk;
     }
 
-    public List<telefonRenk> findAll() {
+    public List<telefonRenk> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
         List<telefonRenk> renklist = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from telefon_renkleri");
+            ResultSet rs = st.executeQuery("select * from telefon_renkleri order by renk_id " + s + " limit " + start + "," + pageSize);;
 
             while (rs.next()) {
                 telefonRenk tmp = new telefonRenk();
@@ -74,6 +77,42 @@ public class telefonRenkDAO {
             System.out.println(e.getMessage());
         }
         return renklist;
+    }
+
+    public List<telefonRenk> findAll() {
+
+        List<telefonRenk> renklist = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from telefon_renkleri ");
+
+            while (rs.next()) {
+                telefonRenk tmp = new telefonRenk();
+                tmp.setRenk_id(rs.getLong("renk_id"));
+                tmp.setRenk_adi(rs.getString("renk_adi"));
+                renklist.add(tmp);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return renklist;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(renk_id) as telefon_renkleri_count from telefon_renkleri ");
+            rs.next();
+            count = rs.getInt("telefon_renkleri_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public Connector getConnector() {

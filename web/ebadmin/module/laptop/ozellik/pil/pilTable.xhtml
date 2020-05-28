@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Laptopların Pil Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="pil-table">
-                <h:dataTable class="table" value="#{laptopPilController.laptopPilList}" var="pil">
+                <h:dataTable class="table" value="#{laptopPilController.pilList()}" var="pil">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -51,6 +51,20 @@
 
 
                 </h:dataTable>
+                 <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-success" action="#{laptopPilController.previous()}">
+                        <i class="material-icons text-success">arrow_back</i> 
+                        <f:ajax execute="@this" render=" pil-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-success" value="#{laptopPilController.page}" >
+
+                        <f:ajax execute="@this" render=" pil-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-success"  action="#{laptopPilController.next()}">
+                        <i class="material-icons text-success">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" pil-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

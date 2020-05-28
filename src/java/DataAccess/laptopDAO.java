@@ -82,11 +82,13 @@ public class laptopDAO {
         }
     }
 
-    public List<laptop> findAll() {
+     public List<laptop> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
         List<laptop> laptoplist = new ArrayList<>();
+        int start = (page - 1) * pageSize;
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from laptop");
+            ResultSet rs = st.executeQuery("select * from laptop order by laptop_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 laptop tmp = new laptop();
                 tmp.setLaptop_id(rs.getLong("laptop_id"));
@@ -117,6 +119,22 @@ public class laptopDAO {
         }
 
         return laptoplist;
+
+    }
+	
+	 public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(laptop_id) as laptop_count from laptop ");
+            rs.next();
+            count = rs.getInt("laptop_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "LaptopDAO");
+        }
+
+        return count;
 
     }
 

@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="banner-img">
-                                            <img class="img-fluid" src="resources/img/banner/banner-img.png" alt=""/>
+                                            <h:graphicImage   value="/file/#{laptopController.lp.resim.fileName}" />
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="banner-img">
-                                            <img class="img-fluid" src="resources/img/banner/banner-img.png" alt=""/>
+                                            <h:graphicImage   value="/file/#{telefonController.tl.resim.fileName}" />
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="banner-img">
-                                            <img class="img-fluid" src="resources/img/banner/banner-img.png" alt=""/>
+                                            <h:graphicImage   value="/file/#{televizyonController.tv.resim.fileName}" />
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                             <c:forEach items="#{laptopController.laptop_list}" var="laptop" >
                                 <div class="col-lg-3 col-md-6">
                                     <div class="single-product">
-                                        <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                        <h:graphicImage  value="/file/#{laptop.resim.fileName}" />
                                         <div class="product-details">
                                             <h6><h:commandLink  action="#{laptopController.laptopOzellikleri(laptop)}" style="color: #000" value="#{laptop.urun_adi}"></h:commandLink></h6>
 
@@ -212,7 +212,7 @@
                             <c:forEach items="#{telefonController.telefon_list}" var="telefon" >
                                 <div class="col-lg-3 col-md-6">
                                     <div class="single-product">
-                                        <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                        <h:graphicImage  value="/file/#{telefon.resim.fileName}" />
                                         <div class="product-details">
                                             <h6><h:commandLink action="#{telefonController.telefonOzellikleri(telefon)}"  style="color: #000" value="#{telefon.telefon_ad}"/> </h6>
 
@@ -261,7 +261,7 @@
                             <div class="active-exclusive-product-slider">
                                 <c:forEach items="#{televizyonController.televizyon_list}" var="tv" >
                                     <div class="single-exclusive-slider">
-                                        <img class="img-fluid" src="resources/img/product/e-p1.png" alt=""/>
+                                        <h:graphicImage  value="/file/#{tv.resim.fileName}" />
                                         <div class="product-details">
 
                                             <h4>#{tv.televizyon_ad}</h4>

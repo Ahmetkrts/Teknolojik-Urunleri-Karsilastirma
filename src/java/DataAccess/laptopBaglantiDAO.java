@@ -49,7 +49,7 @@ public class laptopBaglantiDAO {
         List<laptopBaglanti> baglanti_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from laptop_baglanti");
+            ResultSet rs = st.executeQuery("select * from laptop_baglanti ");
             while (rs.next()) {
                 laptopBaglanti tmp = new laptopBaglanti();
                 tmp.setBaglanti_id(rs.getLong("baglanti_id"));
@@ -67,6 +67,48 @@ public class laptopBaglantiDAO {
             System.out.println(e.getMessage() + "baglantiDAO ");
         }
         return baglanti_liste;
+    }
+
+    public List<laptopBaglanti> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+        List<laptopBaglanti> baglanti_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from laptop_baglanti order by baglanti_id " + s + " limit " + start + "," + pageSize);
+            while (rs.next()) {
+                laptopBaglanti tmp = new laptopBaglanti();
+                tmp.setBaglanti_id(rs.getLong("baglanti_id"));
+                tmp.setUsb3x_adeti(rs.getInt("usb3x_adeti"));
+                tmp.setUsbtypec_adeti(rs.getInt("usbtypec_adeti"));
+                tmp.setHdmi_ozellikleri(rs.getString("hdmi_ozellikleri"));
+                tmp.setBluetooth_ozellikleri(rs.getString("bluetooth_ozellikleri"));
+                tmp.setEthernet_ozellikleri(rs.getString("ethernet_ozellikleri"));
+                tmp.setWifi_ozellikleri(rs.getString("wifi_ozellikleri"));
+                baglanti_liste.add(tmp);
+
+            }
+            getConnection().close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "baglantiDAO ");
+        }
+        return baglanti_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(baglanti_id) as laptop_count from laptop_baglanti ");
+            rs.next();
+            count = rs.getInt("laptop_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public void remove(laptopBaglanti laptopBaglanti) {
@@ -121,7 +163,5 @@ public class laptopBaglantiDAO {
         this.connection = this.getConnector().Connect();
         return connection;
     }
-
-    
 
 }

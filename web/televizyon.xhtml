@@ -38,13 +38,25 @@
 
                             </div>
                             <div class="pagination">
+                                <h:commandLink class="prev-arrow" action="#{televizyonController.previous()}">
+                                    <f:ajax render="televizyon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                </h:commandLink>
 
+
+
+                                <h:commandLink class="active" value="#{televizyonController.page}"/>                                
+                                <!--
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                 <a href="#">6</a>
-
+                                -->
+                                <h:commandLink class="next-arrow" action="#{televizyonController.next()}">
+                                    <f:ajax render="televizyon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </h:commandLink>
 
                             </div>
                         </div>
@@ -55,7 +67,7 @@
                                 <c:forEach items="#{televizyonController.televizyon_list}" var="televizyon" >
                                     <div class="col-lg-3 col-md-6">
                                         <div class="single-product">
-                                            <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                            <h:graphicImage   value="/file/#{televizyon.resim.fileName}" />
                                             <div class="product-details">
                                                 <h6><h:commandLink action="#{televizyonController.TelevizyonOzellikleri(televizyon)}" style="color: #000" value="#{televizyon.televizyon_ad}"></h:commandLink></h6>
 
@@ -81,13 +93,25 @@
 
                             </div>
                             <div class="pagination">
+                                <h:commandLink class="prev-arrow" action="#{televizyonController.previous()}">
+                                    <f:ajax render="televizyon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                </h:commandLink>
 
+
+
+                                <h:commandLink class="active" value="#{televizyonController.page}"/>                                
+                                <!--
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                 <a href="#">6</a>
-
+                                -->
+                                <h:commandLink class="next-arrow" action="#{televizyonController.next()}">
+                                    <f:ajax render="televizyon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </h:commandLink>
 
                             </div>
                         </div>

@@ -63,6 +63,7 @@ public class laptopEkranDAO {
     }
 
     public List<laptopEkran> findAll() {
+
         List<laptopEkran> ekran_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
@@ -82,6 +83,46 @@ public class laptopEkranDAO {
             System.out.println(e.getMessage() + "EkranDAo2");
         }
         return ekran_liste;
+    }
+
+    public List<laptopEkran> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+        List<laptopEkran> ekran_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from laptop_ekran  order by ekran_id " + s + " limit " + start + "," + pageSize);
+            while (rs.next()) {
+                laptopEkran tmp = new laptopEkran();
+                tmp.setEkran_id(rs.getLong("ekran_id"));
+                tmp.setEkran_boyutu(rs.getDouble("ekran_boyutu"));
+                tmp.setEkran_cozunurlugu(rs.getString("ekran_cozunurlugu"));
+                tmp.setEkran_yenileme(rs.getInt("ekran_yenileme"));
+                ekran_liste.add(tmp);
+            }
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "EkranDAo2");
+        }
+        return ekran_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(ekran_id) as ekran_count from laptop_ekran ");
+            rs.next();
+            count = rs.getInt("ekran_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public laptopEkran find(Long id) {

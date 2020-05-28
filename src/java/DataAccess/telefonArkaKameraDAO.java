@@ -22,8 +22,8 @@ import util.Connector;
 public class telefonArkaKameraDAO {
 
     private Connector connector;
-    private Connection connection; 
-    
+    private Connection connection;
+
     public telefonArkaKamera find(Long id) {
         telefonArkaKamera arkaKamera = null;
         try {
@@ -56,11 +56,14 @@ public class telefonArkaKameraDAO {
         return arkaKamera;
     }
 
-    public List<telefonArkaKamera> findAll() {
+    public List<telefonArkaKamera> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
         List<telefonArkaKamera> arka_kamera = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from telefon_arka_kamera");
+            ResultSet rs = st.executeQuery("select * from telefon_arka_kamera order by kamera_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 telefonArkaKamera tmp = new telefonArkaKamera();
 
@@ -84,13 +87,65 @@ public class telefonArkaKameraDAO {
 
             }
             this.getConnection().close();
-            
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
         return arka_kamera;
+    }
+
+    public List<telefonArkaKamera> findAll() {
+
+        List<telefonArkaKamera> arka_kamera = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from telefon_arka_kamera ");
+            while (rs.next()) {
+                telefonArkaKamera tmp = new telefonArkaKamera();
+
+                tmp.setKamera_id(rs.getLong("kamera_id"));
+                tmp.setTelefon_model(rs.getString("telefon_model"));
+                tmp.setKamera_cozunurlugu(rs.getInt("kamera_cozunurlugu"));
+                tmp.setOptik_goruntu_sabitleyici(rs.getString("optik_goruntu_sabitleyici"));
+                tmp.setFlas(rs.getString("flas"));
+                tmp.setDiafram_acikligi(rs.getDouble("diafram_acikligi"));
+                tmp.setVideo_kayit_cozunurlugu(rs.getString("video_kayit_cozunurlugu"));
+                tmp.setVideo_fps_degeri(rs.getInt("video_fps_degeri"));
+                tmp.setIki_kamera_cozunurlugu(rs.getInt("iki_kamera_cozunurlugu"));
+                tmp.setIki_diafram_acikligi(rs.getDouble("iki_diafram_acikligi"));
+                tmp.setUc_kamera_cozunurlugu(rs.getInt("uc_kamera_cozunurlugu"));
+                tmp.setUc_diafram_acikligi(rs.getDouble("uc_diafram_acikligi"));
+                tmp.setDort_kamera_cozunurlugu(rs.getInt("dort_kamera_cozunurlugu"));
+                tmp.setDort_diafram_acikligi(rs.getDouble("dort_diafram_acikligi"));
+                tmp.setBes_kamera_cozunurlugu(rs.getInt("bes_kamera_cozunurlugu"));
+                tmp.setBes_diafram_acikligi(rs.getDouble("bes_diafram_acikligi"));
+                arka_kamera.add(tmp);
+
+            }
+            this.getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return arka_kamera;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(kamera_id) as telefon_arka_kamera_count from telefon_arka_kamera ");
+            rs.next();
+            count = rs.getInt("telefon_arka_kamera_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public void insert(telefonArkaKamera arkaKamera) {

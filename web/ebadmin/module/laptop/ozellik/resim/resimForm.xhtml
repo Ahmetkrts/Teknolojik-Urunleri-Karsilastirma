@@ -19,7 +19,11 @@
                         <h:inputFile value="#{dosyaController.doc}" styleClass="custom-file" />
                     </div>
                     <div class="btn-group">
-                        <h:commandButton styleClass="btn btn-primary" value="Ekle" action="#{dosyaController.laptopUpload()}" />
+                        <h:commandButton styleClass="btn btn-primary" value="Ekle" action="#{dosyaController.laptopUpload()}" >
+                              <f:ajax execute="resim-form" render="resim-form resim-table"/>
+                        </h:commandButton>
+                        
+                        
                     </div>
                     <div class="clearfix"></div>
                 </h:form>

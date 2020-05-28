@@ -23,6 +23,50 @@ public class telefonOnKameraController implements Serializable {
     private List<telefonOnKamera> onKameraList;
     private telefonOnKameraDAO onKameradao;
     private telefonOnKamera onKamera;
+    private int page = 1;
+    private int pageSize = 5;
+    private int pageCount;
+
+    public void next() {
+        if (this.page == getPageCount()) {
+            this.page = 1;
+        } else {
+            this.page++;
+        }
+    }
+
+    public void previous() {
+        if (this.page == 1) {
+            this.page = getPageCount();
+        } else {
+            this.page--;
+        }
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        this.pageCount = (int) Math.ceil(this.getOnKameradao().countSize() / (double) pageSize);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
 
     public void update() {
         this.onKameradao.edit(this.onKamera);
@@ -50,6 +94,11 @@ public class telefonOnKameraController implements Serializable {
 
     public List<telefonOnKamera> getOnKameraList() {
         this.onKameraList = this.getOnKameradao().findAll();
+        return onKameraList;
+    }
+
+    public List<telefonOnKamera> telOnKameraList() {
+        this.onKameraList = this.getOnKameradao().findAll(page, pageSize, 2);
         return onKameraList;
     }
 

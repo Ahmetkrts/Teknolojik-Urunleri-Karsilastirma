@@ -23,6 +23,50 @@ public class laptopEkranController implements Serializable {
     private List<laptopEkran> laptopEkranList;
     private laptopEkranDAO laptopEkranDAO;
     private laptopEkran laptopEkran;
+    private int page = 1;
+    private int pageSize = 5;
+    private int pageCount;
+
+    public void next() {
+        if (this.page == getPageCount()) {
+            this.page = 1;
+        } else {
+            this.page++;
+        }
+    }
+
+    public void previous() {
+        if (this.page == 1) {
+            this.page = getPageCount();
+        } else {
+            this.page--;
+        }
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        this.pageCount = (int) Math.ceil(this.getLaptopEkranDAO().countSize() / (double) pageSize);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
 
     public void update() {
         this.laptopEkranDAO.edit(this.laptopEkran);
@@ -51,12 +95,17 @@ public class laptopEkranController implements Serializable {
         return laptopEkranList;
     }
 
+    public List<laptopEkran> ekranList() {
+        this.laptopEkranList = this.getLaptopEkranDAO().findAll(page, pageSize, 2);
+        return laptopEkranList;
+    }
+
     public void setLaptopEkranList(List<laptopEkran> laptopEkranList) {
         this.laptopEkranList = laptopEkranList;
     }
 
     public laptopEkranDAO getLaptopEkranDAO() {
-        if(this.laptopEkranDAO == null){
+        if (this.laptopEkranDAO == null) {
             this.laptopEkranDAO = new laptopEkranDAO();
         }
         return laptopEkranDAO;
@@ -67,7 +116,7 @@ public class laptopEkranController implements Serializable {
     }
 
     public laptopEkran getLaptopEkran() {
-        if(this.laptopEkran == null){
+        if (this.laptopEkran == null) {
             this.laptopEkran = new laptopEkran();
         }
         return laptopEkran;
@@ -76,8 +125,5 @@ public class laptopEkranController implements Serializable {
     public void setLaptopEkran(laptopEkran laptopEkran) {
         this.laptopEkran = laptopEkran;
     }
-    
-
-    
 
 }

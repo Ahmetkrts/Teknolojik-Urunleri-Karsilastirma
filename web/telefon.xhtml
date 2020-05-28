@@ -38,12 +38,25 @@
 
                             </div>
                             <div class="pagination">
+                                <h:commandLink class="prev-arrow" action="#{telefonController.previous()}">
+                                    <f:ajax render="telefon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                </h:commandLink>
 
+
+
+                                <h:commandLink class="active" value="#{telefonController.page}"/>                                
+                                <!--
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                 <a href="#">6</a>
+                                -->
+                                <h:commandLink class="next-arrow" action="#{telefonController.next()}">
+                                    <f:ajax render="telefon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </h:commandLink>
 
 
                             </div>
@@ -55,7 +68,7 @@
                                 <c:forEach items="#{telefonController.telefon_list}" var="telefon" >
                                     <div class="col-lg-3 col-md-6">
                                         <div class="single-product">
-                                            <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                            <h:graphicImage   value="/file/#{telefon.resim.fileName}" />
                                             <div class="product-details">
                                                 <h6><h:commandLink action="#{telefonController.telefonOzellikleri(telefon)}" style="color: #000" value="#{telefon.telefon_ad}"></h:commandLink> </h6>
 
@@ -92,13 +105,25 @@
 
                             </div>
                             <div class="pagination">
+                                <h:commandLink class="prev-arrow" action="#{telefonController.previous()}">
+                                    <f:ajax render="telefon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                </h:commandLink>
 
+
+
+                                <h:commandLink class="active" value="#{telefonController.page}"/>                                
+                                <!--
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                 <a href="#">6</a>
-
+                                -->
+                                <h:commandLink class="next-arrow" action="#{telefonController.next()}">
+                                    <f:ajax render="telefon" execute="@this"/>
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </h:commandLink>
 
                             </div>
                         </div>

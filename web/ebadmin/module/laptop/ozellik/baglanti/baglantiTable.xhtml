@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Laptopların Baglantı Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="baglanti-table">
-                <h:dataTable class="table" value="#{laptopBaglantiController.baglantiList}" var="baglanti">
+                <h:dataTable class="table" value="#{laptopBaglantiController.bagList()}" var="baglanti">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -63,6 +63,20 @@
 
 
                 </h:dataTable>
+                <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-info" action="#{laptopBaglantiController.previous()}">
+                        <i class="material-icons text-info">arrow_back</i> 
+                        <f:ajax execute="@this" render=" baglanti-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-info" value="#{laptopBaglantiController.page}" >
+
+                        <f:ajax execute="@this" render=" baglanti-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-info"  action="#{laptopBaglantiController.next()}">
+                        <i class="material-icons text-info">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" baglanti-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

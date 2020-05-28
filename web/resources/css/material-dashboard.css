@@ -903,7 +903,7 @@ mark,
 }
 .img-banner{
     object-fit: fill;
-    height: 10px !important;
+    height: 10px;!important
 }
 
 .img-thumbnail {

@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Laptopların İşlemci Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div> 
             <h:form id="islemci-table">
-                <h:dataTable class="table" value="#{laptopIslemciController.laptopIslemciList}" var="islemci">
+                <h:dataTable class="table" value="#{laptopIslemciController.islemciList()}" var="islemci">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -77,6 +77,20 @@
 
 
                 </h:dataTable>
+                 <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-success" action="#{laptopIslemciController.previous()}">
+                        <i class="material-icons text-success">arrow_back</i> 
+                        <f:ajax execute="@this" render=" islemci-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-success" value="#{laptopIslemciController.page}" >
+
+                        <f:ajax execute="@this" render=" islemci-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-success"  action="#{laptopIslemciController.next()}">
+                        <i class="material-icons text-success">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" islemci-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

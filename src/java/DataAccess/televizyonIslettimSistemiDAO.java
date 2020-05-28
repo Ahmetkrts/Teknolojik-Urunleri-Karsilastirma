@@ -20,6 +20,7 @@ import util.Connector;
  * @author techn
  */
 public class televizyonIslettimSistemiDAO {
+
     private Connector connector;
     private Connection connection;
 
@@ -39,11 +40,14 @@ public class televizyonIslettimSistemiDAO {
         return isletimsistemi;
     }
 
-    public List<televizyonIslettimSistemi> findAll() {
+    public List<televizyonIslettimSistemi> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
         List<televizyonIslettimSistemi> isletimsistemi_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from televizyon_isletim_sistemi");
+            ResultSet rs = st.executeQuery("select * from televizyon_isletim_sistemi order by isletim_sistemi_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 televizyonIslettimSistemi tmp = new televizyonIslettimSistemi();
                 tmp.setIsletim_sistemi_id(rs.getLong("isletim_sistemi_id"));
@@ -57,11 +61,48 @@ public class televizyonIslettimSistemiDAO {
         }
         return isletimsistemi_liste;
     }
+
+    public List<televizyonIslettimSistemi> findAll() {
+
+        List<televizyonIslettimSistemi> isletimsistemi_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from televizyon_isletim_sistemi ");
+            while (rs.next()) {
+                televizyonIslettimSistemi tmp = new televizyonIslettimSistemi();
+                tmp.setIsletim_sistemi_id(rs.getLong("isletim_sistemi_id"));
+                tmp.setIsletim_sistemi(rs.getString("isletim_sistemi"));
+                isletimsistemi_liste.add(tmp);
+            }
+            getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return isletimsistemi_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(isletim_sistemi_id) as televizyon_isletim_sistemi_count from televizyon_isletim_sistemi ");
+            rs.next();
+            count = rs.getInt("televizyon_isletim_sistemi_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
+    }
+
     public void edit(televizyonIslettimSistemi isletimSistemi) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("update televizyon_isletim_sistemi set isletim_sistemi=? where isletim_sistemi_id=?");
             pst.setString(1, isletimSistemi.getIsletim_sistemi());
-            pst.setLong(2,isletimSistemi.getIsletim_sistemi_id());
+            pst.setLong(2, isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -70,7 +111,7 @@ public class televizyonIslettimSistemiDAO {
     }
 
     public void remove(televizyonIslettimSistemi isletimSistemi) {
-       try {
+        try {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_isletim_sistemi where isletim_sistemi_id=?");
             pst.setLong(1, isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
@@ -101,5 +142,4 @@ public class televizyonIslettimSistemiDAO {
         }
     }
 
-    
 }

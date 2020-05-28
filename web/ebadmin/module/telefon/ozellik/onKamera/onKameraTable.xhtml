@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Telefonların Ön Kamera Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="onkamera-table">
-                <h:dataTable class="table" value="#{telefonOnKameraController.onKameraList}" var="kamera">
+                <h:dataTable class="table" value="#{telefonOnKameraController.telOnKameraList()}" var="kamera">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -54,6 +54,20 @@
 
 
                 </h:dataTable>
+                 <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-success" action="#{telefonOnKameraController.previous()}">
+                        <i class="material-icons text-success">arrow_back</i> 
+                        <f:ajax execute="@this" render=" onkamera-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-success" value="#{telefonOnKameraController.page}" >
+
+                        <f:ajax execute="@this" render=" onkamera-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-success"  action="#{telefonOnKameraController.next()}">
+                        <i class="material-icons text-success">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" onkamera-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

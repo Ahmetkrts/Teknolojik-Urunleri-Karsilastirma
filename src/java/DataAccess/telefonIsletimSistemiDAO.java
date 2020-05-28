@@ -41,7 +41,32 @@ public class telefonIsletimSistemiDAO {
         return isletimsistemi;
     }
 
+    public List<telefonIsletimSistemi> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
+        List<telefonIsletimSistemi> isletimsistemi_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from telefon_isletimsistemi order by isletim_sistemi_id " + s + " limit " + start + "," + pageSize);
+            while (rs.next()) {
+                telefonIsletimSistemi tmp = new telefonIsletimSistemi();
+                tmp.setIsletim_sistemi_id(rs.getLong("isletim_sistemi_id"));
+                tmp.setIsletim_sistemi_versiyon(rs.getString("isletim_sistemi_versiyon"));
+                tmp.setIsletim_sistemi(rs.getString("isletim_sistemi"));
+
+                isletimsistemi_liste.add(tmp);
+            }
+            getConnection().close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return isletimsistemi_liste;
+    }
+
     public List<telefonIsletimSistemi> findAll() {
+
         List<telefonIsletimSistemi> isletimsistemi_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
@@ -61,12 +86,29 @@ public class telefonIsletimSistemiDAO {
         }
         return isletimsistemi_liste;
     }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(isletim_sistemi_id) as telefon_isletimsistemi_count from telefon_isletimsistemi ");
+            rs.next();
+            count = rs.getInt("telefon_isletimsistemi_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "LaptopDAO");
+        }
+
+        return count;
+
+    }
+
     public void edit(telefonIsletimSistemi isletimSistemi) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("update telefon_isletimsistemi set isletim_sistemi_versiyon=?,isletim_sistemi=? where isletim_sistemi_id=?");
             pst.setString(1, isletimSistemi.getIsletim_sistemi_versiyon());
             pst.setString(2, isletimSistemi.getIsletim_sistemi());
-            pst.setLong(3,isletimSistemi.getIsletim_sistemi_id());
+            pst.setLong(3, isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
             getConnection().close();
 
@@ -76,7 +118,7 @@ public class telefonIsletimSistemiDAO {
     }
 
     public void remove(telefonIsletimSistemi isletimSistemi) {
-       try {
+        try {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_isletimsistemi where isletim_sistemi_id=?");
             pst.setLong(1, isletimSistemi.getIsletim_sistemi_id());
             pst.executeUpdate();
@@ -108,5 +150,4 @@ public class telefonIsletimSistemiDAO {
         }
     }
 
-    
 }

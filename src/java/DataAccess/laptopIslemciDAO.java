@@ -71,11 +71,14 @@ public class laptopIslemciDAO {
         }
     }
 
-    public List<laptopIslemci> findAll() {
+    public List<laptopIslemci> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
         List<laptopIslemci> islemci_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from Laptop_islemci ");
+            ResultSet rs = st.executeQuery("select * from Laptop_islemci order by islemci_id " + s + " limit " + start + "," + pageSize);
+
             while (rs.next()) {
                 laptopIslemci tmp = new laptopIslemci();
                 tmp.setIslemci_id(rs.getLong("islemci_id"));
@@ -97,6 +100,51 @@ public class laptopIslemciDAO {
             System.out.println(e.getMessage() + "İslemciDAO");
         }
         return islemci_liste;
+    }
+
+    public List<laptopIslemci> findAll() {
+        List<laptopIslemci> islemci_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from Laptop_islemci");
+
+            while (rs.next()) {
+                laptopIslemci tmp = new laptopIslemci();
+                tmp.setIslemci_id(rs.getLong("islemci_id"));
+                tmp.setIslemci_marka(rs.getString("islemci_marka"));
+                tmp.setIslemci_serisi(rs.getString("islemci_serisi"));
+                tmp.setIslemci_modeli(rs.getString("islemci_modeli"));
+                tmp.setIslemci_temel_frekansi(rs.getDouble("islemci_temel_frekansi"));
+                tmp.setCekirdek_sayisi(rs.getInt("cekirdek_sayisi"));
+                tmp.setSanal_cekirdek_sayisi(rs.getInt("sanal_cekirdek_sayisi"));
+                tmp.setOn_bellek(rs.getInt("on_bellek"));
+                tmp.setUretim_teknolojisi(rs.getInt("uretim_teknolojisi"));
+                tmp.setTdp_degeri(rs.getInt("tdp_degeri"));
+                islemci_liste.add(tmp);
+            }
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "İslemciDAO");
+        }
+        return islemci_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(islemci_id) as laptop_islemci_count from Laptop_islemci ");
+            rs.next();
+            count = rs.getInt("laptop_islemci_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public laptopIslemci find(Long id) {

@@ -23,6 +23,50 @@ public class telefonRenkController implements Serializable {
     private List<telefonRenk> renkList;
     private telefonRenkDAO renkDAO;
     private telefonRenk renk;
+    private int page = 1;
+    private int pageSize = 5;
+    private int pageCount;
+
+    public void next() {
+        if (this.page == getPageCount()) {
+            this.page = 1;
+        } else {
+            this.page++;
+        }
+    }
+
+    public void previous() {
+        if (this.page == 1) {
+            this.page = getPageCount();
+        } else {
+            this.page--;
+        }
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        this.pageCount = (int) Math.ceil(this.getRenkDAO().countSize() / (double) pageSize);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
 
     public void update() {
         this.renkDAO.edit(this.renk);
@@ -52,6 +96,12 @@ public class telefonRenkController implements Serializable {
 
     public List<telefonRenk> getRenkList() {
         this.renkList = this.getRenkDAO().findAll();
+
+        return renkList;
+    }
+
+    public List<telefonRenk> telRenkList() {
+        this.renkList = this.getRenkDAO().findAll(page, pageSize, 2);
 
         return renkList;
     }

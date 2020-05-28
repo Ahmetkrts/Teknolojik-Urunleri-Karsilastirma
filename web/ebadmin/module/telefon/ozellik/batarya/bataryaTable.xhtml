@@ -11,7 +11,7 @@
                 <p class="card-category"> Burası Telefonların Batarya Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div>
             <h:form id="batarya-table">
-                <h:dataTable class="table" value="#{telefonBataryaController.bataryaList}" var="batarya">
+                <h:dataTable class="table" value="#{telefonBataryaController.telBataryaList()}" var="batarya">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
@@ -39,6 +39,20 @@
 
                     </h:column>
                 </h:dataTable>
+                <div class="form-group btn-group ml-3">
+                    <h:commandLink class="btn btn-outline-info" action="#{telefonBataryaController.previous()}">
+                        <i class="material-icons text-info">arrow_back</i> 
+                        <f:ajax execute="@this" render=" batarya-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-info" value="#{telefonBataryaController.page}" >
+
+                        <f:ajax execute="@this" render=" batarya-table"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-outline-info"  action="#{telefonBataryaController.next()}">
+                        <i class="material-icons text-info">arrow_forward</i> 
+                        <f:ajax execute="@this" render=" batarya-table"/>
+                    </h:commandLink>
+                </div>
             </h:form>
         </div>
     </div>

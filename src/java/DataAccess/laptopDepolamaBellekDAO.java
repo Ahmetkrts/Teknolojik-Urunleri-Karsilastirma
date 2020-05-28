@@ -67,6 +67,7 @@ public class laptopDepolamaBellekDAO {
     }
 
     public List<laptopDepolamaBellek> findAll() {
+
         List<laptopDepolamaBellek> depolamaBellek_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
@@ -90,6 +91,51 @@ public class laptopDepolamaBellekDAO {
         }
 
         return depolamaBellek_liste;
+    }
+
+    public List<laptopDepolamaBellek> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
+        List<laptopDepolamaBellek> depolamaBellek_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from laptop_depolama_bellek  order by depolama_bellek_id " + s + " limit " + start + "," + pageSize);
+            while (rs.next()) {
+                laptopDepolamaBellek tmp = new laptopDepolamaBellek();
+                tmp.setDepolama_bellek_id(rs.getLong("depolama_bellek_id"));
+                tmp.setBellek_boyutu(rs.getInt("bellek_boyutu"));
+                tmp.setBellek_frekansi(rs.getInt("bellek_frekansi"));
+                tmp.setSabit_disk_boyutu(rs.getInt("sabit_disk_boyutu"));
+                tmp.setSabit_disk_yazma_hizi(rs.getInt("sabit_disk_yazma_hizi"));
+                tmp.setSsd_boyutu(rs.getInt("ssd_boyutu"));
+                tmp.setSsd_tipi(rs.getString("ssd_tipi"));
+                depolamaBellek_liste.add(tmp);
+            }
+
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "DepolamaDAO2");
+        }
+
+        return depolamaBellek_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(depolama_bellek_id) as depolama_count from laptop_depolama_bellek ");
+            rs.next();
+            count = rs.getInt("depolama_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public laptopDepolamaBellek find(Long id) {

@@ -44,11 +44,14 @@ public class televizyonEkranDAO {
         return ekran;
     }
 
-    public List<televizyonEkran> findAll() {
+    public List<televizyonEkran> findAll(int page, int pageSize, int siralama) {
+        String s = (siralama == 1) ? "asc" : "desc";
+        int start = (page - 1) * pageSize;
+
         List<televizyonEkran> ekran_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from televizyon_ekran");
+            ResultSet rs = st.executeQuery("select * from televizyon_ekran order by ekran_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 televizyonEkran tmp = new televizyonEkran();
                 tmp.setEkran_id(rs.getLong("ekran_id"));
@@ -64,6 +67,45 @@ public class televizyonEkranDAO {
             System.out.println(e.getMessage());
         }
         return ekran_liste;
+    }
+
+    public List<televizyonEkran> findAll() {
+
+        List<televizyonEkran> ekran_liste = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from televizyon_ekran ");
+            while (rs.next()) {
+                televizyonEkran tmp = new televizyonEkran();
+                tmp.setEkran_id(rs.getLong("ekran_id"));
+                tmp.setEkran_turu(rs.getString("ekran_turu"));
+                tmp.setEkran_tipi(rs.getString("ekran_tipi"));
+                tmp.setEkran_boyutu(rs.getInt("ekran_boyutu"));
+                tmp.setEkran_cozunurlugu(rs.getString("ekran_cozunurlugu"));
+                tmp.setHDR(rs.getString("HDR"));
+                ekran_liste.add(tmp);
+            }
+            getConnection().close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return ekran_liste;
+    }
+
+    public int countSize() {
+        int count = 0;
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select count(ekran_id) as televizyon_ekran_count from televizyon_ekran ");
+            rs.next();
+            count = rs.getInt("televizyon_ekran_count");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 
     public void edit(televizyonEkran ekran) {
@@ -95,20 +137,20 @@ public class televizyonEkranDAO {
 
     public void insert(televizyonEkran ekran) {
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("insert into televizyon_ekran (ekran_turu,ekran_tipi,ekran_boyutu,ekran_cozunurlugu,HDR) values (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pst = this.getConnection().prepareStatement("insert into televizyon_ekran (ekran_turu,ekran_tipi,ekran_boyutu,ekran_cozunurlugu,HDR) values (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, ekran.getEkran_turu());
             pst.setString(2, ekran.getEkran_tipi());
             pst.setInt(3, ekran.getEkran_boyutu());
             pst.setString(4, ekran.getEkran_cozunurlugu());
             pst.setString(5, ekran.getHDR());
-            
+
             pst.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public Connector getConnector() {
         if (this.connector == null) {
             this.connector = new Connector();
@@ -120,7 +162,5 @@ public class televizyonEkranDAO {
         this.connection = this.getConnector().Connect();
         return connection;
     }
-
-    
 
 }
