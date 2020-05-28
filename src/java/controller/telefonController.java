@@ -8,6 +8,7 @@ package controller;
 import DataAccess.telefonDAO;
 import entity.telefon;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -23,8 +24,13 @@ public class telefonController implements Serializable {
     private List<telefon> telefon_list;
     private telefonDAO telefondao;
     private telefon telefon;
-    
-    
+    private telefon tl;
+
+    public String telefonOzellikleri(telefon telefon) {
+        this.telefon = telefon;
+        return "telefon-ozellikleri.xhtml";
+    }
+
     public void temizle() {
         this.telefon = null;
     }
@@ -47,6 +53,15 @@ public class telefonController implements Serializable {
     public void create() {
         this.getTelefondao().insert(this.telefon);
         temizle();
+    }
+
+    public telefon getTl() {
+        this.tl = this.getTelefon_list().get(0);
+        return tl;
+    }
+
+    public void setTl(telefon tl) {
+        this.tl = tl;
     }
 
     public List<telefon> getTelefon_list() {
@@ -79,4 +94,5 @@ public class telefonController implements Serializable {
     public void setTelefon(telefon telefon) {
         this.telefon = telefon;
     }
+
 }

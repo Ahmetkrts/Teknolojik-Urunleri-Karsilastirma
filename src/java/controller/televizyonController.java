@@ -8,6 +8,7 @@ package controller;
 import DataAccess.televizyonDAO;
 import entity.televizyon;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -23,6 +24,12 @@ public class televizyonController implements Serializable {
     private List<televizyon> televizyon_list;
     private televizyonDAO televizyondao;
     private televizyon televizyon;
+    private televizyon tv;
+
+    public String TelevizyonOzellikleri(televizyon televizyon) {
+        this.televizyon = televizyon;
+        return "televizyon-ozellikleri.xhtml";
+    }
 
     public void temizle() {
         this.televizyon = null;
@@ -45,6 +52,15 @@ public class televizyonController implements Serializable {
     public void create() {
         this.getTelevizyondao().insert(this.televizyon);
         temizle();
+    }
+
+    public televizyon getTv() {
+        this.tv = this.getTelevizyon_list().get(0);
+        return tv;
+    }
+
+    public void setTv(televizyon tv) {
+        this.tv = tv;
     }
 
     public List<televizyon> getTelevizyon_list() {

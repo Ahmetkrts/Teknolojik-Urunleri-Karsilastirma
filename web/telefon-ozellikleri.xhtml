@@ -1,0 +1,497 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Ürün Detay Sayfası</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Kategori<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="single-product.html">#{telefonController.telefon.telefon_ad}</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
+        <!--================Single Product Area =================-->
+        <div class="product_image_area">
+            <div class="container">
+                <div class="row s_product_inner">
+                    <div class="col-lg-6">
+                        <div class="s_Product_carousel">
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="s_product_text">
+                            <h3>#{telefonController.telefon.telefon_ad}</h3>
+                            <h2>#{telefonController.telefon.telefon_marka}</h2>
+                            <ul class="list">
+                                <li><a class="active"><span>Model</span> : #{telefonController.telefon.telefon_model}</a></li>
+                                <li><a class="active"><span>Ekran</span> : #{telefonController.telefon.ekran.ekran_boyutu} İnch </a></li>
+                                <li><a class="active"><span>Boyu</span> : #{telefonController.telefon.telefon_boy} mm</a></li>
+                                <li><a class="active"><span>Eni</span> :#{telefonController.telefon.telefon_en} mm</a></li>
+
+                            </ul>
+
+                            <div class="product_count">
+
+                            </div>
+                            <div class="card_area d-flex align-items-center">
+                                <a class="primary-btn" href="#">Karşılaştır</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Single Product Area =================-->
+
+        <!--================Product Description Area =================-->
+        <section class="product_description_area">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                           aria-selected="false">Özellikleri</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive-sm table-hover col-md-6">
+                            <table class="table ">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h4>Ekran</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.ekran.ekran_boyutu} İnç</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Teknolojisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.ekran.ekran_teknolojisi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.ekran.ekran_cozunurlugu} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Yoğunluğu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.ekran.piksel_yogunlugu} ppi </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Dayanıklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.ekran.ekran_dayanikliligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Batarya</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Batarya Kapasitesi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.batarya.batarya_kapasitesi} mAh </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Batarya Teknolojisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.batarya.batarya_teknolojisi}  </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Hızlı Sarj Özelliği</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.batarya.hizli_sarj_ozelligi}  </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Arka Kamera</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Kamera Çözürülüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.kamera_cozunurlugu} MP</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Optik Görüntü Sabitleyici</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.optik_goruntu_sabitleyici} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Flaş</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.flas} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Diafram Açıklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>F#{telefonController.telefon.arkaKamera.diafram_acikligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Video Kayıt Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.video_kayit_cozunurlugu}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Video FPS Değeri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.video_fps_degeri} Fps </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İkinci Kamera Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.iki_kamera_cozunurlugu} MP </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İkinci Kamera Diafram Açklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>F#{telefonController.telefon.arkaKamera.iki_diafram_acikligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Üçüncü Kamera Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.uc_kamera_cozunurlugu} MP </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Üçüncü Kamera Diafram Açklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>F#{telefonController.telefon.arkaKamera.uc_diafram_acikligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Dördüncü Kamera Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.dort_kamera_cozunurlugu} MP </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Dördüncü Kamera Diafram Açklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>F#{telefonController.telefon.arkaKamera.dort_diafram_acikligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Beşinci Kamera Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.arkaKamera.bes_kamera_cozunurlugu} MP </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Beşinci Kamera Diafram Açklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>F#{telefonController.telefon.arkaKamera.bes_diafram_acikligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ön Kamera Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.onKamera.kamera_cozunurlugu} MP</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ön Kamera Video Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.onKamera.video_cozunurlugu} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ön Kamera Video FPS Değeri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.onKamera.video_fps_degeri} Fps </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ön Kamera Diafram Açıklığı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>F#{telefonController.telefon.onKamera.diafram_acikligi} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Temel Donanım</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Yonga Seti(Chipset)</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.yonga_seti} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ana İşlemci(CPU)</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.ana_islemci} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>CPU Frekansı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.cpu_frekansi} GHz</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>CPU Çekirdeği</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.cpu_cekirdegi} Çekirdek</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Mimarisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.islemci_mimarisi}-bit </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Birinci Yardımcı İşlemci</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.birinci_yardimci_islemci} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Grafik İşlemcisi GPU</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.grafik_islemcisi_gpu} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>GPU Freaknsı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.gpu_frekansi} MHz </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>CPU Üretim Teknolojisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.islemci.cpu_uretim_teknolojisi} nm</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Bellek (Ram)</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.telefon_ram} GB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Bellek (Ram) Frekansı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.telefon_ram_frekansi} MHz</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Dahili Depolama</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.telefon_dahili_depolama} GB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Tasarım</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Boy</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.telefon_boy} mm</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>En</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.telefon_en} mm</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ağırlık</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.telefon_agirlik} Gram</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Renkleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>
+
+                                                <ui:repeat value="#{telefonController.telefon.renk}" var="renk">
+                                                    #{renk.renk_adi}-
+                                                </ui:repeat>
+                                            </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>İşletim Sistemi</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşletim Sistemi Versiyonu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.isletimSistemi.isletim_sistemi_versiyon} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşletim Sistemi </h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{telefonController.telefon.isletimSistemi.isletim_sistemi} </h5>
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--================End Product Description Area =================-->
+
+
+
+    </ui:define>
+</ui:composition>
+

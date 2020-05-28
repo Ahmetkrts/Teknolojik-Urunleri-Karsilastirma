@@ -5,74 +5,48 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
-    
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;"></a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form">
-                            <div class="input-group no-border">
-                                <!--<input type="text" value="" class="form-control" placeholder="Search...">-->
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                    <div class="ripple-container"></div>
-                                </button>
-                            </div>
-                        </form>
-                        <ul class="navbar-nav">
+    <!-- Start Header Area -->
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Br/and and toggle get grouped for better mobile display -->
+
+                    <a class="navbar-brand logo_h" href="/Teknolojik-Urunleri-Karsilastirma/faces/index.xhtml"><h:graphicImage value ="resources/img/logo.png" alt=""/></a>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item active"><a class="nav-link" href="/Teknolojik-Urunleri-Karsilastirma/faces/index.xhtml">Anasayfa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Teknolojik-Urunleri-Karsilastirma/faces/telefon.xhtml">Telefonlar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Teknolojik-Urunleri-Karsilastirma/faces/laptop.xhtml">Laptoplar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Teknolojik-Urunleri-Karsilastirma/faces/televizyon.xhtml">Televizyonlar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Teknolojik-Urunleri-Karsilastirma/faces/index.xhtml">İletişim</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item">
-                                <a class="nav-link" href="javascript:;">
-                                    <i class="material-icons">dashboard</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Stats
-                                    </p>
-                                </a>
+                                <h:form>
+                                    <h:commandLink action="/ebadmin/index.xhtml" class="cart">
+                                        <span style="font-size: 24px; color: #FFBA00;" class="ti-user"/>
+                                    </h:commandLink>
+                                </h:form>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">notifications</i>
-                                    <span class="notification">5</span>
-                                    <p class="d-lg-none d-md-block">
-                                        Some Actions
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                                    <a class="dropdown-item" href="#">Another Notification</a>
-                                    <a class="dropdown-item" href="#">Another One</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">person</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Account
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">Settings</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Log out</a>
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
+
                 </div>
             </nav>
-        
-            <!-- End Navbar -->
-        
-
+        </div>
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <!--<form class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                        <button type="submit" class="btn"></button>
+                        <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                </form>-->
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
 </ui:composition>

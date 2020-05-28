@@ -19,12 +19,12 @@ public class navigationBean implements Serializable{
     
     public String page(String p)
     {
-       return "/module/"+p+"/"+p+"?faces-redirct=true";
+       return "/ebadmin/module/"+p+"/"+p+"?faces-redirct=true";
     
     }
     public String subPage(String page,String sub)
     {
-       return "/module/"+page+"/"+sub+"/"+sub+".xhtml?faces-redirct=true";
+       return "/ebadmin/module/"+page+"/"+sub+"/"+sub+".xhtml?faces-redirct=true";
     
     }
 }

@@ -3,19 +3,285 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="template/template.xhtml">
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-        <div class="content">
-            <div class="container-fluid">
-                <div class="alert alert-info">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <i class="material-icons">close</i>
-                    </button>
-                    <span>
-                        <b> Bilgi - </b> Şu anda Anasayfamız Yapım Aşamasındadır Daha Sonra Tekrardan Sitemize Uğrayınız</span>
+
+
+        <!-- start banner Area -->
+        <section class="banner-area">
+            <div class="container">
+                <div class="row fullscreen align-items-center justify-content-start">
+                    <div class="col-lg-12">
+                        <h:form><div class="active-banner-slider owl-carousel">
+
+                                <!-- single-slide -->
+                                <div class="row single-slide align-items-center d-flex">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="banner-content">
+                                            <h1>#{laptopController.lp.urun_adi}</h1>
+
+                                            <p>#{laptopController.lp.ekran.ekran_cozunurlugu} Ekran Çözünürlüğü<br/>
+                                                #{laptopController.lp.depolama_bellek.bellek_boyutu} GB Bellek<br/>
+                                                #{laptopController.lp.depolama_bellek.sabit_disk_boyutu} GB Hdd  #{laptopController.lp.depolama_bellek.ssd_boyutu} GB Ssd Depolama <br/>
+                                                #{laptopController.lp.islemci.islemci_modeli} İşlemci  <br/>
+                                                #{laptopController.lp.ekran_karti.ekran_karti_modeli} Ekran Kartı</p>
+                                            <div class="add-bag d-flex align-items-center">
+                                                <h:commandLink class="add-btn"  action="#{laptopController.laptopOzellikleri(laptopController.lp)}"><span class="lnr lnr-cross"></span></h:commandLink>
+                                                <span class="add-text text-uppercase">Detaylar</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="banner-img">
+                                            <img class="img-fluid" src="resources/img/banner/banner-img.png" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- single-slide -->
+                                <div class="row single-slide">
+                                    <div class="col-lg-5">
+                                        <div class="banner-content">
+                                            <h1>#{telefonController.tl.telefon_ad}</h1>
+                                            <p>
+                                                #{telefonController.tl.ekran.ekran_cozunurlugu} Ekran Çözünürlüğü<br/>
+                                                #{telefonController.tl.telefon_ram} GB Bellek<br/>
+                                                #{telefonController.tl.telefon_dahili_depolama} GB Dahili Depolama<br/>
+                                                #{telefonController.tl.islemci.yonga_seti} Chipset<br/>
+                                                #{telefonController.tl.arkaKamera.kamera_cozunurlugu} MP Arka Kamera<br/>
+                                                #{telefonController.tl.onKamera.kamera_cozunurlugu} MP Ön kamera<br/>
+
+                                            </p>
+                                            <div class="add-bag d-flex align-items-center">
+                                                <h:commandLink class="add-btn"  action="#{telefonController.telefonOzellikleri(telefonController.tl)}"><span class="lnr lnr-cross"></span></h:commandLink>
+                                                <span class="add-text text-uppercase">Detaylar</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="banner-img">
+                                            <img class="img-fluid" src="resources/img/banner/banner-img.png" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row single-slide">
+                                    <div class="col-lg-5">
+                                        <div class="banner-content">
+                                            <h1>#{televizyonController.tv.televizyon_ad}</h1>
+                                            <p>
+                                                #{televizyonController.tv.ekran.ekran_boyutu} İnç Ekran Boyutu<br/>
+                                                #{televizyonController.tv.ekran.ekran_cozunurlugu} Piksel Ekran Çözünürlüğü<br/>
+                                                #{televizyonController.tv.televizyon_yenileme_hizi} Hz Ekran Yenileme Hızı<br/>
+                                                #{televizyonController.tv.televizyon_ses_cikis_gucu} W Ses Çıkışı<br/>
+
+                                            </p>
+                                            <div class="add-bag d-flex align-items-center">
+                                                <h:commandLink class="add-btn"  action="#{televizyonController.TelevizyonOzellikleri(televizyonController.tv)}"><span class="lnr lnr-cross"></span></h:commandLink>
+                                                <span class="add-text text-uppercase">Detaylar</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="banner-img">
+                                            <img class="img-fluid" src="resources/img/banner/banner-img.png" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </h:form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- End banner Area -->
+
+        <!-- start features Area -->
+        <section class="features-area section_gap">
+            <div class="container">
+                <div class="row features-inner">
+                    <!-- single features -->
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-features">
+                            <div class="f-icon">
+                                <i class="fas fa-laptop fa-4x" style="color: #FFBA00;"></i>
+                            </div>
+
+                            <h6>Laptop Karşılaştır</h6>
+                            <p>Laptop Modellerinin Özelliklerini Karşılaştırın</p>
+                        </div>
+                    </div>
+                    <!-- single features -->
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-features">
+                            <div class="f-icon">
+                                <i class="fas fa-mobile-alt fa-4x" style="color: #FFBA00;"></i>
+                            </div>
+
+                            <h6>Telefon Karşılaştır</h6>
+                            <p>Telefon Modellerinin Özelliklerini Karşılaştırın</p>
+                        </div>
+                    </div>
+                    <!-- single features -->
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-features">
+                            <div class="f-icon">
+                                <i class="fas fa-tv fa-4x" style="color: #FFBA00;"></i>
+                            </div>
+
+                            <h6>Televizyon Karşılaştır</h6>
+                            <p>Televizyon Modellerinin Özelliklerini Karşılaştırın</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- end features Area -->
+
+
+        <!-- start product Area -->
+        <h:form>
+            <section class="owl-carousel active-product-area section_gap">
+                <!-- single product slide -->
+                <div class="single-product-slider">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 text-center">
+                                <div class="section-title">
+                                    <h1>Laptop Modelleri</h1>
+                                    <p>Burası Laptoplarla ilgili Yazı</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- single product -->
+                            <c:forEach items="#{laptopController.laptop_list}" var="laptop" >
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="single-product">
+                                        <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                        <div class="product-details">
+                                            <h6><h:commandLink  action="#{laptopController.laptopOzellikleri(laptop)}" style="color: #000" value="#{laptop.urun_adi}"></h:commandLink></h6>
+
+                                            <div class="prd-bottom">
+
+                                                <a  class="social-info">
+                                                    <span class="fa fa-mobile-alt"></span>
+                                                    <p class="hover-text">#{laptop.ekran.ekran_boyutu} İnch</p>
+                                                </a>
+                                                <a class="social-info">
+                                                    <span class="fas fa-sd-card"></span>
+                                                    <p class="hover-text">#{laptop.depolama_bellek.sabit_disk_boyutu} GB </p>
+                                                </a>
+                                                <a class="social-info">
+                                                    <span class="fas fa-memory"></span>
+                                                    <p class="hover-text">#{laptop.depolama_bellek.bellek_boyutu} GB</p>
+                                                </a>
+                                                <a class="social-info">
+                                                    <span class="fas fa-battery-full"></span>
+                                                    <p class="hover-text">#{laptop.pil.pil_gucu} Wh </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+                <!-- single product slide -->
+                <div class="single-product-slider">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 text-center">
+                                <div class="section-title">
+                                    <h1>Telefon Modelleri</h1>
+                                    <p>Telefonlarla İlgili Açıklama</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <c:forEach items="#{telefonController.telefon_list}" var="telefon" >
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="single-product">
+                                        <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                        <div class="product-details">
+                                            <h6><h:commandLink action="#{telefonController.telefonOzellikleri(telefon)}"  style="color: #000" value="#{telefon.telefon_ad}"/> </h6>
+
+                                            <div class="prd-bottom">
+
+                                                <a class="social-info">
+                                                    <span class="fa fa-mobile-alt"></span>
+                                                    <p class="hover-text">#{telefon.ekran.ekran_boyutu} İnch</p>
+                                                </a>
+                                                <a class="social-info">
+                                                    <span class="fas fa-sd-card"></span>
+                                                    <p class="hover-text">#{telefon.telefon_dahili_depolama} GB</p>
+                                                </a>
+                                                <a class="social-info">
+                                                    <span class="fas fa-memory"></span>
+                                                    <p class="hover-text">#{telefon.telefon_ram} GB</p>
+                                                </a>
+                                                <a class="social-info">
+                                                    <span class="fas fa-battery-full"></span>
+                                                    <p class="hover-text">#{telefon.batarya.batarya_kapasitesi} mAh</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- end product Area -->
+        </h:form>
+        <h:form>
+            <!-- Start exclusive deal Area -->
+            <section class="exclusive-deal-area mb-5">
+                <div class="container-fluid">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-title">
+                            <h1>Televizyon Modelleri</h1>
+                            <p class="text-center">Televizyonla İlgili Yazı </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-6 no-padding exclusive-right ">
+                            <div class="active-exclusive-product-slider">
+                                <c:forEach items="#{televizyonController.televizyon_list}" var="tv" >
+                                    <div class="single-exclusive-slider">
+                                        <img class="img-fluid" src="resources/img/product/e-p1.png" alt=""/>
+                                        <div class="product-details">
+
+                                            <h4>#{tv.televizyon_ad}</h4>
+                                            <div class="add-bag d-flex align-items-center justify-content-center">
+
+                                                <h:commandLink class="add-btn" action="#{televizyonController.TelevizyonOzellikleri(tv)}"><span class="ti-bag"></span></h:commandLink>
+                                                <span class="add-text text-uppercase">İncele</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End exclusive deal Area -->
+        </h:form>
+
+
     </ui:define>
 </ui:composition>
 

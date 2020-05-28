@@ -8,9 +8,14 @@ package controller;
 import DataAccess.laptopDAO;
 import entity.laptop;
 import java.io.Serializable;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 
 /**
  *
@@ -23,6 +28,22 @@ public class laptopController implements Serializable {
     private List<laptop> laptop_list;
     private laptopDAO laptopdao;
     private laptop laptop;
+    private laptop lp;
+    
+
+    public String laptopOzellikleri(laptop laptop) {
+        this.laptop = laptop;
+        return "laptop-ozellikleri.xhtml";
+    }
+
+    public laptop getLp() {
+        this.lp = getLaptop_list().get(0);
+        return lp;
+    }
+
+    public void setLp(laptop lp) {
+        this.lp = lp;
+    }
 
     public void temizle() {
         this.laptop = null;
@@ -57,7 +78,7 @@ public class laptopController implements Serializable {
     }
 
     public laptopDAO getLaptopdao() {
-        if(this.laptopdao == null){
+        if (this.laptopdao == null) {
             this.laptopdao = new laptopDAO();
         }
         return laptopdao;
@@ -68,7 +89,7 @@ public class laptopController implements Serializable {
     }
 
     public laptop getLaptop() {
-        if(this.laptop == null){
+        if (this.laptop == null) {
             this.laptop = new laptop();
         }
         return laptop;
@@ -77,7 +98,5 @@ public class laptopController implements Serializable {
     public void setLaptop(laptop laptop) {
         this.laptop = laptop;
     }
-
-    
 
 }

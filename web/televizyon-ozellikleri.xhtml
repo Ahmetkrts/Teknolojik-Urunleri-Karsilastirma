@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Ürün Detay Sayfası</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Kategori<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="single-product.html">#{televizyonController.televizyon.televizyon_ad}</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
+        <!--================Single Product Area =================-->
+        <div class="product_image_area">
+            <div class="container">
+                <div class="row s_product_inner">
+                    <div class="col-lg-6">
+                        <div class="s_Product_carousel">
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="s_product_text">
+                            <h3>#{televizyonController.televizyon.televizyon_ad}</h3>
+                            <h2>#{televizyonController.televizyon.televizyon_marka}</h2>
+                            <ul class="list">
+                                <li><a class="active"><span>Model</span> : #{televizyonController.televizyon.televizyon_model}</a></li>
+                                <li><a class="active"><span>Ekran</span> : #{televizyonController.televizyon.ekran.ekran_boyutu} İnch </a></li>
+                                <li><a class="active"><span>Genişlik</span> : #{televizyonController.televizyon.televizyon_genisligi} mm</a></li>
+                                <li><a class="active"><span>Yüksekli</span> :#{televizyonController.televizyon.televizyon_yuksekligi} mm</a></li>
+
+                            </ul>
+
+                            <div class="product_count">
+
+                            </div>
+                            <div class="card_area d-flex align-items-center">
+                                <a class="primary-btn" href="#">Karşılaştır</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Single Product Area =================-->
+
+        <!--================Product Description Area =================-->
+        <section class="product_description_area">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                           aria-selected="false">Özellikleri</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive col-md-6">
+                            <table class="table ">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h4>Genel Bilgiler</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Marka</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_marka}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Model</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_model}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Enerji Tüketimi Sınıfı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_enerji}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Genişlik</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_genisligi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Yükseklik</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_yuksekligi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Yenileme Hızı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_yenileme_hizi} Hz</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Ses ve Bağlantı</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ses Çıkış Gücü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_ses_cikis_gucu} W</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Hoparlör Sistemi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_hoparlor_sistemi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Dahili Wifi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_dahili_wifi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>USB 2.0 Girişleri </h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_usb_20} Adet</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>USB 3.0 Girişleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_usb_30} Adet</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>HD Uydu Alıcısı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.televizyon_hd_uydu_alici}</h5>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Ekran</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Türü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.ekran.ekran_turu}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Tipi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.ekran.ekran_tipi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.ekran.ekran_boyutu} İnç</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.ekran.ekran_cozunurlugu}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>HDR</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{televizyonController.televizyon.ekran.HDR}</h5>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--================End Product Description Area =================-->
+
+
+
+    </ui:define>
+</ui:composition>
+

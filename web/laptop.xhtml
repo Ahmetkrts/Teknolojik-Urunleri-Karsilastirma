@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <h:form id="laptop">
+            <!-- Start Banner Area -->
+            <section class="banner-area organic-breadcrumb">
+                <div class="container">
+                    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                        <div class="col-first">
+                            <h1>Kategori Sayfası</h1>
+                            <nav class="d-flex align-items-center">
+                                <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                                <a href="#">Laptoplar</a>
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Banner Area -->
+            <div class="container mt-5">
+                <div class="row">
+
+
+                    <div class="col-xl-12 col-lg-8 col-md-7">
+                        <!-- Start Filter Bar -->
+                        <div class="filter-bar d-flex flex-wrap align-items-center">
+                            <div class="sorting">
+
+                            </div>
+                            <div class="sorting mr-auto">
+
+                            </div>
+
+                            <div class="pagination">
+
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                <a href="#">6</a>
+
+
+                            </div>
+                        </div>
+                        <!-- End Filter Bar -->
+                        <!-- Start Best Seller -->
+                        <section class="lattest-product-area pb-40 category-list">
+                            <div class="row">
+                                <c:forEach items="#{laptopController.laptop_list}" var="laptop" >
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="single-product">
+                                            <img class="img-fluid" src="resources/img/product/p1.jpg" alt=""/>
+                                            <div class="product-details">
+                                                <h6><h:commandLink action="#{laptopController.laptopOzellikleri(laptop)}" style="color: #000" value="#{laptop.urun_adi}"></h:commandLink></h6>
+
+                                                <div class="prd-bottom">
+
+                                                    <a href="" class="social-info">
+                                                        <span class="fa fa-mobile-alt"></span>
+                                                        <p class="hover-text">#{laptop.ekran.ekran_boyutu} İnch</p>
+                                                    </a>
+                                                    <a href="" class="social-info">
+                                                        <span class="fas fa-sd-card"></span>
+                                                        <p class="hover-text">#{laptop.depolama_bellek.sabit_disk_boyutu} GB </p>
+                                                    </a>
+                                                    <a href="" class="social-info">
+                                                        <span class="fas fa-memory"></span>
+                                                        <p class="hover-text">#{laptop.depolama_bellek.bellek_boyutu} GB</p>
+                                                    </a>
+                                                    <a href="" class="social-info">
+                                                        <span class="fas fa-battery-full"></span>
+                                                        <p class="hover-text">#{laptop.pil.pil_gucu} Wh </p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+
+                            </div>
+                        </section>
+                        <!-- End Best Seller -->
+                        <!-- Start Filter Bar -->
+                        <div class="filter-bar d-flex flex-wrap align-items-center">
+                            <div class="sorting mr-auto">
+
+                            </div>
+                            <div class="pagination">
+
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                <a href="#">6</a>
+
+
+                            </div>
+                        </div>
+                        <!-- End Filter Bar -->
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        <div class="mb-5"></div>
+
+
+
+    </ui:define>
+</ui:composition>
+

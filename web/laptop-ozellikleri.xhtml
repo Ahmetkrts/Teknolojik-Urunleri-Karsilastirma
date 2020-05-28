@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Ürün Detay Sayfası</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Kategori<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="single-product.html">#{laptopController.laptop.urun_adi}</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
+        <!--================Single Product Area =================-->
+        <div class="product_image_area">
+            <div class="container">
+                <div class="row s_product_inner">
+                    <div class="col-lg-6">
+                        <div class="s_Product_carousel">
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="resources/img/category/s-p1.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="s_product_text">
+                            <h3>#{laptopController.laptop.urun_adi}</h3>
+                            <h2>#{laptopController.laptop.urun_ailesi}</h2>
+                            <ul class="list">
+                                <li><a class="active"><span>Model</span> : #{laptopController.laptop.urun_serisi}</a></li>
+                                <li><a class="active"><span>Ekran</span> : #{laptopController.laptop.ekran.ekran_boyutu} İnch </a></li>
+                                <li><a class="active"><span>Genişlik</span> : #{laptopController.laptop.genislik}</a></li>
+                                <li><a class="active"><span>Yüksekli</span> :#{laptopController.laptop.derinlik}</a></li>
+
+                            </ul>
+
+                            <div class="product_count">
+
+                            </div>
+                            <div class="card_area d-flex align-items-center">
+                                <a class="primary-btn" href="#">Karşılaştır</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Single Product Area =================-->
+
+        <!--================Product Description Area =================-->
+        <section class="product_description_area">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                           aria-selected="false">Özellikleri</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive col-md-6">
+                            <table class="table ">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h4>Genel Bilgiler</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ürün tipi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.urun_tipi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ürün Amacı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.urun_amaci}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ürün Ailesi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.urun_ailesi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ürün Serisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.urun_serisi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşletim Sistemi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.isletim_sistemi}</h5>
+                                        </td>
+                                    </tr>
+
+                               
+                                    <tr>
+                                        <td>
+                                            <h4>Ekran</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran.ekran_boyutu} İnçh</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Çözünürlüğü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran.ekran_cozunurlugu}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Yenileme Hızı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran.ekran_yenileme} Hz</h5>
+                                        </td>
+                                    </tr>
+
+                               
+                                    <tr>
+                                        <td>
+                                            <h4>Tasarım</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Genişlik</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.genislik} mm </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Derinlik</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.derinlik} mm</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Kalınlık</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.kalinlik} mm </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ağırlık</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.agirlik} kg </h5>
+                                        </td>
+                                    </tr>
+
+                               
+                                    <tr>
+                                        <td>
+                                            <h4>İşlemci</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Markası</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.islemci_marka} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Serisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.islemci_serisi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Modeli</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.islemci_modeli} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Temel Frekans</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.islemci_temel_frekansi} GHz</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Çekirdeği</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.cekirdek_sayisi} Adet </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Sanal Çekirdeği</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.sanal_cekirdek_sayisi} Adet </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Ön Bellek</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.on_bellek} MB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Üretim Teknolojisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.uretim_teknolojisi} nm</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>İşlemci Tdp Değeri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.islemci.tdp_degeri} W </h5>
+                                        </td>
+                                    </tr>
+
+                               
+                                    <tr>
+                                        <td>
+                                            <h4>Bellek Depolama</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Bellek Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.depolama_bellek.bellek_boyutu} GB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Bellek Frekansı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.depolama_bellek.bellek_frekansi} mHz</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>HDD Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.depolama_bellek.sabit_disk_boyutu} TB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>HDD Yazma Hızı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.depolama_bellek.sabit_disk_yazma_hizi} Rpm</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>SSD Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.depolama_bellek.ssd_boyutu} GB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>SSD Tipi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.depolama_bellek.ssd_tipi} </h5>
+                                        </td>
+                                    </tr>
+
+                               
+                                    <tr>
+                                        <td>
+                                            <h4>Ekran Kartı</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Markası</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_marka}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Serisi</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_serisi}</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Modeli</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_modeli} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Çekirdek Hızı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_cekirdek_hizi} MHz </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Bellek Boyutu</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_bellek_boyutu} GB</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Bellek Türü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_bellek_turu} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ekran Kartı Bellek Arayüzü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.ekran_karti.ekran_karti_bellek_arayuzu} Bit</h5>
+                                        </td>
+                                    </tr>
+
+                                
+                                    <tr>
+                                        <td>
+                                            <h4>Baglantı Arayüzleri</h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>USB 3x Adeti</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.baglanti.usb3x_adeti} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>USB Type C Adeti</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.baglanti.usbtypec_adeti}</h5>
+                                        </td>1
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>HDMI Özellikleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.baglanti.hdmi_ozellikleri} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Bluetooth Özellikleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.baglanti.bluetooth_ozellikleri} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Ethernet Özellikleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.baglanti.ethernet_ozellikleri} </h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Wifi Özellikleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.baglanti.wifi_ozellikleri} </h5>
+                                        </td>
+                                    </tr>
+
+                                
+                                    <tr>
+                                        <td>
+                                            <h4>Pil </h4>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Pil gücü</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.pil.pil_gucu} Wh</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Pil Hücre Sayısı</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.pil.pil_hucre_sayisi} Hücreli</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Pil Özellikleri</h5>
+                                        </td>
+                                        <td>
+                                            <h5>#{laptopController.laptop.pil.pil_ozellikleri} </h5>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--================End Product Description Area =================-->
+
+
+
+    </ui:define>
+</ui:composition>
+
