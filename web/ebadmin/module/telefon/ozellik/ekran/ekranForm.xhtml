@@ -18,13 +18,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_boyutu}" />
+                                <h:inputText id="EkrannBoyutu" styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_boyutu}" validatorMessage="Ekran Boyutu Alanı 0'dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.01" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="EkrannBoyutu" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Teknolojisi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_teknolojisi}" />
+                                <h:inputText id="EkranTeknolojisi" styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_teknolojisi}" validatorMessage="Ekran Teknolojisi Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="EkranTeknolojisi" style="color: red"/>
                             </div>
                         </div>                                 
                     </div>
@@ -32,20 +38,29 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Çözünürlüğü</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_cozunurlugu}" />
+                                <h:inputText id="EkranCozunurlugu" styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_cozunurlugu}" validatorMessage="Ekran Cozunurlugu Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="EkranCozunurlugu" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Piksel Yoğunlugu</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonEkranController.ekran.piksel_yogunlugu}" />
+                                <h:inputText id="PıkselYogunlugu" styleClass="form-control"  value="#{telefonEkranController.ekran.piksel_yogunlugu}" validatorMessage="Pıksel Yogunlugu 0'dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="PıkselYogunlugu" style="color: red"/>
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Dayanıklığı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_dayanikliligi}" />
+                                <h:inputText id="EkranDayanıklıgı" styleClass="form-control"  value="#{telefonEkranController.ekran.ekran_dayanikliligi}" validatorMessage="Ekran Dayanıklıgı Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="EkranDayanıklıgı" style="color: red"/>
 
                             </div>
                         </div>

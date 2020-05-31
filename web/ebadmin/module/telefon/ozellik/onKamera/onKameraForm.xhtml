@@ -18,13 +18,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Kullanılan telefon Modeli</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonOnKameraController.onKamera.telefon_model}" />
+                                <h:inputText id="KullanılanTelefonModelii" styleClass="form-control"  value="#{telefonOnKameraController.onKamera.telefon_model}" validatorMessage="Kullanlıdan Telefon Modeli Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="KullanılanTelefonModelii" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Kamera Çözünürlüğü</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonOnKameraController.onKamera.kamera_cozunurlugu}" />
+                                <h:inputText id="KameraCozunurlugg" styleClass="form-control"  value="#{telefonOnKameraController.onKamera.kamera_cozunurlugu}" validatorMessage="Kamera Cozunurlugu 0'dan Farklı Olmalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="KameraCozunurlugg" style="color: red"/>
                             </div>
                         </div>                                 
                     </div>
@@ -32,20 +38,29 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Diafram Açıklığı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonOnKameraController.onKamera.diafram_acikligi}" />
+                                <h:inputText id="DiaframAcıklıgı" styleClass="form-control"  value="#{telefonOnKameraController.onKamera.diafram_acikligi}" validatorMessage="Diafram Açıklıgı 0'dan Farklı Olmadlı!" >
+                                <f:validateDoubleRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="DiaframAcıklıgı" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Video Kayıt Çözünürlüğü</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonOnKameraController.onKamera.video_cozunurlugu}" />
+                                <h:inputText id="VideoKayıtCozunrluguu" styleClass="form-control"  value="#{telefonOnKameraController.onKamera.video_cozunurlugu}" validatorMessage="Video Kayıt Çözünürlüğü Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="VideoKayıtCozunrluguu" style="color: red"/>
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Video FPS Değeri</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonOnKameraController.onKamera.video_fps_degeri}" />
+                                <h:inputText id="VideoFPSDegerii" styleClass="form-control"  value="#{telefonOnKameraController.onKamera.video_fps_degeri}" validatorMessage="Video FPS Değeri Alanı 0'dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="VideoFPSDegerii" style="color: red"/>
 
                             </div>
                         </div>

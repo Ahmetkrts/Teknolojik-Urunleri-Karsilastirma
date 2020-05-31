@@ -16,19 +16,29 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Adı</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_ad}" />
+                                <h:inputText id="televizyonAd" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_ad}" validatorMessage="Televizyon Adı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                
+                                 <h:message for="televizyonAd" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Marka</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_marka}" />
+                                <h:inputText id="televizyonMarka" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_marka}" validatorMessage="Televizyon Marka Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonMarka" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Model</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_model}" />
+                                <h:inputText id="televizyonModel" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_model}" validatorMessage="Televizyon Model Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonModel" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -51,28 +61,40 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Televizyon Enerji Tuketim Secimi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_enerji}" />
+                                <label class="bmd-label-floating">Televizyon Enerji Tüketim</label>
+                                <h:inputText id="televizyonEnerjiTuketimi" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_enerji}" validatorMessage="Televizyon Enerji Tüketim Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonEnerjiTuketimi" style="color: red"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Televizyon Ses Cikis Gucu</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_ses_cikis_gucu}" />
+                                <label class="bmd-label-floating">Televizyon Ses Çıkış Gücü</label>
+                                <h:inputText id="televizyonSesCıkıs" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_ses_cikis_gucu}" validatorMessage="Televizyon Ses Çıkış Gücü 0 dan Farklı Bir Değer Olmalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonSesCıkıs" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Hoparlor Sistemi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hoparlor_sistemi}" />
+                                <h:inputText id="televizyonHoparlor" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hoparlor_sistemi}" validatorMessage="Televizyon Hoparlor Sistemi 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonHoparlor" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Dahili WIFI</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_dahili_wifi}" />
+                                <h:inputText id="televizyonDahili" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_dahili_wifi}" validatorMessage="Televizyon Dahili WİFİ Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonDahili" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -80,25 +102,33 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon USB 2.0 Sayisi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_usb_20}" />
+                                <h:inputText id="televizyonUSB20" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_usb_20}" >
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon USB 3.0 Sayisi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_usb_30}" />
+                                <h:inputText id="televizyonUSB30" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_usb_30}">
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Televizyon Genisligi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_genisligi}" />
+                                <label class="bmd-label-floating">Televizyon Genişliği</label>
+                                <h:inputText id="televizyonGenişliği" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_genisligi}" validatorMessage="Televizyon Genişliği 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonGenişliği" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Yuksekligi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_yuksekligi}" />
+                                <h:inputText id="televizyonYuksekligi" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_yuksekligi}" validatorMessage="Televizyon Yüksekliği 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonYuksekligi" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -106,13 +136,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon Ekran Yenileme</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_yenileme_hizi}" />
+                                <h:inputText id="televizyonEkranYenileme" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_yenileme_hizi}" validatorMessage="Televizyon Ekran Yenileme Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonEkranYenileme" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Televizyon HD Uydu Alicisi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hd_uydu_alici}" />
+                                <h:inputText id="televizyonHD" styleClass="form-control"  value="#{televizyonController.televizyon.televizyon_hd_uydu_alici}" validatorMessage="Televizyon HD Uydu Alıcısı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonHD" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">

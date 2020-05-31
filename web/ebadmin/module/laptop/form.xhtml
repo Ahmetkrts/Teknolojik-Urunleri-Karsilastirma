@@ -16,25 +16,37 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Laptop Adı</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.urun_adi}" />
+                                <h:inputText id="laptopAdi" styleClass="form-control"  value="#{laptopController.laptop.urun_adi}" validatorMessage="Laptop Adi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopAdi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Laptop Tipi</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.urun_tipi}" />
+                                <h:inputText id="laptopTipi" styleClass="form-control"  value="#{laptopController.laptop.urun_tipi}" validatorMessage="Laptop Tipi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopTipi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Laptop Amacı</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.urun_amaci}" />
+                                <h:inputText id="laptopAmacı" styleClass="form-control"  value="#{laptopController.laptop.urun_amaci}" validatorMessage="Laptop Amacı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopAmacı" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Laptop Ailesi</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.urun_ailesi}" />
+                                <h:inputText id="laptopAilesi" styleClass="form-control"  value="#{laptopController.laptop.urun_ailesi}" validatorMessage="Laptop Ailesi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopAilesi" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -42,13 +54,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Laptop Serisi</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.urun_serisi}" />
+                                <h:inputText id="laptopSerisi" styleClass="form-control"  value="#{laptopController.laptop.urun_serisi}" validatorMessage="Laptop Serisi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopSerisi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">İşletim Sistemi</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.isletim_sistemi}" />
+                                <h:inputText id="laptopIsletimSistemi" styleClass="form-control"  value="#{laptopController.laptop.isletim_sistemi}" validatorMessage="Laptop Isletim Sistemi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopIsletimSistemi" style="color: red"/>
                             </div>
                         </div>
 
@@ -63,7 +81,10 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Genişlik</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.genislik}" />
+                                <h:inputText id="laptopGenislik" styleClass="form-control"  value="#{laptopController.laptop.genislik}" validatorMessage="Laptop Genişlik 0 dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopGenislik" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -71,19 +92,28 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Derinlik</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.derinlik}" />
+                                <h:inputText id="laptopDerinlik" styleClass="form-control"  value="#{laptopController.laptop.derinlik}" validatorMessage="Laptop Derinlik 0 dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopDerinlik" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Kalınlık</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.kalinlik}" />
+                                <h:inputText id="laptopKalınlık" styleClass="form-control"  value="#{laptopController.laptop.kalinlik}" validatorMessage="Laptop Kalınlık 0 dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopKalınlık" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ağırlık</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopController.laptop.agirlik}" />
+                                <h:inputText id="laptopAgırlık" styleClass="form-control"  value="#{laptopController.laptop.agirlik}" validatorMessage="Laptop Ağırlık 0 dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="laptopAgırlık" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">

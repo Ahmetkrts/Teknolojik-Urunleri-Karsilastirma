@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
@@ -31,7 +30,7 @@ public class DosyaController implements Serializable {
     private List<Dosya> laptopDocumentList;
 
     private Part doc;
-    private final String uploadTo = "/Users/Enes/Desktop/000new fol/Teknolojik-Urunleri-Karsilastirma/web/resources/img/resim/";
+    private final String uploadTo = "/Users/techn/OneDrive/Masaüstü/New Folder (11)/New Folder/New Folder/Teknolojik-Urunleri-Karsilastirma/web/resources/img/resim/";
 
     public void telefonUpload() {
         try {

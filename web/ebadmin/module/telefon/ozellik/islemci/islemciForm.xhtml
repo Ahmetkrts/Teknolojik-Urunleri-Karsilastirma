@@ -18,19 +18,28 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Yonga Seti</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.yonga_seti}" />
+                                <h:inputText id="YongaSeti" styleClass="form-control"  value="#{telefonIslemciController.islemci.yonga_seti}" validatorMessage="Yonga Seti Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="YongaSeti" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ana İşlemci</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.ana_islemci}" />
+                                <h:inputText id="AnaIşlemci" styleClass="form-control"  value="#{telefonIslemciController.islemci.ana_islemci}" validatorMessage="Ana İşlemci Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="AnaIşlemci" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">CPU Frekansı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_frekansi}" />
+                                <h:inputText id="CPUFrekansı" styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_frekansi}" validatorMessage="CPU Frekansı 0'dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="CPUFrekansı" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -38,19 +47,28 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">CPU Çekirdegi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_cekirdegi}" />
+                                <h:inputText id="CPUCekirdegi" styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_cekirdegi}" validatorMessage="CPU Çekirdeği 0'dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="CPUCekirdegi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">İşlemci Mimarisi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.islemci_mimarisi}" />
+                                <h:inputText id="IslemciMimarisi" styleClass="form-control"  value="#{telefonIslemciController.islemci.islemci_mimarisi}" validatorMessage="İşlemci Mimarisi 0'dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="IslemciMimarisi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Birinci Yardımcı İşlemci</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.birinci_yardimci_islemci}" />
+                                <h:inputText id="BirinciYardimciIslemci" styleClass="form-control"  value="#{telefonIslemciController.islemci.birinci_yardimci_islemci}" validatorMessage="Birinci Yardımcı İşlemci Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="BirinciYardimciIslemci" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -58,19 +76,28 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Grafik İşlemcisi (GPU)</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.grafik_islemcisi_gpu}" />
+                                <h:inputText id="GrafikIslemci" styleClass="form-control"  value="#{telefonIslemciController.islemci.grafik_islemcisi_gpu}" validatorMessage="Grafik İşlemcisi (GPU) Boş Bırakılmamalıdır!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="GrafikIslemci" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">GPU Frekansı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.gpu_frekansi}" />
+                                <h:inputText id="GPUFrekansı" styleClass="form-control"  value="#{telefonIslemciController.islemci.gpu_frekansi}" validatorMessage="GPU Frekansı 0'dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="GPUFrekansı" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">CPU Üretim Teknolojisi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_uretim_teknolojisi}" />
+                                <h:inputText id="GPUUretimTeknolojisi" styleClass="form-control"  value="#{telefonIslemciController.islemci.cpu_uretim_teknolojisi}" validatorMessage="GPU Uretim Teknolojisi 0'dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="GPUUretimTeknolojisi" style="color: red"/>
                             </div>
                         </div>
                     

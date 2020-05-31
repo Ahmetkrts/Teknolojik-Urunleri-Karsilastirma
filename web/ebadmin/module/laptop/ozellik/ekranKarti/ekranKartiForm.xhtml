@@ -19,19 +19,28 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Marka</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_marka}" />
+                                <h:inputText id="Marka" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_marka}" validatorMessage="Marka Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Marka" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Serisi</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_serisi}" />
+                                <h:inputText id="Serisi" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_serisi}" validatorMessage="Seri Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Serisi" style="color: red"/>
                             </div>
                         </div>    
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Modeli</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_modeli}" />
+                                <h:inputText id="Modeli" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_modeli}" validatorMessage="Model Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Modeli" style="color: red"/>
                             </div>
                         </div>  
                     </div>
@@ -39,25 +48,37 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Çekirdek Hızı</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_cekirdek_hizi}" />
+                                <h:inputText id="CekirdekHizi" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_cekirdek_hizi}" validatorMessage="Çekirdek Hızı 0'dan Farklı Olmalı!" >
+                                <f:validateDoubleRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="CekirdekHizi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_bellek_boyutu}" />
+                                <h:inputText id="BellekBoyutu" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_bellek_boyutu}" validatorMessage="Bellek Boyutu Alanı 0'dan Farklı Olmalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="BellekBoyutu" style="color: red"/>
                             </div>
                         </div>    
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Türü</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_bellek_turu}" />
+                                <h:inputText id="BellekTuru" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_bellek_turu}" validatorMessage="Bellek Türü Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="BellekTuru" style="color: red"/>
                             </div>
                         </div>  
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Arayüzü</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_bellek_arayuzu}" />
+                                <h:inputText id="BellekAraYuzu" styleClass="form-control"  value="#{laptopEkranKartiController.laptopEkranKarti.ekran_karti_bellek_arayuzu}" validatorMessage="Bellek Arayüzü Alanı 0'dan Farklı Olmalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="BellekAraYuzu" style="color: red"/>
                             </div>
                         </div> 
                     </div>

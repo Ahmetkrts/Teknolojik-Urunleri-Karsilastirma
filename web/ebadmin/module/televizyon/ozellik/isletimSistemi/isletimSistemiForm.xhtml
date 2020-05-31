@@ -18,7 +18,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">İşletim Sistemi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonIslettimSistemiController.isletimSistemi.isletim_sistemi}" />
+                                <h:inputText id="televizyonIsletimSistemi" styleClass="form-control"  value="#{televizyonIslettimSistemiController.isletimSistemi.isletim_sistemi}" validatorMessage="Televizyon Isletim Sistemi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonIsletimSistemi" style="color: red"/>
                             </div>
                         </div>
 

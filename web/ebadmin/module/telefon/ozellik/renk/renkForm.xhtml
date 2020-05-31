@@ -18,7 +18,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Renk Adı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonRenkController.renk.renk_adi}" />
+                                <h:inputText id="Renk" styleClass="form-control"  value="#{telefonRenkController.renk.renk_adi}" validatorMessage="Telefon Renk Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Renk" style="color: red"/>
                             </div>
                         </div>
 

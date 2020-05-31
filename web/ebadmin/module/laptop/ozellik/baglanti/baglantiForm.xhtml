@@ -18,27 +18,33 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Usb 3x Adeti</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.usb3x_adeti}" />
+                                <h:inputText id="USB3x" styleClass="form-control"  value="#{laptopBaglantiController.baglanti.usb3x_adeti}" >
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Usb Type C Adeti</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.usbtypec_adeti}" />
-
+                                <h:inputText id="TypeC" styleClass="form-control"  value="#{laptopBaglantiController.baglanti.usbtypec_adeti}" >
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">HDMI Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.hdmi_ozellikleri}" />
-
+                                <h:inputText id="typeC" styleClass="form-control"  value="#{laptopBaglantiController.baglanti.hdmi_ozellikleri}" validatorMessage="Laptop HDMI Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="typeC" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bluetooth Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.bluetooth_ozellikleri}" />
+                                <h:inputText id="bluetooth" styleClass="form-control"  value="#{laptopBaglantiController.baglanti.bluetooth_ozellikleri}" validatorMessage="Laptop Bluetooth Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="bluetooth" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -47,14 +53,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ethernet Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.ethernet_ozellikleri}" />
+                                <h:inputText id="Ethernet" styleClass="form-control"  value="#{laptopBaglantiController.baglanti.ethernet_ozellikleri}" validatorMessage="Laptop Ethernet Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Ethernet" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Wifi(Kablosuz) Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopBaglantiController.baglanti.wifi_ozellikleri}" />
-
+                                <h:inputText id="Wifi" styleClass="form-control"  value="#{laptopBaglantiController.baglanti.wifi_ozellikleri}" validatorMessage="Laptop Wifi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Wifi" style="color: red"/>
                             </div>
                         </div>
                     </div>

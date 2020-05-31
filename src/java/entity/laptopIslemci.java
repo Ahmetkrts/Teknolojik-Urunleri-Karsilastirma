@@ -14,9 +14,9 @@ import java.util.Objects;
 public class laptopIslemci {
     private Long islemci_id;
     private String islemci_marka;
-    private  String islemci_serisi;
+    private String islemci_serisi;
     private String islemci_modeli;
-    private Double islemci_temel_frekansi;
+    private double islemci_temel_frekansi;
     private int cekirdek_sayisi;
     private int sanal_cekirdek_sayisi;
     private int on_bellek;

@@ -18,7 +18,7 @@ public class telefonArkaKamera {
     private int kamera_cozunurlugu;
     private String optik_goruntu_sabitleyici;
     private String flas;
-    private Double diafram_acikligi;
+    private double diafram_acikligi;
     private String video_kayit_cozunurlugu;
     private int video_fps_degeri;
     private int iki_kamera_cozunurlugu;

@@ -18,13 +18,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_boyutu}" />
+                                <h:inputText id="televizyonEkranBoyutu" styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_boyutu}" validatorMessage="Televizyon Ekran Boyutu 0 Olmamalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonEkranBoyutu" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Turu</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_turu}" />
+                                <h:inputText id="televizyonEkranTuru" styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_turu}" validatorMessage="Televizyon Ekran Türü Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonEkranTuru" style="color: red"/>
                             </div>
                         </div>                                 
                     </div>
@@ -32,20 +38,29 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Çözünürlüğü</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_cozunurlugu}" />
+                                <h:inputText id="televizyonEkranCozunurlugu" styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_cozunurlugu}" validatorMessage="Televizyon Ekran Çözünürlüğü Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonEkranCozunurlugu" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">HDR</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonEkranController.ekran.HDR}" />
+                                <h:inputText id="televizyonHDR" styleClass="form-control"  value="#{televizyonEkranController.ekran.HDR}" validatorMessage="Televizyon HDR Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonHDR" style="color: red"/>
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Tipi</label>
-                                <h:inputText styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_tipi}" />
+                                <h:inputText id="televizyonTipi" styleClass="form-control"  value="#{televizyonEkranController.ekran.ekran_tipi}" validatorMessage="Televizyon Ekran Tipi Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="televizyonTipi" style="color: red"/>
 
                             </div>
                         </div>

@@ -16,19 +16,28 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon Adı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_ad}" />
+                                <h:inputText id="TelefonAdı" styleClass="form-control"  value="#{telefonController.telefon.telefon_ad}" validatorMessage="Telefon Adı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonAdı" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon Marka</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_marka}" />
+                                <h:inputText id="TelefonMarka" styleClass="form-control"  value="#{telefonController.telefon.telefon_marka}" validatorMessage="Telefon Marka Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonMarka" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon Model</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_model}" />
+                                <h:inputText id="TelefonModel" styleClass="form-control"  value="#{telefonController.telefon.telefon_model}" validatorMessage="Telefon Model Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonMarka" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -78,7 +87,10 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon RAM Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_ram}" />
+                                <h:inputText id="TelefonRAMBoyutu" styleClass="form-control"  value="#{telefonController.telefon.telefon_ram}" validatorMessage="Telefon RAM Bouyu 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonRAMBoyutu" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -87,25 +99,37 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon RAM Frekansı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_ram_frekansi}" />
+                                <h:inputText id="TelefonRAMFrekansı" styleClass="form-control"  value="#{telefonController.telefon.telefon_ram_frekansi}" validatorMessage="Telefon RAM Frekansı 0 dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.01" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonRAMFrekansı" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon Dahili Depolama</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_dahili_depolama}" />
+                                <h:inputText id="TelefonDahiliDepolama" styleClass="form-control"  value="#{telefonController.telefon.telefon_dahili_depolama}" validatorMessage="Telefon Dahili Depolama 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonDahiliDepolama" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon Boy</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_boy}" />
+                                <h:inputText id="TelefonBoy" styleClass="form-control"  value="#{telefonController.telefon.telefon_boy}" validatorMessage="Telefon Boy 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonBoy" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon En</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_en}" />
+                                <h:inputText id="TelefonEn" styleClass="form-control"  value="#{telefonController.telefon.telefon_en}" validatorMessage="Telefon En Boş 0 dan Farklı Olmalıdır!" >
+                                <f:validateDoubleRange minimum="0.01" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonEn" style="color: red"/>
                             </div>
                         </div>
                     </div>
@@ -113,7 +137,10 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Telefon Ağırlıgı</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonController.telefon.telefon_agirlik}" />
+                                <h:inputText id="TelefonAgirlik" styleClass="form-control"  value="#{telefonController.telefon.telefon_agirlik}" validatorMessage="Telefon Ağırlığı 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="TelefonAgirlik" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">

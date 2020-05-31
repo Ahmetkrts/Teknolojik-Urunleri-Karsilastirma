@@ -21,10 +21,10 @@ public class laptop {
     private String urun_serisi;
     private String isletim_sistemi;
     private laptopEkran ekran;
-    private Double genislik;
-    private Double derinlik;
-    private Double kalinlik;
-    private Double agirlik;
+    private double genislik;
+    private double derinlik;
+    private double kalinlik;
+    private double agirlik;
     private laptopDepolamaBellek depolama_bellek;
     private laptopIslemci islemci;
     private laptopEkranKarti ekran_karti;

@@ -18,20 +18,29 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="bmd-label-floating">kullanici Ad Soayad</label>
-                                <h:inputText styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_adSoyad}" />
+                                <label class="bmd-label-floating">Kullanıcı Adı Soyadı</label>
+                                <h:inputText id="kullaniciAdiSoyadı" styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_adSoyad}" validatorMessage="Kullanıcı Adı ve Soyadı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="kullaniciAdiSoyadı" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="bmd-label-floating">kullanici Adi(User Name)</label>
-                                <h:inputText styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_adi}" />
+                                <label class="bmd-label-floating">Kullanıcı Adı(User Name)</label>
+                                <h:inputText id="kullaniciAdi" styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_adi}" validatorMessage="Kullanıcı Adı (User Name) Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="kullaniciAdi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="bmd-label-floating">kullanici Şifresi</label>
-                                <h:inputText styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_sifre}" />
+                                <label class="bmd-label-floating">Kullanıcı Şifresi</label>
+                                <h:inputText id="kullaniciSifresi" styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_sifre}" validatorMessage="Kullanıcı Şifre Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="kullaniciSifresi" style="color: red"/>
                             </div>
                         </div>
 

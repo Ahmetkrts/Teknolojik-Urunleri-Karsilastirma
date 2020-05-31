@@ -18,19 +18,28 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Batarya Kapasitesi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonBataryaController.batarya.batarya_kapasitesi}" />
+                                <h:inputText id="BataryaKapasitesi" styleClass="form-control"  value="#{telefonBataryaController.batarya.batarya_kapasitesi}" validatorMessage="Batarya Kapasitesi Alanı Boş Bırakılmamalı!" >
+                                <f:validateLongRange minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="BataryaKapasitesi" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Batarya Teknolojisi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonBataryaController.batarya.batarya_teknolojisi}" />
+                                <h:inputText id="BataryaTeknolojisi" styleClass="form-control"  value="#{telefonBataryaController.batarya.batarya_teknolojisi}" validatorMessage="Batarya Teknolojisi Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="BataryaTeknolojisi" style="color: red"/>
                             </div>
                         </div>  
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Hızlı Şarj Özelliği</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonBataryaController.batarya.hizli_sarj_ozelligi}" />
+                                <h:inputText id="HizliSarjOzelligi" styleClass="form-control"  value="#{telefonBataryaController.batarya.hizli_sarj_ozelligi}" validatorMessage="Hızlı Sarj Özelliği Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="100000"/>
+                                </h:inputText>
+                                <h:message for="HizliSarjOzelligi" style="color: red"/>
                             </div>
                         </div>
                     </div>

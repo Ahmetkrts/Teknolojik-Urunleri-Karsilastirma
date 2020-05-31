@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class laptopEkran {
     private Long ekran_id;
-    private Double ekran_boyutu;
+    private double ekran_boyutu;
     private String ekran_cozunurlugu;
     private int ekran_yenileme;
 

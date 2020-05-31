@@ -18,13 +18,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Boyutu </label>
-                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.bellek_boyutu}" />
+                                <h:inputText id="Bellek" styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.bellek_boyutu}" validatorMessage="Laptop Bellek Boyutu 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Bellek" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Bellek Frekansı</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.bellek_frekansi}" />
+                                <h:inputText id="BellekFrekansı" styleClass="form-control"  value="#{laptopDepolamaBellekController.laptopDepolamaBellek.bellek_frekansi}" validatorMessage="Laptop Bellek Frekansı 0 dan Farklı Olmalıdır!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="BellekFrekansı" style="color: red"/>
                             </div>
                         </div>  
                         <div class="col-md-3">

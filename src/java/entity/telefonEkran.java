@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class telefonEkran {
     private Long ekran_id;
-    private Double ekran_boyutu;
+    private double ekran_boyutu;
     private String ekran_teknolojisi;
     private String ekran_cozunurlugu;
     private int piksel_yogunlugu; 

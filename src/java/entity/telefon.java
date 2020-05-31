@@ -18,10 +18,10 @@ public class telefon {
     private String telefon_marka;
     private String telefon_model;
     private int telefon_ram;
-    private Double telefon_ram_frekansi;
+    private double telefon_ram_frekansi;
     private int telefon_dahili_depolama;
     private int telefon_boy;
-    private Double telefon_en;
+    private double telefon_en;
     private int telefon_agirlik;
     private List<telefonRenk> renk;
     private telefonBatarya batarya;

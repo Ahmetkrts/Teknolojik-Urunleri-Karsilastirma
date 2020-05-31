@@ -18,13 +18,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">İşletim Sistemi Versiyonu</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi_versiyon}" />
+                                <h:inputText id="IsletimSistemiVersiyonu" styleClass="form-control"  value="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi_versiyon}" validatorMessage="İşletim Sistemi Versiyonu Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="IsletimSistemiVersiyonu" style="color: red"/>                               
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">İşletim Sistemi</label>
-                                <h:inputText styleClass="form-control"  value="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi}" />
+                                <h:inputText id="IşletimSistemi" styleClass="form-control"  value="#{telefonIsletimSistemiController.isletimSistemi.isletim_sistemi}" validatorMessage="İşletim Sistemi Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="IşletimSistemi" style="color: red"/>
                             </div>
                         </div>
 

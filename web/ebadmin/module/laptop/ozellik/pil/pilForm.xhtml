@@ -19,19 +19,28 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Pil Gücü</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_gucu}" />
+                                <h:inputText id="PilGucu" styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_gucu}" validatorMessage="Pil Gücü Alanı 0'dan Farklı Olmalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="PilGucu" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Pil Hücre Sayısı</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_hucre_sayisi}" />
+                                <h:inputText id="PilHücreSayısı" styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_hucre_sayisi}" validatorMessage="Pil Hücre Sayısı Alanı 0'dan Farklı Olmalı" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="PilHücreSayısı" style="color: red"/>
                             </div>
                         </div>   
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Pil Özellikleri</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_ozellikleri}" />
+                                <h:inputText id="PilÖzellikleri" styleClass="form-control"  value="#{laptopPilController.laptopPil.pil_ozellikleri}" validatorMessage="Pil Özellikleri Alanı Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="PilÖzellikleri" style="color: red"/>
                             </div>
                         </div>
                     </div>

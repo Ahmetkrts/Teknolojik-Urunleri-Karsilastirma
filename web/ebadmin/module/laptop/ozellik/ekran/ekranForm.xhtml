@@ -19,28 +19,32 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Boyutu</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_boyutu}" />
+                                <h:inputText id="Ekran" styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_boyutu}" validatorMessage="Laptop Ekran Boyutu 0 dan Farklı Olmalı!" >
+                                <f:validateDoubleRange minimum="0.1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="Ekran" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Çözünürlüğü</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_cozunurlugu}" />
+                                <h:inputText id="EkranCozunurlugu" styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_cozunurlugu}" validatorMessage="Laptop Ekran Çözünürlüğü Boş Bırakılmamalı!" >
+                                <f:validateLength minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="EkranCozunurlugu" style="color: red"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Ekran Yenileme Hızı</label>
-                                <h:inputText styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_yenileme}" />
-
+                                <h:inputText id="EkranYenileme" styleClass="form-control"  value="#{laptopEkranController.laptopEkran.ekran_yenileme}" validatorMessage="Laptop Ekran Yenileme 0 dan Farklı Olmalı!" >
+                                <f:validateLongRange minimum="1" maximum="1000000"/>
+                                </h:inputText>
+                                <h:message for="EkranYenileme" style="color: red"/>
                             </div>
                         </div>
 
                     </div>
-
-
-
-
                     <h:commandButton rendered="#{laptopEkranController.laptopEkran.ekran_id!=null}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{laptopEkranController.temizle()}">
                                 <f:ajax execute="ekran-form" render="ekran-form ekran-table"/>
                             </h:commandButton>

@@ -15,7 +15,7 @@ public class telefonIslemci {
     private Long islemci_id;
     private String yonga_seti;
     private String ana_islemci;
-    private Double  cpu_frekansi;
+    private double  cpu_frekansi;
     private int cpu_cekirdegi;
     private int islemci_mimarisi;
     private String  birinci_yardimci_islemci;

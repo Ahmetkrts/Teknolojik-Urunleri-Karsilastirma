@@ -29,7 +29,7 @@ public class loginFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) sr1;
         String url = req.getRequestURI();
         kullanici kul = (kullanici) req.getSession().getAttribute("valid_kullanici");
-
+        
         if (kul == null) {
             if (url.contains("ebadmin") || url.contains("logout")) {
                 res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");

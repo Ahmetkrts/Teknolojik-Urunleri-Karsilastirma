@@ -540,14 +540,19 @@
                                     <h:form id="yorum-form">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h:inputText styleClass="form-control" value="#{laptopController.yorum.yorum_adSoyad}" p:placeholder="Ad Soyad Giriniz.." />
+                                                <h:inputText id="yorumAdSoyad" styleClass="form-control"  value="#{laptopController.yorum.yorum_adSoyad}" p:placeholder="Ad Soyad Giriniz.." validatorMessage="Ad Soyad Boş Bırakılmamalı!" >
+                                                    <f:validateLength minimum="1" maximum="1000000"/>
+                                                </h:inputText>
+                                                <h:message for="yorumAdSoyad" style="color: orange"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-
-                                                <h:inputTextarea class="form-control" value="#{laptopController.yorum.yorum_icerik}" p:placeholder="Yorumunuzu Giriniz..."></h:inputTextarea>
+                                                <h:inputTextarea id="yorumIcerik" styleClass="form-control"  value="#{laptopController.yorum.yorum_icerik}" p:placeholder="Yorumunuzu Giriniz..." validatorMessage="Yorum Boş Bırakılmamalı!" >
+                                                    <f:validateLength minimum="1" maximum="1000000000"/>
+                                                </h:inputTextarea>
+                                                <h:message for="yorumIcerik" style="color: orange"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12 text-right">
