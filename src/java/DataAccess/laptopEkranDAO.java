@@ -37,12 +37,12 @@ public class laptopEkranDAO {
     public void edit(laptopEkran laptopEkran) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("update laptop_ekran set ekran_boyutu=?,ekran_cozunurlugu=?,ekran_yenileme=? where ekran_id=?");
-            pst.setDouble(4, laptopEkran.getEkran_boyutu());
-            pst.setString(5, laptopEkran.getEkran_cozunurlugu());
-            pst.setInt(5, laptopEkran.getEkran_yenileme());
-            pst.setLong(6, laptopEkran.getEkran_id());
+            pst.setDouble(1, laptopEkran.getEkran_boyutu());
+            pst.setString(2, laptopEkran.getEkran_cozunurlugu());
+            pst.setInt(3, laptopEkran.getEkran_yenileme());
+            pst.setLong(4, laptopEkran.getEkran_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -77,8 +77,6 @@ public class laptopEkranDAO {
                 ekran_liste.add(tmp);
             }
 
-            st.close();
-
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "EkranDAo2");
         }
@@ -101,10 +99,8 @@ public class laptopEkranDAO {
                 ekran_liste.add(tmp);
             }
 
-            st.close();
-
         } catch (SQLException e) {
-            System.out.println(e.getMessage() + "EkranDAo2");
+            System.out.println(e.getMessage() + "EkranDAo3");
         }
         return ekran_liste;
     }

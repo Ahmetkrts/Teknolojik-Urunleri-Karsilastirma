@@ -58,7 +58,7 @@
                         <i class="material-icons text-warning">arrow_back</i> 
                         <f:ajax execute="@this" render=" ekran-table"/>
                     </h:commandLink>
-                    <h:commandLink class="btn btn-outline-warning" value="#{televizyonEkranController.page}" >
+                    <h:commandLink class="btn btn-outline-warning" value="#{televizyonEkranController.page} of #{televizyonEkranController.pageCount}" >
 
                         <f:ajax execute="@this" render=" ekran-table"/>
                     </h:commandLink>

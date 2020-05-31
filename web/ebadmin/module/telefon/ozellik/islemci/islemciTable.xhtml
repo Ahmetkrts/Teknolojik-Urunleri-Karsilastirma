@@ -70,7 +70,7 @@
                         <i class="material-icons text-success">arrow_back</i> 
                         <f:ajax execute="@this" render=" islemci-table"/>
                     </h:commandLink>
-                    <h:commandLink class="btn btn-outline-success" value="#{telefonIslemciController.page}" >
+                    <h:commandLink class="btn btn-outline-success" value="#{telefonIslemciController.page} of #{telefonIslemciController.pageCount}" >
 
                         <f:ajax execute="@this" render=" islemci-table"/>
                     </h:commandLink>

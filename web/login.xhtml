@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <!-- Start Banner Area -->
+        <h:messages globalOnly="true" styleClass="alert-danger"/>
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Giriş Yap/Kayıt Ol! Sayfası</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="#">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Giriş Yap/Kayıt Ol</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- End Banner Area -->
+
+        <!--================Login Box Area =================-->
+        <section class="login_box_area section_gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="login_box_img">
+                            <img class="img-fluid" src="resources/img/login.jpg" alt=""/>
+                            <div class="hover">
+                                <h4>Admin Panelemi Gitmek istiyorsunuz?</h4>
+                                <p>Önce Giriş Yapmak Zorundasınız</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="login_form_inner">
+                            <h3>Giriş Yap</h3>
+                            <h:form class="login_form">
+                                <h:commandLink value="K Adi: Admin  Şifre:1234 Giriş Yap"  action="#{loginController.setlog()}" />
+
+                                <div class="col-md-12 form-group">
+
+                                    <h:inputText class="form-control" value="#{loginController.kullanici.kullanici_adi}"  p:placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'"/>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <h:inputText class="form-control" value="#{loginController.kullanici.kullanici_sifre}"  p:placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'"/>
+                                </div>
+                                
+                                <div class="col-md-12 form-group">
+
+                                    <h:commandButton  action="#{loginController.login()}" value="Log In" class="primary-btn">
+                                        
+                                    </h:commandButton>
+
+                                </div>
+
+                                <h:outputText rendered="#{loginController.hataMesaji!=null}" value="#{loginController.hataMesaji}"  />
+
+
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Login Box Area =================-->
+
+    </ui:define>
+</ui:composition>
+

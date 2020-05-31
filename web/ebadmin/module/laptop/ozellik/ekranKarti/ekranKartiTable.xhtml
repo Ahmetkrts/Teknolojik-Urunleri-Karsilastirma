@@ -72,7 +72,7 @@
                         <i class="material-icons text-info">arrow_back</i> 
                         <f:ajax execute="@this" render=" ekrankarti-table"/>
                     </h:commandLink>
-                    <h:commandLink class="btn btn-outline-info" value="#{laptopEkranKartiController.page}" >
+                    <h:commandLink class="btn btn-outline-info" value="#{laptopEkranKartiController.page} of #{laptopEkranKartiController.pageCount}" >
 
                         <f:ajax execute="@this" render=" ekrankarti-table"/>
                     </h:commandLink>

@@ -69,9 +69,9 @@ public class telefonIslemciDAO {
                 tmp.setGpu_frekansi(rs.getInt("gpu_frekansi"));
                 tmp.setCpu_uretim_teknolojisi(rs.getInt("cpu_uretim_teknolojisi"));
                 islemci_liste.add(tmp);
-                getConnection().close();
-            }
 
+            }
+            getConnection().close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -97,9 +97,9 @@ public class telefonIslemciDAO {
                 tmp.setGpu_frekansi(rs.getInt("gpu_frekansi"));
                 tmp.setCpu_uretim_teknolojisi(rs.getInt("cpu_uretim_teknolojisi"));
                 islemci_liste.add(tmp);
-                getConnection().close();
-            }
 
+            }
+            getConnection().close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

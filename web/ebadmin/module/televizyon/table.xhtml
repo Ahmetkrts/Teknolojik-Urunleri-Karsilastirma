@@ -73,7 +73,7 @@
                         <i class="material-icons text-primary">arrow_back</i> 
                         <f:ajax execute="@this" render=" televizyon-table"/>
                     </h:commandLink>
-                    <h:commandLink class="btn btn-outline-primary" value="#{televizyonController.page}" >
+                    <h:commandLink class="btn btn-outline-primary" value="#{televizyonController.page} of #{telefonController.pageCount}" >
 
                         <f:ajax execute="@this" render=" televizyon-table"/>
                     </h:commandLink>

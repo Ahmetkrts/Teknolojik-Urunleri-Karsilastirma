@@ -51,7 +51,7 @@ public class telefonEkranDAO {
         List<telefonEkran> ekran_liste = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from telefon_ekran order by ekran_id " + s + " limit " + start + "," + pageSize);;
+            ResultSet rs = st.executeQuery("select * from telefon_ekran order by ekran_id " + s + " limit " + start + "," + pageSize);
             while (rs.next()) {
                 telefonEkran tmp = new telefonEkran();
                 tmp.setEkran_id(rs.getLong("ekran_id"));

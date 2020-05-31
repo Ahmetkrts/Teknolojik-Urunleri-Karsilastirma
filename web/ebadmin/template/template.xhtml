@@ -22,9 +22,14 @@
     <h:body>
         <div class="wrapper ">
             <div class="sidebar" data-color="purple" data-background-color="white" library="img" data-image="img/sidebar-1.jpg">
-                <div class="logo"><a href="#" class="simple-text logo-normal">
-                        Compare Tech
-                    </a></div>
+                <div class="logo text-center text-success">
+                    <a href="/Teknolojik-Urunleri-Karsilastirma/faces/ebadmin/index.xhtml" class="simple-text logo-normal">Compare Tech</a>
+                    <p class="8">
+                        <hr/>
+                        Hoş Geldiniz<br/><b> #{loginController.loginKullanici.kullanici_adSoyad}</b><br/>
+                        Kullanıcı Adınız :<b> #{loginController.loginKullanici.kullanici_adi}</b>
+                    </p>
+                </div>
                 <div class="sidebar-wrapper">
                     <h:form>
                         <ul class="nav"> 
@@ -35,7 +40,7 @@
                                     <p>Telefonlar</p>
                                 </h:commandLink>
                             </li>
-							<li class="nav-item active ">
+                            <li class="nav-item active ">
                                 <h:commandLink styleClass="nav-link" action="#{navigationBean.page('televizyon')}">
 
                                     <i class="material-icons">tv</i>
@@ -47,6 +52,13 @@
 
                                     <i class="material-icons">laptop</i>
                                     <p>Laptoplar</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('kullanici')}">
+
+                                    <i class="material-icons">person</i>
+                                    <p>Kullanıcılar</p>
                                 </h:commandLink>
                             </li>
                         </ul>
@@ -66,8 +78,8 @@
             </div>
         </div>
         <!--   Core JS Files   -->
-       
-      
+
+
 
 
     </h:body>

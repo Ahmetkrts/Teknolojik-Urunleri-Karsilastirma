@@ -82,7 +82,7 @@
                         <i class="material-icons text-success">arrow_back</i> 
                         <f:ajax execute="@this" render=" islemci-table"/>
                     </h:commandLink>
-                    <h:commandLink class="btn btn-outline-success" value="#{laptopIslemciController.page}" >
+                    <h:commandLink class="btn btn-outline-success" value="#{laptopIslemciController.page} of #{laptopIslemciController.pageCount}" >
 
                         <f:ajax execute="@this" render=" islemci-table"/>
                     </h:commandLink>

@@ -42,10 +42,10 @@ public class laptopDepolamaBellekDAO {
             pst.setInt(3, laptopDepolamaBellek.getSabit_disk_boyutu());
             pst.setInt(4, laptopDepolamaBellek.getSabit_disk_yazma_hizi());
             pst.setInt(5, laptopDepolamaBellek.getSsd_boyutu());
-            pst.setString(5, laptopDepolamaBellek.getSsd_tipi());
-            pst.setLong(6, laptopDepolamaBellek.getDepolama_bellek_id());
+            pst.setString(6, laptopDepolamaBellek.getSsd_tipi());
+            pst.setLong(7, laptopDepolamaBellek.getDepolama_bellek_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

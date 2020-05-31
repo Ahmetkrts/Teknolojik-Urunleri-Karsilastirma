@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">kullanıcı Ekle</h4>
+                <p class="card-category">kullanıcılara Ekleme veya Güncellme</p>
+            </div>
+            <div class="card-body">
+                <h:form id="kullanici-form">
+                    <h:inputHidden value="#{kullaniciController.kullanici.kullanici_id}"/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">kullanici Ad Soayad</label>
+                                <h:inputText styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_adSoyad}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">kullanici Adi(User Name)</label>
+                                <h:inputText styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_adi}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">kullanici Şifresi</label>
+                                <h:inputText styleClass="form-control"  value="#{kullaniciController.kullanici.kullanici_sifre}" />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <h:commandButton rendered="#{kullaniciController.kullanici.kullanici_id!=null}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{kullaniciController.temizle()}">
+                        <f:ajax execute="kullanici-form" render="kullanici-form kullanici-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{kullaniciController.kullanici.kullanici_id!=null}"  styleClass="btn btn-info pull-right" value="Güncelle"  action="#{kullaniciController.update()}">
+                        <f:ajax execute="kullanici-form" render="kullanici-form kullanici-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{kullaniciController.kullanici.kullanici_id==null}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{kullaniciController.create()}" >
+                        <f:ajax execute="kullanici-form" render="kullanici-form kullanici-table"/>
+                    </h:commandButton>
+
+                    <div class="clearfix"></div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+
+
+</ui:composition>

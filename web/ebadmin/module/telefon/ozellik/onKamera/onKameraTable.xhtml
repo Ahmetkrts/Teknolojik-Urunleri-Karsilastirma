@@ -59,7 +59,7 @@
                         <i class="material-icons text-success">arrow_back</i> 
                         <f:ajax execute="@this" render=" onkamera-table"/>
                     </h:commandLink>
-                    <h:commandLink class="btn btn-outline-success" value="#{telefonOnKameraController.page}" >
+                    <h:commandLink class="btn btn-outline-success" value="#{telefonOnKameraController.page} of #{telefonOnKameraController.pageCount}" >
 
                         <f:ajax execute="@this" render=" onkamera-table"/>
                     </h:commandLink>

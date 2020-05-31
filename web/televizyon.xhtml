@@ -15,7 +15,7 @@
                         <div class="col-first">
                             <h1>Kategori Sayfası</h1>
                             <nav class="d-flex align-items-center">
-                                <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                                <a href="#">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
                                 <a href="#">Televizyonlar</a>
 
                             </nav>
@@ -45,7 +45,7 @@
 
 
 
-                                <h:commandLink class="active" value="#{televizyonController.page}"/>                                
+                                <h:commandLink class="active" value="#{televizyonController.page} of #{televizyonController.pageCount}"/>                                
                                 <!--
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>
@@ -100,7 +100,7 @@
 
 
 
-                                <h:commandLink class="active" value="#{televizyonController.page}"/>                                
+                                <h:commandLink class="active" value="#{televizyonController.page} of #{televizyonController.pageCount}"/>                                
                                 <!--
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>

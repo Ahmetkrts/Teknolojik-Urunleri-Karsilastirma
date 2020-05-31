@@ -5,6 +5,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="template/template.xhtml">
     <ui:define name="content">
+
         <div class="content">
             <div class="container-fluid">
                 <div class="alert alert-info">
@@ -12,8 +13,93 @@
                         <i class="material-icons">close</i>
                     </button>
                     <span>
-                        <b> Bilgi - </b> Şu anda Anasayfamız Yapım Aşamasındadır Daha Sonra Tekrardan Sitemize Uğrayınız</span>
+                        <b> Bilgi - </b> Şu anda Anasayfamız Yapım Aşamasındadır Daha Sonra Tekrardan Sitemize Uğrayınız
+                    </span>
+
                 </div>
+
+                <h:form>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-warning card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">phone_iphone</i>
+                                    </div>
+                                    <p class="card-category">Telefon</p>
+                                    <h3 class="card-title">#{telefonController.telefondao.countSize()}
+                                        <small>Adet Kayıt</small>
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">phone_iphone</i>
+                                        <h:commandLink  value="Telefonlar" action="#{navigationBean.page('telefon')}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">tv</i>
+
+                                    </div>
+                                    <p class="card-category">Televizyon</p>
+                                    <h3 class="card-title">#{televizyonController.televizyondao.countSize()}
+                                        <small>Adet Kayıt</small>
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">tv</i>
+                                        <h:commandLink  value="Televiyonlar" action="#{navigationBean.page('televizyon')}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-danger card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">laptop</i>
+                                    </div>
+                                    <p class="card-category">Laptop</p>
+                                    <h3 class="card-title">#{laptopController.laptopdao.countSize()}
+                                        <small>Adet Kayıt</small>
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">laptop</i>
+                                        <h:commandLink  value="Laptoplar" action="#{navigationBean.page('laptop')}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-danger card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">home</i>
+                                    </div>
+                                    <p class="card-category">Anasayfaya</p>
+                                    <h3 class="card-title">|--><br/>
+                                        <small>Git</small>
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">home</i>
+                                        <a class="" href="/Teknolojik-Urunleri-Karsilastirma/faces/index.xhtml">Anasayfa</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </h:form>
             </div>
         </div>
     </ui:define>
