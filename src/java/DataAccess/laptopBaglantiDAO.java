@@ -38,7 +38,7 @@ public class laptopBaglantiDAO {
             baglanti.setBluetooth_ozellikleri(rs.getString("bluetooth_ozellikleri"));
             baglanti.setEthernet_ozellikleri(rs.getString("ethernet_ozellikleri"));
             baglanti.setWifi_ozellikleri(rs.getString("wifi_ozellikleri"));
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -62,7 +62,7 @@ public class laptopBaglantiDAO {
                 baglanti_liste.add(tmp);
 
             }
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "baglantiDAO ");
         }
@@ -88,7 +88,7 @@ public class laptopBaglantiDAO {
                 baglanti_liste.add(tmp);
 
             }
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "baglantiDAO ");
         }
@@ -116,6 +116,7 @@ public class laptopBaglantiDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_baglanti where baglanti_id=?");
             pst.setLong(1, laptopBaglanti.getBaglanti_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -132,7 +133,7 @@ public class laptopBaglantiDAO {
             pst.setString(6, laptopBaglanti.getWifi_ozellikleri());
             pst.setLong(7, laptopBaglanti.getBaglanti_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -146,7 +147,7 @@ public class laptopBaglantiDAO {
             st.executeUpdate("insert into laptop_baglanti (usb3x_adeti, usbtypec_adeti, hdmi_ozellikleri, bluetooth_ozellikleri, ethernet_ozellikleri, wifi_ozellikleri) values"
                     + "	(" + laptopBaglanti.getUsb3x_adeti() + ", " + laptopBaglanti.getUsbtypec_adeti() + ",' " + laptopBaglanti.getHdmi_ozellikleri() + "', '" + laptopBaglanti.getBluetooth_ozellikleri() + "',"
                     + " '" + laptopBaglanti.getEthernet_ozellikleri() + "', '" + laptopBaglanti.getWifi_ozellikleri() + "')");
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "baglantiDAO 2");
         }

@@ -31,7 +31,7 @@ public class DosyaController implements Serializable {
     private List<Dosya> laptopDocumentList;
 
     private Part doc;
-    private final String uploadTo = "/Users/Casper/Desktop/000yeni/1-login sistemi/Teknolojik-Urunleri-Karsilastirma/web/resources/img/resim/";
+    private final String uploadTo = "/Users/Enes/Desktop/000new fol/Teknolojik-Urunleri-Karsilastirma/web/resources/img/resim/";
 
     public void telefonUpload() {
         try {

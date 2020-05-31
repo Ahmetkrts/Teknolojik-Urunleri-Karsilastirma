@@ -1,0 +1,954 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Telefon Karşılaştırma Sayfası</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="#">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Telefon<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Telefon Karşılaştırma</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
+        <!--================Single Product Area =================-->
+        <div class="product_image_area">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="s_product_inner col-lg-5 offset-lg-1" >
+                        <h:form rendered="#{karsilastirmaController.telefon1.telefon_id == null}"> 
+                            <div class="form-group">
+                                <h:selectOneMenu styleClass="form-select" value="#{karsilastirmaController.selected1}" >
+                                    <f:selectItems  value="#{karsilastirmaController.telefonList}" var="telefon1" itemValue="#{telefon1.telefon_id}" itemLabel="#{telefon1.telefon_ad}"/>
+                                </h:selectOneMenu>
+                                <h:commandButton styleClass="genric-btn primary "  value="Seç" action="#{karsilastirmaController.telefon1sec()}">
+
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+                        <h:form rendered="#{karsilastirmaController.telefon1.telefon_id != null}">  
+
+                            <div class="col-lg-12">
+                                <div class="s_Product_carousel">
+
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.telefon1.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.telefon1.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.telefon1.resim.fileName}" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 ">
+                                <div class="s_product_text">
+                                    <h3>#{karsilastirmaController.telefon1.telefon_ad}</h3>
+                                    <h2>#{karsilastirmaController.telefon1.telefon_model}</h2>
+
+
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+
+                    <div class="s_product_inner col-lg-5 offset-lg-1">
+                        <h:form rendered="#{karsilastirmaController.telefon1.telefon_id != null}">  
+                            <h:form rendered="#{karsilastirmaController.telefon2.telefon_id == null}"> 
+
+                                <h:selectOneMenu styleClass="form-select" value="#{karsilastirmaController.selected2}"  >
+                                    <f:selectItems  value="#{karsilastirmaController.telefonList}" var="telefon1" itemValue="#{telefon1.telefon_id}" itemLabel="#{telefon1.telefon_ad}"/>
+                                </h:selectOneMenu>
+                                <h:commandButton styleClass="genric-btn primary"  value="Seç" action="#{karsilastirmaController.telefon2sec()}">
+
+                                </h:commandButton>
+                            </h:form>
+                        </h:form>
+                        <h:form rendered="#{karsilastirmaController.telefon2.telefon_id != null}">  
+                            <div class="col-lg-12">
+                                <div class="s_Product_carousel">
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.telefon2.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.telefon2.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.telefon2.resim.fileName}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 ">
+                                <div class="s_product_text">
+                                    <h3>#{karsilastirmaController.telefon2.telefon_ad}</h3>
+                                    <h2>#{karsilastirmaController.telefon2.telefon_model}</h2>
+
+
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Single Product Area =================-->
+
+        <!--================Product Description Area =================-->
+        <section class="product_description_area">
+            <div class="container">
+                <div class="col">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+
+                                <div class="table-responsive col-md-6">
+                                    <h:form rendered="#{karsilastirmaController.telefon1.telefon_id != null}"> 
+
+                                        <table class="table ">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Ekran</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.ekran.ekran_boyutu} İnç</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.ekran.ekran_teknolojisi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.ekran.ekran_cozunurlugu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Yoğunluğu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.ekran.piksel_yogunlugu} ppi </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Dayanıklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.ekran.ekran_dayanikliligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Batarya</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Batarya Kapasitesi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.batarya.batarya_kapasitesi} mAh </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Batarya Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.batarya.batarya_teknolojisi}  </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Hızlı Sarj Özelliği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.batarya.hizli_sarj_ozelligi}  </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Arka Kamera</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Kamera Çözürülüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.kamera_cozunurlugu} MP</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Optik Görüntü Sabitleyici</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.optik_goruntu_sabitleyici} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Flaş</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.flas} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Diafram Açıklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon1.arkaKamera.diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Video Kayıt Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.video_kayit_cozunurlugu}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Video FPS Değeri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.video_fps_degeri} Fps </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İkinci Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.iki_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İkinci Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon1.arkaKamera.iki_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Üçüncü Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.uc_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Üçüncü Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon1.arkaKamera.uc_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Dördüncü Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.dort_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Dördüncü Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon1.arkaKamera.dort_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Beşinci Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.arkaKamera.bes_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Beşinci Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon1.arkaKamera.bes_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.onKamera.kamera_cozunurlugu} MP</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Video Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.onKamera.video_cozunurlugu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Video FPS Değeri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.onKamera.video_fps_degeri} Fps </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Diafram Açıklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon1.onKamera.diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Temel Donanım</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Yonga Seti(Chipset)</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.yonga_seti} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ana İşlemci(CPU)</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.ana_islemci} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>CPU Frekansı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.cpu_frekansi} GHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>CPU Çekirdeği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.cpu_cekirdegi} Çekirdek</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Mimarisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.islemci_mimarisi}-bit </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Birinci Yardımcı İşlemci</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.birinci_yardimci_islemci} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Grafik İşlemcisi GPU</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.grafik_islemcisi_gpu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>GPU Freaknsı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.gpu_frekansi} MHz </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>CPU Üretim Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.islemci.cpu_uretim_teknolojisi} nm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek (Ram)</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.telefon_ram} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek (Ram) Frekansı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.telefon_ram_frekansi} MHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Dahili Depolama</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.telefon_dahili_depolama} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Tasarım</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Boy</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.telefon_boy} mm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>En</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.telefon_en} mm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ağırlık</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.telefon_agirlik} Gram</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Renkleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>
+
+                                                            <ui:repeat value="#{karsilastirmaController.telefon1.renk}" var="renk">
+                                                                #{renk.renk_adi}-
+                                                            </ui:repeat>
+                                                        </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>İşletim Sistemi</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşletim Sistemi Versiyonu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.isletimSistemi.isletim_sistemi_versiyon} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşletim Sistemi </h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon1.isletimSistemi.isletim_sistemi} </h5>
+                                                    </td>
+                                                </tr>
+
+
+
+                                            </tbody>
+                                        </table> 
+                                    </h:form>
+                                </div>
+
+
+                                <div class="table-responsive col-md-6">
+                                    <h:form rendered="#{karsilastirmaController.telefon2.telefon_id != null}">  
+                                        <table class="table ">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Ekran</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.ekran.ekran_boyutu} İnç</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.ekran.ekran_teknolojisi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.ekran.ekran_cozunurlugu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Yoğunluğu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.ekran.piksel_yogunlugu} ppi </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Dayanıklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.ekran.ekran_dayanikliligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Batarya</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Batarya Kapasitesi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.batarya.batarya_kapasitesi} mAh </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Batarya Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.batarya.batarya_teknolojisi}  </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Hızlı Sarj Özelliği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.batarya.hizli_sarj_ozelligi}  </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Arka Kamera</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Kamera Çözürülüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.kamera_cozunurlugu} MP</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Optik Görüntü Sabitleyici</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.optik_goruntu_sabitleyici} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Flaş</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.flas} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Diafram Açıklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon2.arkaKamera.diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Video Kayıt Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.video_kayit_cozunurlugu}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Video FPS Değeri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.video_fps_degeri} Fps </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İkinci Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.iki_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İkinci Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon2.arkaKamera.iki_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Üçüncü Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.uc_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Üçüncü Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon2.arkaKamera.uc_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Dördüncü Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.dort_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Dördüncü Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon2.arkaKamera.dort_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Beşinci Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.arkaKamera.bes_kamera_cozunurlugu} MP </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Beşinci Kamera Diafram Açklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon2.arkaKamera.bes_diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.onKamera.kamera_cozunurlugu} MP</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Video Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.onKamera.video_cozunurlugu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Video FPS Değeri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.onKamera.video_fps_degeri} Fps </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ön Kamera Diafram Açıklığı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>F#{karsilastirmaController.telefon2.onKamera.diafram_acikligi} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Temel Donanım</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Yonga Seti(Chipset)</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.yonga_seti} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ana İşlemci(CPU)</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.ana_islemci} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>CPU Frekansı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.cpu_frekansi} GHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>CPU Çekirdeği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.cpu_cekirdegi} Çekirdek</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Mimarisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.islemci_mimarisi}-bit </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Birinci Yardımcı İşlemci</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.birinci_yardimci_islemci} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Grafik İşlemcisi GPU</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.grafik_islemcisi_gpu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>GPU Freaknsı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.gpu_frekansi} MHz </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>CPU Üretim Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.islemci.cpu_uretim_teknolojisi} nm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek (Ram)</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.telefon_ram} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek (Ram) Frekansı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.telefon_ram_frekansi} MHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Dahili Depolama</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.telefon_dahili_depolama} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Tasarım</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Boy</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.telefon_boy} mm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>En</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.telefon_en} mm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ağırlık</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.telefon_agirlik} Gram</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Renkleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>
+
+                                                            <ui:repeat value="#{karsilastirmaController.telefon2.renk}" var="renk">
+                                                                #{renk.renk_adi}-
+                                                            </ui:repeat>
+                                                        </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>İşletim Sistemi</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşletim Sistemi Versiyonu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.isletimSistemi.isletim_sistemi_versiyon} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşletim Sistemi </h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.telefon2.isletimSistemi.isletim_sistemi} </h5>
+                                                    </td>
+                                                </tr>
+
+
+
+                                            </tbody>
+                                        </table> 
+                                    </h:form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--================End Product Description Area =================-->
+
+
+
+    </ui:define>
+</ui:composition>
+

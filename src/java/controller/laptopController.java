@@ -6,16 +6,14 @@
 package controller;
 
 import DataAccess.laptopDAO;
+import DataAccess.yorumDAO;
 import entity.laptop;
+import entity.yorum;
 import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.ServletContext;
 
 /**
  *
@@ -32,6 +30,36 @@ public class laptopController implements Serializable {
     private int page = 1;
     private int pageSize = 5;
     private int pageCount;
+    private yorumDAO yorumdao;
+    private yorum yorum;
+
+    public void yoruminsert() {
+        getYorumdao().insert(yorum, this.laptop.getLaptop_id(), "laptop");
+        laptopOzellikleri(this.laptop.getLaptop_id());
+        this.yorum = new yorum();
+    }
+
+    public yorum getYorum() {
+        if (this.yorum == null) {
+            this.yorum = new yorum();
+        }
+        return yorum;
+    }
+
+    public void setYorum(yorum yorum) {
+        this.yorum = yorum;
+    }
+
+    public yorumDAO getYorumdao() {
+        if (this.yorumdao == null) {
+            this.yorumdao = new yorumDAO();
+        }
+        return yorumdao;
+    }
+
+    public void setYorumdao(yorumDAO yorumdao) {
+        this.yorumdao = yorumdao;
+    }
 
     public void next() {
         if (this.page == getPageCount()) {
@@ -49,9 +77,9 @@ public class laptopController implements Serializable {
         }
     }
 
-    public String laptopOzellikleri(laptop laptop) {
-        this.laptop = laptop;
-        return "laptop-ozellikleri.xhtml";
+    public String laptopOzellikleri(long id) {
+        this.laptop = getLaptopdao().find(id);
+        return "laptop-ozellikleri?faces-redirect=true";
     }
 
     public laptop getLp() {

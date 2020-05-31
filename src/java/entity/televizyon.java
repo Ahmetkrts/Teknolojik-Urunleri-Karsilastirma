@@ -5,11 +5,14 @@
  */
 package entity;
 
+import java.util.List;
+
 /**
  *
  * @author techn
  */
 public class televizyon {
+
     private Long televizyon_id;
     private String televizyon_ad;
     private String televizyon_marka;
@@ -27,7 +30,15 @@ public class televizyon {
     private televizyonEkran ekran;
     private televizyonIslettimSistemi isletimsistemi;
     private Dosya resim;
-    
+    private List<yorum> yorumList;
+
+    public List<yorum> getYorumList() {
+        return yorumList;
+    }
+
+    public void setYorumList(List<yorum> yorumList) {
+        this.yorumList = yorumList;
+    }
 
     public Long getTelevizyon_id() {
         return televizyon_id;
@@ -60,7 +71,6 @@ public class televizyon {
     public void setTelevizyon_model(String televizyon_model) {
         this.televizyon_model = televizyon_model;
     }
-
 
     public String getTelevizyon_enerji() {
         return televizyon_enerji;
@@ -126,7 +136,6 @@ public class televizyon {
         this.televizyon_yuksekligi = televizyon_yuksekligi;
     }
 
-
     public int getTelevizyon_yenileme_hizi() {
         return televizyon_yenileme_hizi;
     }
@@ -166,6 +175,5 @@ public class televizyon {
     public void setResim(Dosya resim) {
         this.resim = resim;
     }
-    
-    
+
 }

@@ -1,0 +1,975 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Laptop Karşılaştırma Sayfası</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="#">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Laptop<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Laptop Karşılaştırma</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
+        <!--================Single Product Area =================-->
+        <div class="product_image_area">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="s_product_inner col-lg-5 offset-lg-1" >
+                        <h:form rendered="#{karsilastirmaController.laptop1.laptop_id == null}"> 
+                            <div class="form-group">
+                                <h:selectOneMenu styleClass="form-select" value="#{karsilastirmaController.selected1}" >
+                                    <f:selectItems  value="#{karsilastirmaController.laptopList}" var="laptop1" itemValue="#{laptop1.laptop_id}" itemLabel="#{laptop1.urun_adi}"/>
+                                </h:selectOneMenu>
+                                <h:commandButton styleClass="genric-btn primary "  value="Seç" action="#{karsilastirmaController.laptop1sec()}">
+
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+                        <h:form rendered="#{karsilastirmaController.laptop1.laptop_id != null}">  
+
+                            <div class="col-lg-12">
+                                <div class="s_Product_carousel">
+
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.laptop1.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.laptop1.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.laptop1.resim.fileName}" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 ">
+                                <div class="s_product_text">
+                                    <h3>#{karsilastirmaController.laptop1.urun_adi}</h3>
+                                    <h2>#{karsilastirmaController.laptop1.urun_ailesi}</h2>
+
+
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+
+                    <div class="s_product_inner col-lg-5 offset-lg-1">
+                        <h:form rendered="#{karsilastirmaController.laptop1.laptop_id != null }">   
+                            <h:form rendered="#{karsilastirmaController.laptop2.laptop_id == null}"> 
+                                <h:selectOneMenu styleClass="form-select" value="#{karsilastirmaController.selected2}"  >
+                                    <f:selectItems  value="#{karsilastirmaController.laptopList}" var="laptop1" itemValue="#{laptop1.laptop_id}" itemLabel="#{laptop1.urun_adi}"/>
+                                </h:selectOneMenu>
+                                <h:commandButton styleClass="genric-btn primary"  value="Seç" action="#{karsilastirmaController.laptop2sec()}">
+
+                                </h:commandButton>
+                            </h:form>
+                        </h:form>
+                        <h:form rendered="#{karsilastirmaController.laptop2.laptop_id != null}">  
+                            <div class="col-lg-12">
+                                <div class="s_Product_carousel">
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.laptop2.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.laptop2.resim.fileName}" />
+                                    </div>
+                                    <div class="single-prd-item">
+                                        <h:graphicImage   value="/file/#{karsilastirmaController.laptop2.resim.fileName}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 ">
+                                <div class="s_product_text">
+                                    <h3>#{karsilastirmaController.laptop2.urun_adi}</h3>
+                                    <h2>#{karsilastirmaController.laptop2.urun_ailesi}</h2>
+
+
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Single Product Area =================-->
+
+        <!--================Product Description Area =================-->
+        <section class="product_description_area">
+            <div class="container">
+                <div class="col">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+
+                                <div class="table-responsive col-md-6">
+                                    <h:form rendered="#{karsilastirmaController.laptop1.laptop_id != null}"> 
+
+                                        <table class="table ">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Genel Bilgiler</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün tipi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.urun_tipi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün Amacı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.urun_amaci}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün Ailesi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.urun_ailesi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün Serisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.urun_serisi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşletim Sistemi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.isletim_sistemi}</h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Ekran</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran.ekran_boyutu} İnçh</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran.ekran_cozunurlugu}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Yenileme Hızı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran.ekran_yenileme} Hz</h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Tasarım</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Genişlik</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.genislik} mm </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Derinlik</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.derinlik} mm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Kalınlık</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.kalinlik} mm </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ağırlık</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.agirlik} kg </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>İşlemci</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Markası</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.islemci_marka} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Serisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.islemci_serisi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Modeli</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.islemci_modeli} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Temel Frekans</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.islemci_temel_frekansi} GHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Çekirdeği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.cekirdek_sayisi} Adet </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Sanal Çekirdeği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.sanal_cekirdek_sayisi} Adet </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Ön Bellek</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.on_bellek} MB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Üretim Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.uretim_teknolojisi} nm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Tdp Değeri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.islemci.tdp_degeri} W </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Bellek Depolama</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.depolama_bellek.bellek_boyutu} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek Frekansı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.depolama_bellek.bellek_frekansi} mHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>HDD Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.depolama_bellek.sabit_disk_boyutu} TB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>HDD Yazma Hızı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.depolama_bellek.sabit_disk_yazma_hizi} Rpm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>SSD Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.depolama_bellek.ssd_boyutu} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>SSD Tipi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.depolama_bellek.ssd_tipi} </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Ekran Kartı</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Markası</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_marka}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Serisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_serisi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Modeli</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_modeli} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Çekirdek Hızı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_cekirdek_hizi} MHz </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Bellek Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_bellek_boyutu} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Bellek Türü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_bellek_turu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Bellek Arayüzü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.ekran_karti.ekran_karti_bellek_arayuzu} Bit</h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Baglantı Arayüzleri</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>USB 3x Adeti</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.baglanti.usb3x_adeti} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>USB Type C Adeti</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.baglanti.usbtypec_adeti}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>HDMI Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.baglanti.hdmi_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bluetooth Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.baglanti.bluetooth_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ethernet Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.baglanti.ethernet_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Wifi Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.baglanti.wifi_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Pil </h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Pil gücü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.pil.pil_gucu} Wh</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Pil Hücre Sayısı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.pil.pil_hucre_sayisi} Hücreli</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Pil Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop1.pil.pil_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table> 
+                                    </h:form>
+                                </div>
+
+
+                                <div class="table-responsive col-md-6">
+                                    <h:form rendered="#{karsilastirmaController.laptop2.laptop_id != null}">  
+                                        <table class="table ">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Genel Bilgiler</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün tipi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.urun_tipi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün Amacı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.urun_amaci}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün Ailesi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.urun_ailesi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ürün Serisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.urun_serisi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşletim Sistemi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.isletim_sistemi}</h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Ekran</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran.ekran_boyutu} İnçh</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Çözünürlüğü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran.ekran_cozunurlugu}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Yenileme Hızı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran.ekran_yenileme} Hz</h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Tasarım</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Genişlik</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.genislik} mm </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Derinlik</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.derinlik} mm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Kalınlık</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.kalinlik} mm </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ağırlık</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.agirlik} kg </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>İşlemci</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Markası</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.islemci_marka} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Serisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.islemci_serisi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Modeli</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.islemci_modeli} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Temel Frekans</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.islemci_temel_frekansi} GHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Çekirdeği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.cekirdek_sayisi} Adet </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Sanal Çekirdeği</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.sanal_cekirdek_sayisi} Adet </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Ön Bellek</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.on_bellek} MB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Üretim Teknolojisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.uretim_teknolojisi} nm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>İşlemci Tdp Değeri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.islemci.tdp_degeri} W </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Bellek Depolama</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.depolama_bellek.bellek_boyutu} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bellek Frekansı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.depolama_bellek.bellek_frekansi} mHz</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>HDD Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.depolama_bellek.sabit_disk_boyutu} TB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>HDD Yazma Hızı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.depolama_bellek.sabit_disk_yazma_hizi} Rpm</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>SSD Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.depolama_bellek.ssd_boyutu} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>SSD Tipi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.depolama_bellek.ssd_tipi} </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Ekran Kartı</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Markası</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_marka}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Serisi</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_serisi}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Modeli</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_modeli} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Çekirdek Hızı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_cekirdek_hizi} MHz </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Bellek Boyutu</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_bellek_boyutu} GB</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Bellek Türü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_bellek_turu} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ekran Kartı Bellek Arayüzü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.ekran_karti.ekran_karti_bellek_arayuzu} Bit</h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Baglantı Arayüzleri</h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>USB 3x Adeti</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.baglanti.usb3x_adeti} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>USB Type C Adeti</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.baglanti.usbtypec_adeti}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>HDMI Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.baglanti.hdmi_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Bluetooth Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.baglanti.bluetooth_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Ethernet Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.baglanti.ethernet_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Wifi Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.baglanti.wifi_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <h4>Pil </h4>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Pil gücü</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.pil.pil_gucu} Wh</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Pil Hücre Sayısı</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.pil.pil_hucre_sayisi} Hücreli</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5>Pil Özellikleri</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>#{karsilastirmaController.laptop2.pil.pil_ozellikleri} </h5>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table> 
+                                    </h:form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--================End Product Description Area =================-->
+
+
+
+    </ui:define>
+</ui:composition>
+

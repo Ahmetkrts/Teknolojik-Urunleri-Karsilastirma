@@ -19,7 +19,7 @@
                                 <div class="row single-slide align-items-center d-flex">
                                     <div class="col-lg-5 col-md-6">
                                         <div class="banner-content">
-                                            <h2>#{laptopController.lp.urun_adi}</h2>
+                                            <h2>#{laptopController.lp.urun_adi} #{laptopController.lp.laptop_id}</h2>
 
                                             <p>#{laptopController.lp.ekran.ekran_cozunurlugu} Ekran Çözünürlüğü<br/>
                                                 #{laptopController.lp.depolama_bellek.bellek_boyutu} GB Bellek<br/>
@@ -27,7 +27,7 @@
                                                 #{laptopController.lp.islemci.islemci_modeli} İşlemci  <br/>
                                                 #{laptopController.lp.ekran_karti.ekran_karti_modeli} Ekran Kartı</p>
                                             <div class="add-bag d-flex align-items-center">
-                                                <h:commandLink class="add-btn"  action="#{laptopController.laptopOzellikleri(laptopController.lp)}"><span class="lnr lnr-cross"></span></h:commandLink>
+                                                <h:commandLink class="add-btn"  action="#{laptopController.laptopOzellikleri(laptopController.lp.laptop_id)}"><span class="lnr lnr-cross"></span></h:commandLink>
                                                 <span class="add-text text-uppercase">Detaylar</span>
                                             </div>
 
@@ -55,7 +55,7 @@
 
                                             </p>
                                             <div class="add-bag d-flex align-items-center">
-                                                <h:commandLink class="add-btn"  action="#{telefonController.telefonOzellikleri(telefonController.tl)}"><span class="lnr lnr-cross"></span></h:commandLink>
+                                                <h:commandLink class="add-btn"  action="#{telefonController.telefonOzellikleri(telefonController.tl.telefon_id)}"><span class="lnr lnr-cross"></span></h:commandLink>
                                                 <span class="add-text text-uppercase">Detaylar</span>
                                             </div>
 
@@ -80,7 +80,7 @@
 
                                             </p>
                                             <div class="add-bag d-flex align-items-center">
-                                                <h:commandLink class="add-btn"  action="#{televizyonController.TelevizyonOzellikleri(televizyonController.tv)}"><span class="lnr lnr-cross"></span></h:commandLink>
+                                                <h:commandLink class="add-btn"  action="#{televizyonController.TelevizyonOzellikleri(televizyonController.tv.televizyon_id)}"><span class="lnr lnr-cross"></span></h:commandLink>
                                                 <span class="add-text text-uppercase">Detaylar</span>
                                             </div>
 
@@ -105,43 +105,45 @@
 
         <!-- start features Area -->
         <section class="features-area section_gap">
-            <div class="container">
-                <div class="row features-inner">
-                    <!-- single features -->
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-features">
-                            <div class="f-icon">
-                                <i class="fas fa-laptop fa-4x" style="color: #FFBA00;"></i>
+            <div class="container"> <h:form>
+                    <div class="row features-inner">
+
+                        <!-- single features -->
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-features">
+                                <div class="f-icon">
+                                    <i class="fas fa-laptop fa-4x" style="color: #FFBA00;"></i>
+                                </div>
+
+                                <h6><h:commandLink style="font-size: 24px; color: #FFBA00;" value="Laptop Karşılaştır" action="#{karsilastirmaController.karsilastirBaglan('laptop')}"/></h6>
+                                <p>Laptop Modellerinin Özelliklerini Karşılaştırın</p>
                             </div>
-
-                            <h6>Laptop Karşılaştır</h6>
-                            <p>Laptop Modellerinin Özelliklerini Karşılaştırın</p>
                         </div>
-                    </div>
-                    <!-- single features -->
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-features">
-                            <div class="f-icon">
-                                <i class="fas fa-mobile-alt fa-4x" style="color: #FFBA00;"></i>
+                        <!-- single features -->
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-features">
+                                <div class="f-icon">
+                                    <i class="fas fa-mobile-alt fa-4x" style="color: #FFBA00;"></i>
+                                </div>
+
+                                <h6><h:commandLink style="font-size: 24px; color: #FFBA00;" value="Telefon Karşılaştır" action="#{karsilastirmaController.karsilastirBaglan('telefon')}"/></h6>
+                                <p>Telefon Modellerinin Özelliklerini Karşılaştırın</p>
                             </div>
-
-                            <h6>Telefon Karşılaştır</h6>
-                            <p>Telefon Modellerinin Özelliklerini Karşılaştırın</p>
                         </div>
-                    </div>
-                    <!-- single features -->
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-features">
-                            <div class="f-icon">
-                                <i class="fas fa-tv fa-4x" style="color: #FFBA00;"></i>
+                        <!-- single features -->
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-features">
+                                <div class="f-icon">
+                                    <i class="fas fa-tv fa-4x" style="color: #FFBA00;"></i>
+                                </div>
+
+                                <h6><h:commandLink style="font-size: 24px; color: #FFBA00;" value="Televizyon Karşılaştır" action="#{karsilastirmaController.karsilastirBaglan('televizyon')}"/></h6>
+                                <p>Televizyon Modellerinin Özelliklerini Karşılaştırın</p>
                             </div>
-
-                            <h6>Televizyon Karşılaştır</h6>
-                            <p>Televizyon Modellerinin Özelliklerini Karşılaştırın</p>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
+                </h:form>
             </div>
         </section>
         <!-- end features Area -->
@@ -168,7 +170,7 @@
                                     <div class="single-product">
                                         <h:graphicImage  value="/file/#{laptop.resim.fileName}" />
                                         <div class="product-details">
-                                            <h6><h:commandLink  action="#{laptopController.laptopOzellikleri(laptop)}" style="color: #000" value="#{laptop.urun_adi}"></h:commandLink></h6>
+                                            <h6><h:commandLink  action="#{laptopController.laptopOzellikleri(laptop.laptop_id)}" style="color: #000" value="#{laptop.urun_adi}"></h:commandLink></h6>
 
                                             <div class="prd-bottom">
 
@@ -214,7 +216,7 @@
                                     <div class="single-product">
                                         <h:graphicImage  value="/file/#{telefon.resim.fileName}" />
                                         <div class="product-details">
-                                            <h6><h:commandLink action="#{telefonController.telefonOzellikleri(telefon)}"  style="color: #000" value="#{telefon.telefon_ad}"/> </h6>
+                                            <h6><h:commandLink action="#{telefonController.telefonOzellikleri(telefon.telefon_id)}"  style="color: #000" value="#{telefon.telefon_ad}"/> </h6>
 
                                             <div class="prd-bottom">
 
@@ -267,7 +269,7 @@
                                             <h4>#{tv.televizyon_ad}</h4>
                                             <div class="add-bag d-flex align-items-center justify-content-center">
 
-                                                <h:commandLink class="add-btn" action="#{televizyonController.TelevizyonOzellikleri(tv)}"><span class="ti-bag"></span></h:commandLink>
+                                                <h:commandLink class="add-btn" action="#{televizyonController.TelevizyonOzellikleri(tv.televizyon_id)}"><span class="ti-bag"></span></h:commandLink>
                                                 <span class="add-text text-uppercase">İncele</span>
                                             </div>
                                         </div>

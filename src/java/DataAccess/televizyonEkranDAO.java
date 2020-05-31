@@ -37,7 +37,7 @@ public class televizyonEkranDAO {
             ekran.setEkran_boyutu(rs.getInt("ekran_boyutu"));
             ekran.setEkran_cozunurlugu(rs.getString("ekran_cozunurlugu"));
             ekran.setHDR(rs.getString("HDR"));
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -62,7 +62,7 @@ public class televizyonEkranDAO {
                 tmp.setHDR(rs.getString("HDR"));
                 ekran_liste.add(tmp);
             }
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -85,7 +85,7 @@ public class televizyonEkranDAO {
                 tmp.setHDR(rs.getString("HDR"));
                 ekran_liste.add(tmp);
             }
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -118,7 +118,7 @@ public class televizyonEkranDAO {
             pst.setString(5, ekran.getHDR());
             pst.setLong(6, ekran.getEkran_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -130,6 +130,7 @@ public class televizyonEkranDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_ekran where ekran_id=?");
             pst.setLong(1, ekran.getEkran_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -145,7 +146,7 @@ public class televizyonEkranDAO {
             pst.setString(5, ekran.getHDR());
 
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

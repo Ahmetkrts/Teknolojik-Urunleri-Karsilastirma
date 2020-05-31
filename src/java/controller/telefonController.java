@@ -6,7 +6,9 @@
 package controller;
 
 import DataAccess.telefonDAO;
+import DataAccess.yorumDAO;
 import entity.telefon;
+import entity.yorum;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,36 @@ public class telefonController implements Serializable {
     private int page = 1;
     private int pageSize = 5;
     private int pageCount;
+    private yorumDAO yorumdao;
+    private yorum yorum;
+
+    public void yoruminsert() {
+        getYorumdao().insert(yorum, this.telefon.getTelefon_id(), "telefon");
+        telefonOzellikleri(this.telefon.getTelefon_id());
+        this.yorum = new yorum();
+    }
+
+    public yorum getYorum() {
+        if (this.yorum == null) {
+            this.yorum = new yorum();
+        }
+        return yorum;
+    }
+
+    public void setYorum(yorum yorum) {
+        this.yorum = yorum;
+    }
+
+    public yorumDAO getYorumdao() {
+        if (this.yorumdao == null) {
+            this.yorumdao = new yorumDAO();
+        }
+        return yorumdao;
+    }
+
+    public void setYorumdao(yorumDAO yorumdao) {
+        this.yorumdao = yorumdao;
+    }
 
     public void next() {
         if (this.page == getPageCount()) {
@@ -45,8 +77,8 @@ public class telefonController implements Serializable {
         }
     }
 
-    public String telefonOzellikleri(telefon telefon) {
-        this.telefon = telefon;
+    public String telefonOzellikleri(Long id) {
+        this.telefon = getTelefondao().find(id);
         return "telefon-ozellikleri.xhtml";
     }
 

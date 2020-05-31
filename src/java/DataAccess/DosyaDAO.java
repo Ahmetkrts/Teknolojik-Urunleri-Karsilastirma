@@ -31,6 +31,7 @@ public class DosyaDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_resim where dosya_id=?");
             pst.setLong(1, dosya.getDosya_id());
             pst.executeUpdate();
+            pst.close();
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -48,7 +49,7 @@ public class DosyaDAO {
             resim.setFilePath(rs.getString("filePath"));
             resim.setFileName(rs.getString("fileName"));
             resim.setFileType(rs.getString("fileType"));
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -69,6 +70,7 @@ public class DosyaDAO {
 
                 dlist.add(d);
             }
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -83,7 +85,7 @@ public class DosyaDAO {
             pst.setString(2, d.getFileName());
             pst.setString(3, d.getFileType());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -96,7 +98,7 @@ public class DosyaDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from televizyon_resim where dosya_id=?");
             pst.setLong(1, dosya.getDosya_id());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -113,7 +115,7 @@ public class DosyaDAO {
             resim.setFilePath(rs.getString("filePath"));
             resim.setFileName(rs.getString("fileName"));
             resim.setFileType(rs.getString("fileType"));
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -134,6 +136,7 @@ public class DosyaDAO {
 
                 dlist.add(d);
             }
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -148,7 +151,7 @@ public class DosyaDAO {
             pst.setString(2, d.getFileName());
             pst.setString(3, d.getFileType());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -161,7 +164,7 @@ public class DosyaDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_resim where dosya_id=?");
             pst.setLong(1, dosya.getDosya_id());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -178,7 +181,7 @@ public class DosyaDAO {
             resim.setFilePath(rs.getString("filePath"));
             resim.setFileName(rs.getString("fileName"));
             resim.setFileType(rs.getString("fileType"));
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -199,6 +202,7 @@ public class DosyaDAO {
 
                 dlist.add(d);
             }
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -213,7 +217,7 @@ public class DosyaDAO {
             pst.setString(2, d.getFileName());
             pst.setString(3, d.getFileType());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

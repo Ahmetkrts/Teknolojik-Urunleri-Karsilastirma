@@ -6,7 +6,9 @@
 package controller;
 
 import DataAccess.televizyonDAO;
+import DataAccess.yorumDAO;
 import entity.televizyon;
+import entity.yorum;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,36 @@ public class televizyonController implements Serializable {
     private int page = 1;
     private int pageSize = 5;
     private int pageCount;
+    private yorumDAO yorumdao;
+    private yorum yorum;
+
+    public void yoruminsert() {
+        getYorumdao().insert(yorum, this.televizyon.getTelevizyon_id(), "televizyon");
+        TelevizyonOzellikleri(this.televizyon.getTelevizyon_id());
+        this.yorum = new yorum();
+    }
+
+    public yorum getYorum() {
+        if (this.yorum == null) {
+            this.yorum = new yorum();
+        }
+        return yorum;
+    }
+
+    public void setYorum(yorum yorum) {
+        this.yorum = yorum;
+    }
+
+    public yorumDAO getYorumdao() {
+        if (this.yorumdao == null) {
+            this.yorumdao = new yorumDAO();
+        }
+        return yorumdao;
+    }
+
+    public void setYorumdao(yorumDAO yorumdao) {
+        this.yorumdao = yorumdao;
+    }
 
     public void next() {
         if (this.page == getPageCount()) {
@@ -45,8 +77,8 @@ public class televizyonController implements Serializable {
         }
     }
 
-    public String TelevizyonOzellikleri(televizyon televizyon) {
-        this.televizyon = televizyon;
+    public String TelevizyonOzellikleri(Long id) {
+        this.televizyon = getTelevizyondao().find(id);
         return "televizyon-ozellikleri.xhtml";
     }
 

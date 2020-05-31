@@ -34,6 +34,7 @@ public class telefonRenkDAO {
                 renklist.add(this.find(rs.getLong("renk_id")));
 
             }
+            st.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -50,6 +51,7 @@ public class telefonRenkDAO {
             renk = new telefonRenk();
             renk.setRenk_id(rs.getLong("renk_id"));
             renk.setRenk_adi(rs.getString("renk_adi"));
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -73,6 +75,7 @@ public class telefonRenkDAO {
                 renklist.add(tmp);
 
             }
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -93,6 +96,7 @@ public class telefonRenkDAO {
                 renklist.add(tmp);
 
             }
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -131,7 +135,7 @@ public class telefonRenkDAO {
         try {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("insert into telefon_renkleri (renk_adi) values ('" + renk.getRenk_adi() + "')");
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -143,7 +147,7 @@ public class telefonRenkDAO {
             pst.setString(1, renk.getRenk_adi());
             pst.setLong(2, renk.getRenk_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -155,6 +159,7 @@ public class telefonRenkDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_renkleri where renk_id=?");
             pst.setLong(1, renk.getRenk_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

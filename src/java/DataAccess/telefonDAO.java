@@ -31,6 +31,14 @@ public class telefonDAO {
     private telefonArkaKameraDAO arkaKameraDAO;
     private telefonOnKameraDAO onKameraDAO;
     private DosyaDAO dosyaDAO;
+    private yorumDAO yorum;
+
+    public yorumDAO getYorum() {
+        if (this.yorum == null) {
+            this.yorum = new yorumDAO();
+        }
+        return yorum;
+    }
 
     private telefonRenkDAO renk;
 
@@ -61,14 +69,48 @@ public class telefonDAO {
                 tmp.setIsletimSistemi(this.getIsletimsistemi().find(rs.getLong("isletim_sistemi_id")));
                 tmp.setRenk(this.getRenk().getRenk(tmp.getTelefon_id()));
                 tmp.setResim(this.getDosyaDAO().telefonFind(rs.getLong("dosya")));
+                tmp.setYorumList(this.getYorum().getYorum(tmp.getTelefon_id(), "telefon"));
                 telefon_list.add(tmp);
             }
-            getConnection().close();
+            st.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return telefon_list;
+    }
+
+    public telefon find(long id) {
+        telefon tmp = new telefon();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from telefon where telefon_id=" + id);
+            rs.next();
+            tmp.setTelefon_id(rs.getLong("telefon_id"));
+            tmp.setTelefon_ad(rs.getString("telefon_ad"));
+            tmp.setTelefon_marka(rs.getString("telefon_marka"));
+            tmp.setTelefon_model(rs.getString("telefon_model"));
+            tmp.setTelefon_ram(rs.getInt("telefon_ram"));
+            tmp.setTelefon_ram_frekansi(rs.getDouble("telefon_ram_frekansi"));
+            tmp.setTelefon_dahili_depolama(rs.getInt("telefon_dahili_depolama"));
+            tmp.setTelefon_boy(rs.getInt("telefon_boy"));
+            tmp.setTelefon_en(rs.getDouble("telefon_en"));
+            tmp.setTelefon_agirlik(rs.getInt("telefon_agirlik"));
+            tmp.setBatarya(this.getBatarya().find(rs.getLong("telefon_batarya_id")));
+            tmp.setEkran(this.getEkran().find(rs.getLong("telefon_ekran_id")));
+            tmp.setArkaKamera(this.getArkaKameraDAO().find(rs.getLong("arka_kamera_id")));
+            tmp.setOnKamera(this.getOnKameraDAO().find(rs.getLong("on_kamera_id")));
+            tmp.setIslemci(this.getIslemci().find(rs.getLong("telefon_islemci_id")));
+            tmp.setIsletimSistemi(this.getIsletimsistemi().find(rs.getLong("isletim_sistemi_id")));
+            tmp.setRenk(this.getRenk().getRenk(tmp.getTelefon_id()));
+            tmp.setResim(this.getDosyaDAO().telefonFind(rs.getLong("dosya")));
+            tmp.setYorumList(this.getYorum().getYorum(tmp.getTelefon_id(), "telefon"));
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return tmp;
     }
 
     public int countSize() {
@@ -107,7 +149,7 @@ public class telefonDAO {
                 System.out.println("/////////////////////////////////////");
             }
 
-            getConnection().close();
+            st.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -147,7 +189,7 @@ public class telefonDAO {
                 System.out.println("/////////////////////////////////////");
             }
 
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -163,6 +205,7 @@ public class telefonDAO {
             pst = this.getConnection().prepareStatement("delete from telefon where telefon_id=?");
             pst.setLong(1, telefon.getTelefon_id());
             pst.executeUpdate();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

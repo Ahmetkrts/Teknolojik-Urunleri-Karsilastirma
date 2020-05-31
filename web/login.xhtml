@@ -43,21 +43,21 @@
                     <div class="col-lg-6">
                         <div class="login_form_inner">
                             <h3>Giriş Yap</h3>
-                            <h:form class="login_form">
+                            <h:form class="login_form" id="login-form">
                                 <h:commandLink value="K Adi: Admin  Şifre:1234 Giriş Yap"  action="#{loginController.setlog()}" />
 
                                 <div class="col-md-12 form-group">
 
-                                    <h:inputText class="form-control" value="#{loginController.kullanici.kullanici_adi}"  p:placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'"/>
+                                    <h:inputText class="form-control" id="a" value="#{loginController.kullanici.kullanici_adi}"  p:placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'"/>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <h:inputText class="form-control" value="#{loginController.kullanici.kullanici_sifre}"  p:placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'"/>
+                                    <h:inputText class="form-control" id="b" value="#{loginController.kullanici.kullanici_sifre}"  p:placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'"/>
                                 </div>
-                                
+
                                 <div class="col-md-12 form-group">
 
-                                    <h:commandButton  action="#{loginController.login()}" value="Log In" class="primary-btn">
-                                        
+                                    <h:commandButton  action="#{loginController.login()}" id="but" value="Log In" class="primary-btn">
+                                        <f:ajax execute="a b" rendered="login-form"/>
                                     </h:commandButton>
 
                                 </div>

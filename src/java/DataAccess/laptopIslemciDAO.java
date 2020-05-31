@@ -30,6 +30,7 @@ public class laptopIslemciDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_islemci where islemci_id=?");
             pst.setLong(1, islemci.getIslemci_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -49,7 +50,7 @@ public class laptopIslemciDAO {
             pst.setInt(5, laptopIslemci.getTdp_degeri());
             pst.setLong(10, laptopIslemci.getIslemci_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

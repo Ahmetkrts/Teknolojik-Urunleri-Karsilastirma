@@ -29,6 +29,7 @@ public class laptopEkranDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_ekran where ekran_id=?");
             pst.setLong(1, ekran.getEkran_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -76,7 +77,7 @@ public class laptopEkranDAO {
                 tmp.setEkran_yenileme(rs.getInt("ekran_yenileme"));
                 ekran_liste.add(tmp);
             }
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "EkranDAo2");
         }
@@ -98,7 +99,7 @@ public class laptopEkranDAO {
                 tmp.setEkran_yenileme(rs.getInt("ekran_yenileme"));
                 ekran_liste.add(tmp);
             }
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "EkranDAo3");
         }

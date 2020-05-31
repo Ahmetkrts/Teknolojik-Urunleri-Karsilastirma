@@ -49,7 +49,7 @@ public class telefonArkaKameraDAO {
             arkaKamera.setBes_kamera_cozunurlugu(rs.getInt("bes_kamera_cozunurlugu"));
             arkaKamera.setBes_diafram_acikligi(rs.getDouble("bes_diafram_acikligi"));
 
-            this.getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -86,7 +86,7 @@ public class telefonArkaKameraDAO {
                 arka_kamera.add(tmp);
 
             }
-            this.getConnection().close();
+            st.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -123,7 +123,7 @@ public class telefonArkaKameraDAO {
                 arka_kamera.add(tmp);
 
             }
-            this.getConnection().close();
+            st.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -157,7 +157,7 @@ public class telefonArkaKameraDAO {
                     + "'" + arkaKamera.getFlas() + "'," + arkaKamera.getDiafram_acikligi() + ",'" + arkaKamera.getVideo_kayit_cozunurlugu() + "'," + arkaKamera.getVideo_fps_degeri() + ""
                     + "," + arkaKamera.getIki_kamera_cozunurlugu() + "," + arkaKamera.getIki_diafram_acikligi() + "," + arkaKamera.getUc_kamera_cozunurlugu() + "," + arkaKamera.getUc_diafram_acikligi() + ""
                     + "," + arkaKamera.getDort_kamera_cozunurlugu() + "," + arkaKamera.getDort_diafram_acikligi() + "," + arkaKamera.getBes_kamera_cozunurlugu() + "," + arkaKamera.getBes_diafram_acikligi() + ")");
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -168,6 +168,7 @@ public class telefonArkaKameraDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from telefon_arka_kamera where kamera_id=?");
             pst.setLong(1, arkaKamera.getKamera_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -193,7 +194,7 @@ public class telefonArkaKameraDAO {
             pst.setDouble(15, arkaKamera.getBes_diafram_acikligi());
             pst.setLong(16, arkaKamera.getKamera_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

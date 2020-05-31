@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `kullanici` (
   PRIMARY KEY (`kullanici_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- compare-tech.kullanici: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+-- compare-tech.kullanici: ~3 rows (yaklaşık) tablosu için veriler indiriliyor
 DELETE FROM `kullanici`;
 /*!40000 ALTER TABLE `kullanici` DISABLE KEYS */;
 INSERT INTO `kullanici` (`kullanici_id`, `kullanici_adSoyad`, `kullanici_adi`, `kullanici_sifre`) VALUES
@@ -238,6 +238,29 @@ INSERT INTO `laptop_resim` (`dosya_id`, `filePath`, `fileName`, `fileType`) VALU
 	(27, '\\Users\\Enes\\Desktop\\000yeni\\Teknolojik-Urunleri-Karsilastirma\\web\\resources\\img\\resim', 'IMG_3366~photo.png', 'image/png'),
 	(28, '\\Users\\Enes\\Desktop\\000yeni\\Teknolojik-Urunleri-Karsilastirma\\web\\resources\\img\\resim', 'IMG_3367~photo.png', 'image/png');
 /*!40000 ALTER TABLE `laptop_resim` ENABLE KEYS */;
+
+-- tablo yapısı dökülüyor compare-tech.laptop_yorum
+CREATE TABLE IF NOT EXISTS `laptop_yorum` (
+  `laptop_id` int(11) unsigned NOT NULL,
+  `yorum_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`laptop_id`,`yorum_id`),
+  KEY `yorum_id` (`yorum_id`),
+  CONSTRAINT `laptop_yorum` FOREIGN KEY (`laptop_id`) REFERENCES `laptop` (`laptop_id`),
+  CONSTRAINT `yorum_laptop` FOREIGN KEY (`yorum_id`) REFERENCES `yorumlar` (`yorum_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- compare-tech.laptop_yorum: ~7 rows (yaklaşık) tablosu için veriler indiriliyor
+DELETE FROM `laptop_yorum`;
+/*!40000 ALTER TABLE `laptop_yorum` DISABLE KEYS */;
+INSERT INTO `laptop_yorum` (`laptop_id`, `yorum_id`) VALUES
+	(27, 69),
+	(31, 49),
+	(31, 50),
+	(31, 63),
+	(32, 48),
+	(33, 46),
+	(33, 47);
+/*!40000 ALTER TABLE `laptop_yorum` ENABLE KEYS */;
 
 -- tablo yapısı dökülüyor compare-tech.telefon
 CREATE TABLE IF NOT EXISTS `telefon` (
@@ -530,6 +553,26 @@ INSERT INTO `telefon_resim` (`dosya_id`, `filePath`, `fileName`, `fileType`) VAL
 	(71, '\\Users\\Enes\\Desktop\\000yeni\\Teknolojik-Urunleri-Karsilastirma\\web\\resources\\img\\resim', 'IMG_3355~photo.png', 'image/png');
 /*!40000 ALTER TABLE `telefon_resim` ENABLE KEYS */;
 
+-- tablo yapısı dökülüyor compare-tech.telefon_yorum
+CREATE TABLE IF NOT EXISTS `telefon_yorum` (
+  `telefon_id` int(11) unsigned NOT NULL,
+  `yorum_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`telefon_id`,`yorum_id`),
+  KEY `yorum_id` (`yorum_id`),
+  CONSTRAINT `telefon_yorum` FOREIGN KEY (`telefon_id`) REFERENCES `telefon` (`telefon_id`),
+  CONSTRAINT `yorum_telefon` FOREIGN KEY (`yorum_id`) REFERENCES `yorumlar` (`yorum_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- compare-tech.telefon_yorum: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+DELETE FROM `telefon_yorum`;
+/*!40000 ALTER TABLE `telefon_yorum` DISABLE KEYS */;
+INSERT INTO `telefon_yorum` (`telefon_id`, `yorum_id`) VALUES
+	(78, 55),
+	(79, 61),
+	(80, 54),
+	(80, 59);
+/*!40000 ALTER TABLE `telefon_yorum` ENABLE KEYS */;
+
 -- tablo yapısı dökülüyor compare-tech.televizyon
 CREATE TABLE IF NOT EXISTS `televizyon` (
   `televizyon_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -585,7 +628,7 @@ CREATE TABLE IF NOT EXISTS `televizyon_ekran` (
   PRIMARY KEY (`ekran_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- compare-tech.televizyon_ekran: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+-- compare-tech.televizyon_ekran: ~5 rows (yaklaşık) tablosu için veriler indiriliyor
 DELETE FROM `televizyon_ekran`;
 /*!40000 ALTER TABLE `televizyon_ekran` DISABLE KEYS */;
 INSERT INTO `televizyon_ekran` (`ekran_id`, `ekran_turu`, `ekran_tipi`, `ekran_boyutu`, `ekran_cozunurlugu`, `HDR`) VALUES
@@ -603,7 +646,7 @@ CREATE TABLE IF NOT EXISTS `televizyon_isletim_sistemi` (
   PRIMARY KEY (`isletim_sistemi_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- compare-tech.televizyon_isletim_sistemi: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+-- compare-tech.televizyon_isletim_sistemi: ~4 rows (yaklaşık) tablosu için veriler indiriliyor
 DELETE FROM `televizyon_isletim_sistemi`;
 /*!40000 ALTER TABLE `televizyon_isletim_sistemi` DISABLE KEYS */;
 INSERT INTO `televizyon_isletim_sistemi` (`isletim_sistemi_id`, `isletim_sistemi`) VALUES
@@ -622,7 +665,7 @@ CREATE TABLE IF NOT EXISTS `televizyon_resim` (
   PRIMARY KEY (`dosya_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- compare-tech.televizyon_resim: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+-- compare-tech.televizyon_resim: ~10 rows (yaklaşık) tablosu için veriler indiriliyor
 DELETE FROM `televizyon_resim`;
 /*!40000 ALTER TABLE `televizyon_resim` DISABLE KEYS */;
 INSERT INTO `televizyon_resim` (`dosya_id`, `filePath`, `fileName`, `fileType`) VALUES
@@ -637,6 +680,63 @@ INSERT INTO `televizyon_resim` (`dosya_id`, `filePath`, `fileName`, `fileType`) 
 	(31, '\\Users\\Enes\\Desktop\\000yeni\\Teknolojik-Urunleri-Karsilastirma\\web\\resources\\img\\resim', 'IMG_3349~photo.png', 'image/png'),
 	(32, '\\Users\\Enes\\Desktop\\000yeni\\Teknolojik-Urunleri-Karsilastirma\\web\\resources\\img\\resim', 'IMG_3350~photo.png', 'image/png');
 /*!40000 ALTER TABLE `televizyon_resim` ENABLE KEYS */;
+
+-- tablo yapısı dökülüyor compare-tech.televizyon_yorum
+CREATE TABLE IF NOT EXISTS `televizyon_yorum` (
+  `televizyon_id` int(11) unsigned NOT NULL,
+  `yorum_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`televizyon_id`,`yorum_id`),
+  KEY `yorum_id` (`yorum_id`),
+  CONSTRAINT `televizyon_yorum` FOREIGN KEY (`televizyon_id`) REFERENCES `televizyon` (`televizyon_id`),
+  CONSTRAINT `yorum_televizyon` FOREIGN KEY (`yorum_id`) REFERENCES `yorumlar` (`yorum_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- compare-tech.televizyon_yorum: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+DELETE FROM `televizyon_yorum`;
+/*!40000 ALTER TABLE `televizyon_yorum` DISABLE KEYS */;
+INSERT INTO `televizyon_yorum` (`televizyon_id`, `yorum_id`) VALUES
+	(25, 62),
+	(25, 64);
+/*!40000 ALTER TABLE `televizyon_yorum` ENABLE KEYS */;
+
+-- tablo yapısı dökülüyor compare-tech.yorumlar
+CREATE TABLE IF NOT EXISTS `yorumlar` (
+  `yorum_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `yorum_icerik` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `yorum_adSoyad` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `yorum_tarih` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`yorum_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- compare-tech.yorumlar: ~7 rows (yaklaşık) tablosu için veriler indiriliyor
+DELETE FROM `yorumlar`;
+/*!40000 ALTER TABLE `yorumlar` DISABLE KEYS */;
+INSERT INTO `yorumlar` (`yorum_id`, `yorum_icerik`, `yorum_adSoyad`, `yorum_tarih`) VALUES
+	(46, '1234', 'deneme', '2020-05-30 20:26:39'),
+	(47, 'ddd', 'aaa', '2020-05-30 20:28:09'),
+	(48, 'hhcgdasda', 'deneme', '2020-05-30 20:28:57'),
+	(49, '12', '12', '2020-05-30 20:30:23'),
+	(50, 'bu laptop çok mükemmel dostum\n', 'ahmet karata?', '2020-05-30 20:31:48'),
+	(51, '', '', '2020-05-30 20:31:52'),
+	(52, '', '', '2020-05-30 20:31:52'),
+	(53, 'aaa', 'assa', '2020-05-30 20:49:38'),
+	(54, 'qq', 'qq', '2020-05-30 20:51:48'),
+	(55, '11111', '121212', '2020-05-30 21:04:23'),
+	(56, '', '', '2020-05-30 21:04:25'),
+	(57, '', '', '2020-05-30 21:04:25'),
+	(58, '', '', '2020-05-30 21:04:25'),
+	(59, 'sadasd', 'ramazan', '2020-05-30 21:11:06'),
+	(60, '1221', 'asas', '2020-05-30 21:12:43'),
+	(61, '12345', 'deneme', '2020-05-30 21:18:27'),
+	(62, 'bu deneme yorum', 'ahmet karatas', '2020-05-30 22:14:00'),
+	(63, 'deneme', 'bestami', '2020-05-30 22:15:59'),
+	(64, 'KLXZCKJBZXJCBZ', 'cbzjnbzjnxb', '2020-05-30 22:18:34'),
+	(65, '', '', '2020-05-30 22:18:35'),
+	(66, '', '', '2020-05-30 22:18:38'),
+	(67, '', '', '2020-05-30 22:18:38'),
+	(68, '', '', '2020-05-30 22:18:38'),
+	(69, 'ASDASD', 'SDDSA', '2020-05-30 22:28:11');
+/*!40000 ALTER TABLE `yorumlar` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -5,12 +5,14 @@
  */
 package entity;
 
+import java.util.List;
+
 /**
  *
  * @author Casper
  */
 public class laptop {
-    
+
     private Long laptop_id;
     private String urun_adi;
     private String urun_tipi;
@@ -29,6 +31,15 @@ public class laptop {
     private laptopPil pil;
     private laptopBaglanti baglanti;
     private Dosya resim;
+    private List<yorum> yorumList;
+
+    public List<yorum> getYorumList() {
+        return yorumList;
+    }
+
+    public void setYorumList(List<yorum> yorumList) {
+        this.yorumList = yorumList;
+    }
 
     public Long getLaptop_id() {
         return laptop_id;
@@ -173,6 +184,5 @@ public class laptop {
     public void setResim(Dosya resim) {
         this.resim = resim;
     }
-    
-    
+
 }

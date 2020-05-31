@@ -3,7 +3,9 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="template/template.xhtml">
+                template="template/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
 
         <div class="content">
@@ -100,6 +102,135 @@
 
                     </div>
                 </h:form>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-tabs card-header-primary">
+                                <div class="nav-tabs-navigation">
+                                    <div class="nav-tabs-wrapper">
+                                        <span class="nav-tabs-title">Yorumlar:</span>
+                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#profile" data-toggle="tab">
+                                                    <i class="material-icons">laptop</i> Laptop
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#messages" data-toggle="tab">
+                                                    <i class="material-icons">phone_iphone</i> Telefon
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#settings" data-toggle="tab">
+                                                    <i class="material-icons">tv</i> Televizyon
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="profile">
+                                        <h:form id="yorum-laptop">
+                                            <h:dataTable class="table" value="#{laptopController.yorumdao.findAll('laptop')}" var="yorum">
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                                                        #{yorum.yorum_id} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Ad Soyad</b></f:facet> 
+                                                        #{yorum.yorum_adSoyad} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Yorum İçeriği</b></f:facet> 
+                                                        #{yorum.yorum_icerik} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Yorum Tarihi</b></f:facet> 
+                                                        #{yorum.yorum_tarihi} 
+                                                </h:column>
+                                                <h:column>
+                                                    <h:commandLink action="#{laptopController.yorumdao.remove(yorum,'laptop')}">
+                                                        <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                                                        <f:ajax execute="@this" render="yorum-laptop"/>
+                                                    </h:commandLink>
+                                                </h:column>
+
+                                            </h:dataTable>
+                                        </h:form>
+
+
+                                    </div>
+                                    <div class="tab-pane" id="messages">
+                                        <h:form id="yorum-telefon">
+                                            <h:dataTable class="table" value="#{telefonController.yorumdao.findAll('telefon')}" var="yorum">
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                                                        #{yorum.yorum_id} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Ad Soyad</b></f:facet> 
+                                                        #{yorum.yorum_adSoyad} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Yorum İçeriği</b></f:facet> 
+                                                        #{yorum.yorum_icerik} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Yorum Tarihi</b></f:facet> 
+                                                        #{yorum.yorum_tarihi} 
+                                                </h:column>
+                                                <h:column>
+                                                    <h:commandLink action="#{telefonController.yorumdao.remove(yorum,'telefon')}">
+                                                        <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                                                        <f:ajax execute="@this" render="yorum-telefon"/>
+                                                    </h:commandLink>
+                                                </h:column>
+
+                                            </h:dataTable>
+                                        </h:form>
+                                    </div>
+                                    <div class="tab-pane" id="settings">
+                                        <h:form id="yorum-televizyon">
+                                            <h:dataTable class="table" value="#{televizyonController.yorumdao.findAll('televizyon')}" var="yorum">
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                                                        #{yorum.yorum_id} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Ad Soyad</b></f:facet> 
+                                                        #{yorum.yorum_adSoyad} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Yorum İçeriği</b></f:facet> 
+                                                        #{yorum.yorum_icerik} 
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><b class="text-primary">Yorum Tarihi</b></f:facet> 
+                                                        #{yorum.yorum_tarihi} 
+                                                </h:column>
+                                                <h:column>
+                                                    <h:commandLink action="#{televizyonController.yorumdao.remove(yorum,'televizyon')}">
+                                                        <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                                                        <f:ajax execute="@this" render="yorum-televizyon"/>
+                                                    </h:commandLink>
+                                                </h:column>
+
+                                            </h:dataTable>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
     </ui:define>

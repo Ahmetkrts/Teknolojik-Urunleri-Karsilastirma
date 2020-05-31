@@ -30,17 +30,25 @@ public class laptopDAO {
     private laptopBaglantiDAO baglanti;
     private laptopPilDAO pil;
     private DosyaDAO dosyaDAO;
+    private yorumDAO yorum;
+
+    public yorumDAO getYorum() {
+        if (this.yorum == null) {
+            this.yorum = new yorumDAO();
+        }
+        return yorum;
+    }
 
     public void remove(laptop laptop) {
         try {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop where laptop_id=?");
             pst.setLong(1, laptop.getLaptop_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
 
     public void edit(laptop laptop) {
         try {
@@ -64,7 +72,7 @@ public class laptopDAO {
             pst.setLong(17, laptop.getResim().getDosya_id());
             pst.setLong(18, laptop.getLaptop_id());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -75,14 +83,14 @@ public class laptopDAO {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("INSERT INTO laptop ( urun_adi, urun_tipi, urun_amaci, urun_ailesi, urun_serisi, isletim_sistemi, ekran_id, genislik, derinlik, kalinlik,"
                     + " agirlik, depolama_bellek_id, islemci_id, ekran_karti_id, pil_id, baglanti_id, dosya) VALUES ( '" + laptop.getUrun_adi() + "', '" + laptop.getUrun_tipi() + "', '" + laptop.getUrun_amaci() + "', '" + laptop.getUrun_ailesi() + "'"
-                    + ", '" + laptop.getUrun_serisi() + "', '" + laptop.getIsletim_sistemi() + "', " + laptop.getEkran().getEkran_id() + ", " + laptop.getGenislik() + ", " + laptop.getDerinlik() + ", " + laptop.getKalinlik() + ", " + laptop.getAgirlik() + ", " + laptop.getDepolama_bellek().getDepolama_bellek_id() + ", " + laptop.getIslemci().getIslemci_id() + ", " + laptop.getEkran_karti().getEkran_karti_id() + ", " + laptop.getPil().getPil_id() + ", " + laptop.getBaglanti().getBaglanti_id() +", " + laptop.getResim().getDosya_id() + ")");
+                    + ", '" + laptop.getUrun_serisi() + "', '" + laptop.getIsletim_sistemi() + "', " + laptop.getEkran().getEkran_id() + ", " + laptop.getGenislik() + ", " + laptop.getDerinlik() + ", " + laptop.getKalinlik() + ", " + laptop.getAgirlik() + ", " + laptop.getDepolama_bellek().getDepolama_bellek_id() + ", " + laptop.getIslemci().getIslemci_id() + ", " + laptop.getEkran_karti().getEkran_karti_id() + ", " + laptop.getPil().getPil_id() + ", " + laptop.getBaglanti().getBaglanti_id() + ", " + laptop.getResim().getDosya_id() + ")");
             st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "LaptopDAO");
         }
     }
 
-     public List<laptop> findAll(int page, int pageSize, int siralama) {
+    public List<laptop> findAll(int page, int pageSize, int siralama) {
         String s = (siralama == 1) ? "asc" : "desc";
         List<laptop> laptoplist = new ArrayList<>();
         int start = (page - 1) * pageSize;
@@ -109,6 +117,7 @@ public class laptopDAO {
                 tmp.setBaglanti(this.getBaglanti().find(rs.getLong("baglanti_id")));
                 tmp.setEkran(this.getEkran().find(rs.getLong("ekran_id")));
                 tmp.setPil(this.getPil().find(rs.getLong("pil_id")));
+                tmp.setYorumList(this.getYorum().getYorum(tmp.getLaptop_id(), "laptop"));
                 tmp.setResim(this.getDosyaDAO().laptopFind(rs.getLong("dosya")));
                 laptoplist.add(tmp);
 
@@ -121,8 +130,44 @@ public class laptopDAO {
         return laptoplist;
 
     }
-	
-	 public int countSize() {
+
+    public laptop find(Long id) {
+        laptop tmp = new laptop();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from laptop where laptop_id=" + id);
+            rs.next();
+            tmp.setLaptop_id(rs.getLong("laptop_id"));
+            tmp.setUrun_adi(rs.getString("urun_adi"));
+            tmp.setUrun_tipi(rs.getString("urun_tipi"));
+            tmp.setUrun_amaci(rs.getString("urun_amaci"));
+            tmp.setUrun_ailesi(rs.getString("urun_ailesi"));
+            tmp.setUrun_serisi(rs.getString("urun_serisi"));
+            tmp.setIsletim_sistemi(rs.getString("isletim_sistemi"));
+            tmp.setEkran(this.getEkran().find(rs.getLong("ekran_id")));
+            tmp.setGenislik(rs.getDouble("genislik"));
+            tmp.setDerinlik(rs.getDouble("derinlik"));
+            tmp.setKalinlik(rs.getDouble("kalinlik"));
+            tmp.setAgirlik(rs.getDouble("agirlik"));
+            tmp.setDepolama_bellek(this.getDepolamaBellek().find(rs.getLong("depolama_bellek_id")));
+            tmp.setIslemci(this.getIslemci().find(rs.getLong("islemci_id")));
+            tmp.setEkran_karti(this.getEkranKarti().find(rs.getLong("ekran_karti_id")));
+            tmp.setBaglanti(this.getBaglanti().find(rs.getLong("baglanti_id")));
+            tmp.setEkran(this.getEkran().find(rs.getLong("ekran_id")));
+            tmp.setPil(this.getPil().find(rs.getLong("pil_id")));
+            tmp.setYorumList(this.getYorum().getYorum(tmp.getLaptop_id(), "laptop"));
+            tmp.setResim(this.getDosyaDAO().laptopFind(rs.getLong("dosya")));
+
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() + "LaptopDAO");
+        }
+
+        return tmp;
+
+    }
+
+    public int countSize() {
         int count = 0;
         try {
             Statement st = this.getConnection().createStatement();
@@ -196,7 +241,7 @@ public class laptopDAO {
     }
 
     public DosyaDAO getDosyaDAO() {
-        if(this.dosyaDAO == null){
+        if (this.dosyaDAO == null) {
             this.dosyaDAO = new DosyaDAO();
         }
         return dosyaDAO;

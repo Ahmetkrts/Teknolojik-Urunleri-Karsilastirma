@@ -30,6 +30,7 @@ public class laptopPilDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_pil where pil_id=?");
             pst.setLong(1, pil.getPil_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -43,7 +44,7 @@ public class laptopPilDAO {
             pst.setString(3, laptopPil.getPil_ozellikleri());
             pst.setLong(4, laptopPil.getPil_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -73,7 +74,7 @@ public class laptopPilDAO {
             pil.setPil_gucu(rs.getInt("pil_gucu"));
             pil.setPil_hucre_sayisi(rs.getInt("pil_hucre_sayisi"));
             pil.setPil_ozellikleri(rs.getString("pil_ozellikleri"));
-            getConnection().close();
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

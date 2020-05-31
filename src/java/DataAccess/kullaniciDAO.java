@@ -29,6 +29,7 @@ public class kullaniciDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from kullanici where kullanici_id=?");
             pst.setLong(1, kullanici.getKullanici_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -56,7 +57,7 @@ public class kullaniciDAO {
             pst.setString(2, kullanici.getKullanici_adi());
             pst.setString(3, kullanici.getKullanici_sifre());
             pst.executeUpdate();
-
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "kullaniciDAo1");
         }
@@ -76,7 +77,7 @@ public class kullaniciDAO {
                 tmp.setKullanici_sifre(rs.getString("kullanici_sifre"));
                 kullanici_liste.add(tmp);
             }
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "kullaniciDAo2");
         }
@@ -99,7 +100,7 @@ public class kullaniciDAO {
 
                 kullanici_liste.add(tmp);
             }
-
+            st.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage() + "kullaniciDAo3");
         }

@@ -29,6 +29,7 @@ public class laptopDepolamaBellekDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_depolama_bellek where depolama_bellek_id=?");
             pst.setLong(1, depolama.getDepolama_bellek_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

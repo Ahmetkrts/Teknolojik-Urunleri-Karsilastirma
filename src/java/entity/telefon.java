@@ -31,6 +31,15 @@ public class telefon {
     private telefonOnKamera onKamera;
     private telefonEkran ekran;
     private Dosya resim;
+    private List<yorum> yorumList;
+
+    public List<yorum> getYorumList() {
+        return yorumList;
+    }
+
+    public void setYorumList(List<yorum> yorumList) {
+        this.yorumList = yorumList;
+    }
 
     public telefon() {
     }

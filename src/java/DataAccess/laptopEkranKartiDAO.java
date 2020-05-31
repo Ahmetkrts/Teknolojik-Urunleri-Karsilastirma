@@ -30,6 +30,7 @@ public class laptopEkranKartiDAO {
             PreparedStatement pst = this.getConnection().prepareStatement("delete from laptop_ekran_karti where ekran_karti_id=?");
             pst.setLong(1, ekranKarti.getEkran_karti_id());
             pst.executeUpdate();
+            pst.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -47,7 +48,7 @@ public class laptopEkranKartiDAO {
             pst.setInt(7, laptopEkranKarti.getEkran_karti_bellek_arayuzu());
             pst.setLong(8, laptopEkranKarti.getEkran_karti_id());
             pst.executeUpdate();
-            getConnection().close();
+            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
